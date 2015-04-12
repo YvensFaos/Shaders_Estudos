@@ -37,7 +37,7 @@ int main( void )
     //Set the GLFW window creation hints - these are optional  
     //glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); //Request a specific OpenGL version  
     //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //Request a specific OpenGL version  
-    //glfwWindowHint(GLFW_SAMPLES, 4); //Request 4x antialiasing  
+    glfwWindowHint(GLFW_SAMPLES, 4); //Request 4x antialiasing  
     //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  
   
     //Declare a window object  
@@ -71,7 +71,7 @@ int main( void )
     }  
   
     //Set a background color  
-    glClearColor(0.0f, 0.0f, 1.0f, 0.0f);  
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);  
   
     //Main Loop  
     do  
