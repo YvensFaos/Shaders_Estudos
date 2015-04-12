@@ -1,9 +1,10 @@
 #define GLEW_STATIC
 
 #include <GL\glew.h>
-
+#include "glm\vec3.hpp"
 #include "GLFW/glfw3.h"
 
+#include "ObjReader.h"
 
 //Include the standard C++ headers  
 #include <stdio.h>  
@@ -73,6 +74,9 @@ int main( void )
     //Set a background color  
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);  
   
+	ObjReader reader;
+	reader.loadObj("");
+
     //Main Loop  
     do  
     {  
