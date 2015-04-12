@@ -1,0 +1,19 @@
+﻿comitando libs
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   ReadingObj/GeneralObjHandler/GeneralObjHandler/GLFW/glew32s.lib
+#	new file:   ReadingObj/GeneralObjHandler/GeneralObjHandler/GLFW/glfw3.lib
+#
+# Changes not staged for commit:
+#	modified:   .gitignore
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/CL.read.1.tlog
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/CL.write.1.tlog
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/link.command.1.tlog
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/link.read.1.tlog
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/link.write.1.tlog
+#
+
