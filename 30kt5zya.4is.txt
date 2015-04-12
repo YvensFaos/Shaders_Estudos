@@ -1,0 +1,21 @@
+﻿q
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler.sdf
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/CL.write.1.tlog
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/cl.command.1.tlog
+#
+# Changes not staged for commit:
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/CL.read.1.tlog
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/GeneralObjHandler.lastbuildstate
+#	modified:   ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/vc110.idb
+#
+# Untracked files:
+#	ReadingObj/GeneralObjHandler/GeneralObjHandler.opensdf
+#	ReadingObj/GeneralObjHandler/GeneralObjHandler/Debug/GeneralObjHandler.unsuccessfulbuild
+#
+
