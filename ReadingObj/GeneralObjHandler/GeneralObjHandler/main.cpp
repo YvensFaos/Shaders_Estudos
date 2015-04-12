@@ -58,6 +58,12 @@ int main( void )
     //This function makes the context of the specified window current on the calling thread.   
     glfwMakeContextCurrent(window);  
   
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glShadeModel(GL_SMOOTH);
+
     //Sets the key callback  
     glfwSetKeyCallback(window, key_callback);  
   
@@ -75,7 +81,7 @@ int main( void )
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);  
   
 	ObjReader reader;
-	reader.loadObj("");
+	reader.loadObj("E:\\Repositorios\\Shaders_Estudos\\Models\\dono_maison.obj");
 
     //Main Loop  
     do  
