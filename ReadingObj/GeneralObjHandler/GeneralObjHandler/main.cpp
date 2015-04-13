@@ -4,7 +4,7 @@
 #include "glm\vec3.hpp"
 #include "GLFW/glfw3.h"
 
-#include "CAssimpModel.h"
+//#include "CAssimpModel.h"
 
 //Include the standard C++ headers  
 #include <stdio.h>  

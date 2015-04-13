@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GeneralObjHandler", "GeneralObjHandler\GeneralObjHandler.vcxproj", "{B7B14ECC-E101-4CEB-BD32-0EE30C7EFE10}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestingAssimp", "TestingAssimp\TestingAssimp.vcxproj", "{B09AFBF5-DB82-4B51-AAD1-B5E2CA94B0DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{B7B14ECC-E101-4CEB-BD32-0EE30C7EFE10}.Debug|Win32.Build.0 = Debug|Win32
 		{B7B14ECC-E101-4CEB-BD32-0EE30C7EFE10}.Release|Win32.ActiveCfg = Release|Win32
 		{B7B14ECC-E101-4CEB-BD32-0EE30C7EFE10}.Release|Win32.Build.0 = Release|Win32
+		{B09AFBF5-DB82-4B51-AAD1-B5E2CA94B0DA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B09AFBF5-DB82-4B51-AAD1-B5E2CA94B0DA}.Debug|Win32.Build.0 = Debug|Win32
+		{B09AFBF5-DB82-4B51-AAD1-B5E2CA94B0DA}.Release|Win32.ActiveCfg = Release|Win32
+		{B09AFBF5-DB82-4B51-AAD1-B5E2CA94B0DA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
