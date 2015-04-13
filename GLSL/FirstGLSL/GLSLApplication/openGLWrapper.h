@@ -1,7 +1,11 @@
 #ifndef __OPENGL_WRAPPER__
 #define __OPENGL_WRAPPER__
 
-#include "GLFW\glfw3.h"
+#define GLEW_STATIC
+
+#include <GL\glew.h>
+#include "GLFW/glfw3.h"
+
 #include "glplayer.h"
 
 typedef void (*loopCallback)(void);

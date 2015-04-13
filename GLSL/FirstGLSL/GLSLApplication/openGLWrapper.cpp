@@ -1,10 +1,6 @@
 #include "openGLWrapper.h"
 
 #include <stdio.h>
-#include <GL\glew.h>
-#include "GLFW/glfw3.h"
-
-#include "glplayer.h"
 
 GLPlayer OpenGLWrapper::player;
 float OpenGLWrapper::ratio;
@@ -25,10 +21,11 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 		glfwWindowHint(GLFW_SAMPLES, multisampling);
 	}
   
-	int width = 600; //player.config.width;
-	int height = 600; //player.config.height;
-	char* title = ""; //player.config.mainTitle;
-    window = glfwCreateWindow(640, 480, "Test Window", NULL, NULL);  
+	int width = player.config.width;
+	int height = player.config.height;
+	char* title = player.config.title;
+
+    window = glfwCreateWindow(width, height, title, NULL, NULL);  
   
     if (!window)  
     {  
@@ -37,9 +34,12 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
         return;
     }  
   
+	loop_callback(callback);
+
     glfwMakeContextCurrent(window);  
 	player.actualWindow = window;
     glfwSetKeyCallback(window, OpenGLWrapper::key_callback);  
+
     GLenum err = glewInit();
 
     if (err != GLEW_OK)   
@@ -53,7 +53,7 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	glfwSetErrorCallback(OpenGLWrapper::error_callback);
 	glfwInit();
 
-	//player.initializeLigths();
+	player.lights();
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
@@ -66,25 +66,29 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 
 void OpenGLWrapper::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 { 
-	//player.keyBoard(window, key, scancode, action, mods); 
+	player.keyBoard(window, key, scancode, action, mods); 
 }
 
 void OpenGLWrapper::error_callback(int error, const char* description)
 { }
 
 void OpenGLWrapper::loop_callback(loopCallback callback)
-{ OpenGLWrapper::callback = callback; }
+{ 
+	OpenGLWrapper::callback = callback; 
+}
 
 void OpenGLWrapper::running_callback(runningCallback running)
-{ OpenGLWrapper::running = running; }
+{ 
+	OpenGLWrapper::running = running; 
+}
 
 void OpenGLWrapper::glLoop()
 {
 	while (!glfwWindowShouldClose(window) && (running)())
     {
 
-		int width = 600; //player.config.width;
-		int height = 600; //player.config.height;
+		int width = player.config.width;
+		int height = player.config.height;
 
 		glViewport(0, 0, width, height);
 
