@@ -4,7 +4,7 @@
 #include "glm\vec3.hpp"
 #include "GLFW/glfw3.h"
 
-#include "ObjReader.h"
+#include "CAssimpModel.h"
 
 //Include the standard C++ headers  
 #include <stdio.h>  
@@ -80,9 +80,6 @@ int main( void )
     //Set a background color  
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);  
   
-	ObjReader reader;
-	reader.loadObj("E:\\Repositorios\\Shaders_Estudos\\Models\\dono_maison.obj");
-
     //Main Loop  
     do  
     {  

@@ -18,13 +18,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ObjReader.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CAssimpModel.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ObjReader.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="CAssimpModel.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
