@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FirstGLSL", "FirstGLSL\Firs
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLSLApplication", "GLSLApplication\GLSLApplication.vcxproj", "{35633772-8CA8-4902-9D0E-01E2CFD96B05}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AssimpTest", "AssimpTest\AssimpTest.vcxproj", "{34D912F4-6303-4730-8440-1895352A2C4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{35633772-8CA8-4902-9D0E-01E2CFD96B05}.Debug|Win32.Build.0 = Debug|Win32
 		{35633772-8CA8-4902-9D0E-01E2CFD96B05}.Release|Win32.ActiveCfg = Release|Win32
 		{35633772-8CA8-4902-9D0E-01E2CFD96B05}.Release|Win32.Build.0 = Release|Win32
+		{34D912F4-6303-4730-8440-1895352A2C4F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{34D912F4-6303-4730-8440-1895352A2C4F}.Debug|Win32.Build.0 = Debug|Win32
+		{34D912F4-6303-4730-8440-1895352A2C4F}.Release|Win32.ActiveCfg = Release|Win32
+		{34D912F4-6303-4730-8440-1895352A2C4F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
