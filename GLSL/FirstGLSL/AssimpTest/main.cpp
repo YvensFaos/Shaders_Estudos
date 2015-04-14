@@ -4,7 +4,11 @@
 
 int main()
 {
-	char* sFilePath = "path";
+	char* model = "el_favorit_escena_simple.obj";
+	char* path = "E:/Repositorios/Shaders_Estudos/Models/";
+
+	char sFilePath[512];
+	sprintf(sFilePath, "%s%s", path, model);
 
 	Assimp::Importer importer; 
 	const aiScene* scene = importer.ReadFile( sFilePath,  
@@ -18,6 +22,8 @@ int main()
 		printf("Couldn't load model\n");
 		return -1; 
 	}
+
+	printf("Loaded! %s\n", sFilePath);
 
 	return 0;
 }
