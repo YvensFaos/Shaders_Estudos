@@ -57,7 +57,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)GLFW;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)GLFW;$(ProjectDir)glm;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;glu32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -82,13 +82,19 @@
   <ItemGroup>
     <ClCompile Include="glconfig.cpp" />
     <ClCompile Include="glplayer.cpp" />
+    <ClCompile Include="glshaderloader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="openGLWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glconfig.h" />
     <ClInclude Include="glplayer.h" />
+    <ClInclude Include="glshaderloader.h" />
     <ClInclude Include="openGLWrapper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="fragmentshader.txt" />
+    <Text Include="vertexshader.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

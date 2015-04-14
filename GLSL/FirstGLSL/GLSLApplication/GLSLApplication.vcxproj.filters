@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{5fc848c9-353d-46e5-99f6-fd03dd9ef628}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="openGLWrapper.cpp">
@@ -27,6 +30,9 @@
     <ClCompile Include="glconfig.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="glshaderloader.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -38,5 +44,16 @@
     <ClInclude Include="glconfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="glshaderloader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="vertexshader.txt">
+      <Filter>Shaders</Filter>
+    </Text>
+    <Text Include="fragmentshader.txt">
+      <Filter>Shaders</Filter>
+    </Text>
   </ItemGroup>
 </Project>
