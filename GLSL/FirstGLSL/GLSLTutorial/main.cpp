@@ -9,6 +9,8 @@
 //Include the standard C++ headers  
 #include <stdio.h>  
 #include <stdlib.h>  
+
+#include <string>
   
 //Define an error callback  
 static void error_callback(int error, const char* description)  
@@ -71,11 +73,46 @@ int main( void )
         return -1;  
     }  
   
-	Vector3f Vertices[1];
-	Vertices[0] = Vector3f(0.0f, 0.0f, 0.0f);
+	Vector3f Vertices[3];
+	Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);
+	Vertices[1] = Vector3f(1.0f, -1.0f, 0.0f);
+	Vertices[2] = Vector3f(0.0f, 1.0f, 0.0f);
+
 	GLuint VBO;
 	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
+	GLuint ShaderProgram = glCreateProgram();
+	GLuint ShaderObj = glCreateShader(GL_FRAGMENT_SHADER);
+
+	const GLchar* p[1];
+	p[0] = "void main(){gl_FragColor = vec4(gl_PointCoord.x, gl_PointCoord.y, gl_FragCoord.z, 1.0);}";
+	GLint Lengths[1];
+	Lengths[0]= strlen(p[0]);
+	glShaderSource(ShaderObj, 1, p, Lengths);
+	glCompileShader(ShaderObj);
+	GLint success;
+	glGetShaderiv(ShaderObj, GL_COMPILE_STATUS, &success);
+	if (!success) {
+		GLchar InfoLog[1024];
+		glGetShaderInfoLog(ShaderObj, sizeof(InfoLog), NULL, InfoLog);
+		fprintf(stderr, "Error compiling shader type %d: '%s'\n", GL_FRAGMENT_SHADER, InfoLog);
+	}
+	glAttachShader(ShaderProgram, ShaderObj);
+	glLinkProgram(ShaderProgram);
+
+	glGetProgramiv(ShaderProgram, GL_LINK_STATUS, &success);
+	if (success == 0) {
+		GLchar ErrorLog[1024];
+		glGetProgramInfoLog(ShaderProgram, sizeof(ErrorLog), NULL, ErrorLog);
+		fprintf(stderr, "Error linking shader program: '%s'\n", ErrorLog);
+	}
+	glValidateProgram(ShaderProgram);
+	glUseProgram(ShaderProgram);
     //Set a background color  
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);  
   
@@ -85,6 +122,8 @@ int main( void )
         //Clear color buffer  
         glClear(GL_COLOR_BUFFER_BIT);  
   
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		//glDisableVertexAttribArray(0);
         //Swap buffers  
         glfwSwapBuffers(window);  
         //Get and organize events, like keyboard and mouse input, window resizing, etc...  
