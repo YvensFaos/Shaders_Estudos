@@ -22,18 +22,6 @@ void callBack()
 
 int main()  
 {  
-	//GLchar** vertexShaderText = new GLchar*[1];
-	//vertexShaderText[0] = new GLchar[512];
-	unsigned long len[16];
-	GLchar* shaderSource = GLShaderLoader::loadshader("vertexshader.txt", len);
-
-	//printf("Resultado: %d\n", success);
-
-	//GLuint vertexShader, fragmentShader;
-
-	//vertexShaderObject = glCreateShader(GL_VERTEX_SHADER);
-	//fragmentShaderObject = glCreateShader(GL_FRAGMENT_SHADER);
-
 	GLConfig config;
 	config.width = 640;
 	config.height = 480;

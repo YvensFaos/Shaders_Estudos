@@ -1,5 +1,7 @@
 #include "openGLWrapper.h"
 
+#include "glshaderloader.h"
+
 #include <stdio.h>
 
 GLPlayer OpenGLWrapper::player;
@@ -52,6 +54,28 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 
 	glfwSetErrorCallback(OpenGLWrapper::error_callback);
 	glfwInit();
+
+	unsigned long vlen;
+	unsigned long flen;
+	GLchar* vertexShaderText = GLShaderLoader::loadshader("vertexshader.txt", &vlen);
+	GLchar* fragmentShaderText = GLShaderLoader::loadshader("fragmentshader.txt", &flen);
+
+	GLuint ShaderProgram = glCreateProgram();
+	GLuint vertexShaderObject, fragmentShaderObject;
+
+	vertexShaderObject = glCreateShader(GL_VERTEX_SHADER);
+	fragmentShaderObject = glCreateShader(GL_FRAGMENT_SHADER);
+
+	GLint vleng[1];
+	vleng[0] = vlen;
+
+	GLint fleng[1];
+	fleng[0] = vlen;
+	glShaderSource(vertexShaderObject, 1, &vertexShaderText, vleng);
+	glShaderSource(fragmentShaderObject, 1, &fragmentShaderText, fleng);
+	
+	glCompileShaderARB(vertexShaderObject);
+	glCompileShaderARB(fragmentShaderObject);
 
 	player.lights();
 
