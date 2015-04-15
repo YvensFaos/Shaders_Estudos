@@ -12,40 +12,45 @@ unsigned long GLShaderLoader::getFileLength(std::ifstream& file)
     return len;
 }
 
-int GLShaderLoader::loadshader(char* filename, GLchar** ShaderSource, unsigned long* len)
+GLchar* GLShaderLoader::loadshader(char* filename, unsigned long* len)
 {
-   std::ifstream file;
-   file.open(filename, std::ios::in); // opens as ASCII!
-   if(!file) return -1;
+	std::ifstream file;
+	file.open(filename, std::ios::in); // opens as ASCII!
+	if(!file)
+	{
+		return nullptr;
+	}
     
-   unsigned long lenv = 0;
-   lenv = GLShaderLoader::getFileLength(file);
-   (*len) = lenv;
+	unsigned long lenv = 0;
+	lenv = GLShaderLoader::getFileLength(file);
+	(*len) = lenv;
 
-   if (lenv ==0) return -2;   // Error: Empty File 
+	if (lenv == 0)
+	{
+		return nullptr;   // Error: Empty File 
+	}
     
-   *ShaderSource = new char[lenv + 1];
-   if (*ShaderSource == 0) return -3;   // can't reserve memory
+	GLchar* shaderSource = new char[lenv + 1];
    
-    // len isn't always strlen cause some characters are stripped in ascii read...
-    // it is important to 0-terminate the real length later, len is just max possible value... 
-   *ShaderSource[lenv] = 0; 
+	// len isn't always strlen cause some characters are stripped in ascii read...
+	// it is important to 0-terminate the real length later, len is just max possible value... 
+	shaderSource[lenv] = 0; 
 
-   unsigned int i=0;
-   while (file.good())
-   {
-       *ShaderSource[i] = file.get();       // get character from file.
-       if (!file.eof())
-	   {
+	unsigned int i=0;
+	while (file.good())
+	{
+		shaderSource[i] = file.get();       // get character from file.
+		if (!file.eof())
+		{
 			i++;
-	   }
-   }
+		}
+	}
     
-   *ShaderSource[i] = 0;  // 0-terminate it at the correct position
+	shaderSource[i] = 0;  // 0-terminate it at the correct position
     
-   file.close();
+	file.close();
       
-   return 0; // No Error
+	return shaderSource; // No Error
 }
 
 

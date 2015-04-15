@@ -22,11 +22,12 @@ void callBack()
 
 int main()  
 {  
-	GLchar* vertexShaderText[1];
-	unsigned long len[1];
-	int success = GLShaderLoader::loadshader("vertexshader.txt", vertexShaderText, len);
+	//GLchar** vertexShaderText = new GLchar*[1];
+	//vertexShaderText[0] = new GLchar[512];
+	unsigned long len[16];
+	GLchar* shaderSource = GLShaderLoader::loadshader("vertexshader.txt", len);
 
-	printf("Resultado: %d\n", success);
+	//printf("Resultado: %d\n", success);
 
 	//GLuint vertexShader, fragmentShader;
 

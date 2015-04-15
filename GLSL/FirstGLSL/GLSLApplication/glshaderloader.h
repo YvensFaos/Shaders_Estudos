@@ -11,7 +11,7 @@ class GLShaderLoader
 {
 public:
 	static unsigned long getFileLength(std::ifstream& file);
-	static int loadshader(char* filename, GLchar** ShaderSource, unsigned long* len);
+	static GLchar* loadshader(char* filename, unsigned long* len);
 	static void unloadshader(GLubyte** ShaderSource);
 };
 
