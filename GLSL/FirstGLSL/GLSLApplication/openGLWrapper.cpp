@@ -74,7 +74,18 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	OpenGLWrapper::programObject = glCreateProgram();
 	glAttachShader(OpenGLWrapper::programObject, vertexShader);
 	glAttachShader(OpenGLWrapper::programObject, fragmentShader);
-	glBindAttribLocation(OpenGLWrapper::programObject, 0, "vPosition");
+
+	//glBindAttribLocation(OpenGLWrapper::programObject, 0, "vPosition");
+	glGetUniformLocation(OpenGLWrapper::programObject, "angle");
+	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "angle");
+	if (loc != -1)
+	{
+	   glUniform1f(loc, 0.0f);
+	}
+	int n = 0;
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &n);
+	printf("max vertex attribs: %d\n", n);
+
 	glLinkProgram(OpenGLWrapper::programObject);
 	glGetProgramiv(OpenGLWrapper::programObject, GL_LINK_STATUS, &linked);
 

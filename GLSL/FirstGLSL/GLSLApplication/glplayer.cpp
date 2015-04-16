@@ -26,6 +26,7 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 {
 	this->config = config;
 
+	angle = 0.0f;
 	isRunning = true;
 }
 
@@ -50,6 +51,13 @@ void GLPlayer::step(void)
 
 	// Clear the color buffer
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "angle");
+	if (loc != -1)
+	{
+		glUniform1f(loc, this->angle);
+	}
+	this->angle += 0.001f;
 
 	// Use the program object
 	glUseProgram(OpenGLWrapper::programObject);

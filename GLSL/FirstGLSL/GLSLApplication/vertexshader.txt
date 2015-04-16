@@ -1,8 +1,29 @@
-attribute vec4 vPosition;
+uniform float angle;
+varying vec4 vColor;
 void main(void)
 {
 	vec4 a = gl_Vertex;
-	a.x = a.x * 1.0f;
-	a.y = a.y * 1.0f;
-	gl_Position = gl_ModelViewProjectionMatrix * a;
+	vec4 b;
+	float h = angle;
+
+	//Around X axis
+	//b.x = a.x;
+	//b.y = a.y * cos(h) - a.z * sin(h);
+	//b.z = a.y * sin(h) + a.z * cos(h);
+
+	//Around Y axis
+	b.x = a.x * cos(h) + a.z * sin(h);
+	b.y = a.y;
+	b.z = - a.x * sin(h) + a.z * cos(h);
+	
+	//Around Z axis
+	//b.x = a.x * cos(h) - a.y * sin(h);
+	//b.y = a.x * sin(h) + a.y * cos(h);
+	//b.z = a.z;
+
+	vColor.x = b.x;
+	vColor.y = b.y;
+	vColor.z = b.z;
+
+	gl_Position = gl_ModelViewProjectionMatrix * b;
 }

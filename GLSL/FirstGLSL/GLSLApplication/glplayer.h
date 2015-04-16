@@ -10,6 +10,7 @@ class GLPlayer
 private:
 	char* title;
 
+	float angle;
 	bool isRunning;
 public:
 	GLConfig config;
