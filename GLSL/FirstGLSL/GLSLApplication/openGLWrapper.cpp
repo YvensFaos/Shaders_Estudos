@@ -4,9 +4,13 @@
 
 #include <stdio.h>
 
+//Public
+GLuint OpenGLWrapper::programObject;
 GLPlayer OpenGLWrapper::player;
-float OpenGLWrapper::ratio;
 GLFWwindow* OpenGLWrapper::window;
+
+//Private
+float OpenGLWrapper::ratio;
 loopCallback OpenGLWrapper::callback;
 runningCallback OpenGLWrapper::running;
 
@@ -50,7 +54,7 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
         return;  
     }  
   
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);  
+    glClearColor(0.0f, 0.2f, 0.2f, 0.0f);  
 
 	glfwSetErrorCallback(OpenGLWrapper::error_callback);
 	glfwInit();
@@ -60,22 +64,36 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	GLchar* vertexShaderText = GLShaderLoader::loadshader("vertexshader.txt", &vlen);
 	GLchar* fragmentShaderText = GLShaderLoader::loadshader("fragmentshader.txt", &flen);
 
-	GLuint ShaderProgram = glCreateProgram();
-	GLuint vertexShaderObject, fragmentShaderObject;
+	GLuint vertexShader;
+	GLuint fragmentShader;
+	GLint linked;
 
-	vertexShaderObject = glCreateShader(GL_VERTEX_SHADER);
-	fragmentShaderObject = glCreateShader(GL_FRAGMENT_SHADER);
+	vertexShader = OpenGLWrapper::loadShader(vertexShaderText, GL_VERTEX_SHADER);
+	fragmentShader = OpenGLWrapper::loadShader(fragmentShaderText, GL_FRAGMENT_SHADER);
 
-	GLint vleng[1];
-	vleng[0] = vlen;
+	OpenGLWrapper::programObject = glCreateProgram();
+	glAttachShader(OpenGLWrapper::programObject, vertexShader);
+	glAttachShader(OpenGLWrapper::programObject, fragmentShader);
+	glBindAttribLocation(OpenGLWrapper::programObject, 0, "vPosition");
+	glLinkProgram(OpenGLWrapper::programObject);
+	glGetProgramiv(OpenGLWrapper::programObject, GL_LINK_STATUS, &linked);
 
-	GLint fleng[1];
-	fleng[0] = vlen;
-	glShaderSource(vertexShaderObject, 1, &vertexShaderText, vleng);
-	glShaderSource(fragmentShaderObject, 1, &fragmentShaderText, fleng);
-	
-	glCompileShaderARB(vertexShaderObject);
-	glCompileShaderARB(fragmentShaderObject);
+	if(!linked)
+	{
+		GLint infolen = 0;
+		glGetProgramiv(OpenGLWrapper::programObject, GL_INFO_LOG_LENGTH, &infolen);
+
+		if(infolen > 1)
+		{
+			char* infolog = new char[infolen];
+			glGetProgramInfoLog(OpenGLWrapper::programObject, infolen, NULL, infolog);
+			printf("%s\n", infolog);
+
+			delete infolog;
+		}
+
+		glDeleteProgram(OpenGLWrapper::programObject);
+	}
 
 	player.lights();
 
@@ -86,6 +104,41 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	glShadeModel(GL_SMOOTH);
 
 	player.actualWindow = window;
+}
+
+GLuint OpenGLWrapper::loadShader(const char *shaderSrc, GLenum type)
+{
+	GLuint shader;
+	GLint compiled;
+
+	shader = glCreateShader(type);
+	if(shader == 0)
+	{
+		return 0;
+	}
+	glShaderSource(shader, 1, &shaderSrc, NULL);
+
+	glCompileShader(shader);
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
+	
+	if(!compiled)
+	{
+		GLint infoLen = 0;
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
+		if(infoLen > 0)
+		{
+			char* infolog = new char[infoLen];
+			glGetShaderInfoLog(shader, infoLen, NULL, infolog);
+			printf("%s\n", infolog);
+
+			delete infolog;
+		}
+
+		glDeleteShader(shader);
+		return 0;
+	}
+
+	return shader;
 }
 
 void OpenGLWrapper::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)

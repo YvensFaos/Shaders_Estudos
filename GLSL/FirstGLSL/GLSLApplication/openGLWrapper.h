@@ -14,6 +14,7 @@ typedef bool (*runningCallback)(void);
 class OpenGLWrapper
 {
 public:
+	static GLuint programObject;
 	static GLPlayer player;
 	static GLFWwindow* window;
 private:
@@ -28,6 +29,8 @@ public:
 	static void running_callback(runningCallback running);
 	static void glLoop(void);
 	static void finalize(void);
+
+	static GLuint loadShader(const char *shaderSrc, GLenum type);
 };
 
 #endif

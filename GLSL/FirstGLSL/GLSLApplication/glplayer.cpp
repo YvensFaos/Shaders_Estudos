@@ -1,7 +1,11 @@
 #include "glplayer.h"
 
+
+#include <GL\glew.h>
 #include <GL\glut.h>
 #include "GLFW/glfw3.h"
+
+#include "openGLWrapper.h"
 
 GLPlayer::GLPlayer()
 {
@@ -32,6 +36,28 @@ void GLPlayer::step(void)
 	//ede->configuration = &config;
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+
+	GLint vVerticesLen = 3;
+	GLfloat vVertices[] = 
+	{
+		0.0f, 0.5f, 0.0f,
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f
+	};
+
+	// Set the viewport
+	glViewport(0, 0, config.width, config.height);
+
+	// Clear the color buffer
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	// Use the program object
+	glUseProgram(OpenGLWrapper::programObject);
+
+	// Load the vertex data
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+	glEnableVertexAttribArray(0);
+	glDrawArrays(GL_TRIANGLES, 0, vVerticesLen);
 }
 
 bool GLPlayer::running(void)
