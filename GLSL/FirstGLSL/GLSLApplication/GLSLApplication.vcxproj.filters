@@ -61,5 +61,8 @@
     <Text Include="fragmentshader.txt">
       <Filter>Shaders</Filter>
     </Text>
+    <Text Include="mvpshader.txt">
+      <Filter>Shaders</Filter>
+    </Text>
   </ItemGroup>
 </Project>

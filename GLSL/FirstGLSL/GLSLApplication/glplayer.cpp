@@ -33,12 +33,14 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 
 	angle = 0.0f;
 	isRunning = true;
-
+	updateMouse = false;
+	
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 
 	deltaTime = 1.0f/60.0f;
 	lastTime = 0;
+
 
 	camera = new GLCamera();
 }
@@ -46,14 +48,24 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 void GLPlayer::step(void)
 {
 	double currentTime = glfwGetTime();
-	glfwGetCursorPos(OpenGLWrapper::window, &xpos, &ypos);
+	
+	if(glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+	{
+		updateMousePos();
+	}
+
 	float ratio = config.width/ (float) config.height;
 	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
+	xpos = config.width / 2.0f;
+	ypos = config.height / 2.0f;
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
 
 	GLint model = glGetUniformLocation(OpenGLWrapper::programObject, "mvp");
 	glUniformMatrix4fv(model, 1, GL_FALSE, glm::value_ptr(MVP));
+	
+	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "vColor");
+	glUniform4f(loc, 1.0f, 1.0f, 1.0f, 1.0f);
 
 	glMatrixMode(GL_MODELVIEW);
 	
@@ -72,13 +84,6 @@ void GLPlayer::step(void)
 
 	// Clear the color buffer
 	glClear(GL_COLOR_BUFFER_BIT);
-
-	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "angle");
-	if (loc != -1)
-	{
-		glUniform1f(loc, this->angle);
-	}
-	this->angle += 0.001f;
 
 	// Use the program object
 	glUseProgram(OpenGLWrapper::programObject);
@@ -126,12 +131,27 @@ void GLPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
 {
 	if(action == GLFW_PRESS)
 	{
+		if (button == GLFW_MOUSE_BUTTON_LEFT)
+		{
+			updateMouse = true;
+		}
 		if (button == GLFW_MOUSE_BUTTON_RIGHT)
 		{
-			
 			glfwSetCursorPos(OpenGLWrapper::window, config.width / 2.0f, config.height / 2.0f);
 		}
 	}
+	if(action == GLFW_RELEASE)
+	{
+		if (button == GLFW_MOUSE_BUTTON_LEFT)
+		{
+			updateMouse = false;
+		}
+	}
+}
+
+void GLPlayer::updateMousePos()
+{
+	glfwGetCursorPos(OpenGLWrapper::window, &xpos, &ypos);
 }
 
 ///Inicializa as luzes da cena

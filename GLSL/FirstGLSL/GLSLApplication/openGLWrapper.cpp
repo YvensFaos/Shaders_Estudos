@@ -54,14 +54,14 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
         return;  
     }  
   
-    glClearColor(0.0f, 0.2f, 0.2f, 0.0f);  
+    glClearColor(0.2f, 0.2f, 0.2f, 0.0f);  
 
 	glfwSetErrorCallback(OpenGLWrapper::error_callback);
 	glfwInit();
 
 	unsigned long vlen;
 	unsigned long flen;
-	GLchar* vertexShaderText = GLShaderLoader::loadshader("vertexshader.txt", &vlen);
+	GLchar* vertexShaderText = GLShaderLoader::loadshader("mvpshader.txt", &vlen);
 	GLchar* fragmentShaderText = GLShaderLoader::loadshader("fragmentshader.txt", &flen);
 
 	GLuint vertexShader;
@@ -75,12 +75,6 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	glAttachShader(OpenGLWrapper::programObject, vertexShader);
 	glAttachShader(OpenGLWrapper::programObject, fragmentShader);
 
-	glGetUniformLocation(OpenGLWrapper::programObject, "angle");
-	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "angle");
-	if (loc != -1)
-	{
-	   glUniform1f(loc, 0.0f);
-	}
 	int n = 0;
 
 	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &n);

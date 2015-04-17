@@ -13,8 +13,10 @@ private:
 
 	float angle;
 	bool isRunning;
+	bool updateMouse;
 
-	double xpos, ypos;
+	double xpos;
+	double ypos;
 
 	float deltaTime;
 	float lastTime;
@@ -37,6 +39,8 @@ public:
 
 	void keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void mouse(GLFWwindow* window, int button, int action, int mods);
+
+	void updateMousePos();
 };
 
 #endif

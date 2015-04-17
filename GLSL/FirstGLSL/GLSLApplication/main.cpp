@@ -25,7 +25,7 @@ int main()
 	GLConfig config;
 	config.width = 640;
 	config.height = 480;
-	config.title = "teste";
+	config.title = "Teste";
 
 	player = new GLPlayer(config);
 	OpenGLWrapper::player = *player;
