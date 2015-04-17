@@ -2,6 +2,7 @@
 #define __GL_PLAYER__
 
 #include "glconfig.h"
+#include "glcamera.h"
 
 struct GLFWwindow;
 
@@ -12,9 +13,15 @@ private:
 
 	float angle;
 	bool isRunning;
+
+	double xpos, ypos;
+
+	float deltaTime;
+	float lastTime;
 public:
 	GLConfig config;
 
+	GLCamera* camera;
 	GLFWwindow* actualWindow;
 public:
 	GLPlayer(void);
@@ -29,6 +36,7 @@ public:
 	void lights(void);
 
 	void keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods);
+	void mouse(GLFWwindow* window, int button, int action, int mods);
 };
 
 #endif

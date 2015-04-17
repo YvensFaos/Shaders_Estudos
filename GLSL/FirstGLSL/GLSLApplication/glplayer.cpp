@@ -1,11 +1,16 @@
 #include "glplayer.h"
 
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 #include <GL\glew.h>
 #include <GL\glut.h>
 #include "GLFW/glfw3.h"
 
 #include "openGLWrapper.h"
+
+#include <stdio.h>
 
 GLPlayer::GLPlayer()
 {
@@ -28,14 +33,30 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 
 	angle = 0.0f;
 	isRunning = true;
+
+	xpos = config.width / 2.0f;
+	ypos = config.height / 2.0f;
+
+	deltaTime = 1.0f/60.0f;
+	lastTime = 0;
+
+	camera = new GLCamera();
 }
 
 void GLPlayer::step(void)
 {
+	double currentTime = glfwGetTime();
+	glfwGetCursorPos(OpenGLWrapper::window, &xpos, &ypos);
 	float ratio = config.width/ (float) config.height;
-	//gluPerspective(camera->pFOV, ratio, camera->pNear, camera->pFar);
-	//ede->configuration = &config;
+	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
+	glm::mat4 ModelMatrix = glm::mat4(1.0);
+    glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
+
+	GLint model = glGetUniformLocation(OpenGLWrapper::programObject, "mvp");
+	glUniformMatrix4fv(model, 1, GL_FALSE, glm::value_ptr(MVP));
+
 	glMatrixMode(GL_MODELVIEW);
+	
 	glLoadIdentity();
 
 	GLint vVerticesLen = 3;
@@ -66,6 +87,9 @@ void GLPlayer::step(void)
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
 	glEnableVertexAttribArray(0);
 	glDrawArrays(GL_TRIANGLES, 0, vVerticesLen);
+
+	double lastTime = glfwGetTime();
+	deltaTime = float(currentTime - lastTime);
 }
 
 bool GLPlayer::running(void)
@@ -81,6 +105,31 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 		{
 			isRunning = true;
 			glfwSetWindowShouldClose(window, GL_TRUE);
+		}
+
+		if (key == GLFW_KEY_UP){
+			camera->position += camera->direction * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_DOWN){
+			camera->position -= camera->direction * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_RIGHT){
+			camera->position += camera->right * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_LEFT){
+			camera->position -= camera->right * deltaTime * camera->speed;
+		}
+	}
+}
+
+void GLPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
+{
+	if(action == GLFW_PRESS)
+	{
+		if (button == GLFW_MOUSE_BUTTON_RIGHT)
+		{
+			
+			glfwSetCursorPos(OpenGLWrapper::window, config.width / 2.0f, config.height / 2.0f);
 		}
 	}
 }

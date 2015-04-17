@@ -43,8 +43,8 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	loop_callback(callback);
 
     glfwMakeContextCurrent(window);  
-	player.actualWindow = window;
     glfwSetKeyCallback(window, OpenGLWrapper::key_callback);  
+	glfwSetMouseButtonCallback(window, OpenGLWrapper::mouse_callback);
 
     GLenum err = glewInit();
 
@@ -75,7 +75,6 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	glAttachShader(OpenGLWrapper::programObject, vertexShader);
 	glAttachShader(OpenGLWrapper::programObject, fragmentShader);
 
-	//glBindAttribLocation(OpenGLWrapper::programObject, 0, "vPosition");
 	glGetUniformLocation(OpenGLWrapper::programObject, "angle");
 	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "angle");
 	if (loc != -1)
@@ -83,8 +82,9 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	   glUniform1f(loc, 0.0f);
 	}
 	int n = 0;
+
 	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &n);
-	printf("max vertex attribs: %d\n", n);
+	printf("Max vertex attribs: %d\n", n);
 
 	glLinkProgram(OpenGLWrapper::programObject);
 	glGetProgramiv(OpenGLWrapper::programObject, GL_LINK_STATUS, &linked);
@@ -113,8 +113,6 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glShadeModel(GL_SMOOTH);
-
-	player.actualWindow = window;
 }
 
 GLuint OpenGLWrapper::loadShader(const char *shaderSrc, GLenum type)
@@ -157,6 +155,11 @@ void OpenGLWrapper::key_callback(GLFWwindow* window, int key, int scancode, int 
 	player.keyBoard(window, key, scancode, action, mods); 
 }
 
+void OpenGLWrapper::mouse_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	player.mouse(window, button, action, mods);
+}
+
 void OpenGLWrapper::error_callback(int error, const char* description)
 { }
 
@@ -174,7 +177,6 @@ void OpenGLWrapper::glLoop()
 {
 	while (!glfwWindowShouldClose(window) && (running)())
     {
-
 		int width = player.config.width;
 		int height = player.config.height;
 

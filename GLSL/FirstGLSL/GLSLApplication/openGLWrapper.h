@@ -24,6 +24,7 @@ private:
 public: 
 	static void error_callback(int error, const char* description);
 	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	static void mouse_callback(GLFWwindow* window, int button, int action, int mods);
 	static void initialize(loopCallback callback, bool antialiasing, int multisampling);
 	static void loop_callback(loopCallback callback);
 	static void running_callback(runningCallback running);

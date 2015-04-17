@@ -1,4 +1,6 @@
 uniform float angle;
+uniform mat4 mvp;
+
 varying vec4 vColor;
 void main(void)
 {
@@ -12,18 +14,27 @@ void main(void)
 	//b.z = a.y * sin(h) + a.z * cos(h);
 
 	//Around Y axis
-	b.x = a.x * cos(h) + a.z * sin(h);
-	b.y = a.y;
-	b.z = - a.x * sin(h) + a.z * cos(h);
+	//b.x = a.x * cos(h) + a.z * sin(h);
+	//b.y = a.y;
+	//b.z = - a.x * sin(h) + a.z * cos(h);
 	
 	//Around Z axis
 	//b.x = a.x * cos(h) - a.y * sin(h);
 	//b.y = a.x * sin(h) + a.y * cos(h);
 	//b.z = a.z;
 
+	//None
+	b.x = a.x;
+	b.y = a.y;
+	b.z = a.z;
+
+	b.w = a.w;
+
 	vColor.x = b.x;
 	vColor.y = b.y;
 	vColor.z = b.z;
+	vColor.w = 1.0;
 
-	gl_Position = gl_ModelViewProjectionMatrix * b;
+	gl_Position = mvp * b;
+	//gl_Position = b;
 }
