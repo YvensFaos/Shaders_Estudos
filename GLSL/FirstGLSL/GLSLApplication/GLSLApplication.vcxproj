@@ -51,14 +51,14 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)GLFW;$(ProjectDir)glm;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glu32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)GLFW;$(ProjectDir)glm;$(ProjectDir)assimp;$(ProjectDir)IL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp.lib;glfw3.lib;opengl32.lib;glu32.lib;glew32s.lib;DevIL.lib;ILU.lib;ILUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClCompile Include="glcamera.cpp" />
     <ClCompile Include="glconfig.cpp" />
+    <ClCompile Include="glmesh3d.cpp" />
     <ClCompile Include="glplayer.cpp" />
     <ClCompile Include="glshaderloader.cpp" />
     <ClCompile Include="main.cpp" />
@@ -90,6 +91,7 @@
   <ItemGroup>
     <ClInclude Include="glcamera.h" />
     <ClInclude Include="glconfig.h" />
+    <ClInclude Include="glmesh3d.h" />
     <ClInclude Include="glplayer.h" />
     <ClInclude Include="glshaderloader.h" />
     <ClInclude Include="openGLWrapper.h" />

@@ -36,6 +36,9 @@
     <ClCompile Include="glcamera.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="glmesh3d.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="glcamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glmesh3d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

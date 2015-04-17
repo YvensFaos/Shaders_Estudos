@@ -1,8 +1,17 @@
 uniform mat4 mvp;
 
+attribute vec3 vNormal;
+
+varying vec4 vColor;
 void main(void)
 {
 	vec4 a = gl_Vertex;
+	vec3 b = vNormal;
+
+	vColor.x = b.x;
+	vColor.y = b.y;
+	vColor.z = b.z;
+	vColor.w = 1.0;
 
 	gl_Position = mvp * a;
 }

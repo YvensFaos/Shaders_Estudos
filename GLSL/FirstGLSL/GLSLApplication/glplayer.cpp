@@ -4,6 +4,10 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
+#include "assimp\Importer.hpp"
+#include "assimp/scene.h"
+#include "assimp/postprocess.h"
+
 #include <GL\glew.h>
 #include <GL\glut.h>
 #include "GLFW/glfw3.h"
@@ -14,8 +18,6 @@
 
 GLPlayer::GLPlayer()
 {
-	GLConfig config;
-	initializeGLPlayer(config);
 }
 
 GLPlayer::~GLPlayer()
@@ -41,8 +43,8 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 	deltaTime = 1.0f/60.0f;
 	lastTime = 0;
 
-
 	camera = new GLCamera();
+	mesh = new GLMesh3D("bunny.obj", "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/");
 }
 
 void GLPlayer::step(void)
@@ -71,14 +73,6 @@ void GLPlayer::step(void)
 	
 	glLoadIdentity();
 
-	GLint vVerticesLen = 3;
-	GLfloat vVertices[] = 
-	{
-		0.0f, 0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f
-	};
-
 	// Set the viewport
 	glViewport(0, 0, config.width, config.height);
 
@@ -88,10 +82,7 @@ void GLPlayer::step(void)
 	// Use the program object
 	glUseProgram(OpenGLWrapper::programObject);
 
-	// Load the vertex data
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-	glEnableVertexAttribArray(0);
-	glDrawArrays(GL_TRIANGLES, 0, vVerticesLen);
+	mesh->render();
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(currentTime - lastTime);

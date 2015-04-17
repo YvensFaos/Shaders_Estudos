@@ -6,6 +6,7 @@
 
 //Public
 GLuint OpenGLWrapper::programObject;
+GLuint OpenGLWrapper::normalLoc;
 GLPlayer OpenGLWrapper::player;
 GLFWwindow* OpenGLWrapper::window;
 
@@ -74,6 +75,9 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	OpenGLWrapper::programObject = glCreateProgram();
 	glAttachShader(OpenGLWrapper::programObject, vertexShader);
 	glAttachShader(OpenGLWrapper::programObject, fragmentShader);
+
+	normalLoc = 1;
+	glBindAttribLocation(OpenGLWrapper::programObject, normalLoc, "vNormal");
 
 	int n = 0;
 

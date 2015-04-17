@@ -3,6 +3,7 @@
 
 #include "glconfig.h"
 #include "glcamera.h"
+#include "glmesh3d.h"
 
 struct GLFWwindow;
 
@@ -23,6 +24,7 @@ private:
 public:
 	GLConfig config;
 
+	GLMesh3D* mesh;
 	GLCamera* camera;
 	GLFWwindow* actualWindow;
 public:
