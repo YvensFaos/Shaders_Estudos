@@ -44,7 +44,8 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 	lastTime = 0;
 
 	camera = new GLCamera();
-	mesh = new GLMesh3D("bunny.obj", "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/");
+	//mesh = new GLMesh3D("bunny.obj", "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/");
+	mesh = new GLMesh3D("ball.obj", "E:/Repositorios/Shaders_Estudos/Models/");
 }
 
 void GLPlayer::step(void)
@@ -63,11 +64,15 @@ void GLPlayer::step(void)
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
 
+	
 	GLint model = glGetUniformLocation(OpenGLWrapper::programObject, "mvp");
 	glUniformMatrix4fv(model, 1, GL_FALSE, glm::value_ptr(MVP));
 	
-	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "vColor");
+	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
 	glUniform4f(loc, 1.0f, 1.0f, 1.0f, 1.0f);
+
+	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
+	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
 
 	glMatrixMode(GL_MODELVIEW);
 	

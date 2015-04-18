@@ -7,6 +7,7 @@
 //Public
 GLuint OpenGLWrapper::programObject;
 GLuint OpenGLWrapper::normalLoc;
+GLuint OpenGLWrapper::positionLoc;
 GLPlayer OpenGLWrapper::player;
 GLFWwindow* OpenGLWrapper::window;
 
@@ -78,6 +79,7 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 
 	normalLoc = 1;
 	glBindAttribLocation(OpenGLWrapper::programObject, normalLoc, "vNormal");
+
 
 	int n = 0;
 

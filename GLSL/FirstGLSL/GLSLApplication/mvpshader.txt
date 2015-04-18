@@ -1,17 +1,24 @@
 uniform mat4 mvp;
+uniform vec3 vDir;
+uniform vec4 baseColor;
 
 attribute vec3 vNormal;
 
 varying vec4 vColor;
 void main(void)
 {
-	vec4 a = gl_Vertex;
+	//vec4 a = gl_Vertex;
 	vec3 b = vNormal;
+	//vColor.x = b.x;
+	//vColor.y = b.y;
+	//vColor.z = b.z;
 
-	vColor.x = b.x;
-	vColor.y = b.y;
-	vColor.z = b.z;
+	float upper = dot(b, vDir);
+
+	vColor.x = upper;
+	vColor.y = upper;
+	vColor.z = upper;
 	vColor.w = 1.0;
 
-	gl_Position = mvp * a;
+	gl_Position = mvp * gl_Vertex;
 }

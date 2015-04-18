@@ -16,6 +16,8 @@ class OpenGLWrapper
 public:
 	static GLuint programObject;
 	static GLuint normalLoc;
+	static GLuint positionLoc;
+
 	static GLPlayer player;
 	static GLFWwindow* window;
 private:
