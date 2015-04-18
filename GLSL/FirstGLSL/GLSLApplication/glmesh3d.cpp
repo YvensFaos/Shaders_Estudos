@@ -6,6 +6,7 @@
 #include "GLFW\glfw3.h"
 
 #include "openGLWrapper.h"
+#include "glprinthelper.h"
 
 GLMesh3D::GLMesh3D(char* model3d, char* path)
 {
@@ -41,6 +42,42 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 			aiVector3D* vec = &scene->mMeshes[0]->mVertices[face->mIndices[j]];
 			vertexes[k++] = glm::vec3(vec->x, vec->y, vec->z);
 		}
+	}
+
+	if(hasNormals)
+	{
+		PRINT_VEC(vertexes[0]);
+		PRINT_VEC(vertexes[1]);
+		PRINT_VEC(vertexes[2]);
+		PRINT_VEC(normals[0]);
+
+		//Testar
+
+		glm::vec3 a = glm::vec3(vertexes[0]);
+		a -= vertexes[1];
+		glm::vec3 b = glm::vec3(vertexes[2]);
+		b -= vertexes[1];
+
+		a = glm::cross(a,b);
+
+		PRINT_VEC(a);
+	}
+
+	if(!hasNormals)
+	{
+		//Calculate
+		int j = 0;
+		for(int i = 0; i < verticesCount; i += 3)
+		{
+			glm::vec3 a = glm::vec3(vertexes[i]);
+			a -= vertexes[i + 1];
+			glm::vec3 b = glm::vec3(vertexes[i + 2]);
+			b -= vertexes[i + 1];
+
+			normals[j] = glm::cross(a,b);
+		}
+
+		hasNormals = true;
 	}
 }
 

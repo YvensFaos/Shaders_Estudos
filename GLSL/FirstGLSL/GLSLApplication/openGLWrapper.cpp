@@ -80,7 +80,6 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	normalLoc = 1;
 	glBindAttribLocation(OpenGLWrapper::programObject, normalLoc, "vNormal");
 
-
 	int n = 0;
 
 	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &n);

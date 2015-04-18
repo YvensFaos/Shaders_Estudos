@@ -44,8 +44,9 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 	lastTime = 0;
 
 	camera = new GLCamera();
-	//mesh = new GLMesh3D("bunny.obj", "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/");
-	mesh = new GLMesh3D("ball.obj", "E:/Repositorios/Shaders_Estudos/Models/");
+	char* path = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	//char* path = "E:/Repositorios/Shaders_Estudos/Models/";
+	mesh = new GLMesh3D("bunny.obj", path);
 }
 
 void GLPlayer::step(void)
@@ -69,10 +70,14 @@ void GLPlayer::step(void)
 	glUniformMatrix4fv(model, 1, GL_FALSE, glm::value_ptr(MVP));
 	
 	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
-	glUniform4f(loc, 1.0f, 1.0f, 1.0f, 1.0f);
+	glUniform4f(loc, 0.75f, 0.64f, 0.04f, 1.0f);
 
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
 	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
+
+	pos = glGetUniformLocation(OpenGLWrapper::programObject, "angle");
+	glUniform1f(pos, angle);
+	angle += 0.1f;
 
 	glMatrixMode(GL_MODELVIEW);
 	
@@ -108,6 +113,12 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 
+		if (key == GLFW_KEY_Z){
+			camera->position += camera->up * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_X){
+			camera->position -= camera->up * deltaTime * camera->speed;
+		}
 		if (key == GLFW_KEY_UP){
 			camera->position += camera->direction * deltaTime * camera->speed;
 		}

@@ -93,6 +93,7 @@
     <ClInclude Include="glconfig.h" />
     <ClInclude Include="glmesh3d.h" />
     <ClInclude Include="glplayer.h" />
+    <ClInclude Include="glprinthelper.h" />
     <ClInclude Include="glshaderloader.h" />
     <ClInclude Include="openGLWrapper.h" />
   </ItemGroup>

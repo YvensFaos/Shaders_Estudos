@@ -11,7 +11,7 @@ GLCamera::GLCamera(void)
 	verticalAngle = 0.0f;
 	initialFoV = 45.0f;
 
-	speed = 30.0f;
+	speed = 10.0f;
 	mouseSpeed = 0.005;
 
 	direction = glm::vec3(0.0, 0.0, 1.0f);

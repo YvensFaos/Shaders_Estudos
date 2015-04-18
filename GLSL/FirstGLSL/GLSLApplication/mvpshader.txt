@@ -1,24 +1,37 @@
 uniform mat4 mvp;
 uniform vec3 vDir;
 uniform vec4 baseColor;
+uniform float angle;
 
 attribute vec3 vNormal;
 
 varying vec4 vColor;
+varying float intensity;
 void main(void)
 {
-	//vec4 a = gl_Vertex;
-	vec3 b = vNormal;
-	//vColor.x = b.x;
-	//vColor.y = b.y;
-	//vColor.z = b.z;
+	vec4 a = gl_Vertex;
+	vec3 b = normalize(gl_Normal);
+	vec3 c = normalize(vec3(gl_LightSource[0].position));
 
-	float upper = dot(b, vDir);
+	intensity = dot(b, c);
+	if(intensity < 0.0f)
+	{
+		intensity += 1.0f;
+	}
+	if(intensity > 1.0f)
+	{
+		intensity = 1.0f;
+	}
 
-	vColor.x = upper;
-	vColor.y = upper;
-	vColor.z = upper;
-	vColor.w = 1.0;
+	vColor = baseColor;
 
-	gl_Position = mvp * gl_Vertex;
+	float h = radians(angle);
+
+	//Around Y axis
+	b.x = a.x * cos(h) + a.z * sin(h);
+	b.y = a.y;
+	b.z = - a.x * sin(h) + a.z * cos(h);
+	a.xyz = b.xyz;
+	
+	gl_Position = mvp * a;
 }
