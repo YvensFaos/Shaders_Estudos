@@ -23,7 +23,7 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
  
 	verticesCount = scene->mMeshes[0]->mNumFaces * 3;
 	vertexes = new glm::vec3[verticesCount];
-	normals = new glm::vec3[verticesCount / 3];
+	normals = new glm::vec3[verticesCount];
 
 	hasNormals = scene->mMeshes[0]->HasNormals();
 	printf("Has %d normals\n", hasNormals);
@@ -40,7 +40,15 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 		for(int j = 0; j < face->mNumIndices; j++)
 		{
 			aiVector3D* vec = &scene->mMeshes[0]->mVertices[face->mIndices[j]];
-			vertexes[k++] = glm::vec3(vec->x, vec->y, vec->z);
+			vertexes[k] = glm::vec3(vec->x, vec->y, vec->z);
+
+			if(hasNormals)
+			{
+				aiVector3D* norm = &scene->mMeshes[0]->mNormals[face->mIndices[j]];
+				normals[k] = glm::vec3(norm->x, norm->y, norm->z);
+			}
+
+			k++;
 		}
 	}
 
@@ -74,6 +82,8 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 			glm::vec3 b = glm::vec3(vertexes[i + 2]);
 			b -= vertexes[i + 1];
 
+			normals[j] = glm::cross(a,b);
+			normals[j] = glm::cross(a,b);
 			normals[j] = glm::cross(a,b);
 		}
 

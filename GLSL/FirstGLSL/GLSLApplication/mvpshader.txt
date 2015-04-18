@@ -10,18 +10,10 @@ varying float intensity;
 void main(void)
 {
 	vec4 a = gl_Vertex;
-	vec3 b = normalize(gl_Normal);
+	vec3 b = normalize(vNormal);
 	vec3 c = normalize(vec3(gl_LightSource[0].position));
 
 	intensity = dot(b, c);
-	if(intensity < 0.0f)
-	{
-		intensity += 1.0f;
-	}
-	if(intensity > 1.0f)
-	{
-		intensity = 1.0f;
-	}
 
 	vColor = baseColor;
 
