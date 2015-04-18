@@ -1,0 +1,9 @@
+varying vec4 vColor;
+varying float intensity;
+void main (void)
+{
+	vec4 color = vColor;
+	color.w = 1.0f;
+
+	gl_FragColor = color;
+}

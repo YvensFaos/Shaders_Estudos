@@ -12,10 +12,11 @@ void main(void)
 	vec4 a = gl_Vertex;
 	vec3 b = normalize(vNormal);
 	vec3 c = normalize(vec3(gl_LightSource[0].position));
+	//vec3 c = normalize(vDir);
 
-	intensity = dot(b, c);
+	intensity = dot(c, b);
 
-	vColor = baseColor;
+	vColor = vec4(vNormal.x, vNormal.y, vNormal.z, 1.0);
 
 	float h = radians(angle);
 

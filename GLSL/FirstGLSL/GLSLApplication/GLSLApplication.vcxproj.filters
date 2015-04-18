@@ -73,5 +73,11 @@
     <Text Include="mvpshader.txt">
       <Filter>Shaders</Filter>
     </Text>
+    <Text Include="toonfragmentshader.txt">
+      <Filter>Shaders</Filter>
+    </Text>
+    <Text Include="normalfragmentshader.txt">
+      <Filter>Shaders</Filter>
+    </Text>
   </ItemGroup>
 </Project>

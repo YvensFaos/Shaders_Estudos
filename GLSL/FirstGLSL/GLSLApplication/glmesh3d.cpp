@@ -19,7 +19,7 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 	sprintf(this->model3d, "%s", model3d);
 
 	Assimp::Importer importer; 
-	const aiScene* scene = importer.ReadFile( sFilePath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices  | aiProcess_SortByPType); 
+	const aiScene* scene = importer.ReadFile(sFilePath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices  | aiProcess_SortByPType); 
  
 	verticesCount = scene->mMeshes[0]->mNumFaces * 3;
 	vertexes = new glm::vec3[verticesCount];
@@ -82,9 +82,11 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 			glm::vec3 b = glm::vec3(vertexes[i + 2]);
 			b -= vertexes[i + 1];
 
-			normals[j] = glm::cross(a,b);
-			normals[j] = glm::cross(a,b);
-			normals[j] = glm::cross(a,b);
+			normals[j]     = glm::normalize(glm::cross(a,b));
+			normals[j + 1] = glm::normalize(glm::cross(a,b));
+			normals[j + 2] = glm::normalize(glm::cross(a,b));
+
+			j += 3;
 		}
 
 		hasNormals = true;

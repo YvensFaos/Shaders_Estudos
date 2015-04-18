@@ -65,6 +65,7 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 	unsigned long flen;
 	GLchar* vertexShaderText = GLShaderLoader::loadshader("mvpshader.txt", &vlen);
 	GLchar* fragmentShaderText = GLShaderLoader::loadshader("fragmentshader.txt", &flen);
+	//GLchar* fragmentShaderText = GLShaderLoader::loadshader("toonfragmentshader.txt", &flen);
 
 	GLuint vertexShader;
 	GLuint fragmentShader;
