@@ -85,6 +85,7 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 		}
 	}
 
+	hasNormals = false;
 	if(!hasNormals)
 	{
 		//Calculate
@@ -96,9 +97,9 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 			glm::vec3 b = glm::vec3(vertexes[i + 2]);
 			b -= vertexes[i + 1];
 
-			normals[j]     = glm::normalize(glm::cross(a,b));
-			normals[j + 1] = glm::normalize(glm::cross(a,b));
-			normals[j + 2] = glm::normalize(glm::cross(a,b));
+			normals[j]     = glm::normalize(glm::cross(b,a));
+			normals[j + 1] = glm::normalize(glm::cross(b,a));
+			normals[j + 2] = glm::normalize(glm::cross(b,a));
 
 			j += 3;
 		}

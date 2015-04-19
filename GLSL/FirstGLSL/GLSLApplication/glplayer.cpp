@@ -45,7 +45,7 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 	camera = new GLCamera();
 	char* path = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
 	//char* path = "E:/Repositorios/Shaders_Estudos/Models/";
-	meshHandler = new GLMeshHandler("house.obj", path);
+	meshHandler = new GLMeshHandler("rungholt.obj", path);
 
 	title = new char[256];
 }
@@ -85,20 +85,6 @@ void GLPlayer::step(void)
 	glViewport(0, 0, config.width, config.height);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(OpenGLWrapper::programObject);
-	
-	//Teste
-	/*GLMesh3D* t = &meshHandler->meshes.at(0);
-	
-	for(int i = 0; i < t->verticesCount; i++)
-	{
-		glm::vec3 normal = glm::normalize(t->normals[i]);
-		glm::vec3 dir = glm::normalize(camera->direction);
-
-		float dot = glm::dot(normal, dir);
-		printf("dot = %f\n", dot);
-
-	}*/
-
 
 	meshHandler->render();
 
