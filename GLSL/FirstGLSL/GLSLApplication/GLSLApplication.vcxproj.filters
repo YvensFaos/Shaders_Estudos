@@ -16,6 +16,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{5fc848c9-353d-46e5-99f6-fd03dd9ef628}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{1bd46b34-7d61-43c6-a49e-c7b8ce7fc955}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="openGLWrapper.cpp">
@@ -39,6 +42,12 @@
     <ClCompile Include="glmesh3d.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="edfile.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="edlogger.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -61,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="glprinthelper.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="edfile.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="edlogger.h">
+      <Filter>Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

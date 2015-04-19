@@ -20,7 +20,10 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 
 	Assimp::Importer importer; 
 	const aiScene* scene = importer.ReadFile(sFilePath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices  | aiProcess_SortByPType); 
- 
+	if(!scene)
+	{
+		printf("error loading scene!\n");
+	}
 	verticesCount = scene->mMeshes[0]->mNumFaces * 3;
 	vertexes = new glm::vec3[verticesCount];
 	normals = new glm::vec3[verticesCount];
@@ -60,14 +63,12 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 		PRINT_VEC(normals[0]);
 
 		//Testar
-
 		glm::vec3 a = glm::vec3(vertexes[0]);
 		a -= vertexes[1];
 		glm::vec3 b = glm::vec3(vertexes[2]);
 		b -= vertexes[1];
 
 		a = glm::cross(a,b);
-
 		PRINT_VEC(a);
 	}
 

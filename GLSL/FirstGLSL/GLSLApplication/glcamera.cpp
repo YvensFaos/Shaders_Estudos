@@ -20,8 +20,7 @@ GLCamera::GLCamera(void)
 }
 
 GLCamera::~GLCamera(void)
-{
-}
+{ }
 
 void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height)
 {
@@ -42,7 +41,7 @@ void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float wi
 
 	up = glm::cross(right, direction);
 
-	projectionMatrix = glm::perspective(initialFoV, width/ (float)height, 0.1f, 100.0f);
+	projectionMatrix = glm::perspective(initialFoV, width/ (float)height, 0.1f, 500.0f);
 	viewMatrix = glm::lookAt(position, position + direction, up);
 	
 }

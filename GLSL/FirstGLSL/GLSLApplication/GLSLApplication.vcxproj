@@ -57,8 +57,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)GLFW;$(ProjectDir)glm;$(ProjectDir)assimp;$(ProjectDir)IL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>assimp.lib;glfw3.lib;opengl32.lib;glu32.lib;glew32s.lib;DevIL.lib;ILU.lib;ILUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)GLFW;$(ProjectDir)glm;$(ProjectDir)assimp;$(ProjectDir)IL;$(ProjectDir)FreeImage;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp.lib;glfw3.lib;opengl32.lib;glu32.lib;glew32s.lib;FreeImage.lib;DevIL.lib;ILU.lib;ILUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,6 +80,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="edfile.cpp" />
+    <ClCompile Include="edlogger.cpp" />
     <ClCompile Include="glcamera.cpp" />
     <ClCompile Include="glconfig.cpp" />
     <ClCompile Include="glmesh3d.cpp" />
@@ -89,6 +91,8 @@
     <ClCompile Include="openGLWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="edfile.h" />
+    <ClInclude Include="edlogger.h" />
     <ClInclude Include="glcamera.h" />
     <ClInclude Include="glconfig.h" />
     <ClInclude Include="glmesh3d.h" />

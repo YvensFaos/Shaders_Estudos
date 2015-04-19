@@ -13,6 +13,7 @@
 #include "GLFW/glfw3.h"
 
 #include "openGLWrapper.h"
+#include "edlogger.h"
 
 #include <stdio.h>
 
@@ -46,7 +47,7 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 	camera = new GLCamera();
 	char* path = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
 	//char* path = "E:/Repositorios/Shaders_Estudos/Models/";
-	mesh = new GLMesh3D("bunny.obj", path);
+	mesh = new GLMesh3D("coaltown.obj", path);
 }
 
 void GLPlayer::step(void)
@@ -130,6 +131,16 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 		}
 		if (key == GLFW_KEY_LEFT){
 			camera->position -= camera->right * deltaTime * camera->speed;
+		}
+
+		//Depuração
+
+		if(key == GLFW_KEY_5)
+		{
+			EDPrinter printer = EDPrinter();
+			char filename[256];
+			sprintf(filename, "%s%s", mesh->path, "teste.bmp");
+			printer.printScreen(&config, filename);
 		}
 	}
 }
