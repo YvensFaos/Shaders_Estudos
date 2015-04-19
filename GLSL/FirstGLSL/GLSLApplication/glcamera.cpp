@@ -4,12 +4,36 @@
 
 #include <stdio.h>
 
+GLCameraStep::GLCameraStep(void)
+{
+	initialize(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 45.0f);
+}
+
+GLCameraStep::GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov)
+{
+	initialize(position, up, lookat, fov);
+}
+
+GLCameraStep::~GLCameraStep(void)
+{ }
+
+void GLCameraStep::initialize(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov)
+{
+	this->position = position;
+	this->up = up;
+	this->lookat = lookat;
+
+	this->fov = fov;
+}
+
+//GLCamera
+
 GLCamera::GLCamera(void)
 {
 	position = glm::vec3(0,0,5);
 	horizontalAngle = 3.14f;
 	verticalAngle = 0.0f;
-	initialFoV = 45.0f;
+	fov = 45.0f;
 
 	speed = 10.0f;
 	mouseSpeed = 0.005;
@@ -41,7 +65,16 @@ void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float wi
 
 	up = glm::cross(right, direction);
 
-	projectionMatrix = glm::perspective(initialFoV, width/ (float)height, 0.1f, 500.0f);
+	projectionMatrix = glm::perspective(fov, width/ (float)height, 0.1f, 500.0f);
 	viewMatrix = glm::lookAt(position, position + direction, up);
-	
+}
+
+void GLCamera::calculateMatrix(GLCameraStep* step, float deltaTime, float width, float height)
+{
+	direction = step->lookat - step->position;
+	up = step->up;
+	right = glm::cross(direction, up);
+
+	projectionMatrix = glm::perspective(step->fov, width/ (float)height, 0.1f, 500.0f);
+	viewMatrix = glm::lookAt(position, position + direction, up);
 }

@@ -12,6 +12,11 @@
 
 typedef unsigned int GLuint;
 
+class GLMeshVBO
+{
+
+};
+
 class GLMesh3D
 {
 public:
@@ -22,6 +27,7 @@ public:
 	int verticesCount;
 	glm::vec3* vertexes;
 	glm::vec3* normals;
+	glm::vec2* uvs;
 public:
 	GLMesh3D(char* model3d, char* path);
 	~GLMesh3D(void);

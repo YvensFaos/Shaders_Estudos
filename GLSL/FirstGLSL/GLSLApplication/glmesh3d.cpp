@@ -8,6 +8,7 @@
 #include "openGLWrapper.h"
 #include "glprinthelper.h"
 
+//Atualizar para suportar .obj que contém mais de um mesh!
 GLMesh3D::GLMesh3D(char* model3d, char* path)
 {
 	char sFilePath[512];
@@ -26,7 +27,8 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 	}
 	verticesCount = scene->mMeshes[0]->mNumFaces * 3;
 	vertexes = new glm::vec3[verticesCount];
-	normals = new glm::vec3[verticesCount];
+	normals =  new glm::vec3[verticesCount];
+	uvs =      new glm::vec2[verticesCount];
 
 	hasNormals = scene->mMeshes[0]->HasNormals();
 	printf("Has %d normals\n", hasNormals);
@@ -43,6 +45,8 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 		for(int j = 0; j < face->mNumIndices; j++)
 		{
 			aiVector3D* vec = &scene->mMeshes[0]->mVertices[face->mIndices[j]];
+			aiVector3D* uv = &scene->mMeshes[0]->mTextureCoords[0][face->mIndices[j]];
+
 			vertexes[k] = glm::vec3(vec->x, vec->y, vec->z);
 
 			if(hasNormals)

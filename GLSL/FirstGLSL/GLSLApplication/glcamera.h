@@ -3,6 +3,23 @@
 
 #include "glm\glm.hpp"
 
+class GLCameraStep
+{
+public:
+	glm::vec3 position;
+	glm::vec3 up;
+	glm::vec3 lookat;
+
+	float fov;
+public:
+	GLCameraStep(void);
+	GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov);
+	~GLCameraStep(void);
+
+private:
+	void initialize(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov);
+};
+
 class GLCamera
 {
 public:
@@ -17,17 +34,17 @@ public:
 
 	float horizontalAngle;
 	float verticalAngle;
-	float initialFoV;
+	float fov;
 
 	float speed;
 	float mouseSpeed;
-
 
 public:
 	GLCamera(void);
 	~GLCamera(void);
 
 	void calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height);
+	void calculateMatrix(GLCameraStep* step,     float deltaTime, float width, float height);
 };
 
 #endif

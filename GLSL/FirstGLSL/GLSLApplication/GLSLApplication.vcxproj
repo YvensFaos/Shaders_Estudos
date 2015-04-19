@@ -95,6 +95,7 @@
     <ClInclude Include="edlogger.h" />
     <ClInclude Include="glcamera.h" />
     <ClInclude Include="glconfig.h" />
+    <ClInclude Include="glenums.h" />
     <ClInclude Include="glmesh3d.h" />
     <ClInclude Include="glplayer.h" />
     <ClInclude Include="glprinthelper.h" />

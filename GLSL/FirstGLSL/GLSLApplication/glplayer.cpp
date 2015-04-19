@@ -66,7 +66,6 @@ void GLPlayer::step(void)
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
 
-	
 	GLint model = glGetUniformLocation(OpenGLWrapper::programObject, "mvp");
 	glUniformMatrix4fv(model, 1, GL_FALSE, glm::value_ptr(MVP));
 	
@@ -120,16 +119,16 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 		if (key == GLFW_KEY_X){
 			camera->position -= camera->up * deltaTime * camera->speed;
 		}
-		if (key == GLFW_KEY_UP){
+		if (key == GLFW_KEY_W){
 			camera->position += camera->direction * deltaTime * camera->speed;
 		}
-		if (key == GLFW_KEY_DOWN){
+		if (key == GLFW_KEY_S){
 			camera->position -= camera->direction * deltaTime * camera->speed;
 		}
-		if (key == GLFW_KEY_RIGHT){
+		if (key == GLFW_KEY_A){
 			camera->position += camera->right * deltaTime * camera->speed;
 		}
-		if (key == GLFW_KEY_LEFT){
+		if (key == GLFW_KEY_D){
 			camera->position -= camera->right * deltaTime * camera->speed;
 		}
 
