@@ -6,20 +6,24 @@
 #include "assimp\postprocess.h"
 
 #include <vector>
-#include <map>
 
 #include "glm\glm.hpp"
 
 typedef unsigned int GLuint;
 
-class GLMeshVBO
-{
-
+struct VertexData {
+	glm::vec3 position; //Posição
+	glm::vec3 normal;   //Normal
+	glm::vec3 tangent;  //Reflection
+	glm::vec3 color;    //Vertex Color
+	glm::vec2 uv;       //UV
 };
 
 class GLMesh3D
 {
 public:
+	GLuint index;
+
 	char* model3d;
 	char* path;
 
@@ -29,13 +33,31 @@ public:
 	glm::vec3* normals;
 	glm::vec2* uvs;
 public:
-	GLMesh3D(char* model3d, char* path);
+	GLMesh3D(int index, int glindex, const aiScene* scene);
 	~GLMesh3D(void);
 
 	void render(void);
 private: 
 	bool loaded; 
-	std::map<std::string, GLuint> textureIdMap;	
 };
 
+class GLMeshHandler
+{
+private:
+	int numMeshes;
+public:
+	static GLuint gl_index;
+
+	char* model3d;
+	char* path;
+
+	std::vector<GLMesh3D> meshes;
+public:
+	GLMeshHandler(char* model3d, char* path);
+	~GLMeshHandler(void);
+
+	void render(void);
+private:
+	bool loaded;
+};
 #endif

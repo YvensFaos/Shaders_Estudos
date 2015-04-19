@@ -24,7 +24,7 @@ private:
 public:
 	GLConfig config;
 
-	GLMesh3D* mesh;
+	GLMeshHandler* meshHandler;
 	GLCamera* camera;
 	GLFWwindow* actualWindow;
 public:

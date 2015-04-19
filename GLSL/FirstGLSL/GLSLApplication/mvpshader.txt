@@ -14,7 +14,7 @@ void main(void)
 	//vec3 c = normalize(vec3(gl_LightSource[0].position));
 	vec3 c = normalize(vDir);
 
-	intensity = dot(c, b);
+	intensity = max(0.0, dot(b, -c));
 
 	//vColor = vec4(vNormal.x, vNormal.y, vNormal.z, 1.0);
 	vColor = baseColor;

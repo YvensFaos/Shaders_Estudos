@@ -2,6 +2,7 @@
 #define __GL_CAMERA__
 
 #include "glm\glm.hpp"
+#include <vector>
 
 class GLCameraStep
 {
@@ -18,6 +19,29 @@ public:
 
 private:
 	void initialize(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov);
+};
+
+class GLCameraHandler
+{
+public:
+	char* path;
+	char* filename;
+
+	bool repeated;
+	bool finished;
+private:
+	int index;
+
+	std::vector<GLCameraStep> steps;
+public:
+	GLCameraHandler(char* path, char* filename);
+	~GLCameraHandler(void);
+
+	GLCameraStep* nextStep();
+	GLCameraStep* actualStep();
+	GLCameraStep* getStep(int index);
+private:
+	void initialize(char* path, char* filename);
 };
 
 class GLCamera

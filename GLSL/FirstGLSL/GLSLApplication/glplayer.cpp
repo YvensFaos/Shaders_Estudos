@@ -18,12 +18,10 @@
 #include <stdio.h>
 
 GLPlayer::GLPlayer()
-{
-}
+{ }
 
 GLPlayer::~GLPlayer()
-{
-}
+{ }
 
 GLPlayer::GLPlayer(GLConfig config)
 {
@@ -47,12 +45,14 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 	camera = new GLCamera();
 	char* path = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
 	//char* path = "E:/Repositorios/Shaders_Estudos/Models/";
-	mesh = new GLMesh3D("coaltown.obj", path);
+	meshHandler = new GLMeshHandler("house.obj", path);
+
+	title = new char[256];
 }
 
 void GLPlayer::step(void)
 {
-	double currentTime = glfwGetTime();
+	double firstTime = glfwGetTime();
 	
 	if(glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 	{
@@ -63,6 +63,7 @@ void GLPlayer::step(void)
 	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
+
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
 
@@ -80,22 +81,33 @@ void GLPlayer::step(void)
 	angle += 0.1f;
 
 	glMatrixMode(GL_MODELVIEW);
-	
 	glLoadIdentity();
-
-	// Set the viewport
 	glViewport(0, 0, config.width, config.height);
-
-	// Clear the color buffer
 	glClear(GL_COLOR_BUFFER_BIT);
-
-	// Use the program object
 	glUseProgram(OpenGLWrapper::programObject);
+	
+	//Teste
+	/*GLMesh3D* t = &meshHandler->meshes.at(0);
+	
+	for(int i = 0; i < t->verticesCount; i++)
+	{
+		glm::vec3 normal = glm::normalize(t->normals[i]);
+		glm::vec3 dir = glm::normalize(camera->direction);
 
-	mesh->render();
+		float dot = glm::dot(normal, dir);
+		printf("dot = %f\n", dot);
+
+	}*/
+
+
+	meshHandler->render();
 
 	double lastTime = glfwGetTime();
-	deltaTime = float(currentTime - lastTime);
+	deltaTime = float(lastTime - firstTime);
+	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
+
+	sprintf(title, "%s - fps[%.2f]", config.title, (float) (1 / deltaTime));
+	glfwSetWindowTitle(OpenGLWrapper::window, title);
 }
 
 bool GLPlayer::running(void)
@@ -126,10 +138,10 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 			camera->position -= camera->direction * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_A){
-			camera->position += camera->right * deltaTime * camera->speed;
+			camera->position -= camera->right * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_D){
-			camera->position -= camera->right * deltaTime * camera->speed;
+			camera->position += camera->right * deltaTime * camera->speed;
 		}
 
 		//Depuração
@@ -138,7 +150,7 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 		{
 			EDPrinter printer = EDPrinter();
 			char filename[256];
-			sprintf(filename, "%s%s", mesh->path, "teste.bmp");
+			sprintf(filename, "%s%s", meshHandler->path, "teste.bmp");
 			printer.printScreen(&config, filename);
 		}
 	}

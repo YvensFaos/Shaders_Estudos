@@ -8,8 +8,10 @@
 #include "openGLWrapper.h"
 #include "glprinthelper.h"
 
-//Atualizar para suportar .obj que contém mais de um mesh!
-GLMesh3D::GLMesh3D(char* model3d, char* path)
+GLuint GLMeshHandler::gl_index = 0;
+
+//GLMeshHandler
+GLMeshHandler::GLMeshHandler(char* model3d, char* path)
 {
 	char sFilePath[512];
 	sprintf(sFilePath, "%s%s", path, model3d);
@@ -19,61 +21,68 @@ GLMesh3D::GLMesh3D(char* model3d, char* path)
 	this->model3d = new char[256];
 	sprintf(this->model3d, "%s", model3d);
 
+	printf("Loading: %s\n", sFilePath);
+
 	Assimp::Importer importer; 
 	const aiScene* scene = importer.ReadFile(sFilePath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices  | aiProcess_SortByPType); 
-	if(!scene)
+
+	for(int i = 0; i < scene->mNumMeshes; i++)
 	{
-		printf("error loading scene!\n");
+		meshes.push_back(GLMesh3D(i, gl_index++, scene));
 	}
-	verticesCount = scene->mMeshes[0]->mNumFaces * 3;
+
+	this->numMeshes = scene->mNumMeshes;
+}
+
+void GLMeshHandler::render(void)
+{
+	for(int i = 0; i < numMeshes; i++)
+	{
+		meshes.at(i).render();
+	}
+}
+
+//GLMesh3D
+
+GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
+{
+	aiMesh* mesh = scene->mMeshes[index];
+	this->index = glindex;
+
+	hasNormals = mesh->HasNormals();
+	printf("Has %d normals\n", hasNormals);
+
+	verticesCount = mesh->mNumFaces * 3;
+
 	vertexes = new glm::vec3[verticesCount];
 	normals =  new glm::vec3[verticesCount];
 	uvs =      new glm::vec2[verticesCount];
 
-	hasNormals = scene->mMeshes[0]->HasNormals();
-	printf("Has %d normals\n", hasNormals);
 	int k = 0;
 	for(int i = 0; i < verticesCount /3; i++)
 	{
-		aiFace* face = &scene->mMeshes[0]->mFaces[i];
+		aiFace* face = &mesh->mFaces[i];
 		if(hasNormals)
 		{
-			aiVector3D* norm = &scene->mMeshes[0]->mNormals[i];
+			aiVector3D* norm = &mesh->mNormals[i];
 			normals[i] = glm::vec3(norm->x, norm->y, norm->z);
 		}
 
 		for(int j = 0; j < face->mNumIndices; j++)
 		{
-			aiVector3D* vec = &scene->mMeshes[0]->mVertices[face->mIndices[j]];
-			aiVector3D* uv = &scene->mMeshes[0]->mTextureCoords[0][face->mIndices[j]];
+			aiVector3D* vec = &mesh->mVertices[face->mIndices[j]];
+			aiVector3D* uv = &mesh->mTextureCoords[0][face->mIndices[j]];
 
 			vertexes[k] = glm::vec3(vec->x, vec->y, vec->z);
 
 			if(hasNormals)
 			{
-				aiVector3D* norm = &scene->mMeshes[0]->mNormals[face->mIndices[j]];
+				aiVector3D* norm = &mesh->mNormals[face->mIndices[j]];
 				normals[k] = glm::vec3(norm->x, norm->y, norm->z);
 			}
 
 			k++;
 		}
-	}
-
-	if(hasNormals)
-	{
-		PRINT_VEC(vertexes[0]);
-		PRINT_VEC(vertexes[1]);
-		PRINT_VEC(vertexes[2]);
-		PRINT_VEC(normals[0]);
-
-		//Testar
-		glm::vec3 a = glm::vec3(vertexes[0]);
-		a -= vertexes[1];
-		glm::vec3 b = glm::vec3(vertexes[2]);
-		b -= vertexes[1];
-
-		a = glm::cross(a,b);
-		PRINT_VEC(a);
 	}
 
 	if(!hasNormals)
