@@ -48,6 +48,9 @@
     <ClCompile Include="edlogger.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="glscenario.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -79,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="glenums.h">
       <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="glscenario.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -45,7 +45,7 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 	camera = new GLCamera();
 	char* path = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
 	//char* path = "E:/Repositorios/Shaders_Estudos/Models/";
-	meshHandler = new GLMeshHandler("rungholt.obj", path);
+	meshHandler = new GLMeshHandler("saw.obj", path);
 
 	title = new char[256];
 }
@@ -111,29 +111,44 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 
-		if (key == GLFW_KEY_Z){
-			camera->position += camera->up * deltaTime * camera->speed;
-		}
-		if (key == GLFW_KEY_X){
-			camera->position -= camera->up * deltaTime * camera->speed;
-		}
-		if (key == GLFW_KEY_W){
-			camera->position += camera->direction * deltaTime * camera->speed;
-		}
-		if (key == GLFW_KEY_S){
-			camera->position -= camera->direction * deltaTime * camera->speed;
-		}
-		if (key == GLFW_KEY_A){
-			camera->position -= camera->right * deltaTime * camera->speed;
-		}
-		if (key == GLFW_KEY_D){
-			camera->position += camera->right * deltaTime * camera->speed;
+		if(config.mode == FREE_MODE)
+		{
+			if (key == GLFW_KEY_Z){
+				camera->position += camera->up * deltaTime * camera->speed;
+			}
+			if (key == GLFW_KEY_X){
+				camera->position -= camera->up * deltaTime * camera->speed;
+			}
+			if (key == GLFW_KEY_W){
+				camera->position += camera->direction * deltaTime * camera->speed;
+			}
+			if (key == GLFW_KEY_S){
+				camera->position -= camera->direction * deltaTime * camera->speed;
+			}
+			if (key == GLFW_KEY_A){
+				camera->position -= camera->right * deltaTime * camera->speed;
+			}
+			if (key == GLFW_KEY_D){
+				camera->position += camera->right * deltaTime * camera->speed;
+			}
 		}
 
 		//Depuração
 
+		if(key == GLFW_KEY_1)
+		{
+			//Zoom IN
+			camera->zoom(-0.005f);
+		}
+		if(key == GLFW_KEY_2)
+		{
+			//Zoom OUT
+			camera->zoom(+0.005f);
+		}
 		if(key == GLFW_KEY_5)
 		{
+			//PrintScreen
+
 			EDPrinter printer = EDPrinter();
 			char filename[256];
 			sprintf(filename, "%s%s", meshHandler->path, "teste.bmp");

@@ -46,6 +46,16 @@ GLCamera::GLCamera(void)
 GLCamera::~GLCamera(void)
 { }
 
+
+void GLCamera::zoom(float value)
+{
+	fov += value;
+	fov = (fov <= 0)? value : fov;
+	fov = (fov > 180)? 180.0f - value : fov;
+
+	printf("FOV atual: [%f] (zoom de %f)\n", fov, value);
+}
+
 void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height)
 {
 	horizontalAngle += mouseSpeed * deltaTime * float(width/2 - xpos );

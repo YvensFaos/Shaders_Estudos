@@ -86,6 +86,7 @@
     <ClCompile Include="glconfig.cpp" />
     <ClCompile Include="glmesh3d.cpp" />
     <ClCompile Include="glplayer.cpp" />
+    <ClCompile Include="glscenario.cpp" />
     <ClCompile Include="glshaderloader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="openGLWrapper.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="glmesh3d.h" />
     <ClInclude Include="glplayer.h" />
     <ClInclude Include="glprinthelper.h" />
+    <ClInclude Include="glscenario.h" />
     <ClInclude Include="glshaderloader.h" />
     <ClInclude Include="openGLWrapper.h" />
   </ItemGroup>

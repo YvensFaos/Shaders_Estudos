@@ -2,6 +2,7 @@
 
 #include "glplayer.h"
 #include "glshaderloader.h"
+#include "glenums.h"
 
 //Include the standard C++ headers  
 #include <stdio.h>  
@@ -26,6 +27,7 @@ int main()
 	config.width  = 800;
 	config.height = 600;
 	config.title  = "Teste";
+	config.mode = FREE_MODE;
 
 	player = new GLPlayer(config);
 	OpenGLWrapper::player = *player;

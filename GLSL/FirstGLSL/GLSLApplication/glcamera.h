@@ -67,6 +67,8 @@ public:
 	GLCamera(void);
 	~GLCamera(void);
 
+	void zoom(float value);
+
 	void calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height);
 	void calculateMatrix(GLCameraStep* step,     float deltaTime, float width, float height);
 };
