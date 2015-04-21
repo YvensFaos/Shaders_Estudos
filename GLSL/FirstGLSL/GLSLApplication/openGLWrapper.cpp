@@ -8,15 +8,13 @@
 GLuint OpenGLWrapper::programObject;
 GLuint OpenGLWrapper::normalLoc;
 GLuint OpenGLWrapper::positionLoc;
-GLPlayer OpenGLWrapper::player;
+GLPlayer* OpenGLWrapper::player;
 GLFWwindow* OpenGLWrapper::window;
 
 //Private
 float OpenGLWrapper::ratio;
-loopCallback OpenGLWrapper::callback;
-runningCallback OpenGLWrapper::running;
 
-void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int multisampling)
+void OpenGLWrapper::initialize(bool antialiasing, int multisampling)
 {
     glfwSetErrorCallback(OpenGLWrapper::error_callback);  
     if (!glfwInit())  
@@ -29,9 +27,9 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 		glfwWindowHint(GLFW_SAMPLES, multisampling);
 	}
   
-	int width = player.config.width;
-	int height = player.config.height;
-	char* title = player.config.title;
+	int width = player->config.width;
+	int height = player->config.height;
+	char* title = player->config.title;
 
     window = glfwCreateWindow(width, height, title, NULL, NULL);  
   
@@ -42,8 +40,6 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
         return;
     }  
   
-	loop_callback(callback);
-
     glfwMakeContextCurrent(window);  
     glfwSetKeyCallback(window, OpenGLWrapper::key_callback);  
 	glfwSetMouseButtonCallback(window, OpenGLWrapper::mouse_callback);
@@ -106,7 +102,7 @@ void OpenGLWrapper::initialize(loopCallback callback, bool antialiasing, int mul
 		glDeleteProgram(OpenGLWrapper::programObject);
 	}
 
-	player.lights();
+	player->lights();
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
@@ -152,33 +148,23 @@ GLuint OpenGLWrapper::loadShader(const char *shaderSrc, GLenum type)
 
 void OpenGLWrapper::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 { 
-	player.keyBoard(window, key, scancode, action, mods); 
+	player->keyBoard(window, key, scancode, action, mods); 
 }
 
 void OpenGLWrapper::mouse_callback(GLFWwindow* window, int button, int action, int mods)
 {
-	player.mouse(window, button, action, mods);
+	player->mouse(window, button, action, mods);
 }
 
 void OpenGLWrapper::error_callback(int error, const char* description)
 { }
 
-void OpenGLWrapper::loop_callback(loopCallback callback)
-{ 
-	OpenGLWrapper::callback = callback; 
-}
-
-void OpenGLWrapper::running_callback(runningCallback running)
-{ 
-	OpenGLWrapper::running = running; 
-}
-
 void OpenGLWrapper::glLoop()
 {
-	while (!glfwWindowShouldClose(window) && (running)())
+	while (!glfwWindowShouldClose(window) && player->running())
     {
-		int width = player.config.width;
-		int height = player.config.height;
+		int width = player->config.width;
+		int height = player->config.height;
 
 		glViewport(0, 0, width, height);
 
@@ -187,7 +173,7 @@ void OpenGLWrapper::glLoop()
 
         glLoadIdentity();
 
-		(callback)();
+		player->step();
 
 		glFlush();
         glfwSwapBuffers(window);

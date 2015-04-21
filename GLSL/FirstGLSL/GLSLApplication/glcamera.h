@@ -43,6 +43,8 @@ public:
 	GLCameraStep* nextStep();
 	GLCameraStep* actualStep();
 	GLCameraStep* getStep(int index);
+
+	int getIndex();
 private:
 	void initialize(void);
 

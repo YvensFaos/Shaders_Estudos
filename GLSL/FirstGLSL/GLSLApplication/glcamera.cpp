@@ -108,6 +108,13 @@ void GLCameraHandler::readPathFile(void)
 
 		steps.push_back(GLCameraStep(glm::vec3(posx,posy,posz), glm::vec3(upx,upy,upz), glm::vec3(lookx,looky,lookz), fov));
 	}
+
+	reader.close();
+}
+
+int GLCameraHandler::getIndex()
+{
+	return index;
 }
 
 //GLCamera

@@ -38,7 +38,8 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	angle = 0.0f;
 	isRunning = true;
 	updateMouse = false;
-	
+	paused = false;
+
 	deltaTime = 1.0f/60.0f;
 	lastTime = 0;
 
@@ -69,7 +70,17 @@ void GLWalkthroughPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
 	
-	camera->calculateMatrix(cameraHandler->nextStep(), deltaTime, config.width, config.height);
+	GLCameraStep* step;
+	if(isPaused())
+	{
+		step = cameraHandler->actualStep();
+	}
+	else
+	{
+		step = cameraHandler->nextStep();
+	}
+
+	camera->calculateMatrix(step, deltaTime, config.width, config.height);
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
@@ -99,8 +110,7 @@ void GLWalkthroughPlayer::step(void)
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	printf("%s\n", modeTitle);
-	sprintf(title, "%s%s - fps[%.2f]", modeTitle, config.title, (float) (1 / deltaTime));
+	sprintf(title, "%s%s - fps[%.2f][%d]", modeTitle, config.title, (float) (1 / deltaTime), cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 
 	if(cameraHandler->finished && !cameraHandler->repeated)
@@ -126,6 +136,13 @@ void GLWalkthroughPlayer::keyBoard(GLFWwindow* window, int key, int scancode, in
 
 		//Depuração
 
+		if(key == GLFW_KEY_SPACE || key == GLFW_KEY_1)
+		{
+			//Pausa o Walkthrough
+			printf("PAUSE!");
+			pause();
+		}
+
 		if(key == GLFW_KEY_5)
 		{
 			//PrintScreen
@@ -137,15 +154,18 @@ void GLWalkthroughPlayer::keyBoard(GLFWwindow* window, int key, int scancode, in
 	}
 }
 
-void GLWalkthroughPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
+void GLWalkthroughPlayer::pause()
 {
-	/*
-	if(action == GLFW_PRESS)
-	{ }
-	if(action == GLFW_RELEASE)
-	{ }
-	*/
+	paused = !paused;
 }
+
+bool GLWalkthroughPlayer::isPaused()
+{
+	return paused;
+}
+
+void GLWalkthroughPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
+{ }
 
 void GLWalkthroughPlayer::lights(void)
 {

@@ -12,18 +12,7 @@
 //#define desktop
 #define notebook
 
-
 GLPlayer* player;
-  
-bool running(void)
-{
-	return player->running();
-}
-  
-void callBack()
-{
-	player->step();
-}
 
 int main()  
 {  
@@ -47,11 +36,11 @@ int main()
 	config.pathfilePath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 #endif
 
-	config.objectName = "saw.obj";
+	config.objectName = "goldrush.obj";
 	//Se eu setar o nome, não preciso do número, mas não tem problema
-	config.scenarioNumber = 10;
+	config.scenarioNumber = 18;
 
-	config.pathfileName = "saw";
+	config.pathfileName = "goldrush";
 	config.repeatable = true;
 
 	PLAYER_MODE mode;
@@ -60,8 +49,7 @@ int main()
 
 	player = config.getGLPlayer(mode);
 
-	OpenGLWrapper::player = *player;
-	OpenGLWrapper::initialize(callBack, true, 4);
-	OpenGLWrapper::running_callback(running);
+	OpenGLWrapper::player = player;
+	OpenGLWrapper::initialize(true, 4);
 	OpenGLWrapper::glLoop();
 }  
