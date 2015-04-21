@@ -1,0 +1,14 @@
+﻿Commitando objs
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   GLSL/FirstGLSL/GLSLApplication/main.cpp
+#	new file:   Models/ball.obj
+#	new file:   Models/bunny.obj
+#	new file:   Models/cube.obj
+#	new file:   Models/mech.obj
+#
+
