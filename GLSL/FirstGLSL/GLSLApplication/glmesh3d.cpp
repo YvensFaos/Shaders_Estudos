@@ -11,6 +11,12 @@
 GLuint GLMeshHandler::gl_index = 0;
 
 //GLMeshHandler
+GLMeshHandler::GLMeshHandler(void)
+{ }
+
+GLMeshHandler::~GLMeshHandler(void)
+{ }
+
 GLMeshHandler::GLMeshHandler(char* model3d, char* path)
 {
 	char sFilePath[512];

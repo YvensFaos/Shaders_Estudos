@@ -9,7 +9,8 @@ private:
 	int printCounter;
 	char* modeTitle;
 	
-	GLScenario scenario;
+	GLScenario* scenario;
+	GLCameraHandler* cameraHandler;
 public:
 	GLWalkthroughPlayer(void);
 	GLWalkthroughPlayer(GLConfig config);

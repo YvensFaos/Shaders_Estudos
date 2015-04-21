@@ -1,8 +1,9 @@
-#ifndef __GL_CAMERA__
-#define __GL_CAMERA__
+#pragma once
 
 #include "glm\glm.hpp"
 #include <vector>
+
+#define PATH_EXTENSION ".pathx"
 
 class GLCameraStep
 {
@@ -31,17 +32,21 @@ public:
 	bool finished;
 private:
 	int index;
+	int size;
 
 	std::vector<GLCameraStep> steps;
 public:
-	GLCameraHandler(char* path, char* filename);
+	GLCameraHandler(void);
+	GLCameraHandler(char* path, char* filename, bool repeated);
 	~GLCameraHandler(void);
 
 	GLCameraStep* nextStep();
 	GLCameraStep* actualStep();
 	GLCameraStep* getStep(int index);
 private:
-	void initialize(char* path, char* filename);
+	void initialize(void);
+
+	void readPathFile(void);
 };
 
 class GLCamera
@@ -72,5 +77,3 @@ public:
 	void calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height);
 	void calculateMatrix(GLCameraStep* step,     float deltaTime, float width, float height);
 };
-
-#endif

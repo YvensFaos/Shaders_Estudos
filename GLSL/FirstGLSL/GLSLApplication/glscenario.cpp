@@ -7,8 +7,7 @@ GLScenario::GLScenario(void)
 
 GLScenario::GLScenario(char* name, GLConfig* config)
 { 
-	this->name = new char[128];
-	sprintf(this->name, "%s", name);
+	this->name = name;
 
 	identifier = GLScenario::getIdentifierByName(this->name);
 
@@ -27,51 +26,69 @@ GLScenario::GLScenario(int identifier, GLConfig* config)
 
 GLScenario::~GLScenario(void)
 {
-	delete name;
+	if(name)
+		delete name;
 }
 
 void GLScenario::initialize(GLConfig* config)
 {
 	this->config = config;
 
-	//TODO
+	meshHandler = GLMeshHandler(config->objectName, config->objectPath);
+	cameraHandler = GLCameraHandler(config->pathfilePath, config->pathfileName, config->repeatable);
 }
 
 int  GLScenario::getIdentifierByName(char* name)
 {
-	if(name == "saw")
+	if(name[0] == 's')
 	{
+		//Saw
 		return 10;
 	}
-	else if(name == "ravine")
+	if(name[0] == 'r')
 	{
+		//Ravine
 		return 13;
 	}
-	else if(name == "viaduct")
+	if(name[0] == 'v')
 	{
+		//Viaduct
 		return 14;
 	}
-	else if(name == "gorge")
+	if(name[0] == 'g')
 	{
-		return 15;
+		if(name[3] == 'r')
+		{
+			//Gorge
+			return 15;
+		}
+		if(name[3] == 'r')
+		{
+			//Gorge
+			return 15;
+		}
+		if(name[4] == 'd')
+		{
+			//GoldRush
+			return 18;
+		}
+		else
+		{
+			//GoldenPlains
+			return 19;
+		}
 	}
-	else if(name == "nucleus")
+	if(name[0] == 'n')
 	{
+		//Nucleus
 		return 16;
 	}
-	else if(name == "coaltown")
+	if(name[0] == 'c')
 	{
+		//Coaltown
 		return 17;
 	}
-	else if(name == "goldRush")
-	{
-		return 18;
-	}
-	else if(name == "goldenPlains")
-	{
-		return 19;
-	}
-
+	
 	return -1;
 }
 

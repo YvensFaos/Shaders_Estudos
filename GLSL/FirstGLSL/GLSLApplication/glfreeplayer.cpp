@@ -61,7 +61,6 @@ void GLFreePlayer::step(void)
 		updateMousePos();
 	}
 
-	float ratio = config.width/ (float) config.height;
 	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
@@ -110,7 +109,7 @@ void GLFreePlayer::keyBoard(GLFWwindow* window, int key, int scancode, int actio
 	{
 		if (key == GLFW_KEY_ESCAPE)
 		{
-			isRunning = true;
+			isRunning = false;
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 

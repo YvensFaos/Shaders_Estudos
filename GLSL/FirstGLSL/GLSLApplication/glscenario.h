@@ -2,6 +2,7 @@
 
 #include "glconfig.h"
 #include "glmesh3d.h"
+#include "glcamera.h"
 
 class GLScenario
 {
@@ -9,7 +10,8 @@ public:
 	char* name;
 	int identifier;
 
-	GLMeshHandler* meshHandler;
+	GLMeshHandler meshHandler;
+	GLCameraHandler cameraHandler;
 private:
 	GLConfig* config;
 public:

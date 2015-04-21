@@ -42,35 +42,34 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	deltaTime = 1.0f/60.0f;
 	lastTime = 0;
 
-	camera = new GLCamera();
 	char* path = config.objectPath;
 
 	//Checando se o nome foi setado corretamente
 	if(config.objectName && config.objectName[0] != '\0')
 	{
-		scenario = GLScenario(config.objectName, &config);
+		this->scenario = new GLScenario(config.objectName, &config);
 	}
 	else
 	{
 		//Se não tiver o nome, busca pelo identificador
-		scenario = GLScenario(config.scenarioNumber, &config);
+		this->scenario = new GLScenario(config.scenarioNumber, &config);
 	}
 
-	meshHandler = scenario.meshHandler;
+	camera = new GLCamera();
+	cameraHandler = &scenario->cameraHandler;
+	camera->calculateMatrix(cameraHandler->actualStep(), 0, config.width, config.height);
+	meshHandler = &scenario->meshHandler;
 
 	title = new char[256];
 	modeTitle = new char[256];
-	sprintf(modeTitle, "Walkthrough - Scenario:%s - ", scenario.name);
+	sprintf(modeTitle, "Walkthrough - Scenario:%s - ", scenario->name);
 }
 
 void GLWalkthroughPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
 	
-	float ratio = config.width/ (float) config.height;
-	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
-	xpos = config.width / 2.0f;
-	ypos = config.height / 2.0f;
+	camera->calculateMatrix(cameraHandler->nextStep(), deltaTime, config.width, config.height);
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
@@ -103,6 +102,11 @@ void GLWalkthroughPlayer::step(void)
 	printf("%s\n", modeTitle);
 	sprintf(title, "%s%s - fps[%.2f]", modeTitle, config.title, (float) (1 / deltaTime));
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
+
+	if(cameraHandler->finished && !cameraHandler->repeated)
+	{
+		isRunning = false;
+	}
 }
 
 bool GLWalkthroughPlayer::running(void)
@@ -116,7 +120,7 @@ void GLWalkthroughPlayer::keyBoard(GLFWwindow* window, int key, int scancode, in
 	{
 		if (key == GLFW_KEY_ESCAPE)
 		{
-			isRunning = true;
+			isRunning = false;
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 

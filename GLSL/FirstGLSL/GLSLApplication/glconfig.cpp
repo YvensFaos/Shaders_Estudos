@@ -18,6 +18,8 @@ GLConfig::GLConfig()
 	title = "Blank Title";
 
 	scenarioNumber = -1;
+
+	repeatable = false;
 }
 
 GLConfig::~GLConfig()

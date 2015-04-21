@@ -14,12 +14,19 @@ public:
 
 	char* title;
 
+	bool repeatable;
+
 	//Path dos arquivos (modelos) a serem lidos
 	char* objectPath;
 	//Nome do objeto que será carregado
 	char* objectName;
 	//Número do cenário
 	int scenarioNumber;
+	//Path dos arquivos de path
+	char* pathfilePath;
+	//Nome do arquivo de path
+	char* pathfileName;
+
 public:
 	GLConfig(void);
 	~GLConfig(void);
