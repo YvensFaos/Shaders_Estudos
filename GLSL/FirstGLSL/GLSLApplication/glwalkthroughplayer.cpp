@@ -1,4 +1,6 @@
-#include "glplayer.h"
+#include "glwalkthroughplayer.h"
+
+#include "glfreeplayer.h"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -17,47 +19,54 @@
 
 #include <stdio.h>
 
-GLPlayer::GLPlayer()
+GLWalkthroughPlayer::GLWalkthroughPlayer(void)
 { }
 
-GLPlayer::~GLPlayer()
+GLWalkthroughPlayer::~GLWalkthroughPlayer(void)
 { }
 
-GLPlayer::GLPlayer(GLConfig config)
+GLWalkthroughPlayer::GLWalkthroughPlayer(GLConfig config)
 {
 	initializeGLPlayer(config);
 }
 
-void GLPlayer::initializeGLPlayer(GLConfig config)
+void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 {
 	this->config = config;
+	this->printCounter = 0;
 
 	angle = 0.0f;
 	isRunning = true;
 	updateMouse = false;
 	
-	xpos = config.width / 2.0f;
-	ypos = config.height / 2.0f;
-
 	deltaTime = 1.0f/60.0f;
 	lastTime = 0;
 
 	camera = new GLCamera();
 	char* path = config.objectPath;
-	meshHandler = new GLMeshHandler(config.objectName, path);
+
+	//Checando se o nome foi setado corretamente
+	if(config.objectName && config.objectName[0] != '\0')
+	{
+		scenario = GLScenario(config.objectName, &config);
+	}
+	else
+	{
+		//Se não tiver o nome, busca pelo identificador
+		scenario = GLScenario(config.scenarioNumber, &config);
+	}
+
+	meshHandler = scenario.meshHandler;
 
 	title = new char[256];
+	modeTitle = new char[256];
+	sprintf(modeTitle, "Walkthrough - Scenario:%s - ", scenario.name);
 }
 
-void GLPlayer::step(void)
+void GLWalkthroughPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
 	
-	if(glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
-	{
-		updateMousePos();
-	}
-
 	float ratio = config.width/ (float) config.height;
 	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
 	xpos = config.width / 2.0f;
@@ -91,16 +100,17 @@ void GLPlayer::step(void)
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s - fps[%.2f]", config.title, (float) (1 / deltaTime));
+	printf("%s\n", modeTitle);
+	sprintf(title, "%s%s - fps[%.2f]", modeTitle, config.title, (float) (1 / deltaTime));
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 }
 
-bool GLPlayer::running(void)
+bool GLWalkthroughPlayer::running(void)
 {
 	return isRunning;
 }
 
-void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
+void GLWalkthroughPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if(action == GLFW_PRESS || action == GLFW_REPEAT)
 	{
@@ -110,81 +120,30 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 
-		if(config.mode == FREE_MODE)
-		{
-			if (key == GLFW_KEY_Z){
-				camera->position += camera->up * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_X){
-				camera->position -= camera->up * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_W){
-				camera->position += camera->direction * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_S){
-				camera->position -= camera->direction * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_A){
-				camera->position -= camera->right * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_D){
-				camera->position += camera->right * deltaTime * camera->speed;
-			}
-		}
-
 		//Depuração
 
-		if(key == GLFW_KEY_1)
-		{
-			//Zoom IN
-			camera->zoom(-0.005f);
-		}
-		if(key == GLFW_KEY_2)
-		{
-			//Zoom OUT
-			camera->zoom(+0.005f);
-		}
 		if(key == GLFW_KEY_5)
 		{
 			//PrintScreen
-
 			EDPrinter printer = EDPrinter();
 			char filename[256];
-			sprintf(filename, "%sRandomPrint-%s[%f]-x.bmp", config.objectPath, config.objectName, deltaTime);
+			sprintf(filename, "%sWalkPrint-%s[%d]-x.bmp", config.objectPath, config.objectName, printCounter++);
 			printer.printScreen(&config, filename);
 		}
 	}
 }
 
-void GLPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
+void GLWalkthroughPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
 {
+	/*
 	if(action == GLFW_PRESS)
-	{
-		if (button == GLFW_MOUSE_BUTTON_LEFT)
-		{
-			updateMouse = true;
-		}
-		if (button == GLFW_MOUSE_BUTTON_RIGHT)
-		{
-			glfwSetCursorPos(OpenGLWrapper::window, config.width / 2.0f, config.height / 2.0f);
-		}
-	}
+	{ }
 	if(action == GLFW_RELEASE)
-	{
-		if (button == GLFW_MOUSE_BUTTON_LEFT)
-		{
-			updateMouse = false;
-		}
-	}
+	{ }
+	*/
 }
 
-void GLPlayer::updateMousePos()
-{
-	glfwGetCursorPos(OpenGLWrapper::window, &xpos, &ypos);
-}
-
-///Inicializa as luzes da cena
-void GLPlayer::lights(void)
+void GLWalkthroughPlayer::lights(void)
 {
 	GLfloat matAmbient[] = { 0.6f, 0.6f, 0.6f, 1.0f };
 	GLfloat matDiffuse[] = { 0.8f, 0.4f, 0.4f, 1.0f };

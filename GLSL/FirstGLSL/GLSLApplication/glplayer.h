@@ -1,5 +1,4 @@
-#ifndef __GL_PLAYER__
-#define __GL_PLAYER__
+#pragma once
 
 #include "glconfig.h"
 #include "glcamera.h"
@@ -9,7 +8,7 @@ struct GLFWwindow;
 
 class GLPlayer
 {
-private:
+protected:
 	char* title;
 
 	float angle;
@@ -32,17 +31,15 @@ public:
 	GLPlayer(GLConfig config);
 	~GLPlayer(void);
 
-	void initializeGLPlayer(GLConfig config);
+	virtual void initializeGLPlayer(GLConfig config);
 
-	void step(void);
-	bool running(void);
+	virtual void step(void);
+	virtual bool running(void);
 
-	void lights(void);
+	virtual void lights(void);
 
-	void keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods);
-	void mouse(GLFWwindow* window, int button, int action, int mods);
+	virtual void keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods);
+	virtual void mouse(GLFWwindow* window, int button, int action, int mods);
 
-	void updateMousePos();
+	virtual void updateMousePos();
 };
-
-#endif

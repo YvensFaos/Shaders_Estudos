@@ -1,7 +1,7 @@
-#ifndef __GL_SCENARIO__
-#define __GL_SCENARIO__
+#pragma once
 
 #include "glconfig.h"
+#include "glmesh3d.h"
 
 class GLScenario
 {
@@ -9,6 +9,7 @@ public:
 	char* name;
 	int identifier;
 
+	GLMeshHandler* meshHandler;
 private:
 	GLConfig* config;
 public:
@@ -24,5 +25,3 @@ private:
 	static int getIdentifierByName(char* name);
 	static void getNameByIdentifier(int identifier, char* dest);
 };
-
-#endif

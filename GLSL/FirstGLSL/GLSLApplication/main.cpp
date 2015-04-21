@@ -8,6 +8,10 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
+//#define mia
+//#define desktop
+#define notebook
+
 
 GLPlayer* player;
   
@@ -27,9 +31,24 @@ int main()
 	config.width  = 800;
 	config.height = 600;
 	config.title  = "Teste";
-	config.mode = FREE_MODE;
 
-	player = new GLPlayer(config);
+#ifdef mia
+	//TODO ajustar
+	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+#endif
+#ifdef desktop
+	config.objectPath = "E:/Repositorios/Shaders_Estudos/Models/";
+#endif
+#ifdef notebook
+	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+#endif
+
+	config.objectName = "saw.obj";
+	//Se eu setar o nome, não preciso do número, mas não tem problema
+	config.scenarioNumber = 10;
+
+	player = config.getGLPlayer(FREE_MODE);
+
 	OpenGLWrapper::player = *player;
 	OpenGLWrapper::initialize(callBack, true, 4);
 	OpenGLWrapper::running_callback(running);

@@ -1,4 +1,4 @@
-#include "glplayer.h"
+#include "glfreeplayer.h"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -17,20 +17,21 @@
 
 #include <stdio.h>
 
-GLPlayer::GLPlayer()
+GLFreePlayer::GLFreePlayer(void)
 { }
 
-GLPlayer::~GLPlayer()
+GLFreePlayer::~GLFreePlayer(void)
 { }
 
-GLPlayer::GLPlayer(GLConfig config)
+GLFreePlayer::GLFreePlayer(GLConfig config)
 {
 	initializeGLPlayer(config);
 }
 
-void GLPlayer::initializeGLPlayer(GLConfig config)
+void GLFreePlayer::initializeGLPlayer(GLConfig config)
 {
 	this->config = config;
+	this->printCounter = 0;
 
 	angle = 0.0f;
 	isRunning = true;
@@ -47,9 +48,11 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 	meshHandler = new GLMeshHandler(config.objectName, path);
 
 	title = new char[256];
+	modeTitle = new char[256];
+	sprintf(modeTitle, "FreeMode - model:%s - ", config.objectName);
 }
 
-void GLPlayer::step(void)
+void GLFreePlayer::step(void)
 {
 	double firstTime = glfwGetTime();
 	
@@ -91,16 +94,17 @@ void GLPlayer::step(void)
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s - fps[%.2f]", config.title, (float) (1 / deltaTime));
+	printf("%s\n", modeTitle);
+	sprintf(title, "%s%s - fps[%.2f]", modeTitle, config.title, (float) (1 / deltaTime));
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 }
 
-bool GLPlayer::running(void)
+bool GLFreePlayer::running(void)
 {
 	return isRunning;
 }
 
-void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
+void GLFreePlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if(action == GLFW_PRESS || action == GLFW_REPEAT)
 	{
@@ -110,26 +114,23 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 
-		if(config.mode == FREE_MODE)
-		{
-			if (key == GLFW_KEY_Z){
-				camera->position += camera->up * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_X){
-				camera->position -= camera->up * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_W){
-				camera->position += camera->direction * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_S){
-				camera->position -= camera->direction * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_A){
-				camera->position -= camera->right * deltaTime * camera->speed;
-			}
-			if (key == GLFW_KEY_D){
-				camera->position += camera->right * deltaTime * camera->speed;
-			}
+		if (key == GLFW_KEY_Z){
+			camera->position += camera->up * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_X){
+			camera->position -= camera->up * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_W){
+			camera->position += camera->direction * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_S){
+			camera->position -= camera->direction * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_A){
+			camera->position -= camera->right * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_D){
+			camera->position += camera->right * deltaTime * camera->speed;
 		}
 
 		//Depuração
@@ -150,13 +151,13 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 
 			EDPrinter printer = EDPrinter();
 			char filename[256];
-			sprintf(filename, "%sRandomPrint-%s[%f]-x.bmp", config.objectPath, config.objectName, deltaTime);
+			sprintf(filename, "%sFreePrint-%s[%d]-x.bmp", config.objectPath, config.objectName, printCounter++);
 			printer.printScreen(&config, filename);
 		}
 	}
 }
 
-void GLPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
+void GLFreePlayer::mouse(GLFWwindow* window, int button, int action, int mods)
 {
 	if(action == GLFW_PRESS)
 	{
@@ -178,13 +179,12 @@ void GLPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
 	}
 }
 
-void GLPlayer::updateMousePos()
+void GLFreePlayer::updateMousePos()
 {
 	glfwGetCursorPos(OpenGLWrapper::window, &xpos, &ypos);
 }
 
-///Inicializa as luzes da cena
-void GLPlayer::lights(void)
+void GLFreePlayer::lights(void)
 {
 	GLfloat matAmbient[] = { 0.6f, 0.6f, 0.6f, 1.0f };
 	GLfloat matDiffuse[] = { 0.8f, 0.4f, 0.4f, 1.0f };

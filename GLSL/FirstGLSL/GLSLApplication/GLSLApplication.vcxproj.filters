@@ -19,6 +19,9 @@
     <Filter Include="Helpers">
       <UniqueIdentifier>{1bd46b34-7d61-43c6-a49e-c7b8ce7fc955}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Players">
+      <UniqueIdentifier>{6cd8e8da-6c65-4a38-9e43-3a5f51ec81c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="openGLWrapper.cpp">
@@ -26,9 +29,6 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="glplayer.cpp">
-      <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="glconfig.cpp">
       <Filter>Resource Files</Filter>
@@ -51,13 +51,19 @@
     <ClCompile Include="glscenario.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="glfreeplayer.cpp">
+      <Filter>Players</Filter>
+    </ClCompile>
+    <ClCompile Include="glplayer.cpp">
+      <Filter>Players</Filter>
+    </ClCompile>
+    <ClCompile Include="glwalkthroughplayer.cpp">
+      <Filter>Players</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glplayer.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="glconfig.h">
       <Filter>Header Files</Filter>
@@ -85,6 +91,15 @@
     </ClInclude>
     <ClInclude Include="glscenario.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glfreeplayer.h">
+      <Filter>Players</Filter>
+    </ClInclude>
+    <ClInclude Include="glplayer.h">
+      <Filter>Players</Filter>
+    </ClInclude>
+    <ClInclude Include="glwalkthroughplayer.h">
+      <Filter>Players</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
