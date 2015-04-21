@@ -106,7 +106,7 @@ void GLCameraHandler::readPathFile(void)
 
 		float fov = reader.readLnFloat();
 
-		steps.push_back(GLCameraStep(glm::vec3(posx,posy,posz), glm::vec3(lookx,looky,lookz), glm::vec3(upx,upy,upz), fov));
+		steps.push_back(GLCameraStep(glm::vec3(posx,posy,posz), glm::vec3(upx,upy,upz), glm::vec3(lookx,looky,lookz), fov));
 	}
 }
 
@@ -165,6 +165,7 @@ void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float wi
 
 void GLCamera::calculateMatrix(GLCameraStep* step, float deltaTime, float width, float height)
 {
+	this->position = step->position;
 	direction = step->lookat - step->position;
 	direction = glm::normalize(direction);
 	up = step->up;

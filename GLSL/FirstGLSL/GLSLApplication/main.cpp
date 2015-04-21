@@ -54,8 +54,11 @@ int main()
 	config.pathfileName = "saw";
 	config.repeatable = true;
 
-	player = config.getGLPlayer(FREE_MODE);
-	player = config.getGLPlayer(WALKTHROUGH_MODE);
+	PLAYER_MODE mode;
+	mode = FREE_MODE;
+	mode = WALKTHROUGH_MODE;
+
+	player = config.getGLPlayer(mode);
 
 	OpenGLWrapper::player = *player;
 	OpenGLWrapper::initialize(callBack, true, 4);
