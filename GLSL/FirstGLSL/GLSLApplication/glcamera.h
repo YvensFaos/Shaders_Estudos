@@ -86,8 +86,11 @@ public:
 
 	void zoom(float value);
 
+	void setValues(GLCameraStep* step);
+
 	void calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height);
-	void calculateMatrix(GLCameraStep* step,     float deltaTime, float width, float height);
+	void calculateMatrix(GLCameraStep* step, float xpos, float ypos, float deltaTime, float width, float height);
+	void calculateMatrix(GLCameraStep* step, float deltaTime, float width, float height);
 
 	void print();
 };

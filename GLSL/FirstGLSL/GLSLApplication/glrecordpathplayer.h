@@ -30,6 +30,8 @@ public:
 
 	void keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void mouse(GLFWwindow* window, int button, int action, int mods);
+
+	void updateMousePos();
 private:
 	void record();
 	bool isRecording();

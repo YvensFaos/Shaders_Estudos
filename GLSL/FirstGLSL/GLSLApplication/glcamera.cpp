@@ -216,6 +216,23 @@ void GLCamera::zoom(float value)
 	//printf("FOV atual: [%f] (zoom de %f)\n", fov, value);
 }
 
+void GLCamera::setValues(GLCameraStep* step)
+{
+	position.x = step->position.x;
+	position.y = step->position.y;
+	position.z = step->position.z;
+
+	direction.x = step->direction.x;
+	direction.y = step->direction.y;
+	direction.z = step->direction.z;
+
+	up.x = step->up.x;
+	up.y = step->up.y;
+	up.z = step->up.z;
+
+	right = glm::cross(up, direction);
+}
+
 void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height)
 {
 	horizontalAngle += mouseSpeed * deltaTime * float(width/2 - xpos );
@@ -238,6 +255,28 @@ void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float wi
 	projectionMatrix = glm::perspective(fov, width/ (float)height, 0.1f, 500.0f);
 	viewMatrix = glm::lookAt(position, position + direction, up);
 }
+
+void GLCamera::calculateMatrix(GLCameraStep* step, float xpos, float ypos, float deltaTime, float width, float height)
+{
+	this->position = step->position;
+	this->direction = glm::vec3(
+		cos(verticalAngle) * sin(horizontalAngle),
+		sin(verticalAngle),
+		cos(verticalAngle) * cos(horizontalAngle)
+	);
+
+	this->right = glm::vec3(
+		sin(horizontalAngle - 3.14f/2.0f),
+		0,
+		cos(horizontalAngle - 3.14f/2.0f)
+	);
+
+	this->up = glm::cross(right, direction);
+
+	projectionMatrix = glm::perspective(step->fov, width/ (float)height, 0.1f, 500.0f);
+	viewMatrix = glm::lookAt(position, position + direction, up);
+}
+
 
 void GLCamera::calculateMatrix(GLCameraStep* step, float deltaTime, float width, float height)
 {

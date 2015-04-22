@@ -38,6 +38,9 @@ void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 	isRunning = true;
 	updateMouse = false;
 
+	xpos = config.width / 2.0f;
+	ypos = config.height / 2.0f;
+
 	deltaTime = 1.0f/60.0f;
 	lastTime = 0;
 
@@ -58,7 +61,7 @@ void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 	cameraHandler = &scenario->cameraHandler;
 
 	actualStep = GLScenario::defaultStartPosition(scenario->identifier);
-
+	camera->setValues(actualStep);
 	camera->calculateMatrix(actualStep, 0, config.width, config.height);
 	camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
 
@@ -73,7 +76,14 @@ void GLRecordPathPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
 
-	camera->calculateMatrix(actualStep, deltaTime, config.width, config.height);
+	if(glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+	{
+		updateMousePos();
+	}
+
+	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
+	xpos = config.width / 2.0f;
+	ypos = config.height / 2.0f;
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
@@ -85,7 +95,7 @@ void GLRecordPathPlayer::step(void)
 	glUniform4f(loc, 0.75f, 0.64f, 0.04f, 1.0f);
 
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
-	glUniform3f(pos, actualStep->direction.x, actualStep->direction.y, actualStep->direction.z);
+	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -126,42 +136,34 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		//Controle da Câmera
 
 		if (key == GLFW_KEY_Z){
-			actualStep->position += actualStep->up * deltaTime * camera->speed;
+			camera->position += camera->up * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_X){
-			actualStep->position -= actualStep->up * deltaTime * camera->speed;
+			camera->position -= camera->up * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_W){
-			actualStep->position += actualStep->direction * deltaTime * camera->speed;
+			camera->position += camera->direction * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_S){
-			actualStep->position -= actualStep->direction * deltaTime * camera->speed;
+			camera->position -= camera->direction * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_A){
-			actualStep->position += actualStep->right * deltaTime * camera->speed;
+			camera->position -= camera->right * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_D){
-			actualStep->position -= actualStep->right * deltaTime * camera->speed;
-		}
-		if (key == GLFW_KEY_Q){
-			actualStep->rotate(actualStep->up, 5.0f);
-			actualStep->right = glm::cross(actualStep->up, actualStep->direction);
-		}
-		if (key == GLFW_KEY_E){
-			actualStep->rotate(actualStep->up, -5.0f);
-			actualStep->right = glm::cross(actualStep->up, actualStep->direction);
+			camera->position += camera->right * deltaTime * camera->speed;
 		}
 
 		//Controle de Zoom
 		if(key == GLFW_KEY_1)
 		{
 			//Zoom IN
-			actualStep->zoom(-0.005f);
+			camera->zoom(-0.005f);
 		}
 		if(key == GLFW_KEY_2)
 		{
 			//Zoom OUT
-			actualStep->zoom(+0.005f);
+			camera->zoom(+0.005f);
 		}
 
 		if(key == GLFW_KEY_T)
@@ -174,7 +176,7 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		if(key == GLFW_KEY_4)
 		{
 			//TODO print da câmera e do actualstep aqui!
-			actualStep->print();
+			camera->print();
 		}
 		if(key == GLFW_KEY_5)
 		{
@@ -198,7 +200,27 @@ bool GLRecordPathPlayer::isRecording()
 }
 
 void GLRecordPathPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
-{ }
+{ 
+	if(action == GLFW_PRESS)
+	{
+		if (button == GLFW_MOUSE_BUTTON_LEFT)
+		{
+			updateMouse = true;
+		}
+	}
+	if(action == GLFW_RELEASE)
+	{
+		if (button == GLFW_MOUSE_BUTTON_LEFT)
+		{
+			updateMouse = false;
+		}
+	}
+}
+
+void GLRecordPathPlayer::updateMousePos()
+{
+	glfwGetCursorPos(OpenGLWrapper::window, &xpos, &ypos);
+}
 
 void GLRecordPathPlayer::lights(void)
 {
