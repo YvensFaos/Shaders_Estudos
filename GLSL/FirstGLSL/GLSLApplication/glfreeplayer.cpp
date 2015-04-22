@@ -93,7 +93,6 @@ void GLFreePlayer::step(void)
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	printf("%s\n", modeTitle);
 	sprintf(title, "%s%s - fps[%.2f]", modeTitle, config.title, (float) (1 / deltaTime));
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 }
@@ -143,6 +142,11 @@ void GLFreePlayer::keyBoard(GLFWwindow* window, int key, int scancode, int actio
 		{
 			//Zoom OUT
 			camera->zoom(+0.005f);
+		}
+		if(key == GLFW_KEY_4)
+		{
+			//Zoom OUT
+			camera->print();
 		}
 		if(key == GLFW_KEY_5)
 		{

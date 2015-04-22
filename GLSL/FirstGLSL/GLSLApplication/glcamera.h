@@ -9,19 +9,23 @@ class GLCameraStep
 {
 public:
 	glm::vec3 position;
+	glm::vec3 direction;
+	glm::vec3 right;
 	glm::vec3 up;
-	glm::vec3 lookat;
+	//glm::vec3 lookat;
 
 	float fov;
 public:
 	GLCameraStep(void);
-	GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov);
+	GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 direction, float fov);
 	~GLCameraStep(void);
 
 	void zoom(float value);
 	void rotate(glm::vec3 around, float angle);
+
+	void print(void);
 private:
-	void initialize(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov);
+	void initialize(glm::vec3 position, glm::vec3 up, glm::vec3 direction, float fov);
 };
 
 class GLCameraHandler
@@ -84,4 +88,6 @@ public:
 
 	void calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height);
 	void calculateMatrix(GLCameraStep* step,     float deltaTime, float width, float height);
+
+	void print();
 };

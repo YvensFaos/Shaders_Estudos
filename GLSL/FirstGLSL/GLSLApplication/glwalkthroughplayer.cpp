@@ -90,7 +90,7 @@ void GLWalkthroughPlayer::step(void)
 	glUniform4f(loc, 0.75f, 0.64f, 0.04f, 1.0f);
 
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
-	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
+	glUniform3f(pos, step->direction.x, step->direction.y, step->direction.z);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();

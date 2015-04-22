@@ -2,6 +2,8 @@
 
 #include "glm\glm.hpp"
 
+#define VEC3_PRINT(v) v.x,v.y,v.z
+
 bool operator==(const glm::vec3 &vecA, const glm::vec3 &vecB) 
 { 
    const double epsilion = 0.0001;  // choose something apprpriate.

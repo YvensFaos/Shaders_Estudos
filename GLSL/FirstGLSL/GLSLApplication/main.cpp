@@ -9,8 +9,8 @@
 #include <stdlib.h>  
 
 //#define mia
-#define desktop
-//#define notebook
+//#define desktop
+#define notebook
 
 GLPlayer* player;
 
@@ -36,11 +36,11 @@ int main()
 	config.pathfilePath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 #endif
 
-	config.objectName = "ravine.obj";
+	config.objectName = "coaltown.obj";
 	//Se eu setar o nome, não preciso do número, mas não tem problema
-	config.scenarioNumber = 18;
+	config.scenarioNumber = 17;
 
-	config.pathfileName = "ravine";
+	config.pathfileName = "coaltown";
 	config.repeatable = true;
 
 	//Seta um valor inicial para o identifier; Caso seja -1, o código
@@ -49,8 +49,8 @@ int main()
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
-	mode = WALKTHROUGH_MODE;
 	mode = RECORD_PATH;
+	mode = WALKTHROUGH_MODE;
 
 	player = config.getGLPlayer(mode);
 

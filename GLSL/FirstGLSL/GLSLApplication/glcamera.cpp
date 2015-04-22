@@ -15,19 +15,21 @@ GLCameraStep::GLCameraStep(void)
 	initialize(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 45.0f);
 }
 
-GLCameraStep::GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov)
+GLCameraStep::GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 direction, float fov)
 {
-	initialize(position, up, lookat, fov);
+	initialize(position, up, direction, fov);
 }
 
 GLCameraStep::~GLCameraStep(void)
 { }
 
-void GLCameraStep::initialize(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov)
+void GLCameraStep::initialize(glm::vec3 position, glm::vec3 up, glm::vec3 direction, float fov)
 {
 	this->position = position;
 	this->up = up;
-	this->lookat = lookat;
+	this->direction = direction;
+
+	right = glm::cross(up, direction);
 
 	this->fov = fov;
 }
@@ -57,17 +59,28 @@ void GLCameraStep::rotate(glm::vec3 around, float angle)
 		cosa = cos(angle);
 		sina = sin(angle);
 
-		_xV = lookat.x;
-		_zV = lookat.z;
+		_xV = direction.x;
+		_zV = direction.z;
 			
-		lookat.x =  _xV*cosa + _zV*sina;
-		lookat.z = -_xV*sina + _zV*cosa;
+		direction.x =  _xV*cosa + _zV*sina;
+		direction.z = -_xV*sina + _zV*cosa;
 	}
 	if(around == ZAXIS)
 	{
 		//TODO
 	}
 	//TODO para um eixo arbitrário
+}
+
+void GLCameraStep::print(void)
+{
+	printf("GLCameraStep:\n");
+	printf("Position: %4.2f %4.2f %4.2f\n", VEC3_PRINT(position));
+	printf("Direction: %4.2f %4.2f %4.2f\n", VEC3_PRINT(direction));
+	printf("Up: %4.2f %4.2f %4.2f\n", VEC3_PRINT(up));
+	printf("Right: %4.2f %4.2f %4.2f\n", VEC3_PRINT(right));
+	//printf("Look At: %4.2f %4.2f %4.2f\n", VEC3_PRINT(lookat));
+	printf("FoV: %4.2f\n", fov);
 }
 
 //GLCameraHandler
@@ -77,8 +90,10 @@ GLCameraHandler::GLCameraHandler(void)
 
 GLCameraHandler::GLCameraHandler(char* pathfilePath, char* pathfileName, bool repeated)
 {
-	this->path = pathfileName;
-	this->filename = pathfilePath;
+	this->path = new char[256];
+	sprintf(this->path, "%s", pathfilePath);
+	this->filename = new char[256];
+	sprintf(this->filename, "%s", pathfileName);
 	this->repeated = repeated;
 
 	index = 0;
@@ -139,7 +154,7 @@ void GLCameraHandler::initializeRecorder(void)
 void GLCameraHandler::readPathFile(void)
 {
 	char file[256];
-	sprintf(file, "%s%s%s", path, filename, PATH_EXTENSION);
+	sprintf(file, "%s%s%s", this->path, this->filename, PATH_EXTENSION);
 	
 	EDFileReader reader = EDFileReader(file);
 	this->size = reader.readLnInt();
@@ -180,7 +195,7 @@ GLCamera::GLCamera(void)
 	verticalAngle = 0.0f;
 	fov = 45.0f;
 
-	speed = 10.0f;
+	speed = 100.0f;
 	mouseSpeed = 0.005;
 
 	direction = glm::vec3(0.0, 0.0, 1.0f);
@@ -227,11 +242,22 @@ void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float wi
 void GLCamera::calculateMatrix(GLCameraStep* step, float deltaTime, float width, float height)
 {
 	this->position = step->position;
-	direction = step->lookat - step->position;
-	direction = glm::normalize(direction);
-	up = step->up;
-	right = glm::cross(direction, up);
+	this->direction = step->direction;
+	this->up = step->up;
+	this->right = step->right;
 
 	projectionMatrix = glm::perspective(step->fov, width/ (float)height, 0.1f, 500.0f);
 	viewMatrix = glm::lookAt(position, position + direction, up);
+}
+
+void GLCamera::print(void)
+{
+	printf("GLCamera:\n");
+	printf("Position: %4.2f %4.2f %4.2f\n", VEC3_PRINT(position));
+	printf("Direction: %4.2f %4.2f %4.2f\n", VEC3_PRINT(direction));
+	printf("Up: %4.2f %4.2f %4.2f\n", VEC3_PRINT(up));
+	printf("Right: %4.2f %4.2f %4.2f\n", VEC3_PRINT(right));
+	printf("FoV: %4.2f\n", fov);
+	printf("Speed: %4.2f\n", speed);
+	printf("Mouse Speed: %4.2f\n", mouseSpeed);
 }

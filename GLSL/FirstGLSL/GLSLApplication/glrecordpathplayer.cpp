@@ -85,7 +85,7 @@ void GLRecordPathPlayer::step(void)
 	glUniform4f(loc, 0.75f, 0.64f, 0.04f, 1.0f);
 
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
-	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
+	glUniform3f(pos, actualStep->direction.x, actualStep->direction.y, actualStep->direction.z);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -126,32 +126,33 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		//Controle da Câmera
 
 		if (key == GLFW_KEY_Z){
-			actualStep->position += camera->up * deltaTime * camera->speed;
+			actualStep->position += actualStep->up * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_X){
-			actualStep->position -= camera->up * deltaTime * camera->speed;
+			actualStep->position -= actualStep->up * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_W){
-			actualStep->position += camera->direction * deltaTime * camera->speed;
+			actualStep->position += actualStep->direction * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_S){
-			actualStep->position -= camera->direction * deltaTime * camera->speed;
+			actualStep->position -= actualStep->direction * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_A){
-			actualStep->position -= camera->right * deltaTime * camera->speed;
+			actualStep->position += actualStep->right * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_D){
-			actualStep->position += camera->right * deltaTime * camera->speed;
+			actualStep->position -= actualStep->right * deltaTime * camera->speed;
 		}
 		if (key == GLFW_KEY_Q){
 			actualStep->rotate(actualStep->up, 5.0f);
+			actualStep->right = glm::cross(actualStep->up, actualStep->direction);
 		}
 		if (key == GLFW_KEY_E){
 			actualStep->rotate(actualStep->up, -5.0f);
+			actualStep->right = glm::cross(actualStep->up, actualStep->direction);
 		}
 
 		//Controle de Zoom
-
 		if(key == GLFW_KEY_1)
 		{
 			//Zoom IN
@@ -163,7 +164,6 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 			actualStep->zoom(+0.005f);
 		}
 
-
 		if(key == GLFW_KEY_T)
 		{
 			//Liga e desliga a gravação
@@ -171,9 +171,10 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		}
 
 		//Depuração
-		if(key == GLFW_KEY_5)
+		if(key == GLFW_KEY_4)
 		{
 			//TODO print da câmera e do actualstep aqui!
+			actualStep->print();
 		}
 		if(key == GLFW_KEY_5)
 		{
