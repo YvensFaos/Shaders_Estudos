@@ -5,6 +5,7 @@
 #include "glplayer.h"
 #include "glfreeplayer.h"
 #include "glwalkthroughplayer.h"
+#include "glrecordpathplayer.h"
 
 #pragma endregion
 
@@ -18,6 +19,7 @@ GLConfig::GLConfig()
 	title = "Blank Title";
 
 	scenarioNumber = -1;
+	pathIdentifier = -1;
 
 	repeatable = false;
 }
@@ -32,6 +34,7 @@ GLPlayer* GLConfig::getGLPlayer(PLAYER_MODE mode)
 	{
 		case FREE_MODE:        return new GLFreePlayer(*this);
 		case WALKTHROUGH_MODE: return new GLWalkthroughPlayer(*this);
+		case RECORD_PATH:	   return new GLRecordPathPlayer(*this);
 		default:               return new GLPlayer(*this);
 	}
 }

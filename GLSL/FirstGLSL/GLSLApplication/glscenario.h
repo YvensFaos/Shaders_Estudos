@@ -12,8 +12,10 @@ public:
 
 	GLMeshHandler meshHandler;
 	GLCameraHandler cameraHandler;
+
 private:
 	GLConfig* config;
+
 public:
 	GLScenario(void);
 	GLScenario(char* name, GLConfig* config);
@@ -21,6 +23,9 @@ public:
 
 	~GLScenario(void);
 
+public:
+	static GLCameraStep* defaultStartPosition(int identifier);
+	static float defaultCameraSpeed(int identifier);
 private:
 	void initialize(GLConfig* config);
 

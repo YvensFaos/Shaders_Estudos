@@ -35,7 +35,22 @@ void GLScenario::initialize(GLConfig* config)
 	this->config = config;
 
 	meshHandler = GLMeshHandler(config->objectName, config->objectPath);
-	cameraHandler = GLCameraHandler(config->pathfilePath, config->pathfileName, config->repeatable);
+
+	switch (config->mode)
+	{
+	case WALKTHROUGH_MODE:
+		//Aqui o path é lido para ser executado
+		cameraHandler = GLCameraHandler(config->pathfilePath, config->pathfileName, config->repeatable);
+		break;
+	case RECORD_PATH:
+		//Aqui o pathfilePath será o destino do novo path, o identificar é para não sobreescrever
+		cameraHandler = GLCameraHandler(config->pathfilePath, config->pathfileName, config->pathIdentifier, config->pathExtraMsg);
+
+		break;
+	default:
+		break;
+	}
+	
 }
 
 int  GLScenario::getIdentifierByName(char* name)
@@ -105,4 +120,41 @@ void GLScenario::getNameByIdentifier(int identifier, char* dest)
 		case 18: dest = "goldrush"; break;
 		default: dest = ""; break;
 	}
+}
+
+GLCameraStep* GLScenario::defaultStartPosition(int identifier)
+{
+	switch (identifier)
+	{
+		case 10: 
+			return new GLCameraStep(glm::vec3(287.0f,11.0f,17.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 13:
+			return new GLCameraStep(glm::vec3(23.9f,-0.5f,-57.5f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 14: 
+			return new GLCameraStep(glm::vec3(-38.9f,3.2f,137.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 15: 
+			return new GLCameraStep(glm::vec3(-372.0f,3.6f,35.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 16: 
+			return new GLCameraStep(glm::vec3(7.3f,-8.2f,4.3f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 17: 
+			return new GLCameraStep(glm::vec3(-24.0f,20.0f,92.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 18: 
+			return new GLCameraStep(glm::vec3(-42.0f,9.0f,-82.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		default: 
+			return new GLCameraStep(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+	}
+}
+
+float GLScenario::defaultCameraSpeed(int identifier)
+{
+	//Por enquanto, tá default 50 para qualquer cenário
+	return 500.0f;
 }

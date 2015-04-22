@@ -87,6 +87,7 @@
     <ClCompile Include="glfreeplayer.cpp" />
     <ClCompile Include="glmesh3d.cpp" />
     <ClCompile Include="glplayer.cpp" />
+    <ClCompile Include="glrecordpathplayer.cpp" />
     <ClCompile Include="glscenario.cpp" />
     <ClCompile Include="glshaderloader.cpp" />
     <ClCompile Include="glwalkthroughplayer.cpp" />
@@ -100,9 +101,11 @@
     <ClInclude Include="glconfig.h" />
     <ClInclude Include="glenums.h" />
     <ClInclude Include="glfreeplayer.h" />
+    <ClInclude Include="glmathhelper.h" />
     <ClInclude Include="glmesh3d.h" />
     <ClInclude Include="glplayer.h" />
     <ClInclude Include="glprinthelper.h" />
+    <ClInclude Include="glrecordpathplayer.h" />
     <ClInclude Include="glscenario.h" />
     <ClInclude Include="glshaderloader.h" />
     <ClInclude Include="glwalkthroughplayer.h" />

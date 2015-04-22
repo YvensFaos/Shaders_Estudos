@@ -5,6 +5,8 @@
 #include <stdio.h>
 
 #include "edfile.h"
+#include "glenums.h"
+#include "glmathhelper.h"
 
 //GLCameraStep
 
@@ -30,18 +32,73 @@ void GLCameraStep::initialize(glm::vec3 position, glm::vec3 up, glm::vec3 lookat
 	this->fov = fov;
 }
 
+void GLCameraStep::zoom(float value)
+{
+	fov += value;
+	fov = (fov <= 0)? value : fov;
+	fov = (fov > 180)? 180.0f - value : fov;
+}
+
+void GLCameraStep::rotate(glm::vec3 around, float angle)
+{
+	if(around == XAXIS)
+	{
+		//TODO
+	}
+	if(around == YAXIS)
+	{
+		float _xV = 0.f;
+		float _zV = 0.f;
+		float cosa = 0.f;
+		float sina = 0.f;
+
+		angle = angle*PI180;
+
+		cosa = cos(angle);
+		sina = sin(angle);
+
+		_xV = lookat.x;
+		_zV = lookat.z;
+			
+		lookat.x =  _xV*cosa + _zV*sina;
+		lookat.z = -_xV*sina + _zV*cosa;
+	}
+	if(around == ZAXIS)
+	{
+		//TODO
+	}
+	//TODO para um eixo arbitrário
+}
+
 //GLCameraHandler
 
 GLCameraHandler::GLCameraHandler(void)
 { }
 
-GLCameraHandler::GLCameraHandler(char* path, char* filename, bool repeated)
+GLCameraHandler::GLCameraHandler(char* pathfilePath, char* pathfileName, bool repeated)
 {
-	this->path = path;
-	this->filename = filename;
+	this->path = pathfileName;
+	this->filename = pathfilePath;
 	this->repeated = repeated;
 
-	initialize();
+	index = 0;
+	finished = false;
+
+	readPathFile();
+}
+
+GLCameraHandler::GLCameraHandler(char* pathfilePath, char* pathfileName, int pathIdentifier, char* pathExtraMsg)
+{
+	this->path = pathfilePath;
+	this->filename = pathfileName;
+	this->repeated = repeated;
+	this->pathIdentifier = pathIdentifier;
+	this->pathExtraMsg = pathExtraMsg;
+
+	index = 0;
+	finished = false;
+
+	initializeRecorder();
 }
 
 GLCameraHandler::~GLCameraHandler(void)
@@ -74,12 +131,9 @@ GLCameraStep* GLCameraHandler::getStep(int index)
 	return &steps[index];
 }
 
-void GLCameraHandler::initialize(void)
+void GLCameraHandler::initializeRecorder(void)
 {
-	index = 0;
-	finished = false;
-
-	readPathFile();
+	//TODO!
 }
 
 void GLCameraHandler::readPathFile(void)
@@ -144,7 +198,7 @@ void GLCamera::zoom(float value)
 	fov = (fov <= 0)? value : fov;
 	fov = (fov > 180)? 180.0f - value : fov;
 
-	printf("FOV atual: [%f] (zoom de %f)\n", fov, value);
+	//printf("FOV atual: [%f] (zoom de %f)\n", fov, value);
 }
 
 void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height)

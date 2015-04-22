@@ -26,6 +26,10 @@ public:
 	char* pathfilePath;
 	//Nome do arquivo de path
 	char* pathfileName;
+	//Identificador único de path para a gravação de novos paths
+	int pathIdentifier;
+	//Mensagem extra para o path, caso seja necessário (Para o nome do arquivo)
+	char* pathExtraMsg;
 
 public:
 	GLConfig(void);

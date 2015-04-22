@@ -36,16 +36,21 @@ int main()
 	config.pathfilePath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 #endif
 
-	config.objectName = "goldrush.obj";
+	config.objectName = "ravine.obj";
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 18;
 
-	config.pathfileName = "goldrush";
+	config.pathfileName = "ravine";
 	config.repeatable = true;
+
+	//Seta um valor inicial para o identifier; Caso seja -1, o código
+	//Inicializa com 0 e começa a contagem a partir daí
+	config.pathIdentifier = 1;
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
 	mode = WALKTHROUGH_MODE;
+	mode = RECORD_PATH;
 
 	player = config.getGLPlayer(mode);
 

@@ -18,6 +18,8 @@ public:
 	GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov);
 	~GLCameraStep(void);
 
+	void zoom(float value);
+	void rotate(glm::vec3 around, float angle);
 private:
 	void initialize(glm::vec3 position, glm::vec3 up, glm::vec3 lookat, float fov);
 };
@@ -34,10 +36,14 @@ private:
 	int index;
 	int size;
 
+	int pathIdentifier;
+	char* pathExtraMsg;
+
 	std::vector<GLCameraStep> steps;
 public:
 	GLCameraHandler(void);
-	GLCameraHandler(char* path, char* filename, bool repeated);
+	GLCameraHandler(char* pathfilePath, char* pathfileName, bool repeated);
+	GLCameraHandler(char* pathfilePath, char* pathfileName, int pathIdentifier, char* pathExtraMsg);
 	~GLCameraHandler(void);
 
 	GLCameraStep* nextStep();
@@ -46,9 +52,9 @@ public:
 
 	int getIndex();
 private:
-	void initialize(void);
-
 	void readPathFile(void);
+	void recordPathFile(void);
+	void initializeRecorder(void);
 };
 
 class GLCamera

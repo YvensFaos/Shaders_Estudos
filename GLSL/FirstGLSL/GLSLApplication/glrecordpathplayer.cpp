@@ -1,4 +1,4 @@
-#include "glwalkthroughplayer.h"
+#include "glrecordpathplayer.h"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -17,26 +17,26 @@
 
 #include <stdio.h>
 
-GLWalkthroughPlayer::GLWalkthroughPlayer(void)
+GLRecordPathPlayer::GLRecordPathPlayer(void)
 { }
 
-GLWalkthroughPlayer::~GLWalkthroughPlayer(void)
+GLRecordPathPlayer::~GLRecordPathPlayer(void)
 { }
 
-GLWalkthroughPlayer::GLWalkthroughPlayer(GLConfig config)
+GLRecordPathPlayer::GLRecordPathPlayer(GLConfig config)
 {
 	initializeGLPlayer(config);
 }
 
-void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
+void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 {
 	this->config = config;
 	this->printCounter = 0;
 
-	angle = 0.0f;
+	recording = false;
+
 	isRunning = true;
 	updateMouse = false;
-	paused = false;
 
 	deltaTime = 1.0f/60.0f;
 	lastTime = 0;
@@ -56,29 +56,24 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 
 	camera = new GLCamera();
 	cameraHandler = &scenario->cameraHandler;
-	camera->calculateMatrix(cameraHandler->actualStep(), 0, config.width, config.height);
+
+	actualStep = GLScenario::defaultStartPosition(scenario->identifier);
+
+	camera->calculateMatrix(actualStep, 0, config.width, config.height);
+	camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
+
 	meshHandler = &scenario->meshHandler;
 
 	title = new char[256];
 	modeTitle = new char[256];
-	sprintf(modeTitle, "Walkthrough - Scenario:%s - ", scenario->name);
+	sprintf(modeTitle, "Recording Path [%s] - Scenario:%s - ", (recording) ? "on" : "off", scenario->name);
 }
 
-void GLWalkthroughPlayer::step(void)
+void GLRecordPathPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
-	
-	GLCameraStep* step;
-	if(isPaused())
-	{
-		step = cameraHandler->actualStep();
-	}
-	else
-	{
-		step = cameraHandler->nextStep();
-	}
 
-	camera->calculateMatrix(step, deltaTime, config.width, config.height);
+	camera->calculateMatrix(actualStep, deltaTime, config.width, config.height);
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
@@ -113,12 +108,12 @@ void GLWalkthroughPlayer::step(void)
 	}
 }
 
-bool GLWalkthroughPlayer::running(void)
+bool GLRecordPathPlayer::running(void)
 {
 	return isRunning;
 }
 
-void GLWalkthroughPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
+void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if(action == GLFW_PRESS || action == GLFW_REPEAT)
 	{
@@ -128,40 +123,83 @@ void GLWalkthroughPlayer::keyBoard(GLFWwindow* window, int key, int scancode, in
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 
-		//Depuração
+		//Controle da Câmera
 
-		if(key == GLFW_KEY_SPACE || key == GLFW_KEY_1)
-		{
-			//Pausa o Walkthrough
-			printf("PAUSE!");
-			pause();
+		if (key == GLFW_KEY_Z){
+			actualStep->position += camera->up * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_X){
+			actualStep->position -= camera->up * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_W){
+			actualStep->position += camera->direction * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_S){
+			actualStep->position -= camera->direction * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_A){
+			actualStep->position -= camera->right * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_D){
+			actualStep->position += camera->right * deltaTime * camera->speed;
+		}
+		if (key == GLFW_KEY_Q){
+			actualStep->rotate(actualStep->up, 5.0f);
+		}
+		if (key == GLFW_KEY_E){
+			actualStep->rotate(actualStep->up, -5.0f);
 		}
 
+		//Controle de Zoom
+
+		if(key == GLFW_KEY_1)
+		{
+			//Zoom IN
+			actualStep->zoom(-0.005f);
+		}
+		if(key == GLFW_KEY_2)
+		{
+			//Zoom OUT
+			actualStep->zoom(+0.005f);
+		}
+
+
+		if(key == GLFW_KEY_T)
+		{
+			//Liga e desliga a gravação
+			record();
+		}
+
+		//Depuração
+		if(key == GLFW_KEY_5)
+		{
+			//TODO print da câmera e do actualstep aqui!
+		}
 		if(key == GLFW_KEY_5)
 		{
 			//PrintScreen
 			EDPrinter printer = EDPrinter();
 			char filename[256];
-			sprintf(filename, "%sWalkPrint-%s[%d]-x.bmp", config.objectPath, config.objectName, printCounter++);
+			sprintf(filename, "%sRecordPrint-%s[%d]-x.bmp", config.objectPath, config.objectName, printCounter++);
 			printer.printScreen(&config, filename);
 		}
 	}
 }
 
-void GLWalkthroughPlayer::pause()
+void GLRecordPathPlayer::record()
 {
-	paused = !paused;
+	recording = !recording;
 }
 
-bool GLWalkthroughPlayer::isPaused()
+bool GLRecordPathPlayer::isRecording()
 {
-	return paused;
+	return recording;
 }
 
-void GLWalkthroughPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
+void GLRecordPathPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
 { }
 
-void GLWalkthroughPlayer::lights(void)
+void GLRecordPathPlayer::lights(void)
 {
 	GLfloat matAmbient[] = { 0.6f, 0.6f, 0.6f, 1.0f };
 	GLfloat matDiffuse[] = { 0.8f, 0.4f, 0.4f, 1.0f };
