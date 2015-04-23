@@ -4,6 +4,8 @@
 #include "edfile.h"
 #include "glconfig.h"
 
+#define LOG_EXTENSION ".txt"
+
 class EDLogger
 {
 private:

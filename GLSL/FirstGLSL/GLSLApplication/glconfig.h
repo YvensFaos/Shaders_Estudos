@@ -30,6 +30,14 @@ public:
 	int pathIdentifier;
 	//Mensagem extra para o path, caso seja necessário (Para o nome do arquivo)
 	char* pathExtraMsg;
+	//Path dos arquivos de log
+	char* logPath;
+	//Identificador único de log
+	int logIdentifier;
+	//Mensagem extra para o log, caso seja necessário (Para o nome do arquivo)
+	char* logExtraMsg;
+	//Se salvará o log de resultados (total). Apenas para modo Walkthrough
+	bool logResults;
 
 public:
 	GLConfig(void);

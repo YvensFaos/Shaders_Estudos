@@ -2,17 +2,22 @@
 
 #include "glplayer.h"
 #include "glscenario.h"
+#include "edlogger.h"
 
 class GLWalkthroughPlayer : public GLPlayer
 {
 private:
 	int printCounter;
 	char* modeTitle;
+	char* logLine;
 	
 	bool paused;
+	bool logged;
 
 	GLScenario* scenario;
 	GLCameraHandler* cameraHandler;
+
+	EDLogger* logger;
 public:
 	GLWalkthroughPlayer(void);
 	GLWalkthroughPlayer(GLConfig config);

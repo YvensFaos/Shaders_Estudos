@@ -86,14 +86,6 @@ void GLRecordPathPlayer::step(void)
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 
-	if(glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
-	{
-		if(recording)
-		{
-
-		}
-	}
-
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
 

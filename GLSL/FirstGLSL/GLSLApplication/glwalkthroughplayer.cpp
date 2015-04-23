@@ -38,6 +38,8 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	updateMouse = false;
 	paused = false;
 
+	logged = false;
+
 	deltaTime = 1.0f/60.0f;
 	lastTime = 0;
 
@@ -58,6 +60,10 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	cameraHandler = &scenario->cameraHandler;
 	camera->calculateMatrix(cameraHandler->actualStep(), 0, config.width, config.height);
 	meshHandler = &scenario->meshHandler;
+
+	char logName[512];
+	sprintf(logName, "%s%s[%d]-%s%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, LOG_EXTENSION);
+	logger = new EDLogger(logName);
 
 	title = new char[256];
 	modeTitle = new char[256];
@@ -107,9 +113,25 @@ void GLWalkthroughPlayer::step(void)
 	sprintf(title, "%s%s - fps[%.2f][%d]", modeTitle, config.title, (float) (1 / deltaTime), cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 
+	if(config.logResults && !logged)
+	{
+		delete logLine;
+		logLine = new char[64];
+		sprintf(logLine, "%f", deltaTime);
+		logger->logLine(logLine);
+	}
+
 	if(cameraHandler->finished && !cameraHandler->repeated)
 	{
-		isRunning = false;
+		if(config.logResults)
+		{
+			logger->closeLog();
+			logged = true;
+		}
+		if(!cameraHandler->repeated)
+		{
+			isRunning = false;
+		}
 	}
 }
 

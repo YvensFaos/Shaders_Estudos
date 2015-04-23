@@ -19,9 +19,11 @@ GLConfig::GLConfig()
 	title = "Blank Title";
 
 	scenarioNumber = -1;
-	pathIdentifier = -1;
+	pathIdentifier = 0;
+	logIdentifier  = 0;
 
 	repeatable = false;
+	logResults = false;
 }
 
 GLConfig::~GLConfig()
