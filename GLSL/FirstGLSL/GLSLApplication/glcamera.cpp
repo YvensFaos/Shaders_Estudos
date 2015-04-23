@@ -43,11 +43,11 @@ void GLCameraStep::zoom(float value)
 
 void GLCameraStep::rotate(glm::vec3 around, float angle)
 {
-	if(around == XAXIS)
+	if(VEC3_EQUALS(XAXIS, around))
 	{
 		//TODO
 	}
-	if(around == YAXIS)
+	if(VEC3_EQUALS(YAXIS, around))
 	{
 		float _xV = 0.f;
 		float _zV = 0.f;
@@ -65,7 +65,7 @@ void GLCameraStep::rotate(glm::vec3 around, float angle)
 		direction.x =  _xV*cosa + _zV*sina;
 		direction.z = -_xV*sina + _zV*cosa;
 	}
-	if(around == ZAXIS)
+	if(VEC3_EQUALS(ZAXIS, around))
 	{
 		//TODO
 	}

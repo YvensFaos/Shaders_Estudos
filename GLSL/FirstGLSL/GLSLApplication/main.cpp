@@ -49,8 +49,8 @@ int main()
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
-	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
+	mode = RECORD_PATH;
 
 	player = config.getGLPlayer(mode);
 

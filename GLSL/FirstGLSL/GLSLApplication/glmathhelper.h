@@ -3,18 +3,13 @@
 #include "glm\glm.hpp"
 
 #define VEC3_PRINT(v) v.x,v.y,v.z
+#define VEC4_PRINT(v) v.x,v.y,v.z,v.w
+
+#define VEC3_EQUALS(v,u)  (fabs(v[0] - u[0]) < 0.001f) && (fabs(v[1] - u[1]) < 0.001f) && (fabs(v[2] - u[2]) < 0.001f)
+#define VEC4_EQUALS(v,u)  (fabs(v[0] - u[0]) < 0.001f) && (fabs(v[1] - u[1]) < 0.001f) && (fabs(v[2] - u[2]) < 0.001f) && (fabs(v[3] - u[3]) < 0.001f)
 
 #define XAXIS glm::vec3(1.0f,0.0f,0.0f)
 #define YAXIS glm::vec3(0.0f,1.0f,0.0f)
 #define ZAXIS glm::vec3(0.0f,0.0f,1.0f)
 
 #define PI180 3.14159265f/180.0f
-
-bool operator==(const glm::vec3 &vecA, const glm::vec3 &vecB) 
-{ 
-   const double epsilion = 0.0001;  // choose something apprpriate.
-
-   return    fabs(vecA[0] -vecB[0]) < epsilion   
-          && fabs(vecA[1] -vecB[1]) < epsilion   
-          && fabs(vecA[2] -vecB[2]) < epsilion;
-} 

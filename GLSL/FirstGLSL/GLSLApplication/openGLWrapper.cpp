@@ -1,10 +1,16 @@
 #include "openGLWrapper.h"
 
 #include "glshaderloader.h"
+#include "glmathhelper.h"
 
 #include <stdio.h>
 
 //Public
+glm::vec4 OpenGLWrapper::DEFAULT_CLEAR_COLOR = glm::vec4(0.2f, 0.2f, 0.2f, 0.0f);
+glm::vec4 OpenGLWrapper::RECORDING_CLEAR_COLOR = glm::vec4(0.6f, 0.2f, 0.2f, 0.0f);
+
+glm::vec4 OpenGLWrapper::ACTUAL_CLEAR_COLOR = glm::vec4(VEC4_PRINT(OpenGLWrapper::DEFAULT_CLEAR_COLOR));
+
 GLuint OpenGLWrapper::programObject;
 GLuint OpenGLWrapper::normalLoc;
 GLuint OpenGLWrapper::positionLoc;
@@ -52,7 +58,7 @@ void OpenGLWrapper::initialize(bool antialiasing, int multisampling)
         return;  
     }  
   
-    glClearColor(0.2f, 0.2f, 0.2f, 0.0f);  
+	glClearColor(VEC4_PRINT(ACTUAL_CLEAR_COLOR));  
 
 	glfwSetErrorCallback(OpenGLWrapper::error_callback);
 	glfwInit();

@@ -9,6 +9,11 @@
 class OpenGLWrapper
 {
 public:
+	static glm::vec4 DEFAULT_CLEAR_COLOR;
+	static glm::vec4 RECORDING_CLEAR_COLOR;
+
+	static glm::vec4 ACTUAL_CLEAR_COLOR;
+
 	static GLuint programObject;
 	static GLuint normalLoc;
 	static GLuint positionLoc;

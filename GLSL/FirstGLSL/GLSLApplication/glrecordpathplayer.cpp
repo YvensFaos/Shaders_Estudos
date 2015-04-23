@@ -14,6 +14,7 @@
 
 #include "openGLWrapper.h"
 #include "edlogger.h"
+#include "glmathhelper.h"
 
 #include <stdio.h>
 
@@ -101,6 +102,7 @@ void GLRecordPathPlayer::step(void)
 	glLoadIdentity();
 	glViewport(0, 0, config.width, config.height);
 	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(VEC4_PRINT(OpenGLWrapper::ACTUAL_CLEAR_COLOR));
 	glUseProgram(OpenGLWrapper::programObject);
 
 	meshHandler->render();
@@ -192,6 +194,14 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 void GLRecordPathPlayer::record()
 {
 	recording = !recording;
+	if(recording)
+	{
+		OpenGLWrapper::ACTUAL_CLEAR_COLOR = glm::vec4(VEC4_PRINT(OpenGLWrapper::RECORDING_CLEAR_COLOR));
+	}
+	else
+	{
+		OpenGLWrapper::ACTUAL_CLEAR_COLOR = glm::vec4(VEC4_PRINT(OpenGLWrapper::DEFAULT_CLEAR_COLOR));
+	}
 }
 
 bool GLRecordPathPlayer::isRecording()

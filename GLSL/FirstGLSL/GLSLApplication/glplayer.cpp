@@ -82,6 +82,7 @@ void GLPlayer::step(void)
 	glLoadIdentity();
 	glViewport(0, 0, config.width, config.height);
 	glClear(GL_COLOR_BUFFER_BIT);
+
 	glUseProgram(OpenGLWrapper::programObject);
 
 	meshHandler->render();
