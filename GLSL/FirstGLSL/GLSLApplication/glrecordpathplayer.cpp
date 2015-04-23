@@ -86,6 +86,14 @@ void GLRecordPathPlayer::step(void)
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 
+	if(glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+	{
+		if(recording)
+		{
+
+		}
+	}
+
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
 
@@ -139,21 +147,45 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 
 		if (key == GLFW_KEY_Z){
 			camera->position += camera->up * deltaTime * camera->speed;
+			if(recording)
+			{
+				cameraHandler->addStepRecording(camera);
+			}
 		}
 		if (key == GLFW_KEY_X){
 			camera->position -= camera->up * deltaTime * camera->speed;
+			if(recording)
+			{
+				cameraHandler->addStepRecording(camera);
+			}
 		}
 		if (key == GLFW_KEY_W){
 			camera->position += camera->direction * deltaTime * camera->speed;
+			if(recording)
+			{
+				cameraHandler->addStepRecording(camera);
+			}
 		}
 		if (key == GLFW_KEY_S){
 			camera->position -= camera->direction * deltaTime * camera->speed;
+			if(recording)
+			{
+				cameraHandler->addStepRecording(camera);
+			}
 		}
 		if (key == GLFW_KEY_A){
 			camera->position -= camera->right * deltaTime * camera->speed;
+			if(recording)
+			{
+				cameraHandler->addStepRecording(camera);
+			}
 		}
 		if (key == GLFW_KEY_D){
 			camera->position += camera->right * deltaTime * camera->speed;
+			if(recording)
+			{
+				cameraHandler->addStepRecording(camera);
+			}
 		}
 
 		//Controle de Zoom
@@ -172,6 +204,16 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		{
 			//Liga e desliga a gravação
 			record();
+
+			if(recording)
+			{
+				//Grava passo inicial
+				cameraHandler->stardRecording(camera);
+			}
+			else
+			{
+				cameraHandler->stopRecording();
+			}
 		}
 
 		//Depuração

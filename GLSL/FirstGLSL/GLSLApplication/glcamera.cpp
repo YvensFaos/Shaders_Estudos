@@ -20,6 +20,11 @@ GLCameraStep::GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 direction
 	initialize(position, up, direction, fov);
 }
 
+GLCameraStep::GLCameraStep(GLCamera* camera)
+{
+	initialize(camera->position, camera->up, camera->direction, camera->fov);
+}
+
 GLCameraStep::~GLCameraStep(void)
 { }
 
@@ -79,7 +84,6 @@ void GLCameraStep::print(void)
 	printf("Direction: %4.2f %4.2f %4.2f\n", VEC3_PRINT(direction));
 	printf("Up: %4.2f %4.2f %4.2f\n", VEC3_PRINT(up));
 	printf("Right: %4.2f %4.2f %4.2f\n", VEC3_PRINT(right));
-	//printf("Look At: %4.2f %4.2f %4.2f\n", VEC3_PRINT(lookat));
 	printf("FoV: %4.2f\n", fov);
 }
 
@@ -112,8 +116,6 @@ GLCameraHandler::GLCameraHandler(char* pathfilePath, char* pathfileName, int pat
 
 	index = 0;
 	finished = false;
-
-	initializeRecorder();
 }
 
 GLCameraHandler::~GLCameraHandler(void)
@@ -144,11 +146,6 @@ GLCameraStep* GLCameraHandler::actualStep()
 GLCameraStep* GLCameraHandler::getStep(int index)
 {
 	return &steps[index];
-}
-
-void GLCameraHandler::initializeRecorder(void)
-{
-	//TODO!
 }
 
 void GLCameraHandler::readPathFile(void)
@@ -184,6 +181,52 @@ void GLCameraHandler::readPathFile(void)
 int GLCameraHandler::getIndex()
 {
 	return index;
+}
+
+void GLCameraHandler::stardRecording(GLCamera* firstStep)
+{
+	steps.clear();
+	steps.push_back(GLCameraStep(firstStep));
+	size = 1;
+}
+
+void GLCameraHandler::addStepRecording(GLCamera* step)
+{
+	steps.push_back(GLCameraStep(step));
+	size++;
+}
+
+void GLCameraHandler::stopRecording(void)
+{
+	//Gravar o path em um arquivo de path
+
+	char recordedFilename[512];
+	sprintf(recordedFilename, "%s%s-[%d][%s]%s", path, filename, pathIdentifier, pathExtraMsg, PATH_EXTENSION);
+
+	EDFileWriter writer = EDFileWriter(recordedFilename);
+	writer.writeLnInt(size);
+
+	for(int i = 0; i < size; i++)
+	{
+		GLCameraStep* step = &steps.at(i);
+		writer.writeLnFloat(step->position.x);
+		writer.writeLnFloat(step->position.y);
+		writer.writeLnFloat(step->position.z);
+
+		writer.writeLnFloat(step->direction.x);
+		writer.writeLnFloat(step->direction.y);
+		writer.writeLnFloat(step->direction.z);
+
+		writer.writeLnFloat(step->up.x);
+		writer.writeLnFloat(step->up.y);
+		writer.writeLnFloat(step->up.z);
+
+		writer.writeLnFloat(step->fov);
+	}
+
+	writer.close();
+
+	pathIdentifier++;
 }
 
 //GLCamera
@@ -255,28 +298,6 @@ void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float wi
 	projectionMatrix = glm::perspective(fov, width/ (float)height, 0.1f, 500.0f);
 	viewMatrix = glm::lookAt(position, position + direction, up);
 }
-
-void GLCamera::calculateMatrix(GLCameraStep* step, float xpos, float ypos, float deltaTime, float width, float height)
-{
-	this->position = step->position;
-	this->direction = glm::vec3(
-		cos(verticalAngle) * sin(horizontalAngle),
-		sin(verticalAngle),
-		cos(verticalAngle) * cos(horizontalAngle)
-	);
-
-	this->right = glm::vec3(
-		sin(horizontalAngle - 3.14f/2.0f),
-		0,
-		cos(horizontalAngle - 3.14f/2.0f)
-	);
-
-	this->up = glm::cross(right, direction);
-
-	projectionMatrix = glm::perspective(step->fov, width/ (float)height, 0.1f, 500.0f);
-	viewMatrix = glm::lookAt(position, position + direction, up);
-}
-
 
 void GLCamera::calculateMatrix(GLCameraStep* step, float deltaTime, float width, float height)
 {

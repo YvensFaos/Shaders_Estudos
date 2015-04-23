@@ -46,11 +46,13 @@ int main()
 	//Seta um valor inicial para o identifier; Caso seja -1, o código
 	//Inicializa com 0 e começa a contagem a partir daí
 	config.pathIdentifier = 1;
+	//Adiciona um texto adicional ao arquivo de path
+	config.pathExtraMsg = "test";
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
-	mode = WALKTHROUGH_MODE;
 	mode = RECORD_PATH;
+	mode = WALKTHROUGH_MODE;
 
 	player = config.getGLPlayer(mode);
 

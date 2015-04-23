@@ -5,6 +5,9 @@
 
 #define PATH_EXTENSION ".pathx"
 
+//Forward declaration
+class GLCamera;
+
 class GLCameraStep
 {
 public:
@@ -18,6 +21,7 @@ public:
 public:
 	GLCameraStep(void);
 	GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 direction, float fov);
+	GLCameraStep(GLCamera* camera);
 	~GLCameraStep(void);
 
 	void zoom(float value);
@@ -55,10 +59,13 @@ public:
 	GLCameraStep* getStep(int index);
 
 	int getIndex();
+
+	void stardRecording(GLCamera* firstStep);
+	void addStepRecording(GLCamera* step);
+	void stopRecording(void);
 private:
 	void readPathFile(void);
 	void recordPathFile(void);
-	void initializeRecorder(void);
 };
 
 class GLCamera
@@ -89,7 +96,6 @@ public:
 	void setValues(GLCameraStep* step);
 
 	void calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height);
-	void calculateMatrix(GLCameraStep* step, float xpos, float ypos, float deltaTime, float width, float height);
 	void calculateMatrix(GLCameraStep* step, float deltaTime, float width, float height);
 
 	void print();
