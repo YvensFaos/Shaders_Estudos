@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClCompile Include="edfile.cpp" />
     <ClCompile Include="edlogger.cpp" />
+    <ClCompile Include="glbasicede.cpp" />
     <ClCompile Include="glcamera.cpp" />
     <ClCompile Include="glconfig.cpp" />
     <ClCompile Include="glfreeplayer.cpp" />
@@ -97,6 +98,7 @@
   <ItemGroup>
     <ClInclude Include="edfile.h" />
     <ClInclude Include="edlogger.h" />
+    <ClInclude Include="glbasicede.h" />
     <ClInclude Include="glcamera.h" />
     <ClInclude Include="glconfig.h" />
     <ClInclude Include="glenums.h" />
