@@ -15,7 +15,6 @@ public:
 	glm::vec3 direction;
 	glm::vec3 right;
 	glm::vec3 up;
-	//glm::vec3 lookat;
 
 	float fov;
 public:
@@ -87,6 +86,8 @@ public:
 	float speed;
 	float mouseSpeed;
 
+	float near;
+	float far;
 public:
 	GLCamera(void);
 	~GLCamera(void);

@@ -85,7 +85,9 @@
     <ClCompile Include="glbasicede.cpp" />
     <ClCompile Include="glcamera.cpp" />
     <ClCompile Include="glconfig.cpp" />
+    <ClCompile Include="gledemakerplayer.cpp" />
     <ClCompile Include="glfreeplayer.cpp" />
+    <ClCompile Include="glmathhelper.cpp" />
     <ClCompile Include="glmesh3d.cpp" />
     <ClCompile Include="glplayer.cpp" />
     <ClCompile Include="glrecordpathplayer.cpp" />
@@ -101,6 +103,7 @@
     <ClInclude Include="glbasicede.h" />
     <ClInclude Include="glcamera.h" />
     <ClInclude Include="glconfig.h" />
+    <ClInclude Include="gledemakerplayer.h" />
     <ClInclude Include="glenums.h" />
     <ClInclude Include="glfreeplayer.h" />
     <ClInclude Include="glmathhelper.h" />

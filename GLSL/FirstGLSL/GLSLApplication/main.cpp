@@ -61,6 +61,7 @@ int main()
 	mode = FREE_MODE;
 	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
+	mode = EDE_MAKER;
 
 	player = config.getGLPlayer(mode);
 

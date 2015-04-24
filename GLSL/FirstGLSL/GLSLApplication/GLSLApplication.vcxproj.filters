@@ -69,6 +69,12 @@
     <ClCompile Include="glbasicede.cpp">
       <Filter>EDE</Filter>
     </ClCompile>
+    <ClCompile Include="glmathhelper.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gledemakerplayer.cpp">
+      <Filter>Players</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -118,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="glbasicede.h">
       <Filter>EDE</Filter>
+    </ClInclude>
+    <ClInclude Include="gledemakerplayer.h">
+      <Filter>Players</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

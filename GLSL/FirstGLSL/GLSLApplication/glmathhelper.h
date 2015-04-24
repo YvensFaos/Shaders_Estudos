@@ -2,6 +2,9 @@
 
 #include "glm\glm.hpp"
 
+//Forward
+class GLCamera;
+
 #define VEC3_PRINT(v) v.x,v.y,v.z
 #define VEC4_PRINT(v) v.x,v.y,v.z,v.w
 
@@ -66,5 +69,6 @@ public:
 public:
 	GLFrustum(void) {};
 	GLFrustum(glm::mat4* mvp);
+	GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera* camera);
 	~GLFrustum(void);
 };

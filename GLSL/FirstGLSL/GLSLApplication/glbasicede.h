@@ -26,4 +26,8 @@ public:
 	int getMemory(void);
 private:
 	virtual void calculateMemory(void) = 0;
+
+public:
+	//Instancia a EDE correspondente ao tipo especificado nas configurações
+	static GLBasicEDE* instantiate(GLConfig* config);
 };

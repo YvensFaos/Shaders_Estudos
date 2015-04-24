@@ -11,6 +11,7 @@ public:
 	int width;
 
 	PLAYER_MODE mode;
+	EDE_TYPE type;
 
 	char* title;
 

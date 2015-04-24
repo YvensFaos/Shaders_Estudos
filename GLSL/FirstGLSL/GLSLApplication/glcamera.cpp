@@ -244,6 +244,9 @@ GLCamera::GLCamera(void)
 	direction = glm::vec3(0.0, 0.0, 1.0f);
 	up = glm::vec3(0.0, 1.0, 0.0f);
 	right = glm::cross(direction, up);
+
+	near = 0.1f;
+	far = 500.0f;
 }
 
 GLCamera::~GLCamera(void)
@@ -295,7 +298,7 @@ void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float wi
 
 	up = glm::cross(right, direction);
 
-	projectionMatrix = glm::perspective(fov, width/ (float)height, 0.1f, 500.0f);
+	projectionMatrix = glm::perspective(fov, width/ (float)height, near, far);
 	viewMatrix = glm::lookAt(position, position + direction, up);
 }
 

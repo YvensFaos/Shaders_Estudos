@@ -6,6 +6,7 @@
 #include "glfreeplayer.h"
 #include "glwalkthroughplayer.h"
 #include "glrecordpathplayer.h"
+#include "gledemakerplayer.h"
 
 #pragma endregion
 
@@ -15,6 +16,7 @@ GLConfig::GLConfig()
 	width  = 480;
 
 	mode = FREE_MODE;
+	type = NONE;
 
 	title = "Blank Title";
 
@@ -37,6 +39,7 @@ GLPlayer* GLConfig::getGLPlayer(PLAYER_MODE mode)
 		case FREE_MODE:        return new GLFreePlayer(*this);
 		case WALKTHROUGH_MODE: return new GLWalkthroughPlayer(*this);
 		case RECORD_PATH:	   return new GLRecordPathPlayer(*this);
+		case EDE_MAKER:        return new GLEDEMakerPlayer(*this);
 		default:               return new GLPlayer(*this);
 	}
 }
