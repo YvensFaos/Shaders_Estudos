@@ -25,6 +25,9 @@
     <Filter Include="EDE">
       <UniqueIdentifier>{ea9ebf1e-ffac-4a2b-ba9b-3f7e529bdb24}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EDE\Raw EDE">
+      <UniqueIdentifier>{b1ddcf05-e0a3-4b90-b017-e98dc486a17e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="openGLWrapper.cpp">
@@ -74,6 +77,9 @@
     </ClCompile>
     <ClCompile Include="gledemakerplayer.cpp">
       <Filter>Players</Filter>
+    </ClCompile>
+    <ClCompile Include="gloctree.cpp">
+      <Filter>EDE\Raw EDE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="gledemakerplayer.h">
       <Filter>Players</Filter>
+    </ClInclude>
+    <ClInclude Include="gloctree.h">
+      <Filter>EDE\Raw EDE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

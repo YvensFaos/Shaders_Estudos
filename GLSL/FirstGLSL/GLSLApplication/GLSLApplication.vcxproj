@@ -89,6 +89,7 @@
     <ClCompile Include="glfreeplayer.cpp" />
     <ClCompile Include="glmathhelper.cpp" />
     <ClCompile Include="glmesh3d.cpp" />
+    <ClCompile Include="gloctree.cpp" />
     <ClCompile Include="glplayer.cpp" />
     <ClCompile Include="glrecordpathplayer.cpp" />
     <ClCompile Include="glscenario.cpp" />
@@ -108,6 +109,7 @@
     <ClInclude Include="glfreeplayer.h" />
     <ClInclude Include="glmathhelper.h" />
     <ClInclude Include="glmesh3d.h" />
+    <ClInclude Include="gloctree.h" />
     <ClInclude Include="glplayer.h" />
     <ClInclude Include="glprinthelper.h" />
     <ClInclude Include="glrecordpathplayer.h" />

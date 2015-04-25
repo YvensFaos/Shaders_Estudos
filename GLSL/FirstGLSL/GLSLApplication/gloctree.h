@@ -1,0 +1,27 @@
+#pragma once
+
+#include "glmesh3d.h"
+
+class GLOctreeNode
+{
+public:
+	glm::vec3 min;
+	glm::vec3 max;
+
+	GLOctreeNode* nodes;
+
+public:
+	GLOctreeNode(void);
+	GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth);
+	~GLOctreeNode(void);
+};
+
+class GLOctree
+{
+public:
+	GLOctreeNode root;
+
+public:
+	GLOctree(GLMeshHandler* handler, int depth);
+	~GLOctree(void);
+};

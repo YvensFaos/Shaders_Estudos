@@ -24,6 +24,10 @@ class GLMesh3D
 public:
 	GLuint index;
 
+	glm::vec3 max;
+	glm::vec3 min;
+	glm::vec3 center;
+
 	char* model3d;
 	char* path;
 
@@ -43,9 +47,9 @@ private:
 
 class GLMeshHandler
 {
-private:
-	int numMeshes;
 public:
+	int numMeshes;
+
 	static GLuint gl_index;
 
 	char* model3d;

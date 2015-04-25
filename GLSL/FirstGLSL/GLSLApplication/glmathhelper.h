@@ -15,6 +15,9 @@ class GLCamera;
 #define YAXIS glm::vec3(0.0f,1.0f,0.0f)
 #define ZAXIS glm::vec3(0.0f,0.0f,1.0f)
 
+#define MAX_FLOAT 2.0e10
+#define MIN_FLOAT 2.0e-10
+
 #define PI180 3.14159265f/180.0f
 
 #define FRUSTUM_FTL 0
