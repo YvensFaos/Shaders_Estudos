@@ -68,6 +68,8 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 
 	meshHandler = &scenario->meshHandler;
 	ede = GLBasicEDE::instantiate(&config);
+	printf("Carregar a EDE\n");
+	ede->calculateEDE(meshHandler, &config);
 
 	char logName[512];
 	sprintf(logName, "%s%s-making[%s]-%s", config.logPath, scenario->name, "-DEFAULT-", LOG_EXTENSION);

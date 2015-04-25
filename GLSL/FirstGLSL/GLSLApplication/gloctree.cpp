@@ -16,12 +16,17 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 	this->min = glm::vec3(min);
 	this->max = glm::vec3(max);
 
+	int inside = 0;
+	int discar = 0;
+	int totalV = 0;
+
 	//Verifica o que pertence e o que não
 	indexes = new std::vector<int>[handler->numMeshes];
 	for(int i = 0; i < handler->numMeshes; i++)
 	{
 		GLMesh3D* mesh = &handler->meshes.at(i);
 		
+		totalV += mesh->verticesCount;
 		for(int j = 0; j < mesh->verticesCount;)
 		{
 			glm::vec3* p1 = &mesh->vertexes[j];
@@ -33,10 +38,18 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 				indexes[i].push_back(j);
 				indexes[i].push_back(j + 1);
 				indexes[i].push_back(j + 2);
+				
+				inside += 3;
+			}
+			else
+			{
+				discar += 3;
 			}
 			j += 3;
 		}
 	}
+
+	printf("Inside: %d/%d [%d]\n", inside, totalV, discar);
 
 	if(--depth > 0)
 	{
@@ -72,6 +85,9 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 	this->min = glm::vec3(min);
 	this->max = glm::vec3(max);
 
+	int inside = 0;
+	int totalV = 0;
+
 	//Verifica o que pertence e o que não
 	indexes = new std::vector<int>[handler->numMeshes];
 
@@ -81,6 +97,7 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 		
 		std::vector<int>* previousList = previousIndexes[i];
 
+		totalV += previousList->size();
 		for(int j = 0; j < previousList->size();)
 		{
 			glm::vec3* p1 = &mesh->vertexes[previousList->at(j)];
@@ -92,10 +109,14 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 				indexes[i].push_back(previousList->at(j));
 				indexes[i].push_back(previousList->at(j + 1));
 				indexes[i].push_back(previousList->at(j + 2));
+
+				inside += 3;
 			}
 			j += 3;
 		}
 	}
+
+	printf("Inside: %d/%d\n", inside, totalV);
 
 	if(--depth > 0)
 	{
@@ -130,6 +151,9 @@ GLOctreeNode::~GLOctreeNode(void)
 { }
 
 //GLOctree
+
+GLOctree::GLOctree()
+{ }
 
 GLOctree::GLOctree(GLMeshHandler* handler, int depth)
 {

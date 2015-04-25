@@ -24,6 +24,7 @@ public:
 	GLOctreeNode root;
 
 public:
+	GLOctree(void);
 	GLOctree(GLMeshHandler* handler, int depth);
 	~GLOctree(void);
 };

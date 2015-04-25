@@ -6,6 +6,7 @@
 class GLCamera;
 
 #define VEC3_PRINT(v) v.x,v.y,v.z
+#define VEC3P_PRINT(v) v->x,v->y,v->z
 #define VEC4_PRINT(v) v.x,v.y,v.z,v.w
 
 #define VEC3_EQUALS(v,u)  (fabs(v[0] - u[0]) < 0.001f) && (fabs(v[1] - u[1]) < 0.001f) && (fabs(v[2] - u[2]) < 0.001f)

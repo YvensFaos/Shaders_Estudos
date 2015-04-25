@@ -1,5 +1,8 @@
 #include "triangle_cube.h"
 
+#include "glmathhelper.h"
+#include <stdio.h>
+
 //Originalmente de http://tog.acm.org/resources/GraphicsGems/gemsiii/triangleCube.c
 
 /*___________________________________________________________________________*/
@@ -284,13 +287,17 @@ bool TriangleCube::testIntersection(glm::vec3* p1, glm::vec3* p2, glm::vec3* p3,
 {
 	glm::vec3 center = center = glm::vec3(min->x + (max->x - min->x)/2.0f, min->y + (max->y - min->y)/2.0f, min->z + (max->z - min->z)/2.0f);
 
-	float lenghtX = abs(max->x - min->x);
-	float lenghtY = abs(max->y - min->y);
-	float lenghtZ = abs(max->z - min->z);
+	float lenghtX = abs(max->x - min->x)/2;
+	float lenghtY = abs(max->y - min->y)/2;
+	float lenghtZ = abs(max->z - min->z)/2;
 
 	glm::vec3 a = glm::vec3(p1->x - center.x, p1->y - center.y, p1->z - center.z);
 	glm::vec3 b = glm::vec3(p2->x - center.x, p2->y - center.y, p2->z - center.z);
 	glm::vec3 c = glm::vec3(p3->x - center.x, p3->y - center.y, p3->z - center.z);
+
+	//glm::vec3 a = glm::vec3(p1->x, p1->y, p1->z);
+	//glm::vec3 b = glm::vec3(p2->x, p2->y, p2->z);
+	//glm::vec3 c = glm::vec3(p3->x, p3->y, p3->z);
 
 	a = glm::vec3(a.x/lenghtX, a.y/lenghtY, a.z/lenghtZ);
 	b = glm::vec3(b.x/lenghtX, b.y/lenghtY, b.z/lenghtZ);
@@ -301,5 +308,16 @@ bool TriangleCube::testIntersection(glm::vec3* p1, glm::vec3* p2, glm::vec3* p3,
 	t.v2 = b;
 	t.v3 = c;
 
-	return (t_c_intersection(t) == INSIDE) ? true : false;
+	bool intercepts = (t_c_intersection(t) == INSIDE) ? true : false;
+
+	if(intercepts)
+	{
+		printf("%f %f %f\n", VEC3P_PRINT(min));
+		printf("%f %f %f\n", VEC3P_PRINT(max));
+		printf("%f %f %f\n", VEC3_PRINT(a));
+		printf("%f %f %f\n", VEC3_PRINT(b));
+		printf("%f %f %f\n", VEC3_PRINT(c));
+	}
+
+	return intercepts;
 }

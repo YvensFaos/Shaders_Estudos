@@ -39,6 +39,8 @@ public:
 	char* logExtraMsg;
 	//Se salvará o log de resultados (total). Apenas para modo Walkthrough
 	bool logResults;
+	//Profundidade padrão da ede
+	int edeDepth;
 
 public:
 	GLConfig(void);

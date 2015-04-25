@@ -1,9 +1,13 @@
 #pragma once
 
 #include "glbasicede.h"
+#include "gloctree.h"
 
 class GLOctreeEDE : public GLBasicEDE
 {
+private:
+	GLOctree octree;
+
 public:
 	GLOctreeEDE(void);
 	~GLOctreeEDE(void);

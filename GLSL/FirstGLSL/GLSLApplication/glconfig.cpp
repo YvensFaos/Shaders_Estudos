@@ -23,6 +23,7 @@ GLConfig::GLConfig()
 	scenarioNumber = -1;
 	pathIdentifier = 0;
 	logIdentifier  = 0;
+	edeDepth = 0;
 
 	repeatable = false;
 	logResults = false;

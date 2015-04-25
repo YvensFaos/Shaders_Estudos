@@ -9,8 +9,8 @@
 #include <stdlib.h>  
 
 //#define mia
-#define desktop
-//#define notebook
+//#define desktop
+#define notebook
 
 GLPlayer* player;
 
@@ -56,6 +56,10 @@ int main()
 	config.logIdentifier = 1;
 	//Adiciona um texto adicional ao arquivo de log
 	config.logExtraMsg = "test";
+	//Altura padrão de uma EDE
+	config.edeDepth = 4;
+	//EDE escolhida
+	config.type = OCTREE;
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
