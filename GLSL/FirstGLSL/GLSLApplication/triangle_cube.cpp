@@ -247,35 +247,36 @@ Point3 hitpp,hitpn,hitnp,hitnn;
 /* doing a point/triangle intersection.                           */
 /* Do this for all four diagonals.                                */
 
-   d = norm.x * t.v1.x + norm.y * t.v1.y + norm.z * t.v1.z;
+	d = norm.x * t.v1.x + norm.y * t.v1.y + norm.z * t.v1.z;
    float denom;
 
-   /* if one of the diagonals is parallel to the plane, the other will intersect the plane */
-   if(fabs(denom=(norm.x + norm.y + norm.z))>EPS)
-   /* skip parallel diagonals to the plane; division by 0 can occur */
-   {
-      hitpp.x = hitpp.y = hitpp.z = d / denom;
-      if (fabs(hitpp.x) <= 0.5)
-         if (point_triangle_intersection(hitpp,t) == INSIDE) return(INSIDE);
-   }
-   if(fabs(denom=(norm.x + norm.y - norm.z))>EPS)
-   {
-      hitpn.z = -(hitpn.x = hitpn.y = d / denom);
-      if (fabs(hitpn.x) <= 0.5)
-         if (point_triangle_intersection(hitpn,t) == INSIDE) return(INSIDE);
-   }       
-   if(fabs(denom=(norm.x - norm.y + norm.z))>EPS)
-   {       
-      hitnp.y = -(hitnp.x = hitnp.z = d / denom);
-      if (fabs(hitnp.x) <= 0.5)
-         if (point_triangle_intersection(hitnp,t) == INSIDE) return(INSIDE);
-   }
-   if(fabs(denom=(norm.x - norm.y - norm.z))>EPS)
-   {
-      hitnn.y = hitnn.z = -(hitnn.x = d / denom);
-      if (fabs(hitnn.x) <= 0.5)
-         if (point_triangle_intersection(hitnn,t) == INSIDE) return(INSIDE);
-   }
+	/* if one of the diagonals is parallel to the plane, the other will intersect the plane */
+	if(fabs(denom=(norm.x + norm.y + norm.z))>EPS)
+	/* skip parallel diagonals to the plane; division by 0 can occur */
+	{
+		hitpp.x = hitpp.y = hitpp.z = d / denom;
+		if (fabs(hitpp.x) <= 0.5)
+			if (point_triangle_intersection(hitpp,t) == INSIDE) return(INSIDE);
+	}
+	if(fabs(denom=(norm.x + norm.y - norm.z))>EPS)
+	{
+		hitpn.z = -(hitpn.x = hitpn.y = d / denom);
+		if (fabs(hitpn.x) <= 0.5)
+			if (point_triangle_intersection(hitpn,t) == INSIDE) return(INSIDE);
+	}       
+	if(fabs(denom=(norm.x - norm.y + norm.z))>EPS)
+	{       
+		hitnp.y = -(hitnp.x = hitnp.z = d / denom);
+		if (fabs(hitnp.x) <= 0.5)
+			if (point_triangle_intersection(hitnp,t) == INSIDE) return(INSIDE);
+	}
+	if(fabs(denom=(norm.x - norm.y - norm.z))>EPS)
+	{
+		hitnn.y = hitnn.z = -(hitnn.x = d / denom);
+		if (fabs(hitnn.x) <= 0.5)
+			if (point_triangle_intersection(hitnn,t) == INSIDE) return(INSIDE);
+	}
+	//[fix thanks to Robert Krupinski]
    
 /* No edge touched the cube; no cube diagonal touched the triangle. */
 /* We're done...there was no intersection.                          */
@@ -285,19 +286,15 @@ Point3 hitpp,hitpn,hitnp,hitnn;
 
 bool TriangleCube::testIntersection(glm::vec3* p1, glm::vec3* p2, glm::vec3* p3, glm::vec3* min, glm::vec3* max)
 {
-	glm::vec3 center = center = glm::vec3(min->x + (max->x - min->x)/2.0f, min->y + (max->y - min->y)/2.0f, min->z + (max->z - min->z)/2.0f);
+	glm::vec3 center = glm::vec3(min->x + (max->x - min->x)/2.0f, min->y + (max->y - min->y)/2.0f, min->z + (max->z - min->z)/2.0f);
 
-	float lenghtX = abs(max->x - min->x)/2;
-	float lenghtY = abs(max->y - min->y)/2;
-	float lenghtZ = abs(max->z - min->z)/2;
+	float lenghtX = abs(max->x - min->x);
+	float lenghtY = abs(max->y - min->y);
+	float lenghtZ = abs(max->z - min->z);
 
 	glm::vec3 a = glm::vec3(p1->x - center.x, p1->y - center.y, p1->z - center.z);
 	glm::vec3 b = glm::vec3(p2->x - center.x, p2->y - center.y, p2->z - center.z);
 	glm::vec3 c = glm::vec3(p3->x - center.x, p3->y - center.y, p3->z - center.z);
-
-	//glm::vec3 a = glm::vec3(p1->x, p1->y, p1->z);
-	//glm::vec3 b = glm::vec3(p2->x, p2->y, p2->z);
-	//glm::vec3 c = glm::vec3(p3->x, p3->y, p3->z);
 
 	a = glm::vec3(a.x/lenghtX, a.y/lenghtY, a.z/lenghtZ);
 	b = glm::vec3(b.x/lenghtX, b.y/lenghtY, b.z/lenghtZ);
@@ -309,15 +306,6 @@ bool TriangleCube::testIntersection(glm::vec3* p1, glm::vec3* p2, glm::vec3* p3,
 	t.v3 = c;
 
 	bool intercepts = (t_c_intersection(t) == INSIDE) ? true : false;
-
-	if(intercepts)
-	{
-		printf("%f %f %f\n", VEC3P_PRINT(min));
-		printf("%f %f %f\n", VEC3P_PRINT(max));
-		printf("%f %f %f\n", VEC3_PRINT(a));
-		printf("%f %f %f\n", VEC3_PRINT(b));
-		printf("%f %f %f\n", VEC3_PRINT(c));
-	}
 
 	return intercepts;
 }

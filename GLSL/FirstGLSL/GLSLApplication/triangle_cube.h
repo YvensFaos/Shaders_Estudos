@@ -10,9 +10,9 @@
  * by using the uncommented macro that follows, and a different test with it */
 #define EPS 10e-5
 #define SIGN3( A ) \
-	(((A).x < EPS) ? 4 : 0 | ((A).x > -EPS) ? 32 : 0 | \
-	((A).y < EPS) ? 2 : 0 | ((A).y > -EPS) ? 16 : 0 | \
-	((A).z < EPS) ? 1 : 0 | ((A).z > -EPS) ? 8 : 0)
+    (((A).x < EPS) ? 4 : 0 | ((A).x > -EPS) ? 32 : 0 | \
+    ((A).y < EPS) ? 2 : 0 | ((A).y > -EPS) ? 16 : 0 | \
+    ((A).z < EPS) ? 1 : 0 | ((A).z > -EPS) ? 8 : 0)
 
 #define CROSS( A, B, C ) { \
   (C).x =  (A).y * (B).z - (A).z * (B).y; \

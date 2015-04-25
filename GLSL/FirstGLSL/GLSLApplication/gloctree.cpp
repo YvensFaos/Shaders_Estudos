@@ -20,6 +20,10 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 	int discar = 0;
 	int totalV = 0;
 
+	glm::vec3* p1;
+	glm::vec3* p2;
+	glm::vec3* p3;
+
 	//Verifica o que pertence e o que não
 	indexes = new std::vector<int>[handler->numMeshes];
 	for(int i = 0; i < handler->numMeshes; i++)
@@ -29,9 +33,9 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 		totalV += mesh->verticesCount;
 		for(int j = 0; j < mesh->verticesCount;)
 		{
-			glm::vec3* p1 = &mesh->vertexes[j];
-			glm::vec3* p2 = &mesh->vertexes[j + 1];
-			glm::vec3* p3 = &mesh->vertexes[j + 2];
+			p1 = &mesh->vertexes[j];
+			p2 = &mesh->vertexes[j + 1];
+			p3 = &mesh->vertexes[j + 2];
 			
 			if(TriangleCube::testIntersection(p1, p2, p3, &this->min, &this->max))
 			{
@@ -116,7 +120,10 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 		}
 	}
 
-	printf("Inside: %d/%d\n", inside, totalV);
+	if(inside != 0)
+	{
+		printf("Inside: %d/%d\n", inside, totalV);
+	}
 
 	if(--depth > 0)
 	{
