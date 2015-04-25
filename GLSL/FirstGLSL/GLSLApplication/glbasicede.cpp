@@ -2,6 +2,8 @@
 
 #include "glconfig.h"
 
+#include "gloctreeede.h"
+
 GLBasicEDE::GLBasicEDE(void)
 {
 	memoryUsed = -1;
@@ -22,7 +24,7 @@ GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 	switch(config->type)
 	{
 		case NONE: return nullptr;
-		case OCTREE: return nullptr;
+		case OCTREE: return new GLOctreeEDE();
 		default: return nullptr;
 	}
 }

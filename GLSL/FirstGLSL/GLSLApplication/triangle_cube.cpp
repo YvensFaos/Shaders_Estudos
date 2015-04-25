@@ -1,5 +1,7 @@
 #include "triangle_cube.h"
 
+//Originalmente de http://tog.acm.org/resources/GraphicsGems/gemsiii/triangleCube.c
+
 /*___________________________________________________________________________*/
 
 /* Which of the six face-plane(s) is point P outside of? */
@@ -243,6 +245,7 @@ Point3 hitpp,hitpn,hitnp,hitnn;
 /* Do this for all four diagonals.                                */
 
    d = norm.x * t.v1.x + norm.y * t.v1.y + norm.z * t.v1.z;
+   float denom;
 
    /* if one of the diagonals is parallel to the plane, the other will intersect the plane */
    if(fabs(denom=(norm.x + norm.y + norm.z))>EPS)

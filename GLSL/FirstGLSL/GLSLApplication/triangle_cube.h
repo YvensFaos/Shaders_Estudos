@@ -4,6 +4,8 @@
 
 #include "glm\glm.hpp"
 
+//Originalmente de http://tog.acm.org/resources/GraphicsGems/gemsiii/triangleCube.c
+
 /* this version of SIGN3 shows some numerical instability, and is improved
  * by using the uncommented macro that follows, and a different test with it */
 #define EPS 10e-5

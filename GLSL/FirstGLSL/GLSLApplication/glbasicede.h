@@ -6,7 +6,7 @@ class GLMeshHandler;
 
 class GLBasicEDE
 {
-private:
+protected:
 	int memoryUsed;
 
 public:

@@ -10,9 +10,11 @@ public:
 
 	GLOctreeNode* nodes;
 
+	std::vector<int>* indexes;
 public:
 	GLOctreeNode(void);
 	GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth);
+	GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth, std::vector<int>** previousIndexes);
 	~GLOctreeNode(void);
 };
 

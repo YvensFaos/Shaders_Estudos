@@ -90,6 +90,7 @@
     <ClCompile Include="glmathhelper.cpp" />
     <ClCompile Include="glmesh3d.cpp" />
     <ClCompile Include="gloctree.cpp" />
+    <ClCompile Include="gloctreeede.cpp" />
     <ClCompile Include="glplayer.cpp" />
     <ClCompile Include="glrecordpathplayer.cpp" />
     <ClCompile Include="glscenario.cpp" />
@@ -97,6 +98,7 @@
     <ClCompile Include="glwalkthroughplayer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="openGLWrapper.cpp" />
+    <ClCompile Include="triangle_cube.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="edfile.h" />
@@ -110,6 +112,7 @@
     <ClInclude Include="glmathhelper.h" />
     <ClInclude Include="glmesh3d.h" />
     <ClInclude Include="gloctree.h" />
+    <ClInclude Include="gloctreeede.h" />
     <ClInclude Include="glplayer.h" />
     <ClInclude Include="glprinthelper.h" />
     <ClInclude Include="glrecordpathplayer.h" />
@@ -117,6 +120,7 @@
     <ClInclude Include="glshaderloader.h" />
     <ClInclude Include="glwalkthroughplayer.h" />
     <ClInclude Include="openGLWrapper.h" />
+    <ClInclude Include="triangle_cube.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="fragmentshader.txt" />
