@@ -3,9 +3,18 @@
 #include "GLFW/glfw3.h"
 #include "FreeImage/FreeImage.h"
 
+
+EDLogger::EDLogger(void)
+{
+	ltime=time(NULL);
+	Tm=localtime(&ltime);
+}
+
 EDLogger::EDLogger(char* filename)
 {
 	printf("Log: %s\n", filename);
+	ltime=time(NULL);
+	Tm=localtime(&ltime);
 	writer = new EDFileWriter(filename);
 }
 
@@ -17,6 +26,13 @@ EDLogger::~EDLogger()
 void EDLogger::logLine(char* line)
 {
 	writer->writeLnStr(line);
+}
+
+void EDLogger::logLineTimestamp(char* line)
+{
+	char tsLine[256];
+	sprintf(tsLine, "{%d:%d} - %d:%d:%d: %s", Tm->tm_mday, Tm->tm_mon + 1, Tm->tm_hour, Tm->tm_min, Tm->tm_sec, line);
+	writer->writeLnStr(tsLine);
 }
 
 void EDLogger::closeLog(void)

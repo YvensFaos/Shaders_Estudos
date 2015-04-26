@@ -3,11 +3,13 @@
 class GLFrustum;
 class GLConfig;
 class GLMeshHandler;
+class EDLogger;
 
 class GLBasicEDE
 {
 protected:
 	int memoryUsed;
+	EDLogger* logger;
 
 public:
 	GLBasicEDE(void);
@@ -24,6 +26,10 @@ public:
 	virtual void exportEDE(GLConfig* config) = 0;
 	//Calcula o custo individual da estrutura
 	int getMemory(void);
+	//Seta um logger para a geração e funcionamento da ede
+	void setLogger(EDLogger* logger);
+	//Retorna o nome específico da ede
+	virtual char* getName(void) = 0;
 private:
 	virtual void calculateMemory(void) = 0;
 

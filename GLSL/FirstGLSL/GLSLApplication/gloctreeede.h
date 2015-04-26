@@ -7,6 +7,7 @@ class GLOctreeEDE : public GLBasicEDE
 {
 private:
 	GLOctree octree;
+	int edeDepth;
 
 public:
 	GLOctreeEDE(void);
@@ -21,7 +22,8 @@ public:
 	void calculateEDE(GLMeshHandler* handler, GLConfig* config);
 	//Salva a EDE calculada em arquivo
 	void exportEDE(GLConfig* config);
-
+	//Retorna o nome específico da ede
+	char* getName(void);
 private:
 	void calculateMemory(void);
 };

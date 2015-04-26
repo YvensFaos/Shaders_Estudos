@@ -1,7 +1,6 @@
 #include "glbasicede.h"
 
 #include "glconfig.h"
-
 #include "gloctreeede.h"
 
 GLBasicEDE::GLBasicEDE(void)
@@ -27,4 +26,9 @@ GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 		case OCTREE: return new GLOctreeEDE();
 		default: return nullptr;
 	}
+}
+
+void GLBasicEDE::setLogger(EDLogger* logger)
+{
+	this->logger = logger;
 }

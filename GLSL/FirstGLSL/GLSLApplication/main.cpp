@@ -57,7 +57,7 @@ int main()
 	//Adiciona um texto adicional ao arquivo de log
 	config.logExtraMsg = "test";
 	//Altura padrão de uma EDE
-	config.edeDepth = 4;
+	config.edeDepth = 5;
 	//EDE escolhida
 	config.type = OCTREE;
 

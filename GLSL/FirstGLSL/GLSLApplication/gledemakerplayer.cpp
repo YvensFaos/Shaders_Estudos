@@ -68,12 +68,22 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 
 	meshHandler = &scenario->meshHandler;
 	ede = GLBasicEDE::instantiate(&config);
-	printf("Carregar a EDE\n");
-	ede->calculateEDE(meshHandler, &config);
 
 	char logName[512];
 	sprintf(logName, "%s%s-making[%s]-%s", config.logPath, scenario->name, "-DEFAULT-", LOG_EXTENSION);
 	logger = new EDLogger(logName);
+
+	double firstTime = glfwGetTime();
+	printf("Carregar a EDE\n");
+	ede->setLogger(logger);
+	ede->calculateEDE(meshHandler, &config);
+	double lastTime = glfwGetTime();
+	lastTime = float(lastTime - firstTime);
+
+	sprintf(logName, "Tempo de processamento: %f", lastTime);
+	logger->logLineTimestamp(logName);
+
+	logger->closeLog();
 
 	title = new char[256];
 	modeTitle = new char[256];
@@ -120,13 +130,8 @@ void GLEDEMakerPlayer::step(void)
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s%s - fps[%.2f][%d]", modeTitle, config.title, (float) (1 / deltaTime), cameraHandler->getIndex());
+	sprintf(title, "%s%s - fps[%.2f]", modeTitle, config.title, (float) (1 / deltaTime));
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
-
-	if(cameraHandler->finished && !cameraHandler->repeated)
-	{
-		isRunning = false;
-	}
 }
 
 bool GLEDEMakerPlayer::running(void)
