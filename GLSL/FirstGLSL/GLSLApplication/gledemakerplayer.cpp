@@ -68,9 +68,12 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 
 	meshHandler = &scenario->meshHandler;
 	ede = GLBasicEDE::instantiate(&config);
+	
+	char edeName[128];
+	ede->getName(edeName);
 
 	char logName[512];
-	sprintf(logName, "%s%s-making[%s]-%s", config.logPath, scenario->name, "-DEFAULT-", LOG_EXTENSION);
+	sprintf(logName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName, "-x", LOG_EXTENSION);
 	logger = new EDLogger(logName);
 
 	double firstTime = glfwGetTime();
@@ -123,8 +126,8 @@ void GLEDEMakerPlayer::step(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(OpenGLWrapper::programObject);
 
-	meshHandler->render();
-	//ede->renderEDE(
+	//meshHandler->render();
+	ede->renderEDE(&frustum, meshHandler, &config);
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);

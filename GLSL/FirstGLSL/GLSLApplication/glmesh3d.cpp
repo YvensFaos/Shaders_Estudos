@@ -49,6 +49,11 @@ void GLMeshHandler::render(void)
 	}
 }
 
+void GLMeshHandler::render(int mesh, int startIndex, int finishIndex)
+{
+	meshes.at(mesh).render(startIndex, finishIndex);
+}
+
 //GLMesh3D
 
 GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
@@ -164,4 +169,18 @@ void GLMesh3D::render(void)
 		glVertexAttribPointer(OpenGLWrapper::normalLoc, 3, GL_FLOAT, GL_FALSE, 0, normals);
 	}
 	glDrawArrays(GL_TRIANGLES, 0, verticesCount);
+}
+
+void GLMesh3D::render(int startIndex, int finishIndex)
+{
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
+
+	if(hasNormals)
+	{
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(OpenGLWrapper::normalLoc, 3, GL_FLOAT, GL_FALSE, 0, normals);
+	}
+
+	glDrawArrays(GL_TRIANGLES, startIndex, finishIndex);
 }

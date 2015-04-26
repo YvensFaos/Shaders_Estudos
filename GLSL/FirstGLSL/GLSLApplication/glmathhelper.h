@@ -75,4 +75,13 @@ public:
 	GLFrustum(glm::mat4* mvp);
 	GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera* camera);
 	~GLFrustum(void);
+
+	//Testa um ponto no espaço
+	bool containsPoint(float x, float y, float z);
+	//Testa todos os vértices de uma AABB
+	bool containsAnyVertexOf(glm::vec3* min, glm::vec3* max);
+	//Testa uma esfera
+	bool containsSphere(glm::vec3* center, float radius);
+	//Testa se o frustum intercepta a AABB
+	bool intercepts(glm::vec3* min, glm::vec3* max);
 };

@@ -23,7 +23,7 @@ public:
 	//Salva a EDE calculada em arquivo
 	void exportEDE(GLConfig* config);
 	//Retorna o nome específico da ede
-	char* getName(void);
+	char* getName(char* name);
 private:
 	void calculateMemory(void);
 };

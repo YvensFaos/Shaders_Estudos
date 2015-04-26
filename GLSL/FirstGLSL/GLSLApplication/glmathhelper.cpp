@@ -178,3 +178,69 @@ GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera*
 
 GLFrustum::~GLFrustum(void)
 { }
+
+bool GLFrustum::containsAnyVertexOf(glm::vec3* min, glm::vec3* max)
+{
+	glm::vec3* corners[2] = {min, max};
+	int cx = 0, cy = 0, cz = 0;
+	for (int i = 0; i < 8; i++)
+	{
+		if (containsPoint(corners[cx]->x, corners[cy]->y, corners[cz]->z))
+		{
+			return true;
+		}
+		if (!(cz ^= 1))
+		{
+			if (!(cy ^= 1))
+			{
+				cx ^= 1;
+			}
+		}
+	}
+	return false;
+}
+
+bool GLFrustum::containsPoint(float x, float y, float z)
+{
+	for (int i = 0; i < 6; ++i)
+	{
+		GLPlane* plane = &planes[i];
+		float side = plane->n.x * x + plane->n.y * y + plane->n.z * z + plane->d;
+		if (side <= 0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool GLFrustum::containsSphere(glm::vec3* center, float radius)
+{
+	for (int i = 0; i < 6; ++i)
+	{
+		GLPlane* plane = &planes[i];
+		float dist = plane->n.x * center->x + plane->n.y * center->y + plane->n.z * center->z + plane->d;
+		if (dist <= radius)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
+{
+	bool found = containsAnyVertexOf(min, max);
+	if (!found)
+	{
+		glm::vec3 center = glm::vec3(min->x + (max->x - min->x)/2.0f, min->y + (max->y - min->y)/2.0f, min->z + (max->z - min->z)/2.0f);
+		float x = abs(max->x - min->x);
+		float y = abs(max->y - min->y);
+		float z = abs(max->z - min->z);
+
+		float radius = x + y + (abs(x - y))/2.0f;
+		radius = radius + z + (abs(radius - z))/2.0f;
+		found = containsSphere(&center, radius);
+	}
+	return found;
+}

@@ -2,6 +2,7 @@
 
 #include "glconfig.h"
 #include "edlogger.h"
+#include "glmathhelper.h"
 
 GLOctreeEDE::GLOctreeEDE(void)
 { }
@@ -16,7 +17,39 @@ void GLOctreeEDE::loadEDE(GLConfig* config)
 
 void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config) 
 {
+	GLOctreeNode* stack[256];
+	int stackSize = 1;
+	int nodeCounter = 0;
+	stack[0] = &octree.root;
 
+	while(stackSize != 0)
+	{
+		GLOctreeNode* top = stack[--stackSize];
+
+		if(frustum->intercepts(&top->min, &top->max))
+		{
+			if(top->hasNodes)
+			{
+				for(int i = 0; i < top->nodes.size(); i++)
+				{
+					stack[stackSize++] = &top->nodes.at(i);
+				}
+			}
+			else
+			{
+				for(int i = 0; i < top->numMeshes; i++)
+				{
+					std::vector<int>* printIndex = &top->indexes[i];
+
+					for(int j = 0; j < printIndex->size();)
+					{
+						handler->render(i, j, j + 2);
+						j += 3;
+					}
+				}
+			}
+		}
+	}
 }
 
 void GLOctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 
@@ -54,10 +87,9 @@ void GLOctreeEDE::calculateMemory(void)
 }
 
 
-char* GLOctreeEDE::getName(void)
+char* GLOctreeEDE::getName(char* name)
 {
-	char name[128];
-	sprintf(name, "Octree [%d]", edeDepth);
+	sprintf(name, "Octree");
 
 	return name;
 }

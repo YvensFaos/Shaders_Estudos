@@ -29,7 +29,7 @@ public:
 	//Seta um logger para a geração e funcionamento da ede
 	void setLogger(EDLogger* logger);
 	//Retorna o nome específico da ede
-	virtual char* getName(void) = 0;
+	virtual char* getName(char* name) = 0;
 private:
 	virtual void calculateMemory(void) = 0;
 
