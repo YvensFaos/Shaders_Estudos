@@ -108,6 +108,57 @@ int GLOctreeNode::getMemory(void)
 	return memory;
 }
 
+void GLOctreeNode::optimizeNode(EDLogger* logger)
+{
+	logger->logLineTimestamp("Otimizando node...");
+
+	if(hasNodes)
+	{
+		logger->logLineTimestamp("Chamando nós filhos...");
+		for(int i = 0; i < nodes.size(); i++)
+		{
+			nodes.at(i).optimizeNode(logger);
+		}
+	}
+	else
+	{
+		logger->logLineTimestamp("Otimizando arrays de mesh...");
+		char logLine[128];
+		for(int i = 0; i < numMeshes; i++)
+		{
+			std::vector<int>* lindexes = &indexes[i];
+
+			std::sort(lindexes->begin(), lindexes->end());
+			std::vector<int> continuosIndexes;
+			continuosIndexes.push_back(lindexes->at(0));
+
+			int preOpt = lindexes->size();
+
+			int previous = lindexes->at(0);
+			for(int j = 1; j < lindexes->size(); j++)
+			{
+				if(previous + 1 != lindexes->at(j))
+				{
+					continuosIndexes.push_back(previous);
+					continuosIndexes.push_back(lindexes->at(j));
+				}
+				previous = lindexes->at(j);
+			}
+			continuosIndexes.push_back(lindexes->at(lindexes->size() - 1));
+
+			lindexes->clear();
+			for(int j = 0; j < continuosIndexes.size(); j++)
+			{
+				lindexes->push_back(continuosIndexes.at(j));
+			}
+			int posOpt = lindexes->size();
+
+			sprintf(logLine, "[Mesh %d] Otimizado de %d -> %d índices.", i, preOpt, posOpt);
+			logger->logLineTimestamp(logLine);
+		}
+	}
+}
+
 //GLOctree
 
 GLOctree::GLOctree()
@@ -173,6 +224,7 @@ GLOctree::GLOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 
 	memoryUsed = root.getMemory();
 	logTree();
+	optimizeTree();
 }
 
 GLOctree::~GLOctree(void)
@@ -181,6 +233,11 @@ GLOctree::~GLOctree(void)
 int GLOctree::getMemory(void)
 {
 	return memoryUsed;
+}
+
+void GLOctree::optimizeTree(void)
+{
+	root.optimizeNode(logger);
 }
 
 void GLOctree::logTree(void)

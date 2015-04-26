@@ -26,26 +26,23 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 	{
 		GLOctreeNode* top = stack[--stackSize];
 
-		if(frustum->intercepts(&top->min, &top->max))
+		if(top->hasNodes)
 		{
-			if(top->hasNodes)
+			for(int i = 0; i < top->nodes.size(); i++)
 			{
-				for(int i = 0; i < top->nodes.size(); i++)
-				{
-					stack[stackSize++] = &top->nodes.at(i);
-				}
+				stack[stackSize++] = &top->nodes.at(i);
 			}
-			else
+		}
+		else
+		{
+			for(int i = 0; i < top->numMeshes; i++)
 			{
-				for(int i = 0; i < top->numMeshes; i++)
-				{
-					std::vector<int>* printIndex = &top->indexes[i];
+				std::vector<int>* printIndex = &top->indexes[i];
 
-					for(int j = 0; j < printIndex->size();)
-					{
-						handler->render(i, j, j + 2);
-						j += 3;
-					}
+				for(int j = 0; j < printIndex->size();)
+				{
+					handler->render(i, printIndex->at(j), printIndex->at(j + 1));
+					j += 2;
 				}
 			}
 		}

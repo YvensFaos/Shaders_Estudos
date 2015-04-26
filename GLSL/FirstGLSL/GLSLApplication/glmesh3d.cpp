@@ -173,6 +173,7 @@ void GLMesh3D::render(void)
 
 void GLMesh3D::render(int startIndex, int finishIndex)
 {
+	verticesCount;
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
 

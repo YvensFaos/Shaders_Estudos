@@ -20,6 +20,7 @@ public:
 	~GLOctreeNode(void);
 
 	int getMemory(void);
+	void optimizeNode(EDLogger* logger);
 };
 
 class GLOctree
@@ -38,4 +39,5 @@ public:
 
 private: 
 	void logTree(void);
+	void optimizeTree(void);
 };

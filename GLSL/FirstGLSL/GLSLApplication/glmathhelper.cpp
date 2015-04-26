@@ -44,8 +44,9 @@ void GLPlane::fromPointNormal(const glm::vec3 &pt, const glm::vec3 &normal)
 void GLPlane::fromPoints(const glm::vec3 &pt1, const glm::vec3 &pt2, const glm::vec3 &pt3)
 {
     n = glm::cross(pt2 - pt1, pt3 - pt1);
+	n = glm::normalize(n);
     d = -glm::dot(n, pt1);
-    normalize();
+    //normalize();
 }
 
 const glm::vec3 &GLPlane::normal() const
@@ -77,7 +78,22 @@ void GLPlane::set(float a, float b, float c, float d)
 
 GLFrustum::GLFrustum(glm::mat4* mvp)
 {
-	//FAZER
+	//http://gamedevs.org/uploads/fast-extraction-viewing-frustum-planes-from-world-view-projection-matrix.pdf
+
+	/*
+	planes[PLANE_RIGHT].n.x = mvp[3][1];
+	planes[PLANE_RIGHT].normalize();
+	planes[PLANE_LEFT].fromPoints(nbl, ftl, fbl);
+	planes[PLANE_LEFT].normalize();
+	planes[PLANE_BOTTOM].fromPoints(nbr, fbl, fbr);
+	planes[PLANE_BOTTOM].normalize();
+	planes[PLANE_TOP].fromPoints(ntl, ftr, ftl);
+	planes[PLANE_TOP].normalize();
+	planes[PLANE_FAR].fromPoints(fbl, ftl, ftr);
+	planes[PLANE_FAR].normalize();
+	planes[PLANE_NEAR].fromPoints(nbr, ntr, ntl);
+	planes[PLANE_NEAR].normalize();
+	*/
 }
 
 GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera* camera)
@@ -89,8 +105,7 @@ GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera*
 	glm::vec3* apex = &camera->position;
 	glm::vec3* direction = &camera->direction;
 
-	glm::vec3 auxAxis;
-	auxAxis = glm::cross(*up, *direction);
+	glm::vec3 auxAxis = camera->right;
 
 	glm::vec3 nearPoint = glm::vec3(direction->x, direction->y, direction->z);
 	nearPoint *= nearp;
@@ -130,12 +145,15 @@ GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera*
 	ftl += farPoint;
 	ftl += farLeftPoint;
 	ftl += farTopPoint;
+
 	ftr += farPoint;
 	ftr += farRightPoint;
 	ftr += farTopPoint;
+
 	fbl += farPoint;
 	fbl += farLeftPoint;
 	fbl += farBottomPoint;
+
 	fbr += farPoint;
 	fbr += farRightPoint;
 	fbr += farBottomPoint;
@@ -241,6 +259,53 @@ bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 		float radius = x + y + (abs(x - y))/2.0f;
 		radius = radius + z + (abs(radius - z))/2.0f;
 		found = containsSphere(&center, radius);
+	}
+
+	if(!found)
+	{
+		glm::vec3 nbl = corners[FRUSTUM_NBL];
+		glm::vec3 ftr = corners[FRUSTUM_FTR];
+
+		float x = ftr.x - nbl.x;
+		float y = ftr.y - nbl.y;
+		float z = ftr.z - nbl.z;
+
+		glm::vec3* lmin = new glm::vec3(MAX_FLOAT);
+		glm::vec3* lmax = new glm::vec3(MIN_FLOAT);
+	
+		int j = 0;
+		while(j < 8)
+		{
+			if(lmin->x >= corners[j].x)
+			{
+				lmin->x = corners[j].x;
+			}
+			if(lmax->x <= corners[j].x)
+			{
+				lmax->x = corners[j].x;
+			}
+			if(lmin->y >= corners[j].y)
+			{
+				lmin->y = corners[j].y;
+			}
+			if(lmax->y <= corners[j].y)
+			{
+				lmax->y = corners[j].y;
+			}
+			if(lmin->z >= corners[j].z)
+			{
+				lmin->z = corners[j].z;
+			}
+			if(lmax->z <= corners[j].z)
+			{
+				lmax->z = corners[j].z;
+			}
+			j++;
+		}
+
+		found = (max->x >= lmin->x) && (min->x <= lmax->x) 
+			 && (max->y >= lmin->y) && (min->y <= lmax->y)
+			 && (max->z >= lmin->z) && (min->z <= lmax->z);
 	}
 	return found;
 }
