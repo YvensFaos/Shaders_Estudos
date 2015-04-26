@@ -128,33 +128,40 @@ void GLOctreeNode::optimizeNode(EDLogger* logger)
 		{
 			std::vector<int>* lindexes = &indexes[i];
 
-			std::sort(lindexes->begin(), lindexes->end());
-			std::vector<int> continuosIndexes;
-			continuosIndexes.push_back(lindexes->at(0));
-
-			int preOpt = lindexes->size();
-
-			int previous = lindexes->at(0);
-			for(int j = 1; j < lindexes->size(); j++)
+			if(lindexes->size() > 0)
 			{
-				if(previous + 1 != lindexes->at(j))
+				std::sort(lindexes->begin(), lindexes->end());
+				std::vector<int> continuosIndexes;
+				continuosIndexes.push_back(lindexes->at(0));
+
+				int preOpt = lindexes->size();
+
+				int previous = lindexes->at(0);
+				for(int j = 1; j < lindexes->size(); j++)
 				{
-					continuosIndexes.push_back(previous);
-					continuosIndexes.push_back(lindexes->at(j));
+					if(previous + 1 != lindexes->at(j))
+					{
+						continuosIndexes.push_back(previous);
+						continuosIndexes.push_back(lindexes->at(j));
+					}
+					previous = lindexes->at(j);
 				}
-				previous = lindexes->at(j);
-			}
-			continuosIndexes.push_back(lindexes->at(lindexes->size() - 1));
+				continuosIndexes.push_back(lindexes->at(lindexes->size() - 1));
 
-			lindexes->clear();
-			for(int j = 0; j < continuosIndexes.size(); j++)
+				lindexes->clear();
+				for(int j = 0; j < continuosIndexes.size(); j++)
+				{
+					lindexes->push_back(continuosIndexes.at(j));
+				}
+				int posOpt = lindexes->size();
+
+				sprintf(logLine, "[Mesh %d] Otimizado de %d -> %d índices.", i, preOpt, posOpt);
+				logger->logLineTimestamp(logLine);
+			}
+			else
 			{
-				lindexes->push_back(continuosIndexes.at(j));
+				logger->logLineTimestamp("Nó sem índices!");
 			}
-			int posOpt = lindexes->size();
-
-			sprintf(logLine, "[Mesh %d] Otimizado de %d -> %d índices.", i, preOpt, posOpt);
-			logger->logLineTimestamp(logLine);
 		}
 	}
 }
@@ -222,9 +229,9 @@ GLOctree::GLOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	//Os nós são criados a partir da raíz
 	root = GLOctreeNode(min, max, handler, depth, &indexes, logger);
 
-	memoryUsed = root.getMemory();
 	logTree();
 	optimizeTree();
+	memoryUsed = root.getMemory();
 }
 
 GLOctree::~GLOctree(void)

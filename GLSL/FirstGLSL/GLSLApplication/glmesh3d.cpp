@@ -49,6 +49,11 @@ void GLMeshHandler::render(void)
 	}
 }
 
+void GLMeshHandler::prerender(int mesh)
+{
+	meshes.at(mesh).prerender();
+}
+
 void GLMeshHandler::render(int mesh, int startIndex, int finishIndex)
 {
 	meshes.at(mesh).render(startIndex, finishIndex);
@@ -171,9 +176,13 @@ void GLMesh3D::render(void)
 	glDrawArrays(GL_TRIANGLES, 0, verticesCount);
 }
 
-void GLMesh3D::render(int startIndex, int finishIndex)
+void GLMesh3D::prerender(void)
 {
-	verticesCount;
+	/*GLuint bufferId = 1;
+	glGenBuffers(1, &bufferId);
+	glBindBuffer(GL_ARRAY_BUFFER, bufferId);
+	glBufferData(GL_ARRAY_BUFFER, verticesCount, vertexes, GL_STATIC_DRAW);*/
+
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
 
@@ -182,6 +191,9 @@ void GLMesh3D::render(int startIndex, int finishIndex)
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(OpenGLWrapper::normalLoc, 3, GL_FLOAT, GL_FALSE, 0, normals);
 	}
+}
 
+void GLMesh3D::render(int startIndex, int finishIndex)
+{
 	glDrawArrays(GL_TRIANGLES, startIndex, finishIndex);
 }

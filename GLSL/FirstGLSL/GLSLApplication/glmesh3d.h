@@ -41,6 +41,7 @@ public:
 	~GLMesh3D(void);
 
 	void render(void);
+	void prerender(void);
 	void render(int startIndex, int finishIndex);
 private: 
 	bool loaded; 
@@ -63,6 +64,7 @@ public:
 	~GLMeshHandler(void);
 
 	void render(void);
+	void prerender(int mesh);
 	void render(int mesh, int startIndex, int finishIndex);
 private:
 	bool loaded;
