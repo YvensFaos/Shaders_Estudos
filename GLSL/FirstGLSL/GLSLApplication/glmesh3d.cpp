@@ -161,8 +161,7 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 }
 
 GLMesh3D::~GLMesh3D(void)
-{
-}
+{ }
 
 void GLMesh3D::render(void)
 {
@@ -179,11 +178,6 @@ void GLMesh3D::render(void)
 
 void GLMesh3D::prerender(void)
 {
-	/*GLuint bufferId = 1;
-	glGenBuffers(1, &bufferId);
-	glBindBuffer(GL_ARRAY_BUFFER, bufferId);
-	glBufferData(GL_ARRAY_BUFFER, verticesCount, vertexes, GL_STATIC_DRAW);*/
-
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
 
@@ -196,5 +190,5 @@ void GLMesh3D::prerender(void)
 
 void GLMesh3D::render(int startIndex, int finishIndex)
 {
-	glDrawArrays(GL_TRIANGLES, startIndex, finishIndex);
+	glDrawArrays(GL_TRIANGLES, startIndex, finishIndex - startIndex);
 }

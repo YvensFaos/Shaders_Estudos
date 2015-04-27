@@ -39,11 +39,11 @@ int main()
 	config.logPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
 #endif
 
-	config.objectName = "nucleus.obj";
+	config.objectName = "coaltown.obj";
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 17;
 
-	config.pathfileName = "saw-[1][test]";
+	config.pathfileName = "coaltown-[1][test]";
 	config.repeatable = false;
 	config.logResults = true;
 

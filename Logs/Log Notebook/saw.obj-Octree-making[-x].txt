@@ -1,0 +1,196 @@
+{27:4} - 13:54:10: Iniciado a octree tamanho 2.
+{27:4} - 13:54:10: Calculando AABB da raíz
+{27:4} - 13:54:10: Mínimo: -363.15 -107.81 -614.40
+{27:4} - 13:54:10: Máximo: 514.80 123.30 614.40
+{27:4} - 13:54:10: Inside: 181584/181584
+{27:4} - 13:54:10: Inside: 32184/181584
+{27:4} - 13:54:10: Inside: 29235/181584
+{27:4} - 13:54:10: Inside: 15996/181584
+{27:4} - 13:54:10: Inside: 28029/181584
+{27:4} - 13:54:10: Inside: 20601/181584
+{27:4} - 13:54:10: Inside: 23355/181584
+{27:4} - 13:54:10: Inside: 31830/181584
+{27:4} - 13:54:10: Inside: 19452/181584
+{27:4} - 13:54:10: Node - [0] - [8]
+{27:4} - 13:54:10: Node - [0] - [0]
+{27:4} - 13:54:10: Node - [0] - [0]
+{27:4} - 13:54:10: Node - [0] - [0]
+{27:4} - 13:54:10: Node - [0] - [0]
+{27:4} - 13:54:10: Node - [36] - [0]
+{27:4} - 13:54:10: Node - [0] - [0]
+{27:4} - 13:54:10: Node - [0] - [0]
+{27:4} - 13:54:10: Node - [0] - [0]
+{27:4} - 13:54:10: Total Nodes: 9
+{27:4} - 13:54:10: Otimizando node...
+{27:4} - 13:54:10: Chamando nós filhos...
+{27:4} - 13:54:10: Otimizando node...
+{27:4} - 13:54:10: Otimizando arrays de mesh...
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 10] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 11] Otimizado de 30 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 12] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 15] Otimizado de 32106 -> 938 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 17] Otimizado de 36 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Otimizando node...
+{27:4} - 13:54:10: Otimizando arrays de mesh...
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 1] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 2] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 3] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 8] Otimizado de 30 -> 4 índices.
+{27:4} - 13:54:10: [Mesh 9] Otimizado de 36 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 13] Otimizado de 36 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 15] Otimizado de 29079 -> 1488 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 18] Otimizado de 36 -> 2 índices.
+{27:4} - 13:54:10: Otimizando node...
+{27:4} - 13:54:10: Otimizando arrays de mesh...
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 15] Otimizado de 15996 -> 648 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Otimizando node...
+{27:4} - 13:54:10: Otimizando arrays de mesh...
+{27:4} - 13:54:10: [Mesh 0] Otimizado de 36 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 4] Otimizado de 60 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 5] Otimizado de 36 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 6] Otimizado de 36 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 7] Otimizado de 36 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 10] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 11] Otimizado de 30 -> 4 índices.
+{27:4} - 13:54:10: [Mesh 12] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 15] Otimizado de 27777 -> 1364 índices.
+{27:4} - 13:54:10: [Mesh 16] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Otimizando node...
+{27:4} - 13:54:10: Otimizando arrays de mesh...
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 15] Otimizado de 20601 -> 656 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Otimizando node...
+{27:4} - 13:54:10: Otimizando arrays de mesh...
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 15] Otimizado de 23355 -> 1336 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Otimizando node...
+{27:4} - 13:54:10: Otimizando arrays de mesh...
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 1] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 2] Otimizado de 6 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 8] Otimizado de 30 -> 2 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 14] Otimizado de 36 -> 2 índices.
+{27:4} - 13:54:10: [Mesh 15] Otimizado de 31752 -> 900 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Otimizando node...
+{27:4} - 13:54:10: Otimizando arrays de mesh...
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: [Mesh 15] Otimizado de 19452 -> 1246 índices.
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Nó sem índices!
+{27:4} - 13:54:10: Concluindo a octree!
+{27:4} - 13:54:10: Mémória usada: 34773.
+{27:4} - 13:54:10: Tempo de processamento: 0.000000

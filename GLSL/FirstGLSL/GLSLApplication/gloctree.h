@@ -16,7 +16,7 @@ public:
 	std::vector<int>* indexes;
 public:
 	GLOctreeNode(void);
-	GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth, std::vector<int>** previousIndexes, EDLogger* logger);
+	GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth, std::vector<int>* previousIndexes, EDLogger* logger);
 	~GLOctreeNode(void);
 
 	int getMemory(void);
