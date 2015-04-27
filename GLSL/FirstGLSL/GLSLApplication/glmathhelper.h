@@ -72,7 +72,6 @@ public:
 
 public:
 	GLFrustum(void) {};
-	GLFrustum(glm::mat4* mvp);
 	GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera* camera);
 	~GLFrustum(void);
 

@@ -76,26 +76,6 @@ void GLPlane::set(float a, float b, float c, float d)
 
 //GLFrustum
 
-GLFrustum::GLFrustum(glm::mat4* mvp)
-{
-	//http://gamedevs.org/uploads/fast-extraction-viewing-frustum-planes-from-world-view-projection-matrix.pdf
-
-	/*
-	planes[PLANE_RIGHT].n.x = mvp[3][1];
-	planes[PLANE_RIGHT].normalize();
-	planes[PLANE_LEFT].fromPoints(nbl, ftl, fbl);
-	planes[PLANE_LEFT].normalize();
-	planes[PLANE_BOTTOM].fromPoints(nbr, fbl, fbr);
-	planes[PLANE_BOTTOM].normalize();
-	planes[PLANE_TOP].fromPoints(ntl, ftr, ftl);
-	planes[PLANE_TOP].normalize();
-	planes[PLANE_FAR].fromPoints(fbl, ftl, ftr);
-	planes[PLANE_FAR].normalize();
-	planes[PLANE_NEAR].fromPoints(nbr, ntr, ntl);
-	planes[PLANE_NEAR].normalize();
-	*/
-}
-
 GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera* camera)
 {
 	float angle = fov/2;

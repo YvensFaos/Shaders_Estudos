@@ -190,5 +190,5 @@ void GLMesh3D::prerender(void)
 
 void GLMesh3D::render(int startIndex, int finishIndex)
 {
-	glDrawArrays(GL_TRIANGLES, startIndex, finishIndex - startIndex);
+	glDrawArrays(GL_TRIANGLES, startIndex, finishIndex - startIndex + 1);
 }

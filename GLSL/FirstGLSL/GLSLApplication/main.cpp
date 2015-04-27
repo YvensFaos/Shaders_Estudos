@@ -39,7 +39,7 @@ int main()
 	config.logPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
 #endif
 
-	config.objectName = "coaltown.obj";
+	config.objectName = "saw.obj";
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 17;
 
@@ -60,6 +60,8 @@ int main()
 	config.edeDepth = 2;
 	//EDE escolhida
 	config.type = OCTREE;
+	//Colore os nós em tons diferente
+	config.coloredNodes = true;
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;

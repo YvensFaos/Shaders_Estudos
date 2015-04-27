@@ -41,6 +41,8 @@ public:
 	bool logResults;
 	//Profundidade padrão da ede
 	int edeDepth;
+	//Colore diferente os triângulos pertencentes a um nó da EDE
+	bool coloredNodes;
 
 public:
 	GLConfig(void);

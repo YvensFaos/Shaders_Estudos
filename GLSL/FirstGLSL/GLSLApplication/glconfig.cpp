@@ -27,6 +27,7 @@ GLConfig::GLConfig()
 
 	repeatable = false;
 	logResults = false;
+	coloredNodes = false;
 }
 
 GLConfig::~GLConfig()

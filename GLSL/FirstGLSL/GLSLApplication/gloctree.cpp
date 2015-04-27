@@ -2,7 +2,7 @@
 
 #include "glmathhelper.h"
 #include "triangle_cube.h"
-
+#include <random>
 //GLOctree Node
 
 GLOctreeNode::GLOctreeNode(void)
@@ -23,6 +23,11 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 
 	int inside = 0;
 	int totalV = 0;
+
+	nodeColor = glm::vec3(rand() % 255 / 255.f, rand() % 255 / 255.f, rand() % 255 / 255.f);
+	char logLine[128];
+	sprintf(logLine, "Node color: %f %f %f", VEC3_PRINT(nodeColor));
+	logger->logLineTimestamp(logLine);
 
 	//Verifica o que pertence e o que não
 	indexes = new std::vector<int>[handler->numMeshes];
@@ -57,7 +62,6 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 		}
 	}
 
-	char logLine[128];
 	sprintf(logLine,"Inside: %d/%d", inside, totalV);
 	logger->logLineTimestamp(logLine);
 

@@ -1,5 +1,6 @@
 #include "gloctreeede.h"
 
+#include "openGLWrapper.h"
 #include "glconfig.h"
 #include "edlogger.h"
 #include "glmathhelper.h"
@@ -35,15 +36,25 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 		}
 		else
 		{
-			for(int i = 0; i < top->numMeshes; i++)
+			if(frustum->intercepts(&top->min, &top->max))
 			{
-				handler->prerender(i);
-				std::vector<int>* printIndex = &top->indexes[i];
-
-				for(int j = 0; j < printIndex->size();)
+				if(config->coloredNodes)
 				{
-					handler->render(i, printIndex->at(j), printIndex->at(j + 1));
-					j += 2;
+					GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+					glUniform4f(loc, top->nodeColor.r, top->nodeColor.g, top->nodeColor.b, 1.0f);
+				}
+
+				for(int i = 0; i < top->numMeshes; i++)
+				{
+					handler->prerender(i);
+
+					std::vector<int>* printIndex = &top->indexes[i];
+
+					for(int j = 0; j < printIndex->size();)
+					{
+						handler->render(i, printIndex->at(j), printIndex->at(j + 1));
+						j += 2;
+					}
 				}
 			}
 		}
