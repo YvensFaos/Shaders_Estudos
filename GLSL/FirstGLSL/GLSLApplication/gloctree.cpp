@@ -35,22 +35,25 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 		
 		std::vector<int>* previousList = previousIndexes[i];
 
-		totalV += previousList->size();
-		for(int j = 0; j < previousList->size();)
+		if(previousList && !previousList->empty())
 		{
-			glm::vec3* p1 = &mesh->vertexes[previousList->at(j)];
-			glm::vec3* p2 = &mesh->vertexes[previousList->at(j + 1)];
-			glm::vec3* p3 = &mesh->vertexes[previousList->at(j + 2)];
-			
-			if(TriangleCube::testIntersection(p1, p2, p3, &this->min, &this->max))
+			totalV += previousList->size();
+			for(int j = 0; j < previousList->size();)
 			{
-				indexes[i].push_back(previousList->at(j));
-				indexes[i].push_back(previousList->at(j + 1));
-				indexes[i].push_back(previousList->at(j + 2));
+				glm::vec3* p1 = &mesh->vertexes[previousList->at(j)];
+				glm::vec3* p2 = &mesh->vertexes[previousList->at(j + 1)];
+				glm::vec3* p3 = &mesh->vertexes[previousList->at(j + 2)];
+			
+				if(TriangleCube::testIntersection(p1, p2, p3, &this->min, &this->max))
+				{
+					indexes[i].push_back(previousList->at(j));
+					indexes[i].push_back(previousList->at(j + 1));
+					indexes[i].push_back(previousList->at(j + 2));
 
-				inside += 3;
+					inside += 3;
+				}
+				j += 3;
 			}
-			j += 3;
 		}
 	}
 
@@ -186,38 +189,45 @@ GLOctree::GLOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	{
 		GLMesh3D* mesh = &handler->meshes.at(i);
 
-		for(int j = 0; j < mesh->verticesCount; j++)
+		if(mesh->verticesCount > 0)
 		{
-			indexes[i].push_back(j);
-		}
+			for(int j = 0; j < mesh->verticesCount; j++)
+			{
+				indexes[i].push_back(j);
+			}
 
-		#pragma region buscar valores max e min
-		if(mesh->max.x > max.x)
-		{
-			max.x = mesh->max.x;
-		}
-		if(mesh->max.y > max.y)
-		{
-			max.y = mesh->max.y;
-		}
-		if(mesh->max.z > max.z)
-		{
-			max.z = mesh->max.z;
-		}
+			#pragma region buscar valores max e min
+			if(mesh->max.x > max.x)
+			{
+				max.x = mesh->max.x;
+			}
+			if(mesh->max.y > max.y)
+			{
+				max.y = mesh->max.y;
+			}
+			if(mesh->max.z > max.z)
+			{
+				max.z = mesh->max.z;
+			}
 
-		if(mesh->min.x < min.x)
-		{
-			min.x = mesh->min.x;
+			if(mesh->min.x < min.x)
+			{
+				min.x = mesh->min.x;
+			}
+			if(mesh->min.y < min.y)
+			{
+				min.y = mesh->min.y;
+			}
+			if(mesh->min.z < min.z)
+			{
+				min.z = mesh->min.z;
+			}
+			#pragma endregion
 		}
-		if(mesh->min.y < min.y)
+		else
 		{
-			min.y = mesh->min.y;
+			indexes[i].clear();
 		}
-		if(mesh->min.z < min.z)
-		{
-			min.z = mesh->min.z;
-		}
-		#pragma endregion
 	}
 
 	char logLine[128];

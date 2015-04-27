@@ -56,7 +56,8 @@ void GLMeshHandler::prerender(int mesh)
 
 void GLMeshHandler::render(int mesh, int startIndex, int finishIndex)
 {
-	meshes.at(mesh).render(startIndex, finishIndex);
+	GLMesh3D* meshe = &meshes.at(mesh);
+	meshe->render(startIndex, finishIndex);
 }
 
 //GLMesh3D

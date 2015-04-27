@@ -22,6 +22,7 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 	int nodeCounter = 0;
 	stack[0] = &octree.root;
 
+	handler->prerender(0);
 	while(stackSize != 0)
 	{
 		GLOctreeNode* top = stack[--stackSize];
@@ -37,7 +38,6 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 		{
 			for(int i = 0; i < top->numMeshes; i++)
 			{
-				handler->prerender(i);
 
 				std::vector<int>* printIndex = &top->indexes[i];
 
