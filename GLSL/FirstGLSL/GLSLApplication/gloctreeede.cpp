@@ -16,16 +16,20 @@ void GLOctreeEDE::loadEDE(GLConfig* config)
 	//Para carregar uma octree a partir de um arquivo
 }
 
-void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config) 
+void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config, float* info) 
 {
 	GLOctreeNode* stack[256];
 	int stackSize = 1;
 	int nodeCounter = 0;
 	stack[0] = &octree.root;
 
+	//[0]~ Qtde. Nós testados
+	//[1]~ Qtde. Triângulos enviados
+
 	while(stackSize != 0)
 	{
 		GLOctreeNode* top = stack[--stackSize];
+		info[0] += 1;
 
 		if(top->hasNodes)
 		{
@@ -53,6 +57,7 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 					for(int j = 0; j < printIndex->size();)
 					{
 						handler->render(i, printIndex->at(j), printIndex->at(j + 1));
+						info[1] += printIndex->at(j + 1) - printIndex->at(j) + 1;
 						j += 2;
 					}
 				}

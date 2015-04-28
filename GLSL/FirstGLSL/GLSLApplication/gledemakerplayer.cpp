@@ -126,8 +126,11 @@ void GLEDEMakerPlayer::step(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(OpenGLWrapper::programObject);
 
+	float info[2];
+	memset(info, 0, sizeof(float)*2);
+
 	//meshHandler->render();
-	ede->renderEDE(&frustum, meshHandler, &config);
+	ede->renderEDE(&frustum, meshHandler, &config, info);
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);

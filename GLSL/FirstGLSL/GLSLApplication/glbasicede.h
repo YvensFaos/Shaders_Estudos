@@ -19,7 +19,7 @@ public:
 	//Carregar a EDE de um arquivo
 	virtual void loadEDE(GLConfig* config) = 0;
 	//Chamar os métodos de draw da mesh de acordo com a EDE
-	virtual void renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config) = 0;
+	virtual void renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config, float* info) = 0;
 	//Calcula a EDE para ser utilizada
 	virtual void calculateEDE(GLMeshHandler* handler, GLConfig* config) = 0;
 	//Salva a EDE calculada em arquivo
