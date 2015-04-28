@@ -35,7 +35,7 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 	this->config = config;
 	this->printCounter = 0;
 
-	aspect = config.width / config.height;
+	aspect = 60.0f;
 
 	angle = 0.0f;
 	isRunning = true;
