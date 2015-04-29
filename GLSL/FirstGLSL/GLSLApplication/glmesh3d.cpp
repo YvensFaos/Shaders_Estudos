@@ -41,6 +41,14 @@ GLMeshHandler::GLMeshHandler(char* model3d, char* path)
 	this->numMeshes = scene->mNumMeshes;
 }
 
+void GLMeshHandler::resetTrifaces(void)
+{
+	for(int i = 0; i < numMeshes; i++)
+	{
+		meshes.at(i).resetTrifaces();
+	}
+}
+
 void GLMeshHandler::render(void)
 {
 	for(int i = 0; i < numMeshes; i++)
@@ -71,6 +79,9 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 	printf("Has %d normals\n", hasNormals);
 
 	verticesCount = mesh->mNumFaces * 3;
+
+	trifaces = new char[verticesCount];
+	memset(trifaces,0,sizeof(char)*verticesCount);
 
 	vertexes = new glm::vec3[verticesCount];
 	normals =  new glm::vec3[verticesCount];
@@ -162,6 +173,11 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 
 GLMesh3D::~GLMesh3D(void)
 { }
+
+void GLMesh3D::resetTrifaces(void)
+{
+	memset(trifaces,0,sizeof(char)*verticesCount);
+}
 
 void GLMesh3D::render(void)
 {

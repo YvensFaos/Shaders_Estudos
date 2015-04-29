@@ -23,6 +23,8 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 	int nodeCounter = 0;
 	stack[0] = &octree.root;
 
+	handler->resetTrifaces();
+
 	//[0]~ Qtde. Nós testados
 	//[1]~ Qtde. Triângulos enviados
 
@@ -31,16 +33,16 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 		GLOctreeNode* top = stack[--stackSize];
 		info[0] += 1;
 
-		if(top->hasNodes)
+		if(frustum->intercepts(&top->min, &top->max))
 		{
-			for(int i = 0; i < top->nodes.size(); i++)
+			if(top->hasNodes)
 			{
-				stack[stackSize++] = &top->nodes.at(i);
+				for(int i = 0; i < top->nodes.size(); i++)
+				{
+					stack[stackSize++] = &top->nodes.at(i);
+				}
 			}
-		}
-		else
-		{
-			if(frustum->intercepts(&top->min, &top->max))
+			else
 			{
 				if(config->coloredNodes)
 				{

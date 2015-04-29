@@ -33,13 +33,17 @@ public:
 
 	bool hasNormals;
 	int verticesCount;
+
+	char* trifaces;
+
 	glm::vec3* vertexes;
 	glm::vec3* normals;
 	glm::vec2* uvs;
 public:
 	GLMesh3D(int index, int glindex, const aiScene* scene);
 	~GLMesh3D(void);
-
+	
+	void resetTrifaces(void);
 	void render(void);
 	void prerender(void);
 	void render(int startIndex, int finishIndex);
@@ -63,6 +67,7 @@ public:
 	GLMeshHandler(char* model3d, char* path);
 	~GLMeshHandler(void);
 
+	void resetTrifaces(void);
 	void render(void);
 	void prerender(int mesh);
 	void render(int mesh, int startIndex, int finishIndex);
