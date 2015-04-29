@@ -138,42 +138,42 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		//Controle da Câmera
 
 		if (key == GLFW_KEY_Z){
-			camera->position += camera->up * deltaTime * camera->speed;
+			camera->position += camera->up * 1.f * camera->speed;
 			if(recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 		if (key == GLFW_KEY_X){
-			camera->position -= camera->up * deltaTime * camera->speed;
+			camera->position -= camera->up * 1.f * camera->speed;
 			if(recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 		if (key == GLFW_KEY_W){
-			camera->position += camera->direction * deltaTime * camera->speed;
+			camera->position += camera->direction * 1.f * camera->speed;
 			if(recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 		if (key == GLFW_KEY_S){
-			camera->position -= camera->direction * deltaTime * camera->speed;
+			camera->position -= camera->direction * 1.f * camera->speed;
 			if(recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 		if (key == GLFW_KEY_A){
-			camera->position -= camera->right * deltaTime * camera->speed;
+			camera->position -= camera->right * 1.f * camera->speed;
 			if(recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 		if (key == GLFW_KEY_D){
-			camera->position += camera->right * deltaTime * camera->speed;
+			camera->position += camera->right * 1.f * camera->speed;
 			if(recording)
 			{
 				cameraHandler->addStepRecording(camera);

@@ -9,8 +9,8 @@
 #include <stdlib.h>  
 
 //#define mia
-//#define desktop
-#define notebook
+#define desktop
+//#define notebook
 
 GLPlayer* player;
 
@@ -43,7 +43,7 @@ int main()
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 17;
 
-	config.pathfileName = "coaltown-[1][test]";
+	config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
 	config.logResults = true;
 
@@ -54,7 +54,7 @@ int main()
 	config.pathExtraMsg = "test";
 	//Inicializa com 0 e deve ser mudado em tmpo de execução, caso necessário
 	config.logIdentifier = 1;
-	//Adiciona um texto adicional ao arquivo de log
+	//Adiciona um texto adicional ao arquivo de logw
 	config.logExtraMsg = "test";
 	//Altura padrão de uma EDE
 	config.edeDepth = 6;
@@ -65,9 +65,9 @@ int main()
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
+	mode = EDE_MAKER;
 	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
-	mode = EDE_MAKER;
 
 	player = config.getGLPlayer(mode);
 

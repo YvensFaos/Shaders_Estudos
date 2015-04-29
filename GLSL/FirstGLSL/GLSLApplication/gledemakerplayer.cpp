@@ -129,7 +129,6 @@ void GLEDEMakerPlayer::step(void)
 	float info[2];
 	memset(info, 0, sizeof(float)*2);
 
-	//meshHandler->render();
 	ede->renderEDE(&frustum, meshHandler, &config, info);
 
 	double lastTime = glfwGetTime();

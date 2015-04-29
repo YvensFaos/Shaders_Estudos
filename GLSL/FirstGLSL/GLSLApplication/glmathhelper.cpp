@@ -286,6 +286,9 @@ bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 		found = (max->x >= lmin->x) && (min->x <= lmax->x) 
 			 && (max->y >= lmin->y) && (min->y <= lmax->y)
 			 && (max->z >= lmin->z) && (min->z <= lmax->z);
+
+		delete lmin;
+		delete lmax;
 	}
 	return found;
 }

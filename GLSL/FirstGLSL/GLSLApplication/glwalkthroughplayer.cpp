@@ -62,7 +62,36 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	meshHandler = &scenario->meshHandler;
 
 	char logName[512];
-	sprintf(logName, "%s%s[%d]-%s%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, LOG_EXTENSION);
+	if(config.type != NONE)
+	{
+		ede = GLBasicEDE::instantiate(&config);
+
+		char edeName[128];
+		ede->getName(edeName);
+
+		char edeLogName[512];
+		sprintf(edeLogName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName, "-x", LOG_EXTENSION);
+		EDLogger edeLogger(edeLogName);
+
+		double firstTime = glfwGetTime();
+		printf("Carregar a EDE\n");
+		ede->setLogger(&edeLogger);
+		ede->calculateEDE(meshHandler, &config);
+		double lastTime = glfwGetTime();
+		lastTime = float(lastTime - firstTime);
+
+		sprintf(edeLogName, "Tempo de processamento: %f", lastTime);
+		edeLogger.logLineTimestamp(edeLogName);
+
+		edeLogger.closeLog();
+
+
+		sprintf(logName, "%s%s[%d]-%s[%s=%d]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, edeName, config.edeDepth, LOG_EXTENSION);
+	}
+	else
+	{
+		sprintf(logName, "%s%s[%d]-%s%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, LOG_EXTENSION);
+	}
 	logger = new EDLogger(logName);
 
 	title = new char[256];
@@ -104,7 +133,17 @@ void GLWalkthroughPlayer::step(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(OpenGLWrapper::programObject);
 
-	meshHandler->render();
+	float info[2];
+	memset(info, 0, sizeof(float)*2);
+	if(config.type != NONE)
+	{
+		frustum = GLFrustum(camera->fov + 15.0f, camera->fov + 15.0f, camera->near, camera->far, camera);
+		ede->renderEDE(&frustum, meshHandler, &config, info);
+	}
+	else
+	{
+		meshHandler->render();
+	}
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
@@ -115,10 +154,20 @@ void GLWalkthroughPlayer::step(void)
 
 	if(config.logResults && !logged)
 	{
-		delete logLine;
-		logLine = new char[64];
-		sprintf(logLine, "%f", deltaTime);
-		logger->logLine(logLine);
+		if(config.type != NONE)
+		{
+			delete logLine;
+			logLine = new char[64];
+			sprintf(logLine, "%f;%f;%f", deltaTime, info[0], info[1]);
+			logger->logLine(logLine);
+		}
+		else
+		{
+			delete logLine;
+			logLine = new char[64];
+			sprintf(logLine, "%f", deltaTime);
+			logger->logLine(logLine);
+		}
 	}
 
 	if(cameraHandler->finished && !cameraHandler->repeated)

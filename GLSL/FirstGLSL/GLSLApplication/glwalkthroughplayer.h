@@ -2,7 +2,9 @@
 
 #include "glplayer.h"
 #include "glscenario.h"
+#include "glbasicede.h"
 #include "edlogger.h"
+#include "glmathhelper.h"
 
 class GLWalkthroughPlayer : public GLPlayer
 {
@@ -14,10 +16,12 @@ private:
 	bool paused;
 	bool logged;
 
+	GLBasicEDE* ede;
 	GLScenario* scenario;
 	GLCameraHandler* cameraHandler;
-
 	EDLogger* logger;
+
+	GLFrustum frustum;
 public:
 	GLWalkthroughPlayer(void);
 	GLWalkthroughPlayer(GLConfig config);

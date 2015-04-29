@@ -156,5 +156,5 @@ GLCameraStep* GLScenario::defaultStartPosition(int identifier)
 float GLScenario::defaultCameraSpeed(int identifier)
 {
 	//Por enquanto, tá default 50 para qualquer cenário
-	return 100.0f;
+	return 0.75f;
 }
