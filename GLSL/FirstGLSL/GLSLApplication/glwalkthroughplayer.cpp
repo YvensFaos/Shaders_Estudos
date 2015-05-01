@@ -158,7 +158,9 @@ void GLWalkthroughPlayer::step(void)
 		{
 			delete logLine;
 			logLine = new char[64];
-			sprintf(logLine, "%4.4f;%d;%d", deltaTime, (int)info[0], (int)info[1]);
+			std::string sdeltaTime = std::to_string(deltaTime);
+			std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
+			sprintf(logLine, "%s;%d;%d", sdeltaTime.c_str(), (int)info[0], (int)info[1]);
 			logger->logLine(logLine);
 		}
 		else
