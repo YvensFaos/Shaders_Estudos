@@ -244,7 +244,11 @@ GLOctree::GLOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	root = GLOctreeNode(min, max, handler, depth, indexes, logger);
 
 	logTree();
+#ifdef OPTIMIZE
 	optimizeTree();
+#else
+
+#endif
 	memoryUsed = root.getMemory();
 }
 
