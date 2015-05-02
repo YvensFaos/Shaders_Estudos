@@ -95,6 +95,7 @@
     <ClCompile Include="glrecordpathplayer.cpp" />
     <ClCompile Include="glscenario.cpp" />
     <ClCompile Include="glshaderloader.cpp" />
+    <ClCompile Include="glsoctree.cpp" />
     <ClCompile Include="glwalkthroughplayer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="openGLWrapper.cpp" />
@@ -118,6 +119,7 @@
     <ClInclude Include="glrecordpathplayer.h" />
     <ClInclude Include="glscenario.h" />
     <ClInclude Include="glshaderloader.h" />
+    <ClInclude Include="glsoctree.h" />
     <ClInclude Include="glwalkthroughplayer.h" />
     <ClInclude Include="openGLWrapper.h" />
     <ClInclude Include="triangle_cube.h" />
