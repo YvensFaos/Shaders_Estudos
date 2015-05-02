@@ -4,6 +4,8 @@
 #include "glcamera.h"
 #include "glmesh3d.h"
 
+#define INFO_SIZE 4
+
 struct GLFWwindow;
 
 class GLPlayer

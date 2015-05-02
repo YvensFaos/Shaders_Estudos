@@ -70,7 +70,9 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 		ede->getName(edeName);
 
 		char edeLogName[512];
-		sprintf(edeLogName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName, "-x", LOG_EXTENSION);
+		char sdepth[4];
+		sprintf(sdepth,"%d", config.edeDepth);
+		sprintf(edeLogName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName, sdepth, LOG_EXTENSION);
 		EDLogger edeLogger(edeLogName);
 
 		double firstTime = glfwGetTime();
@@ -132,9 +134,8 @@ void GLWalkthroughPlayer::step(void)
 	glViewport(0, 0, config.width, config.height);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(OpenGLWrapper::programObject);
-
-	float info[2];
-	memset(info, 0, sizeof(float)*2);
+	
+	memset(info, 0, sizeof(float)*INFO_SIZE);
 	if(config.type != NONE)
 	{
 		frustum = GLFrustum(camera->fov + 15.0f, camera->fov + 15.0f, camera->near, camera->far, camera);
@@ -160,7 +161,7 @@ void GLWalkthroughPlayer::step(void)
 			logLine = new char[64];
 			std::string sdeltaTime = std::to_string(deltaTime);
 			std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
-			sprintf(logLine, "%s;%d;%d", sdeltaTime.c_str(), (int)info[0], (int)info[1]);
+			sprintf(logLine, "%s;%d;%d;%d;%d", sdeltaTime.c_str(), (int)info[0], (int)info[1], (int)info[2], (int)info[3]);
 			logger->logLine(logLine);
 		}
 		else

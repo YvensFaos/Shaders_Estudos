@@ -22,6 +22,8 @@ private:
 	EDLogger* logger;
 
 	GLFrustum frustum;
+
+	float info[INFO_SIZE];
 public:
 	GLWalkthroughPlayer(void);
 	GLWalkthroughPlayer(GLConfig config);

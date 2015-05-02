@@ -23,6 +23,7 @@ private:
 	GLBasicEDE* ede;
 
 	GLFrustum frustum;
+	float info[INFO_SIZE];
 public:
 	GLEDEMakerPlayer(void);
 	GLEDEMakerPlayer(GLConfig config);

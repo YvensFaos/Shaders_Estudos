@@ -26,7 +26,9 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 	handler->resetTrifaces();
 
 	//[0]~ Qtde. Nós testados
-	//[1]~ Qtde. Triângulos enviados
+	//[1]~ Qtde. Nós Visíveis
+	//[2]~ Qtde. Triângulos Enviados
+	//[3]~ Qtde. Draw Calls
 
 	while(stackSize != 0)
 	{
@@ -35,6 +37,8 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 
 		if(frustum->intercepts(&top->min, &top->max))
 		{
+			info[1] += 1;
+
 			if(top->hasNodes)
 			{
 				for(int i = 0; i < top->nodes.size(); i++)
@@ -59,7 +63,8 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 					for(int j = 0; j < printIndex->size();)
 					{
 						handler->render(i, printIndex->at(j), printIndex->at(j + 1));
-						info[1] += printIndex->at(j + 1) - printIndex->at(j) + 1;
+						info[2] += printIndex->at(j + 1) - printIndex->at(j) + 1;
+						info[3] += 1;
 						j += 2;
 					}
 				}
