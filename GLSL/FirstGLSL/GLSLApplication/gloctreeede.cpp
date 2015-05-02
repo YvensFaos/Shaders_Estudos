@@ -74,12 +74,53 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 					//}
 #pragma endregion
 					std::vector<int>* printIndex = &top->indexes[i];
-					for(int j = 0; j < printIndex->size();)
+					for(int j = 0; j < printIndex->size(); j++)
 					{
 						indexes[i][j] = 1;
 					}
 				}
 			}
+		}
+	}
+
+	int first;
+	int actual;
+	//Verificar a matrix de indices agora
+	//Repensar isso aqui! Preciso verificar só os índices que são 1!!
+	for(int i = 0; i < handler->numMeshes; i++)
+	{
+		handler->prerender(i);
+
+		first = -1;
+		actual = first;
+
+		for(int j = 0; j < handler->meshes[i].verticesCount; j++)
+		{
+			if(indexes[i][j] == 1)
+			{
+				if(first == -1)
+				{
+					first = j;
+					actual = first;
+				}
+				else
+				{
+					if(actual + 1 != j)
+					{
+						handler->render(i, first, actual);
+						info[2] += actual - first + 1;
+						info[3] += 1;
+
+						first = j;
+					}
+					actual = j;
+				}
+			}
+		}
+
+		if(first != -1)
+		{
+			handler->render(i, first, actual);
 		}
 	}
 }

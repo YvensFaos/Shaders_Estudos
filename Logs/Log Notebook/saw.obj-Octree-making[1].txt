@@ -1,12 +1,12 @@
-{2:5} - 10:57:18: Iniciado a octree tamanho 1.
-{2:5} - 10:57:18: Calculando AABB da raíz
-{2:5} - 10:57:18: Mínimo: -363.15 -107.81 -614.40
-{2:5} - 10:57:18: Máximo: 514.80 123.30 614.40
-{2:5} - 10:57:18: Node color: 0.839216 0.419608 0.160784
-{2:5} - 10:57:18: Inside: 181584/181584
-{2:5} - 10:57:18: Node - [36] - [0]
-{2:5} - 10:57:18: Total Nodes: 1
-{2:5} - 10:57:18: Concluindo a octree!
-{2:5} - 10:57:18: Gerando matrix de índices!
-{2:5} - 10:57:18: Mémória usada: 726365.
-{2:5} - 10:57:18: Tempo de processamento: 0.000000
+{2:5} - 11:24:2: Iniciado a octree tamanho 1.
+{2:5} - 11:24:2: Calculando AABB da raíz
+{2:5} - 11:24:2: Mínimo: -363.15 -107.81 -614.40
+{2:5} - 11:24:2: Máximo: 514.80 123.30 614.40
+{2:5} - 11:24:2: Node color: 0.839216 0.419608 0.160784
+{2:5} - 11:24:2: Inside: 181584/181584
+{2:5} - 11:24:2: Node - [36] - [0]
+{2:5} - 11:24:2: Total Nodes: 1
+{2:5} - 11:24:2: Concluindo a octree!
+{2:5} - 11:24:2: Gerando matrix de índices!
+{2:5} - 11:24:2: Mémória usada: 726365.
+{2:5} - 11:24:2: Tempo de processamento: 0.000000
