@@ -23,12 +23,16 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 	int nodeCounter = 0;
 	stack[0] = &octree.root;
 
-	handler->resetTrifaces();
-
 	//[0]~ Qtde. Nós testados
 	//[1]~ Qtde. Nós Visíveis
 	//[2]~ Qtde. Triângulos Enviados
 	//[3]~ Qtde. Draw Calls
+
+	//Reset matrix de indices
+	for(int i = 0; i < handler->numMeshes; i++)
+	{
+		memset(indexes[i], 0, handler->meshes[i].verticesCount*sizeof(char));
+	}
 
 	while(stackSize != 0)
 	{
@@ -56,16 +60,23 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 
 				for(int i = 0; i < top->numMeshes; i++)
 				{
-					handler->prerender(i);
+#pragma region antigo draw
+					//handler->prerender(i);
 
+					//std::vector<int>* printIndex = &top->indexes[i];
+
+					//for(int j = 0; j < printIndex->size();)
+					//{
+					//	handler->render(i, printIndex->at(j), printIndex->at(j + 1));
+					//	info[2] += printIndex->at(j + 1) - printIndex->at(j) + 1;
+					//	info[3] += 1;
+					//	j += 2;
+					//}
+#pragma endregion
 					std::vector<int>* printIndex = &top->indexes[i];
-
 					for(int j = 0; j < printIndex->size();)
 					{
-						handler->render(i, printIndex->at(j), printIndex->at(j + 1));
-						info[2] += printIndex->at(j + 1) - printIndex->at(j) + 1;
-						info[3] += 1;
-						j += 2;
+						indexes[i][j] = 1;
 					}
 				}
 			}
@@ -83,6 +94,15 @@ void GLOctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 	octree = GLOctree(handler, this->edeDepth, logger);
 	logger->logLineTimestamp("Concluindo a octree!");
 	sprintf(logLine, "Mémória usada: %d.", octree.getMemory());
+
+	logger->logLineTimestamp("Gerando matrix de índices!");
+	indexes = new char*[handler->numMeshes];
+	for(int i = 0; i < handler->numMeshes; i++)
+	{
+		indexes[i] = new char[handler->meshes[i].verticesCount];
+		memset(indexes[i], 0, handler->meshes[i].verticesCount*sizeof(char));
+	}
+
 	logger->logLineTimestamp(logLine);
 }
 

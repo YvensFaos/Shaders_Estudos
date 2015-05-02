@@ -1,32 +1,12 @@
-{2:5} - 10:43:33: Iniciado a octree tamanho 1.
-{2:5} - 10:43:33: Calculando AABB da raíz
-{2:5} - 10:43:33: Mínimo: -363.15 -107.81 -614.40
-{2:5} - 10:43:33: Máximo: 514.80 123.30 614.40
-{2:5} - 10:43:33: Node color: 0.839216 0.419608 0.160784
-{2:5} - 10:43:33: Inside: 181584/181584
-{2:5} - 10:43:33: Node - [36] - [0]
-{2:5} - 10:43:33: Total Nodes: 1
-{2:5} - 10:43:33: Otimizando node...
-{2:5} - 10:43:33: Otimizando arrays de mesh...
-{2:5} - 10:43:33: [Mesh 0] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 1] Otimizado de 6 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 2] Otimizado de 6 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 3] Otimizado de 6 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 4] Otimizado de 60 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 5] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 6] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 7] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 8] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 9] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 10] Otimizado de 6 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 11] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 12] Otimizado de 6 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 13] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 14] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 15] Otimizado de 181092 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 16] Otimizado de 6 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 17] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: [Mesh 18] Otimizado de 36 -> 2 índices.
-{2:5} - 10:43:33: Concluindo a octree!
-{2:5} - 10:43:33: Mémória usada: 181.
-{2:5} - 10:43:33: Tempo de processamento: 0.000000
+{2:5} - 10:57:18: Iniciado a octree tamanho 1.
+{2:5} - 10:57:18: Calculando AABB da raíz
+{2:5} - 10:57:18: Mínimo: -363.15 -107.81 -614.40
+{2:5} - 10:57:18: Máximo: 514.80 123.30 614.40
+{2:5} - 10:57:18: Node color: 0.839216 0.419608 0.160784
+{2:5} - 10:57:18: Inside: 181584/181584
+{2:5} - 10:57:18: Node - [36] - [0]
+{2:5} - 10:57:18: Total Nodes: 1
+{2:5} - 10:57:18: Concluindo a octree!
+{2:5} - 10:57:18: Gerando matrix de índices!
+{2:5} - 10:57:18: Mémória usada: 726365.
+{2:5} - 10:57:18: Tempo de processamento: 0.000000

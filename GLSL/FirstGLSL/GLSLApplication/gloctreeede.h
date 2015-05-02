@@ -9,6 +9,7 @@ private:
 	GLOctree octree;
 	int edeDepth;
 
+	char** indexes;
 public:
 	GLOctreeEDE(void);
 	~GLOctreeEDE(void);

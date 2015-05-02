@@ -3,8 +3,6 @@
 #include "glmesh3d.h"
 #include "edlogger.h"
 
-#define OPTIMIZE
-
 class GLOctreeNode
 {
 public:
