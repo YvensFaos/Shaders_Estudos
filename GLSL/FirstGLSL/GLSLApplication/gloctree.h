@@ -38,7 +38,6 @@ public:
 	~GLOctree(void);
 
 	int getMemory(void);
-
 private: 
 	void logTree(void);
 	void optimizeTree(void);
