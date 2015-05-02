@@ -242,7 +242,7 @@ GLOctree::GLOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 
 	//Os nós são criados a partir da raíz
 	root = GLOctreeNode(min, max, handler, depth, indexes, logger);
-
+	optimizeTree();
 	logTree();
 	memoryUsed = root.getMemory();
 }

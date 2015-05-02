@@ -57,7 +57,7 @@ int main()
 	//Adiciona um texto adicional ao arquivo de logw
 	config.logExtraMsg = "test";
 	//Altura padrão de uma EDE
-	config.edeDepth = 3;
+	config.edeDepth = 2;
 	//EDE escolhida
 	config.type = OCTREE;
 	//Colore os nós em tons diferente

@@ -87,7 +87,6 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 
 		edeLogger.closeLog();
 
-
 		sprintf(logName, "%s%s[%d]-%s[%s=%d]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, edeName, config.edeDepth, LOG_EXTENSION);
 	}
 	else
