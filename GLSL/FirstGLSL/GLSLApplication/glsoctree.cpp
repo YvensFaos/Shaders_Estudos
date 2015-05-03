@@ -61,6 +61,11 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	}
 #pragma endregion
 
+	char logLine[128];
+	sprintf(logLine, "Mínimo: %4.2f %4.2f %4.2f", VEC3_PRINT(min));
+	logger->logLineTimestamp(logLine);
+	sprintf(logLine, "Máximo: %4.2f %4.2f %4.2f", VEC3_PRINT(max));
+	logger->logLineTimestamp(logLine);
 	//Análise das meshes estáticas, se houver
 	
 	int staticVerticesCount = 0;
@@ -89,10 +94,17 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 		}
 	}
 
+	sprintf(logLine, "Static Meshes: %d\r\nTested Meshes: %d", staticMeshes.size(), testedMeshes.size());
+	logger->logLineTimestamp(logLine);
+
 	staticMesh.normals = new glm::vec3[staticVerticesCount];
 	staticMesh.vertexes = new glm::vec3[staticVerticesCount];
 	staticMesh.hasNormals = true;
 	staticMesh.verticesCount = staticVerticesCount;
+
+	sprintf(logLine, "Static Meshes Vertice Count: %d", staticVerticesCount);
+	logger->logLineTimestamp(logLine);
+	logger->logLineTimestamp("Gerando mesh estática única...");
 
 	int k = 0;
 	for(int i = 0; i < staticMeshes.size(); i++)
@@ -105,6 +117,7 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 			k++;
 		}
 	}
+	logger->logLineTimestamp("Finalizado!");
 
 	GLMeshHandler newHandler;
 	newHandler.numMeshes = testedMeshes.size();
@@ -113,8 +126,15 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 		newHandler.meshes.push_back(*testedMeshes.at(i));
 	}
 
+	logger->logLineTimestamp("Gerando nós a partir das malhas testáveis...");
 	root = GLOctreeNode(min, max, handler, depth, indexes, logger);
+	logger->logLineTimestamp("Finalizado!");
+
+	logger->logLineTimestamp("Gerando meshes para os nós folhas ...");
 	createNodeMeshes(&newHandler);
+	logger->logLineTimestamp("Finalizado!");
+
+	logTree();
 }
 
 void GLSOctree::createNodeMeshes(GLMeshHandler* handler)
@@ -145,14 +165,42 @@ void GLSOctree::createNodeMeshes(GLMeshHandler* handler)
 				for(int j = 0; j < top->indexes->size(); j++)
 				{
 					index = top->indexes->at(j);
-					glm::vec3 vertex = top->vertexes.at(index);
-					glm::vec3 normal = top->normals.at(index);
+					glm::vec3* vertex = &mesh->vertexes[index];
+					glm::vec3* normal = &mesh->normals[index];
 
-					top->vertexes.push_back(glm::vec3(vertex.x, vertex.y, vertex.z));
-					top->normals.push_back(glm::vec3(normal.x, normal.y, normal.z));
+					top->vertexes.push_back(glm::vec3(vertex->x, vertex->y, vertex->z));
+					top->normals.push_back(glm::vec3(normal->x, normal->y, normal->z));
 				}
 			}
 		}
 	}
 }
 
+void GLSOctree::logTree(void)
+{
+	GLOctreeNode* stack[256];
+	int stackSize = 1;
+	int nodeCounter = 0;
+	stack[0] = &root;
+
+	char logLine[128];
+	while(stackSize != 0)
+	{
+		GLOctreeNode* top = stack[--stackSize];
+		nodeCounter++;
+
+		sprintf(logLine, "Vertices count: %d", top->vertexes.size());
+		logger->logLineTimestamp(logLine);
+
+		if(top->hasNodes)
+		{
+			for(int i = 0; i < top->nodes.size(); i++)
+			{
+				stack[stackSize++] = &top->nodes.at(i);
+			}
+		}
+	}
+
+	sprintf(logLine, "Total Nodes: %d", nodeCounter);
+	logger->logLineTimestamp(logLine);
+}

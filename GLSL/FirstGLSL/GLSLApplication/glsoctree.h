@@ -19,7 +19,7 @@ public:
 	~GLSOctree(void);
 
 	int getMemory(void);
-	void createNodeMeshes(GLMeshHandler* handler);
 private:
+	void createNodeMeshes(GLMeshHandler* handler);
 	void logTree(void);
 };
