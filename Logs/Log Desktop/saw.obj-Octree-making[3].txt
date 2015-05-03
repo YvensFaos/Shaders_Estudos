@@ -1,1589 +1,1589 @@
-{2:5} - 9:31:54: Iniciado a octree tamanho 3.
-{2:5} - 9:31:54: Calculando AABB da raíz
-{2:5} - 9:31:54: Mínimo: -363.15 -107.81 -614.40
-{2:5} - 9:31:54: Máximo: 514.80 123.30 614.40
-{2:5} - 9:31:54: Node color: 0.839216 0.419608 0.160784
-{2:5} - 9:31:54: Inside: 181584/181584
-{2:5} - 9:31:54: Node color: 0.662745 0.172549 0.921569
-{2:5} - 9:31:54: Inside: 32184/181584
-{2:5} - 9:31:54: Node color: 0.733333 0.129412 0.011765
-{2:5} - 9:31:54: Inside: 933/32184
-{2:5} - 9:31:54: Node color: 0.372549 0.372549 0.937255
-{2:5} - 9:31:54: Inside: 13683/32184
-{2:5} - 9:31:54: Node color: 0.062745 0.988235 0.298039
-{2:5} - 9:31:54: Inside: 1158/32184
-{2:5} - 9:31:54: Node color: 0.831373 0.745098 0.925490
-{2:5} - 9:31:54: Inside: 2043/32184
-{2:5} - 9:31:54: Node color: 0.023529 0.317647 0.929412
-{2:5} - 9:31:54: Inside: 0/32184
-{2:5} - 9:31:54: Node color: 0.600000 0.301961 0.270588
-{2:5} - 9:31:54: Inside: 6636/32184
-{2:5} - 9:31:54: Node color: 0.317647 0.556863 0.145098
-{2:5} - 9:31:54: Inside: 1515/32184
-{2:5} - 9:31:54: Node color: 0.019608 0.325490 0.396078
-{2:5} - 9:31:54: Inside: 9189/32184
-{2:5} - 9:31:54: Node color: 0.925490 0.200000 0.360784
-{2:5} - 9:31:54: Inside: 29235/181584
-{2:5} - 9:31:54: Node color: 0.086275 0.329412 0.247059
-{2:5} - 9:31:54: Inside: 11946/29235
-{2:5} - 9:31:54: Node color: 0.803922 0.133333 0.654902
-{2:5} - 9:31:54: Inside: 243/29235
-{2:5} - 9:31:54: Node color: 0.376471 0.560784 0.800000
-{2:5} - 9:31:54: Inside: 7776/29235
-{2:5} - 9:31:54: Node color: 0.305882 0.952941 0.831373
-{2:5} - 9:31:54: Inside: 3936/29235
-{2:5} - 9:31:54: Node color: 0.239216 0.376471 0.290196
-{2:5} - 9:31:54: Inside: 4494/29235
-{2:5} - 9:31:54: Node color: 0.184314 0.933333 0.796078
-{2:5} - 9:31:54: Inside: 585/29235
-{2:5} - 9:31:54: Node color: 0.458824 0.086275 0.407843
-{2:5} - 9:31:54: Inside: 3300/29235
-{2:5} - 9:31:54: Node color: 0.207843 0.427451 0.576471
-{2:5} - 9:31:54: Inside: 987/29235
-{2:5} - 9:31:54: Node color: 0.050980 0.956863 0.200000
-{2:5} - 9:31:54: Inside: 15996/181584
-{2:5} - 9:31:54: Node color: 0.019608 0.901961 0.298039
-{2:5} - 9:31:54: Inside: 51/15996
-{2:5} - 9:31:54: Node color: 0.062745 0.129412 0.223529
-{2:5} - 9:31:54: Inside: 3069/15996
-{2:5} - 9:31:54: Node color: 0.545098 0.066667 0.450980
-{2:5} - 9:31:54: Inside: 0/15996
-{2:5} - 9:31:54: Node color: 0.352941 0.631373 0.815686
-{2:5} - 9:31:54: Inside: 5739/15996
-{2:5} - 9:31:54: Node color: 0.568627 0.388235 0.313726
-{2:5} - 9:31:54: Inside: 36/15996
-{2:5} - 9:31:54: Node color: 0.964706 0.847059 0.196078
-{2:5} - 9:31:54: Inside: 7686/15996
-{2:5} - 9:31:54: Node color: 0.976471 0.913725 0.658824
-{2:5} - 9:31:54: Inside: 0/15996
-{2:5} - 9:31:54: Node color: 0.250980 0.447059 0.501961
-{2:5} - 9:31:54: Inside: 222/15996
-{2:5} - 9:31:54: Node color: 0.474510 0.431373 0.552941
-{2:5} - 9:31:54: Inside: 28029/181584
-{2:5} - 9:31:54: Node color: 0.168627 0.631373 0.925490
-{2:5} - 9:31:54: Inside: 2889/28029
-{2:5} - 9:31:54: Node color: 0.572549 0.211765 0.447059
-{2:5} - 9:31:54: Inside: 3288/28029
-{2:5} - 9:31:54: Node color: 0.462745 0.713726 0.403922
-{2:5} - 9:31:54: Inside: 4074/28029
-{2:5} - 9:31:54: Node color: 0.917647 0.164706 0.207843
-{2:5} - 9:31:54: Inside: 549/28029
-{2:5} - 9:31:54: Node color: 0.019608 0.952941 0.866667
-{2:5} - 9:31:54: Inside: 8568/28029
-{2:5} - 9:31:54: Node color: 0.035294 0.305882 0.192157
-{2:5} - 9:31:54: Inside: 900/28029
-{2:5} - 9:31:54: Node color: 0.043137 0.811765 0.941176
-{2:5} - 9:31:54: Inside: 11097/28029
-{2:5} - 9:31:54: Node color: 0.690196 0.788235 0.207843
-{2:5} - 9:31:54: Inside: 621/28029
-{2:5} - 9:31:54: Node color: 0.792157 0.584314 0.725490
-{2:5} - 9:31:54: Inside: 20601/181584
-{2:5} - 9:31:54: Node color: 0.007843 0.858824 0.588235
-{2:5} - 9:31:54: Inside: 0/20601
-{2:5} - 9:31:54: Node color: 0.752941 0.988235 0.070588
-{2:5} - 9:31:54: Inside: 225/20601
-{2:5} - 9:31:54: Node color: 0.925490 0.117647 0.062745
-{2:5} - 9:31:54: Inside: 207/20601
-{2:5} - 9:31:54: Node color: 0.125490 0.666667 0.082353
-{2:5} - 9:31:54: Inside: 7233/20601
-{2:5} - 9:31:54: Node color: 0.807843 0.074510 0.764706
-{2:5} - 9:31:54: Inside: 0/20601
-{2:5} - 9:31:54: Node color: 0.509804 0.254902 0.262745
-{2:5} - 9:31:54: Inside: 54/20601
-{2:5} - 9:31:54: Node color: 0.768627 0.192157 0.435294
-{2:5} - 9:31:54: Inside: 0/20601
-{2:5} - 9:31:54: Node color: 0.396078 0.988235 0.450980
-{2:5} - 9:31:54: Inside: 13578/20601
-{2:5} - 9:31:54: Node color: 0.615686 0.458824 0.615686
-{2:5} - 9:31:54: Inside: 23355/181584
-{2:5} - 9:31:54: Node color: 0.717647 0.835294 0.184314
-{2:5} - 9:31:54: Inside: 6666/23355
-{2:5} - 9:31:54: Node color: 0.309804 0.937255 0.607843
-{2:5} - 9:31:54: Inside: 600/23355
-{2:5} - 9:31:54: Node color: 0.894118 0.984314 0.266667
-{2:5} - 9:31:54: Inside: 12417/23355
-{2:5} - 9:31:54: Node color: 0.866667 0.827451 0.184314
-{2:5} - 9:31:54: Inside: 0/23355
-{2:5} - 9:31:54: Node color: 0.384314 0.364706 0.098039
-{2:5} - 9:31:54: Inside: 63/23355
-{2:5} - 9:31:54: Node color: 0.576471 0.807843 0.529412
-{2:5} - 9:31:54: Inside: 57/23355
-{2:5} - 9:31:54: Node color: 0.937255 0.274510 0.490196
-{2:5} - 9:31:54: Inside: 873/23355
-{2:5} - 9:31:54: Node color: 0.501961 0.537255 0.329412
-{2:5} - 9:31:54: Inside: 3669/23355
-{2:5} - 9:31:54: Node color: 0.847059 0.215686 0.423529
-{2:5} - 9:31:54: Inside: 31830/181584
-{2:5} - 9:31:54: Node color: 0.356863 0.490196 0.125490
-{2:5} - 9:31:54: Inside: 1404/31830
-{2:5} - 9:31:54: Node color: 0.215686 0.760784 0.925490
-{2:5} - 9:31:54: Inside: 4263/31830
-{2:5} - 9:31:54: Node color: 0.247059 0.200000 0.023529
-{2:5} - 9:31:54: Inside: 24/31830
-{2:5} - 9:31:54: Node color: 0.015686 0.129412 0.976471
-{2:5} - 9:31:54: Inside: 13380/31830
-{2:5} - 9:31:54: Node color: 0.207843 0.564706 0.474510
-{2:5} - 9:31:54: Inside: 702/31830
-{2:5} - 9:31:54: Node color: 0.560784 0.600000 0.839216
-{2:5} - 9:31:54: Inside: 8556/31830
-{2:5} - 9:31:54: Node color: 0.086275 0.854902 0.058824
-{2:5} - 9:31:54: Inside: 21/31830
-{2:5} - 9:31:54: Node color: 0.403922 0.619608 0.831373
-{2:5} - 9:31:54: Inside: 6456/31830
-{2:5} - 9:31:54: Node color: 0.831373 0.168627 0.658824
-{2:5} - 9:31:54: Inside: 19452/181584
-{2:5} - 9:31:54: Node color: 0.949020 0.117647 0.494118
-{2:5} - 9:31:54: Inside: 2544/19452
-{2:5} - 9:31:54: Node color: 0.113725 0.309804 0.462745
-{2:5} - 9:31:54: Inside: 0/19452
-{2:5} - 9:31:54: Node color: 0.435294 0.254902 0.866667
-{2:5} - 9:31:54: Inside: 807/19452
-{2:5} - 9:31:54: Node color: 0.780392 0.584314 0.784314
-{2:5} - 9:31:54: Inside: 0/19452
-{2:5} - 9:31:54: Node color: 0.835294 0.403922 0.749020
-{2:5} - 9:31:54: Inside: 9717/19452
-{2:5} - 9:31:54: Node color: 0.917647 0.168627 0.407843
-{2:5} - 9:31:54: Inside: 3102/19452
-{2:5} - 9:31:54: Node color: 0.243137 0.780392 0.878431
-{2:5} - 9:31:54: Inside: 4221/19452
-{2:5} - 9:31:54: Node color: 0.129412 0.333333 0.529412
-{2:5} - 9:31:54: Inside: 0/19452
-{2:5} - 9:31:54: Node - [0] - [8]
-{2:5} - 9:31:54: Node - [0] - [8]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [8]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [8]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [8]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [8]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [36] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [8]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [8]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [8]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Node - [0] - [0]
-{2:5} - 9:31:54: Total Nodes: 73
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Chamando nós filhos...
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Chamando nós filhos...
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 933 -> 22 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 11] Otimizado de 12 -> 6 índices.
-{2:5} - 9:31:54: [Mesh 12] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 13635 -> 538 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 17] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 1158 -> 64 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 11] Otimizado de 18 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 2025 -> 100 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 10] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: [Mesh 11] Otimizado de 18 -> 6 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 6612 -> 366 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 1485 -> 116 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 17] Otimizado de 30 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 11] Otimizado de 15 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 9174 -> 340 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Chamando nós filhos...
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 2] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 8] Otimizado de 18 -> 6 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 11922 -> 966 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 243 -> 42 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 1] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 8] Otimizado de 18 -> 6 índices.
-{2:5} - 9:31:54: [Mesh 9] Otimizado de 36 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 13] Otimizado de 24 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 7662 -> 506 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 18] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 3936 -> 542 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 3] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 8] Otimizado de 12 -> 6 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 4476 -> 414 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 585 -> 104 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 8] Otimizado de 15 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 13] Otimizado de 24 -> 6 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 3231 -> 236 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 18] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 987 -> 100 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Chamando nós filhos...
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 51 -> 8 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 3069 -> 150 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 5739 -> 252 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 36 -> 10 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 7686 -> 444 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 222 -> 12 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Chamando nós filhos...
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 5] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: [Mesh 6] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: [Mesh 7] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 11] Otimizado de 15 -> 6 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 2784 -> 200 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 3288 -> 406 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 11] Otimizado de 12 -> 6 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 4056 -> 400 índices.
-{2:5} - 9:31:54: [Mesh 16] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 549 -> 76 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: [Mesh 0] Otimizado de 36 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 5] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: [Mesh 6] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: [Mesh 7] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 10] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: [Mesh 11] Otimizado de 18 -> 6 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 8418 -> 568 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 900 -> 104 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 4] Otimizado de 60 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 11] Otimizado de 18 -> 4 índices.
-{2:5} - 9:31:54: [Mesh 12] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 11013 -> 832 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 621 -> 118 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Chamando nós filhos...
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 225 -> 40 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 207 -> 28 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 7233 -> 294 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 54 -> 20 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 13578 -> 450 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Chamando nós filhos...
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 6666 -> 298 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 600 -> 20 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 12417 -> 840 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 63 -> 10 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 57 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 873 -> 98 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 3669 -> 386 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Chamando nós filhos...
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 14] Otimizado de 30 -> 2 índices.
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 1374 -> 98 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 8] Otimizado de 18 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 4245 -> 120 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 24 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 2] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 8] Otimizado de 12 -> 6 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 14] Otimizado de 30 -> 4 índices.
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 13332 -> 490 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 702 -> 54 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 8] Otimizado de 15 -> 6 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 8541 -> 376 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 21 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 1] Otimizado de 6 -> 2 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 8] Otimizado de 18 -> 4 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 6432 -> 324 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Chamando nós filhos...
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 2544 -> 268 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 807 -> 12 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 9717 -> 672 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 3102 -> 364 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: [Mesh 15] Otimizado de 4221 -> 288 índices.
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Otimizando node...
-{2:5} - 9:31:54: Otimizando arrays de mesh...
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Nó sem índices!
-{2:5} - 9:31:54: Concluindo a octree!
-{2:5} - 9:31:54: Mémória usada: 57165.
-{2:5} - 9:31:54: Tempo de processamento: 0.000000
+{3:5} - 17:52:2: Iniciado a octree tamanho 3.
+{3:5} - 17:52:2: Calculando AABB da raíz
+{3:5} - 17:52:2: Mínimo: -363.15 -107.81 -614.40
+{3:5} - 17:52:2: Máximo: 514.80 123.30 614.40
+{3:5} - 17:52:2: Node color: 0.839216 0.419608 0.160784
+{3:5} - 17:52:2: Inside: 181584/181584
+{3:5} - 17:52:2: Node color: 0.662745 0.172549 0.921569
+{3:5} - 17:52:2: Inside: 32184/181584
+{3:5} - 17:52:2: Node color: 0.733333 0.129412 0.011765
+{3:5} - 17:52:2: Inside: 933/32184
+{3:5} - 17:52:2: Node color: 0.372549 0.372549 0.937255
+{3:5} - 17:52:2: Inside: 13683/32184
+{3:5} - 17:52:2: Node color: 0.062745 0.988235 0.298039
+{3:5} - 17:52:2: Inside: 1158/32184
+{3:5} - 17:52:2: Node color: 0.831373 0.745098 0.925490
+{3:5} - 17:52:2: Inside: 2043/32184
+{3:5} - 17:52:2: Node color: 0.023529 0.317647 0.929412
+{3:5} - 17:52:2: Inside: 0/32184
+{3:5} - 17:52:2: Node color: 0.600000 0.301961 0.270588
+{3:5} - 17:52:2: Inside: 6636/32184
+{3:5} - 17:52:2: Node color: 0.317647 0.556863 0.145098
+{3:5} - 17:52:2: Inside: 1515/32184
+{3:5} - 17:52:2: Node color: 0.019608 0.325490 0.396078
+{3:5} - 17:52:2: Inside: 9189/32184
+{3:5} - 17:52:2: Node color: 0.925490 0.200000 0.360784
+{3:5} - 17:52:2: Inside: 29235/181584
+{3:5} - 17:52:2: Node color: 0.086275 0.329412 0.247059
+{3:5} - 17:52:2: Inside: 11946/29235
+{3:5} - 17:52:2: Node color: 0.803922 0.133333 0.654902
+{3:5} - 17:52:2: Inside: 243/29235
+{3:5} - 17:52:2: Node color: 0.376471 0.560784 0.800000
+{3:5} - 17:52:2: Inside: 7776/29235
+{3:5} - 17:52:2: Node color: 0.305882 0.952941 0.831373
+{3:5} - 17:52:2: Inside: 3936/29235
+{3:5} - 17:52:2: Node color: 0.239216 0.376471 0.290196
+{3:5} - 17:52:2: Inside: 4494/29235
+{3:5} - 17:52:2: Node color: 0.184314 0.933333 0.796078
+{3:5} - 17:52:2: Inside: 585/29235
+{3:5} - 17:52:2: Node color: 0.458824 0.086275 0.407843
+{3:5} - 17:52:2: Inside: 3300/29235
+{3:5} - 17:52:2: Node color: 0.207843 0.427451 0.576471
+{3:5} - 17:52:2: Inside: 987/29235
+{3:5} - 17:52:2: Node color: 0.050980 0.956863 0.200000
+{3:5} - 17:52:2: Inside: 15996/181584
+{3:5} - 17:52:2: Node color: 0.019608 0.901961 0.298039
+{3:5} - 17:52:2: Inside: 51/15996
+{3:5} - 17:52:2: Node color: 0.062745 0.129412 0.223529
+{3:5} - 17:52:2: Inside: 3069/15996
+{3:5} - 17:52:2: Node color: 0.545098 0.066667 0.450980
+{3:5} - 17:52:2: Inside: 0/15996
+{3:5} - 17:52:2: Node color: 0.352941 0.631373 0.815686
+{3:5} - 17:52:2: Inside: 5739/15996
+{3:5} - 17:52:2: Node color: 0.568627 0.388235 0.313726
+{3:5} - 17:52:2: Inside: 36/15996
+{3:5} - 17:52:2: Node color: 0.964706 0.847059 0.196078
+{3:5} - 17:52:2: Inside: 7686/15996
+{3:5} - 17:52:2: Node color: 0.976471 0.913725 0.658824
+{3:5} - 17:52:2: Inside: 0/15996
+{3:5} - 17:52:2: Node color: 0.250980 0.447059 0.501961
+{3:5} - 17:52:2: Inside: 222/15996
+{3:5} - 17:52:2: Node color: 0.474510 0.431373 0.552941
+{3:5} - 17:52:2: Inside: 28029/181584
+{3:5} - 17:52:2: Node color: 0.168627 0.631373 0.925490
+{3:5} - 17:52:2: Inside: 2889/28029
+{3:5} - 17:52:2: Node color: 0.572549 0.211765 0.447059
+{3:5} - 17:52:2: Inside: 3288/28029
+{3:5} - 17:52:2: Node color: 0.462745 0.713726 0.403922
+{3:5} - 17:52:2: Inside: 4074/28029
+{3:5} - 17:52:2: Node color: 0.917647 0.164706 0.207843
+{3:5} - 17:52:2: Inside: 549/28029
+{3:5} - 17:52:2: Node color: 0.019608 0.952941 0.866667
+{3:5} - 17:52:2: Inside: 8568/28029
+{3:5} - 17:52:2: Node color: 0.035294 0.305882 0.192157
+{3:5} - 17:52:2: Inside: 900/28029
+{3:5} - 17:52:2: Node color: 0.043137 0.811765 0.941176
+{3:5} - 17:52:2: Inside: 11097/28029
+{3:5} - 17:52:2: Node color: 0.690196 0.788235 0.207843
+{3:5} - 17:52:2: Inside: 621/28029
+{3:5} - 17:52:2: Node color: 0.792157 0.584314 0.725490
+{3:5} - 17:52:2: Inside: 20601/181584
+{3:5} - 17:52:2: Node color: 0.007843 0.858824 0.588235
+{3:5} - 17:52:2: Inside: 0/20601
+{3:5} - 17:52:2: Node color: 0.752941 0.988235 0.070588
+{3:5} - 17:52:2: Inside: 225/20601
+{3:5} - 17:52:2: Node color: 0.925490 0.117647 0.062745
+{3:5} - 17:52:2: Inside: 207/20601
+{3:5} - 17:52:2: Node color: 0.125490 0.666667 0.082353
+{3:5} - 17:52:2: Inside: 7233/20601
+{3:5} - 17:52:2: Node color: 0.807843 0.074510 0.764706
+{3:5} - 17:52:2: Inside: 0/20601
+{3:5} - 17:52:2: Node color: 0.509804 0.254902 0.262745
+{3:5} - 17:52:2: Inside: 54/20601
+{3:5} - 17:52:2: Node color: 0.768627 0.192157 0.435294
+{3:5} - 17:52:2: Inside: 0/20601
+{3:5} - 17:52:2: Node color: 0.396078 0.988235 0.450980
+{3:5} - 17:52:2: Inside: 13578/20601
+{3:5} - 17:52:2: Node color: 0.615686 0.458824 0.615686
+{3:5} - 17:52:2: Inside: 23355/181584
+{3:5} - 17:52:2: Node color: 0.717647 0.835294 0.184314
+{3:5} - 17:52:2: Inside: 6666/23355
+{3:5} - 17:52:2: Node color: 0.309804 0.937255 0.607843
+{3:5} - 17:52:2: Inside: 600/23355
+{3:5} - 17:52:2: Node color: 0.894118 0.984314 0.266667
+{3:5} - 17:52:2: Inside: 12417/23355
+{3:5} - 17:52:2: Node color: 0.866667 0.827451 0.184314
+{3:5} - 17:52:2: Inside: 0/23355
+{3:5} - 17:52:2: Node color: 0.384314 0.364706 0.098039
+{3:5} - 17:52:2: Inside: 63/23355
+{3:5} - 17:52:2: Node color: 0.576471 0.807843 0.529412
+{3:5} - 17:52:2: Inside: 57/23355
+{3:5} - 17:52:2: Node color: 0.937255 0.274510 0.490196
+{3:5} - 17:52:2: Inside: 873/23355
+{3:5} - 17:52:2: Node color: 0.501961 0.537255 0.329412
+{3:5} - 17:52:2: Inside: 3669/23355
+{3:5} - 17:52:2: Node color: 0.847059 0.215686 0.423529
+{3:5} - 17:52:2: Inside: 31830/181584
+{3:5} - 17:52:2: Node color: 0.356863 0.490196 0.125490
+{3:5} - 17:52:2: Inside: 1404/31830
+{3:5} - 17:52:2: Node color: 0.215686 0.760784 0.925490
+{3:5} - 17:52:2: Inside: 4263/31830
+{3:5} - 17:52:2: Node color: 0.247059 0.200000 0.023529
+{3:5} - 17:52:2: Inside: 24/31830
+{3:5} - 17:52:2: Node color: 0.015686 0.129412 0.976471
+{3:5} - 17:52:2: Inside: 13380/31830
+{3:5} - 17:52:2: Node color: 0.207843 0.564706 0.474510
+{3:5} - 17:52:2: Inside: 702/31830
+{3:5} - 17:52:2: Node color: 0.560784 0.600000 0.839216
+{3:5} - 17:52:2: Inside: 8556/31830
+{3:5} - 17:52:2: Node color: 0.086275 0.854902 0.058824
+{3:5} - 17:52:2: Inside: 21/31830
+{3:5} - 17:52:2: Node color: 0.403922 0.619608 0.831373
+{3:5} - 17:52:2: Inside: 6456/31830
+{3:5} - 17:52:2: Node color: 0.831373 0.168627 0.658824
+{3:5} - 17:52:2: Inside: 19452/181584
+{3:5} - 17:52:2: Node color: 0.949020 0.117647 0.494118
+{3:5} - 17:52:2: Inside: 2544/19452
+{3:5} - 17:52:2: Node color: 0.113725 0.309804 0.462745
+{3:5} - 17:52:2: Inside: 0/19452
+{3:5} - 17:52:2: Node color: 0.435294 0.254902 0.866667
+{3:5} - 17:52:2: Inside: 807/19452
+{3:5} - 17:52:2: Node color: 0.780392 0.584314 0.784314
+{3:5} - 17:52:2: Inside: 0/19452
+{3:5} - 17:52:2: Node color: 0.835294 0.403922 0.749020
+{3:5} - 17:52:2: Inside: 9717/19452
+{3:5} - 17:52:2: Node color: 0.917647 0.168627 0.407843
+{3:5} - 17:52:2: Inside: 3102/19452
+{3:5} - 17:52:2: Node color: 0.243137 0.780392 0.878431
+{3:5} - 17:52:2: Inside: 4221/19452
+{3:5} - 17:52:2: Node color: 0.129412 0.333333 0.529412
+{3:5} - 17:52:2: Inside: 0/19452
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Chamando nós filhos...
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Chamando nós filhos...
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 933 -> 22 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 11] Otimizado de 12 -> 6 índices.
+{3:5} - 17:52:2: [Mesh 12] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 13635 -> 538 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 17] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 1158 -> 64 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 11] Otimizado de 18 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 2025 -> 100 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 10] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: [Mesh 11] Otimizado de 18 -> 6 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 6612 -> 366 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 1485 -> 116 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 17] Otimizado de 30 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 11] Otimizado de 15 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 9174 -> 340 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Chamando nós filhos...
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 2] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 8] Otimizado de 18 -> 6 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 11922 -> 966 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 243 -> 42 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 1] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 8] Otimizado de 18 -> 6 índices.
+{3:5} - 17:52:2: [Mesh 9] Otimizado de 36 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 13] Otimizado de 24 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 7662 -> 506 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 18] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 3936 -> 542 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 3] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 8] Otimizado de 12 -> 6 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 4476 -> 414 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 585 -> 104 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 8] Otimizado de 15 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 13] Otimizado de 24 -> 6 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 3231 -> 236 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 18] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 987 -> 100 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Chamando nós filhos...
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 51 -> 8 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 3069 -> 150 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 5739 -> 252 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 36 -> 10 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 7686 -> 444 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 222 -> 12 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Chamando nós filhos...
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 5] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: [Mesh 6] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: [Mesh 7] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 11] Otimizado de 15 -> 6 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 2784 -> 200 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 3288 -> 406 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 11] Otimizado de 12 -> 6 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 4056 -> 400 índices.
+{3:5} - 17:52:2: [Mesh 16] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 549 -> 76 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: [Mesh 0] Otimizado de 36 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 5] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: [Mesh 6] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: [Mesh 7] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 10] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: [Mesh 11] Otimizado de 18 -> 6 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 8418 -> 568 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 900 -> 104 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 4] Otimizado de 60 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 11] Otimizado de 18 -> 4 índices.
+{3:5} - 17:52:2: [Mesh 12] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 11013 -> 832 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 621 -> 118 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Chamando nós filhos...
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 225 -> 40 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 207 -> 28 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 7233 -> 294 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 54 -> 20 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 13578 -> 450 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Chamando nós filhos...
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 6666 -> 298 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 600 -> 20 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 12417 -> 840 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 63 -> 10 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 57 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 873 -> 98 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 3669 -> 386 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Chamando nós filhos...
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 14] Otimizado de 30 -> 2 índices.
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 1374 -> 98 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 8] Otimizado de 18 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 4245 -> 120 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 24 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 2] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 8] Otimizado de 12 -> 6 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 14] Otimizado de 30 -> 4 índices.
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 13332 -> 490 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 702 -> 54 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 8] Otimizado de 15 -> 6 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 8541 -> 376 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 21 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 1] Otimizado de 6 -> 2 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 8] Otimizado de 18 -> 4 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 6432 -> 324 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Chamando nós filhos...
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 2544 -> 268 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 807 -> 12 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 9717 -> 672 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 3102 -> 364 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: [Mesh 15] Otimizado de 4221 -> 288 índices.
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Otimizando node...
+{3:5} - 17:52:2: Otimizando arrays de mesh...
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Nó sem índices!
+{3:5} - 17:52:2: Node - [0] - [8]
+{3:5} - 17:52:2: Node - [0] - [8]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [8]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [8]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [8]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [8]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [2] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [8]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [8]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [8]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Node - [0] - [0]
+{3:5} - 17:52:2: Total Nodes: 73
+{3:5} - 17:52:2: Concluindo a octree!
+{3:5} - 17:52:2: Mémória usada: 57165.
+{3:5} - 17:52:2: Tempo de processamento: 0.000000
