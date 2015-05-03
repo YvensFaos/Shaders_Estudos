@@ -26,12 +26,7 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 
 		if(mesh->verticesCount > 0)
 		{
-			for(int j = 0; j < mesh->verticesCount; j++)
-			{
-				indexes[i].push_back(j);
-			}
-
-			#pragma region buscar valores max e min
+#pragma region buscar valores max e min
 			if(mesh->max.x > max.x)
 			{
 				max.x = mesh->max.x;
@@ -70,6 +65,7 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	
 	int staticVerticesCount = 0;
 	std::vector<GLMesh3D*> staticMeshes;
+	int k = 0;
 	for(int i = 0; i < handler->numMeshes; i++)
 	{
 		GLMesh3D* mesh = &handler->meshes.at(i);
@@ -81,6 +77,15 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 		else
 		{
 			testedMeshes.push_back(mesh);
+
+			if(mesh->verticesCount > 0)
+			{
+				for(int j = 0; j < mesh->verticesCount; j++)
+				{
+					indexes[k].push_back(j);
+				}
+				k++;
+			}
 		}
 	}
 
@@ -98,6 +103,55 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 			staticMesh.vertexes[k] = glm::vec3(mesh->vertexes[j]);
 			staticMesh.normals[k] = glm::vec3(mesh->normals[j]);
 			k++;
+		}
+	}
+
+	GLMeshHandler newHandler;
+	newHandler.numMeshes = testedMeshes.size();
+	for(int i = 0; i < newHandler.numMeshes; i++)
+	{
+		newHandler.meshes.push_back(*testedMeshes.at(i));
+	}
+
+	root = GLOctreeNode(min, max, handler, depth, indexes, logger);
+	createNodeMeshes(&newHandler);
+}
+
+void GLSOctree::createNodeMeshes(GLMeshHandler* handler)
+{
+	GLOctreeNode* stack[256];
+	int stackSize = 1;
+	int nodeCounter = 0;
+	stack[0] = &root;
+
+	int index;
+	while(stackSize != 0)
+	{
+		GLOctreeNode* top = stack[--stackSize];
+
+		if(top->hasNodes)
+		{
+			for(int i = 0; i < top->nodes.size(); i++)
+			{
+				stack[stackSize++] = &top->nodes.at(i);
+			}
+		}
+		else
+		{
+			for(int i = 0; i < handler->numMeshes; i++)
+			{
+				GLMesh3D* mesh = &handler->meshes.at(i);
+
+				for(int j = 0; j < top->indexes->size(); j++)
+				{
+					index = top->indexes->at(j);
+					glm::vec3 vertex = top->vertexes.at(index);
+					glm::vec3 normal = top->normals.at(index);
+
+					top->vertexes.push_back(glm::vec3(vertex.x, vertex.y, vertex.z));
+					top->normals.push_back(glm::vec3(normal.x, normal.y, normal.z));
+				}
+			}
 		}
 	}
 }

@@ -16,6 +16,8 @@ public:
 
 	int numMeshes;
 	std::vector<int>* indexes;
+	std::vector<glm::vec3> vertexes;
+	std::vector<glm::vec3> normals;
 public:
 	GLOctreeNode(void);
 	GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth, std::vector<int>* previousIndexes, EDLogger* logger);
