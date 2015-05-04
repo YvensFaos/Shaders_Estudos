@@ -5,12 +5,12 @@
 #include "edlogger.h"
 #include "glmathhelper.h"
 
-GLSOctree::GLSOctree(void)
+GLROctree::GLROctree(void)
 {
 	memoryUsed = 0;
 }
 
-GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
+GLROctree::GLROctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 {
 	this->logger = logger;
 
@@ -125,7 +125,7 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	}
 
 	logger->logLineTimestamp("Gerando nós a partir das malhas testáveis...");
-	root = GLOctreeNode(min, max, &newHandler, depth, indexes, logger);
+	root = GLOctreeNode(min, max, &newHandler, depth, indexes, logger, false);
 	logger->logLineTimestamp("Finalizado!");
 
 	logger->logLineTimestamp("Gerando meshes para os nós folhas ...");
@@ -136,10 +136,10 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	memoryUsed = root.getMemory();
 }
 
-GLSOctree::~GLSOctree(void)
+GLROctree::~GLROctree(void)
 { }
 
-void GLSOctree::createNodeMeshes(GLMeshHandler* handler)
+void GLROctree::createNodeMeshes(GLMeshHandler* handler)
 {
 	GLOctreeNode* stack[256];
 	int stackSize = 1;
@@ -158,29 +158,27 @@ void GLSOctree::createNodeMeshes(GLMeshHandler* handler)
 				stack[stackSize++] = &top->nodes.at(i);
 			}
 		}
-		else
+
+		for(int i = 0; i < handler->numMeshes; i++)
 		{
-			for(int i = 0; i < handler->numMeshes; i++)
+			GLMesh3D* mesh = &handler->meshes.at(i);
+
+			for(int j = 0; j < top->indexes->size(); j++)
 			{
-				GLMesh3D* mesh = &handler->meshes.at(i);
+				index = top->indexes->at(j);
+				glm::vec3* vertex = &mesh->vertexes[index];
+				glm::vec3* normal = &mesh->normals[index];
 
-				for(int j = 0; j < top->indexes->size(); j++)
-				{
-					index = top->indexes->at(j);
-					glm::vec3* vertex = &mesh->vertexes[index];
-					glm::vec3* normal = &mesh->normals[index];
-
-					top->vertexes.push_back(glm::vec3(vertex->x, vertex->y, vertex->z));
-					top->normals.push_back(glm::vec3(normal->x, normal->y, normal->z));
-				}
+				top->vertexes.push_back(glm::vec3(vertex->x, vertex->y, vertex->z));
+				top->normals.push_back(glm::vec3(normal->x, normal->y, normal->z));
 			}
-
-			top->generateMesh(logger);
 		}
+
+		top->generateMesh(logger);
 	}
 }
 
-void GLSOctree::logTree(int verticesCount)
+void GLROctree::logTree(int verticesCount)
 {
 	GLOctreeNode* stack[256];
 	int stackSize = 1;
@@ -219,7 +217,7 @@ void GLSOctree::logTree(int verticesCount)
 	logger->logLineTimestamp(logLine);
 }
 
-int GLSOctree::getMemory(void)
+int GLROctree::getMemory(void)
 {
 	return memoryUsed;
 }

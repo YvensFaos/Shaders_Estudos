@@ -96,6 +96,12 @@
     <ClCompile Include="glsoctreeede.cpp">
       <Filter>EDE</Filter>
     </ClCompile>
+    <ClCompile Include="glroctree.cpp">
+      <Filter>EDE\Raw EDE</Filter>
+    </ClCompile>
+    <ClCompile Include="groctreeede.cpp">
+      <Filter>EDE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -162,6 +168,12 @@
       <Filter>EDE\Raw EDE</Filter>
     </ClInclude>
     <ClInclude Include="glsoctreeede.h">
+      <Filter>EDE</Filter>
+    </ClInclude>
+    <ClInclude Include="glroctree.h">
+      <Filter>EDE\Raw EDE</Filter>
+    </ClInclude>
+    <ClInclude Include="glroctreeede.h">
       <Filter>EDE</Filter>
     </ClInclude>
   </ItemGroup>

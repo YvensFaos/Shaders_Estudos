@@ -12,14 +12,16 @@ GLOctreeNode::GLOctreeNode(void)
 
 	numMeshes = -1;
 	hasNodes = false;
+	visible = false;
 }
 
-GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth, std::vector<int>* previousIndexes, EDLogger* logger)
+GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth, std::vector<int>* previousIndexes, EDLogger* logger, bool clearIndexes)
 {
 	this->min = glm::vec3(min);
 	this->max = glm::vec3(max);
 
 	hasNodes = false;
+	visible = false;
 
 	int inside = 0;
 	int totalV = 0;
@@ -71,22 +73,25 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 		glm::vec3 center = glm::vec3(min.x + (max.x - min.x)/2.0f, min.y + (max.y - min.y)/2.0f, min.z + (max.z - min.z)/2.0f);
 		hasNodes = true;
 		//Triviais
-		nodes.push_back(GLOctreeNode(min, center, handler, depth, indexes, logger));
-		nodes.push_back(GLOctreeNode(center, max, handler, depth, indexes, logger));
+		nodes.push_back(GLOctreeNode(min, center, handler, depth, indexes, logger, true));
+		nodes.push_back(GLOctreeNode(center, max, handler, depth, indexes, logger, true));
 
 		//Não Triviais
-		nodes.push_back(GLOctreeNode(glm::vec3(center.x, min.y, min.z), glm::vec3(max.x, center.y, center.z), handler, depth, indexes, logger));
-		nodes.push_back(GLOctreeNode(glm::vec3(min.x, center.y, min.z), glm::vec3(center.x, max.y, center.z), handler, depth, indexes, logger));
-		nodes.push_back(GLOctreeNode(glm::vec3(min.x, min.y, center.z), glm::vec3(center.x, center.y, max.z), handler, depth, indexes, logger));
-		nodes.push_back(GLOctreeNode(glm::vec3(min.x, center.y, center.z), glm::vec3(center.x, max.y, max.z), handler, depth, indexes, logger));
-		nodes.push_back(GLOctreeNode(glm::vec3(center.x, min.y, center.z), glm::vec3(max.x, center.y, max.z), handler, depth, indexes, logger));
-		nodes.push_back(GLOctreeNode(glm::vec3(center.x, center.y, min.z), glm::vec3(max.x, max.y, center.z), handler, depth, indexes, logger));
+		nodes.push_back(GLOctreeNode(glm::vec3(center.x, min.y, min.z), glm::vec3(max.x, center.y, center.z), handler, depth, indexes, logger, true));
+		nodes.push_back(GLOctreeNode(glm::vec3(min.x, center.y, min.z), glm::vec3(center.x, max.y, center.z), handler, depth, indexes, logger, true));
+		nodes.push_back(GLOctreeNode(glm::vec3(min.x, min.y, center.z), glm::vec3(center.x, center.y, max.z), handler, depth, indexes, logger, true));
+		nodes.push_back(GLOctreeNode(glm::vec3(min.x, center.y, center.z), glm::vec3(center.x, max.y, max.z), handler, depth, indexes, logger, true));
+		nodes.push_back(GLOctreeNode(glm::vec3(center.x, min.y, center.z), glm::vec3(max.x, center.y, max.z), handler, depth, indexes, logger, true));
+		nodes.push_back(GLOctreeNode(glm::vec3(center.x, center.y, min.z), glm::vec3(max.x, max.y, center.z), handler, depth, indexes, logger, true));
 
 		//Depois de todos os filhos processados
 		//Apaga os vetores de índices porque são usados apenas pelos filhos
-		for(int i = 0; i < handler->numMeshes; i++)
+		if(clearIndexes)
 		{
-			indexes[i].clear();
+			for(int i = 0; i < handler->numMeshes; i++)
+			{
+				indexes[i].clear();
+			}
 		}
 	}
 	//Se depth - 1 = 0, então é folha
@@ -272,7 +277,7 @@ GLOctree::GLOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	logger->logLineTimestamp(logLine);
 
 	//Os nós são criados a partir da raíz
-	root = GLOctreeNode(min, max, handler, depth, indexes, logger);
+	root = GLOctreeNode(min, max, handler, depth, indexes, logger, false);
 	optimizeTree();
 	logTree();
 	memoryUsed = root.getMemory();

@@ -125,7 +125,7 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	}
 
 	logger->logLineTimestamp("Gerando nós a partir das malhas testáveis...");
-	root = GLOctreeNode(min, max, &newHandler, depth, indexes, logger);
+	root = GLOctreeNode(min, max, &newHandler, depth, indexes, logger, false);
 	logger->logLineTimestamp("Finalizado!");
 
 	logger->logLineTimestamp("Gerando meshes para os nós folhas ...");

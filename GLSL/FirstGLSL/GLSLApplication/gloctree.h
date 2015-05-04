@@ -11,6 +11,8 @@ public:
 
 	glm::vec3 nodeColor;
 
+	//Usado por alguns algoritmos
+	bool visible;
 	bool hasNodes;
 	std::vector<GLOctreeNode> nodes;
 
@@ -23,7 +25,7 @@ public:
 	GLMesh3D mesh;
 public:
 	GLOctreeNode(void);
-	GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth, std::vector<int>* previousIndexes, EDLogger* logger);
+	GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth, std::vector<int>* previousIndexes, EDLogger* logger, bool clearIndexes);
 	~GLOctreeNode(void);
 
 	int getMemory(void);

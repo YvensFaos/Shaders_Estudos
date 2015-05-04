@@ -53,6 +53,8 @@ void GLSOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfi
 					glUniform4f(loc, top->nodeColor.r, top->nodeColor.g, top->nodeColor.b, 1.0f);
 				}
 
+				info[2] += top->mesh.verticesCount;
+				info[3] += 1;
 				mesh = &top->mesh;
 				mesh->prerender();
 				mesh->render();
