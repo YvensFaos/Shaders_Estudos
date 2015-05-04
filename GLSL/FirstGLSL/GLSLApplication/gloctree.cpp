@@ -97,12 +97,18 @@ GLOctreeNode::~GLOctreeNode(void)
 
 int GLOctreeNode::getMemory(void)
 {
-	int memory = sizeof(min) + sizeof(max) + sizeof(int) + sizeof(bool);
+	//Memória estruturas básicas (min, max, hasNodes, numMeshes, nodeColor)
+	int memory = sizeof(min) + sizeof(max) + sizeof(int) + sizeof(bool) + sizeof(nodeColor);
 
+	//Memória da lista de índices
 	for(int i = 0; i < numMeshes; i++)
 	{
 		memory += sizeof(int) * indexes[i].size();
 	}
+
+	memory += sizeof(vertexes);
+	memory += sizeof(normals);
+	memory += mesh.getMemory();
 
 	if(hasNodes)
 	{
@@ -171,6 +177,29 @@ void GLOctreeNode::optimizeNode(EDLogger* logger)
 			}
 		}
 	}
+}
+
+void GLOctreeNode::generateMesh(EDLogger* logger)
+{
+	mesh.hasNormals = true;
+	mesh.verticesCount = vertexes.size();
+
+	mesh.vertexes = new glm::vec3(mesh.verticesCount);
+	mesh.normals  = new glm::vec3(mesh.verticesCount);
+	for(int i = 0; i < mesh.verticesCount; i++)
+	{
+		mesh.vertexes[i] = vertexes.at(i);
+		mesh.normals[i] = normals.at(i);
+	}
+
+	vertexes.clear();
+	normals.clear();
+
+	char logline[128];
+	sprintf(logline, "Mesh de nó criada! - %d v e %d n.", mesh.verticesCount, mesh.verticesCount);
+	logger->logLineTimestamp(logline);
+	sprintf(logline, "Custo da Mesh : %d", mesh.getMemory());
+	logger->logLineTimestamp(logline);
 }
 
 //GLOctree

@@ -93,6 +93,9 @@
     <ClCompile Include="glsoctree.cpp">
       <Filter>EDE\Raw EDE</Filter>
     </ClCompile>
+    <ClCompile Include="glsoctreeede.cpp">
+      <Filter>EDE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="glsoctree.h">
       <Filter>EDE\Raw EDE</Filter>
+    </ClInclude>
+    <ClInclude Include="glsoctreeede.h">
+      <Filter>EDE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

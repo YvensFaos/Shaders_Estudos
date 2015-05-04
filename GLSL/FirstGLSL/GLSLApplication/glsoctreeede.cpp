@@ -1,22 +1,22 @@
-#include "gloctreeede.h"
+#include "glsoctreeede.h"
 
 #include "openGLWrapper.h"
 #include "glconfig.h"
 #include "edlogger.h"
 #include "glmathhelper.h"
 
-GLOctreeEDE::GLOctreeEDE(void)
+GLSOctreeEDE::GLSOctreeEDE(void)
 { }
 
-GLOctreeEDE::~GLOctreeEDE(void)
+GLSOctreeEDE::~GLSOctreeEDE(void)
 { }
 
-void GLOctreeEDE::loadEDE(GLConfig* config) 
+void GLSOctreeEDE::loadEDE(GLConfig* config) 
 {
 	//Para carregar uma octree a partir de um arquivo
 }
 
-void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config, float* info) 
+void GLSOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config, float* info) 
 {
 	GLOctreeNode* stack[256];
 	int stackSize = 1;
@@ -28,6 +28,7 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 	//[2]~ Qtde. Triângulos Enviados
 	//[3]~ Qtde. Draw Calls
 
+	GLMesh3D* mesh;
 	while(stackSize != 0)
 	{
 		GLOctreeNode* top = stack[--stackSize];
@@ -52,45 +53,34 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 					glUniform4f(loc, top->nodeColor.r, top->nodeColor.g, top->nodeColor.b, 1.0f);
 				}
 
-				for(int i = 0; i < top->numMeshes; i++)
-				{
-					handler->prerender(i);
-
-					std::vector<int>* printIndex = &top->indexes[i];
-
-					for(int j = 0; j < printIndex->size();)
-					{
-						handler->render(i, printIndex->at(j), printIndex->at(j + 1));
-						info[2] += printIndex->at(j + 1) - printIndex->at(j) + 1;
-						info[3] += 1;
-						j += 2;
-					}
-				}
+				mesh = &top->mesh;
+				mesh->prerender();
+				mesh->render();
 			}
 		}
 	}
 
 }
 
-void GLOctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 
+void GLSOctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 
 {
 	this->edeDepth = config->edeDepth;
 
 	char logLine[128];
-	sprintf(logLine, "Iniciado a octree tamanho %d.", this->edeDepth);
+	sprintf(logLine, "Iniciado a s-octree tamanho %d.", this->edeDepth);
 	logger->logLineTimestamp(logLine);
-	octree = GLOctree(handler, this->edeDepth, logger);
-	logger->logLineTimestamp("Concluindo a octree!");
+	octree = GLSOctree(handler, this->edeDepth, logger);
+	logger->logLineTimestamp("Concluindo a s-octree!");
 	sprintf(logLine, "Memória usada: %d.", octree.getMemory());
 	logger->logLineTimestamp(logLine);
 }
 
-void GLOctreeEDE::exportEDE(GLConfig* config) 
+void GLSOctreeEDE::exportEDE(GLConfig* config) 
 {
 	//Para salvar a octree em um arquivo
 }
 
-void GLOctreeEDE::calculateMemory(void) 
+void GLSOctreeEDE::calculateMemory(void) 
 {
 	if(memoryUsed != 0)
 	{
@@ -107,9 +97,9 @@ void GLOctreeEDE::calculateMemory(void)
 }
 
 
-char* GLOctreeEDE::getName(char* name)
+char* GLSOctreeEDE::getName(char* name)
 {
-	sprintf(name, "Octree");
+	sprintf(name, "S-Octree");
 
 	return name;
 }

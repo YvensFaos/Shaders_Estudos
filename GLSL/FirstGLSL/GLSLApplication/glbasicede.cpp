@@ -2,6 +2,7 @@
 
 #include "glconfig.h"
 #include "gloctreeede.h"
+#include "glsoctreeede.h"
 
 GLBasicEDE::GLBasicEDE(void)
 {
@@ -24,6 +25,7 @@ GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 	{
 		case NONE: return nullptr;
 		case OCTREE: return new GLOctreeEDE();
+		case SOCTREE: return new GLSOctreeEDE();
 		default: return nullptr;
 	}
 }

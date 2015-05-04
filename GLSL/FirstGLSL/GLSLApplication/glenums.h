@@ -7,5 +7,5 @@ enum PLAYER_MODE
 
 enum EDE_TYPE
 {
-	NONE, OCTREE
+	NONE, OCTREE, SOCTREE
 };

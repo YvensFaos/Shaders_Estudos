@@ -106,7 +106,7 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	logger->logLineTimestamp(logLine);
 	logger->logLineTimestamp("Gerando mesh estática única...");
 
-	int k = 0;
+	k = 0;
 	for(int i = 0; i < staticMeshes.size(); i++)
 	{
 		GLMesh3D* mesh = staticMeshes.at(i);
@@ -135,7 +135,11 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	logger->logLineTimestamp("Finalizado!");
 
 	logTree();
+	memoryUsed = root.getMemory();
 }
+
+GLSOctree::~GLSOctree(void)
+{ }
 
 void GLSOctree::createNodeMeshes(GLMeshHandler* handler)
 {
@@ -172,6 +176,8 @@ void GLSOctree::createNodeMeshes(GLMeshHandler* handler)
 					top->normals.push_back(glm::vec3(normal->x, normal->y, normal->z));
 				}
 			}
+
+			top->generateMesh(logger);
 		}
 	}
 }
@@ -189,7 +195,7 @@ void GLSOctree::logTree(void)
 		GLOctreeNode* top = stack[--stackSize];
 		nodeCounter++;
 
-		sprintf(logLine, "Vertices count: %d", top->vertexes.size());
+		sprintf(logLine, "Vertices count: %d", top->mesh.verticesCount);
 		logger->logLineTimestamp(logLine);
 
 		if(top->hasNodes)
@@ -203,4 +209,9 @@ void GLSOctree::logTree(void)
 
 	sprintf(logLine, "Total Nodes: %d", nodeCounter);
 	logger->logLineTimestamp(logLine);
+}
+
+int GLSOctree::getMemory(void)
+{
+	return memoryUsed;
 }
