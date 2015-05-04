@@ -19,7 +19,6 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 
 	logger->logLineTimestamp("Calculando AABB da raíz");
 #pragma region calculando aabb
-	std::vector<int>* indexes = new std::vector<int>[handler->numMeshes];
 	for(int i = 0; i < handler->numMeshes; i++)
 	{
 		GLMesh3D* mesh = &handler->meshes.at(i);
@@ -54,10 +53,6 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 			}
 			#pragma endregion
 		}
-		else
-		{
-			indexes[i].clear();
-		}
 	}
 #pragma endregion
 
@@ -82,15 +77,15 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 		else
 		{
 			testedMeshes.push_back(mesh);
-
-			if(mesh->verticesCount > 0)
-			{
-				for(int j = 0; j < mesh->verticesCount; j++)
-				{
-					indexes[k].push_back(j);
-				}
-				k++;
-			}
+		}
+	}
+	std::vector<int>* indexes = new std::vector<int>[testedMeshes.size()];
+	for(int i = 0; i < testedMeshes.size(); i++)
+	{
+		GLMesh3D* mesh = testedMeshes.at(i);
+		for(int j = 0; j < mesh->verticesCount; j++)
+		{
+			indexes[i].push_back(j);
 		}
 	}
 
@@ -127,7 +122,7 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	}
 
 	logger->logLineTimestamp("Gerando nós a partir das malhas testáveis...");
-	root = GLOctreeNode(min, max, handler, depth, indexes, logger);
+	root = GLOctreeNode(min, max, &newHandler, depth, indexes, logger);
 	logger->logLineTimestamp("Finalizado!");
 
 	logger->logLineTimestamp("Gerando meshes para os nós folhas ...");

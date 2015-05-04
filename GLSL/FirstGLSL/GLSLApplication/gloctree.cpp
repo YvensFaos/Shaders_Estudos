@@ -184,12 +184,14 @@ void GLOctreeNode::generateMesh(EDLogger* logger)
 	mesh.hasNormals = true;
 	mesh.verticesCount = vertexes.size();
 
-	mesh.vertexes = new glm::vec3(mesh.verticesCount);
-	mesh.normals  = new glm::vec3(mesh.verticesCount);
+	mesh.vertexes = new glm::vec3[mesh.verticesCount];
+	mesh.normals  = new glm::vec3[mesh.verticesCount];
 	for(int i = 0; i < mesh.verticesCount; i++)
 	{
-		mesh.vertexes[i] = vertexes.at(i);
-		mesh.normals[i] = normals.at(i);
+		glm::vec3* v = &vertexes.at(i);
+		mesh.vertexes[i] = glm::vec3(v->x, v->y, v->z);
+		v = &normals.at(i);
+		mesh.normals[i] = glm::vec3(v->x, v->y, v->z);
 	}
 
 	vertexes.clear();

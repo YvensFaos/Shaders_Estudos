@@ -9,8 +9,8 @@
 #include <stdlib.h>  
 
 //#define mia
-#define desktop
-//#define notebook
+//#define desktop
+#define notebook
 
 GLPlayer* player;
 
