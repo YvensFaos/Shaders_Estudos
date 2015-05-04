@@ -79,17 +79,20 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 			testedMeshes.push_back(mesh);
 		}
 	}
+
+	int verticesCount = 0;
 	std::vector<int>* indexes = new std::vector<int>[testedMeshes.size()];
 	for(int i = 0; i < testedMeshes.size(); i++)
 	{
 		GLMesh3D* mesh = testedMeshes.at(i);
+		verticesCount += mesh->verticesCount;
 		for(int j = 0; j < mesh->verticesCount; j++)
 		{
 			indexes[i].push_back(j);
 		}
 	}
 
-	sprintf(logLine, "Static Meshes: %d\r\nTested Meshes: %d", staticMeshes.size(), testedMeshes.size());
+	sprintf(logLine, "Static Meshes: %d\r\n%sTested Meshes: %d", staticMeshes.size(), LOG_SPACING, testedMeshes.size());
 	logger->logLineTimestamp(logLine);
 
 	staticMesh.normals = new glm::vec3[staticVerticesCount];
@@ -129,7 +132,7 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 	createNodeMeshes(&newHandler);
 	logger->logLineTimestamp("Finalizado!");
 
-	logTree();
+	logTree(verticesCount);
 	memoryUsed = root.getMemory();
 }
 
@@ -177,12 +180,14 @@ void GLSOctree::createNodeMeshes(GLMeshHandler* handler)
 	}
 }
 
-void GLSOctree::logTree(void)
+void GLSOctree::logTree(int verticesCount)
 {
 	GLOctreeNode* stack[256];
 	int stackSize = 1;
 	int nodeCounter = 0;
 	stack[0] = &root;
+
+	int doubled = 0;
 
 	char logLine[128];
 	while(stackSize != 0)
@@ -190,6 +195,7 @@ void GLSOctree::logTree(void)
 		GLOctreeNode* top = stack[--stackSize];
 		nodeCounter++;
 
+		doubled += top->mesh.verticesCount;
 		sprintf(logLine, "Vertices count: %d", top->mesh.verticesCount);
 		logger->logLineTimestamp(logLine);
 
@@ -201,6 +207,13 @@ void GLSOctree::logTree(void)
 			}
 		}
 	}
+
+	doubled -= verticesCount;
+	sprintf(logLine, "Vértices duplicados: %d", doubled);
+	logger->logLineTimestamp(logLine);
+	float percent = doubled * 100 / (float) verticesCount;
+	sprintf(logLine, "Percentual de duplicados: %f", percent);
+	logger->logLineTimestamp(logLine);
 
 	sprintf(logLine, "Total Nodes: %d", nodeCounter);
 	logger->logLineTimestamp(logLine);

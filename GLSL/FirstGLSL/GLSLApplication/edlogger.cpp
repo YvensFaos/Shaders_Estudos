@@ -31,7 +31,7 @@ void EDLogger::logLine(char* line)
 void EDLogger::logLineTimestamp(char* line)
 {
 	char tsLine[256];
-	sprintf(tsLine, "{%d:%d} - %d:%d:%d: %s", Tm->tm_mday, Tm->tm_mon + 1, Tm->tm_hour, Tm->tm_min, Tm->tm_sec, line);
+	sprintf(tsLine, "{%2.d:%2.d} - %2.d:%2.d:%2.d: %s", Tm->tm_mday, Tm->tm_mon + 1, Tm->tm_hour, Tm->tm_min, Tm->tm_sec, line);
 	writer->writeLnStr(tsLine);
 }
 

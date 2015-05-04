@@ -61,6 +61,16 @@ void GLMeshHandler::render(int mesh, int startIndex, int finishIndex)
 }
 
 //GLMesh3D
+GLMesh3D::GLMesh3D(void)
+{
+	index = -1;
+	max = glm::vec3(-1.0f);
+	min = glm::vec3(-1.0f);
+	center = glm::vec3(-1.0f);
+
+	hasNormals = false;
+	verticesCount = 0;
+}
 
 GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 {

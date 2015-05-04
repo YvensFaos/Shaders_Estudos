@@ -21,5 +21,5 @@ public:
 	int getMemory(void);
 private:
 	void createNodeMeshes(GLMeshHandler* handler);
-	void logTree(void);
+	void logTree(int verticesCount);
 };

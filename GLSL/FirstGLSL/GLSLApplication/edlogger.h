@@ -5,6 +5,8 @@
 #include <time.h>
 
 #define LOG_EXTENSION ".txt"
+//Espaçamento default do log, do tamanho do timestamp
+#define LOG_SPACING   "                    "
 
 class EDLogger
 {

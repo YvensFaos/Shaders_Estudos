@@ -38,7 +38,7 @@ public:
 	glm::vec3* normals;
 	glm::vec2* uvs;
 public:
-	GLMesh3D(void) {};
+	GLMesh3D(void);
 	GLMesh3D(int index, int glindex, const aiScene* scene);
 	~GLMesh3D(void);
 	

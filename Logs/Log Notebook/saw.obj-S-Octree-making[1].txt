@@ -1,22 +1,23 @@
-{4:5} - 11:40:58: Iniciado a s-octree tamanho 1.
-{4:5} - 11:40:58: Calculando AABB da raíz
-{4:5} - 11:40:58: Mínimo: -363.15 -107.81 -614.40
-{4:5} - 11:40:58: Máximo: 514.80 123.30 614.40
-{4:5} - 11:40:58: Static Meshes: 18
-Tested Meshes: 1
-{4:5} - 11:40:58: Static Meshes Vertice Count: 492
-{4:5} - 11:40:58: Gerando mesh estática única...
-{4:5} - 11:40:58: Finalizado!
-{4:5} - 11:40:58: Gerando nós a partir das malhas testáveis...
-{4:5} - 11:40:58: Node color: 0.839216 0.419608 0.160784
-{4:5} - 11:40:58: Inside: 181092/181092
-{4:5} - 11:40:58: Finalizado!
-{4:5} - 11:40:58: Gerando meshes para os nós folhas ...
-{4:5} - 11:40:58: Mesh de nó criada! - 181092 v e 181092 n.
-{4:5} - 11:40:58: Custo da Mesh : 6519357
-{4:5} - 11:40:58: Finalizado!
-{4:5} - 11:40:58: Vertices count: 181092
-{4:5} - 11:40:58: Total Nodes: 1
-{4:5} - 11:40:58: Concluindo a s-octree!
-{4:5} - 11:40:58: Memória usada: 7243798.
-{4:5} - 11:40:58: Tempo de processamento: 0.000000
+{ 4: 5} - 13:16:12: Iniciado a s-octree tamanho 1.
+{ 4: 5} - 13:16:12: Calculando AABB da raíz
+{ 4: 5} - 13:16:12: Mínimo: -363.15 -107.81 -614.40
+{ 4: 5} - 13:16:12: Máximo: 514.80 123.30 614.40
+{ 4: 5} - 13:16:12: Static Meshes: 18
+                   Tested Meshes: 1
+{ 4: 5} - 13:16:12: Static Meshes Vertice Count: 492
+{ 4: 5} - 13:16:12: Gerando mesh estática única...
+{ 4: 5} - 13:16:12: Finalizado!
+{ 4: 5} - 13:16:12: Gerando nós a partir das malhas testáveis...
+{ 4: 5} - 13:16:12: Node color: 0.839216 0.419608 0.160784
+{ 4: 5} - 13:16:12: Inside: 181092/181092
+{ 4: 5} - 13:16:12: Finalizado!
+{ 4: 5} - 13:16:12: Gerando meshes para os nós folhas ...
+{ 4: 5} - 13:16:12: Mesh de nó criada! - 181092 v e 181092 n.
+{ 4: 5} - 13:16:12: Custo da Mesh : 6519357
+{ 4: 5} - 13:16:12: Finalizado!
+{ 4: 5} - 13:16:12: Vertices count: 181092
+{ 4: 5} - 13:16:12: Vértices duplicados: 0
+{ 4: 5} - 13:16:12: Total Nodes: 1
+{ 4: 5} - 13:16:12: Concluindo a s-octree!
+{ 4: 5} - 13:16:12: Memória usada: 7243798.
+{ 4: 5} - 13:16:12: Tempo de processamento: 0.000000
