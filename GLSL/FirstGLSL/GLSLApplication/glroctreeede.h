@@ -26,5 +26,6 @@ public:
 	char* getName(char* name);
 private:
 	void calculateMemory(void);
-	bool checkVisibility(GLFrustum* frustum, GLConfig* config, GLOctreeNode* node, float* localInfo);
+	VISIBILITY_STATUS checkVisibility(GLFrustum* frustum, GLOctreeNode* node, float* info);
+	void recursiveDraw(GLConfig* config, GLOctreeNode* node, float* info);
 };

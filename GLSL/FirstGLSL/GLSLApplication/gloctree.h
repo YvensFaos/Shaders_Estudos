@@ -12,7 +12,7 @@ public:
 	glm::vec3 nodeColor;
 
 	//Usado por alguns algoritmos
-	bool visible;
+	VISIBILITY_STATUS visible;
 	bool hasNodes;
 	std::vector<GLOctreeNode> nodes;
 

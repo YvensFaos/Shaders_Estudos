@@ -23,58 +23,69 @@ void GLROctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfi
 	//[2]~ Qtde. Triângulos Enviados
 	//[3]~ Qtde. Draw Calls
 
-	checkVisibility(frustum, config, &octree.root, info);
-
+	checkVisibility(frustum, &octree.root, info);
+	recursiveDraw(config, &octree.root, info);
 }
 
-bool GLROctreeEDE::checkVisibility(GLFrustum* frustum, GLConfig* config, GLOctreeNode* node, float* localInfo)
+VISIBILITY_STATUS GLROctreeEDE::checkVisibility(GLFrustum* frustum, GLOctreeNode* node, float* info)
 {
 	//[0]~ Qtde. Nós testados
 	//[1]~ Qtde. Nós Visíveis
 	//[2]~ Qtde. Triângulos Enviados
 	//[3]~ Qtde. Draw Calls
 
-	localInfo[0] += 1;
-	node->visible = false;
+	info[0] += 1;
+	node->visible = INVISIBLE;
 
-	GLOctreeNode* nodePointer;
 	if(frustum->intercepts(&node->min, &node->max))
 	{
-		localInfo[1] += 1;
-		node->visible = true;
+		info[1] += 1;
+		node->visible = VISIBLE;
 		if(node->hasNodes)
 		{
+			bool test = true;
 			for(int i = 0; i < node->nodes.size(); i++)
 			{
-				node->visible &= checkVisibility(frustum, config, &node->nodes.at(i), localInfo);
+				test &= (checkVisibility(frustum, &node->nodes.at(i), info) == VISIBLE) ? true : false;
 			}
 
-			//Se todos os filhos estão visíveis, então renderiza o pai
-			if(!node->visible)
+			if(!test)
 			{
-				if(config->coloredNodes)
-				{
-					GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
-					glUniform4f(loc, node->nodeColor.r, node->nodeColor.g, node->nodeColor.b, 1.0f);
-				}
-
-				for(int i = 0; i < node->nodes.size(); i++)
-				{
-					nodePointer = &node->nodes.at(i);
-
-					if(nodePointer->visible)
-					{
-						nodePointer->mesh.prerender();
-						nodePointer->mesh.render();
-						localInfo[2] += nodePointer->mesh.verticesCount;
-						localInfo[3] += 1;
-					}
-				}
+				node->visible = PARTIALLY_VISIBLE;
 			}
 		}
 	}
 
 	return node->visible;
+}
+
+void GLROctreeEDE::recursiveDraw(GLConfig* config, GLOctreeNode* node, float* info)
+{
+	switch(node->visible)
+	{
+	case VISIBLE:
+		{
+			if(config->coloredNodes)
+			{
+				GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+				glUniform4f(loc, node->nodeColor.r, node->nodeColor.g, node->nodeColor.b, 1.0f);
+			}
+
+			node->mesh.prerender();
+			node->mesh.render();
+			info[2] += node->mesh.verticesCount;
+			info[3] += 1;
+		}
+		break;
+	case PARTIALLY_VISIBLE:
+		{
+			for(int i = 0; i < node->nodes.size(); i++)
+			{
+				recursiveDraw(config, &node->nodes.at(i), info);
+			}
+		}
+		break;
+	}
 }
 
 void GLROctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 

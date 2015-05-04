@@ -12,7 +12,7 @@ GLOctreeNode::GLOctreeNode(void)
 
 	numMeshes = -1;
 	hasNodes = false;
-	visible = false;
+	visible = INVISIBLE;
 }
 
 GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, int depth, std::vector<int>* previousIndexes, EDLogger* logger, bool clearIndexes)
@@ -21,7 +21,7 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 	this->max = glm::vec3(max);
 
 	hasNodes = false;
-	visible = false;
+	visible = INVISIBLE;
 
 	int inside = 0;
 	int totalV = 0;
