@@ -44,12 +44,36 @@ VISIBILITY_STATUS GLROctreeEDE::checkVisibility(GLFrustum* frustum, GLOctreeNode
 		if(node->hasNodes)
 		{
 			bool test = true;
-			for(int i = 0; i < node->nodes.size(); i++)
-			{
-				test &= (checkVisibility(frustum, &node->nodes.at(i), info) == VISIBLE) ? true : false;
-			}
+			int visible = 0;
+			int invisible = 0;
+			int size = node->nodes.size();
 
-			if(!test)
+			for(int i = 0; i < size; i++)
+			{
+				VISIBILITY_STATUS status = checkVisibility(frustum, &node->nodes.at(i), info);
+
+				switch (status)
+				{
+				case VISIBLE:
+					visible++;
+					break;
+				case INVISIBLE:
+					invisible++;
+					break;
+				default:
+					break;
+				}
+			}
+			
+			if(visible == size)
+			{
+				node->visible = VISIBLE;
+			}
+			else if(invisible == size)
+			{
+				node->visible = INVISIBLE;
+			}
+			else
 			{
 				node->visible = PARTIALLY_VISIBLE;
 			}

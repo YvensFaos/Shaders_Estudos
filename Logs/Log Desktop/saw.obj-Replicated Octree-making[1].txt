@@ -1,0 +1,24 @@
+{ 5: 5} -   :21:47: Iniciado a replicated octree tamanho 1.
+{ 5: 5} -   :21:47: Calculando AABB da raíz
+{ 5: 5} -   :21:47: Mínimo: -363.15 -107.81 -614.40
+{ 5: 5} -   :21:47: Máximo: 514.80 123.30 614.40
+{ 5: 5} -   :21:47: Static Meshes: 18
+                    Tested Meshes: 1
+{ 5: 5} -   :21:47: Static Meshes Vertice Count: 492
+{ 5: 5} -   :21:47: Gerando mesh estática única...
+{ 5: 5} -   :21:47: Finalizado!
+{ 5: 5} -   :21:47: Gerando nós a partir das malhas testáveis...
+{ 5: 5} -   :21:47: Node color: 0.839216 0.419608 0.160784
+{ 5: 5} -   :21:47: Inside: 181092/181092
+{ 5: 5} -   :21:47: Finalizado!
+{ 5: 5} -   :21:47: Gerando meshes para os nós folhas ...
+{ 5: 5} -   :21:47: Mesh de nó criada! - 181092 v e 181092 n.
+{ 5: 5} -   :21:47: Custo da Mesh : 6519357
+{ 5: 5} -   :21:47: Finalizado!
+{ 5: 5} -   :21:47: Vertices count: 181092
+{ 5: 5} -   :21:47: Vértices duplicados: 0
+{ 5: 5} -   :21:47: Percentual de duplicados: 0.000000
+{ 5: 5} -   :21:47: Total Nodes: 1
+{ 5: 5} -   :21:47: Concluindo a s-octree!
+{ 5: 5} -   :21:47: Memória usada: 7243798.
+{ 5: 5} -   :21:47: Tempo de processamento: 0.000000
