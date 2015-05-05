@@ -78,14 +78,21 @@ void GLRecordPathPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
 
-	if(glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+	bool pressingMouse = glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
+
+	if(pressingMouse)
 	{
-		updateMousePos();
+		updateMousePos();		
 	}
 
 	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
+
+	if(recording && pressingMouse)
+	{
+		cameraHandler->addStepRecording(camera);
+	}
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
@@ -197,13 +204,13 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		if(key == GLFW_KEY_6)
 		{
 			//Zoom IN
-			camera->speed += 0.5f;
+			camera->speed += 0.05f;
 			printf("Speed: %f\n", camera->speed);
 		}
 		if(key == GLFW_KEY_7)
 		{
 			//Zoom OUT
-			camera->speed -= 0.5f;
+			camera->speed -= 0.05f;
 			printf("Speed: %f\n", camera->speed);
 		}
 

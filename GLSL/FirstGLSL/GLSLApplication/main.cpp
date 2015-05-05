@@ -43,7 +43,7 @@ int main()
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 18;
 
-	config.pathfileName = "goldrush-[1][test]";
+	config.pathfileName = "goldrush--[1][test]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
 	config.logResults = true;
@@ -58,9 +58,9 @@ int main()
 	//Adiciona um texto adicional ao arquivo de logw
 	config.logExtraMsg = "test";
 	//Altura padrão de uma EDE
-	config.edeDepth = 3;
+	config.edeDepth = 1;
 	//EDE escolhida
-	config.type = ROCTREE;
+	config.type = OCTREE;
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
 
