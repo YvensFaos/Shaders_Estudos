@@ -17,6 +17,7 @@
 #include "glmathhelper.h"
 
 #include <stdio.h>
+#include <Windows.h>
 
 GLRecordPathPlayer::GLRecordPathPlayer(void)
 { }
@@ -117,7 +118,14 @@ void GLRecordPathPlayer::step(void)
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
-	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
+	deltaTime = (deltaTime == 0) ? 0.015 : deltaTime;
+
+	if(deltaTime < 0.015)
+	{
+		float sleepTimer = 0.015 - deltaTime;
+		Sleep(sleepTimer);
+		deltaTime = 0.015;
+	}
 
 	sprintf(title, "%s%s - fps[%.2f][%d]", modeTitle, config.title, (float) (1 / deltaTime), cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
@@ -204,13 +212,13 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		if(key == GLFW_KEY_6)
 		{
 			//Zoom IN
-			camera->speed += 0.05f;
+			camera->speed += 0.01f;
 			printf("Speed: %f\n", camera->speed);
 		}
 		if(key == GLFW_KEY_7)
 		{
 			//Zoom OUT
-			camera->speed -= 0.05f;
+			camera->speed -= 0.01f;
 			printf("Speed: %f\n", camera->speed);
 		}
 
