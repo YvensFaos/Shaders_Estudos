@@ -64,7 +64,8 @@ void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 	actualStep = GLScenario::defaultStartPosition(scenario->identifier);
 	camera->setValues(actualStep);
 	camera->calculateMatrix(actualStep, 0, config.width, config.height);
-	camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
+	//camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
+	camera->speed = 0.75f;
 
 	meshHandler = &scenario->meshHandler;
 
@@ -190,6 +191,20 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		{
 			//Zoom OUT
 			camera->zoom(+0.005f);
+		}
+
+		//Controle de Velocidade da Câmera
+		if(key == GLFW_KEY_6)
+		{
+			//Zoom IN
+			camera->speed += 0.5f;
+			printf("Speed: %f\n", camera->speed);
+		}
+		if(key == GLFW_KEY_7)
+		{
+			//Zoom OUT
+			camera->speed -= 0.5f;
+			printf("Speed: %f\n", camera->speed);
 		}
 
 		if(key == GLFW_KEY_T)
