@@ -57,11 +57,13 @@ int main()
 	//Adiciona um texto adicional ao arquivo de logw
 	config.logExtraMsg = "test";
 	//Altura padrão de uma EDE
-	config.edeDepth = 6;
+	config.edeDepth = 3;
 	//EDE escolhida
-	config.type = OCTREE;
+	config.type = ROCTREE;
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
+
+	//Fazer um teste na replicated: verificar se a qtde. enviada é maior do que a total
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
