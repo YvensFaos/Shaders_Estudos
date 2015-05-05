@@ -119,7 +119,7 @@ void GLROctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 	sprintf(logLine, "Iniciado a replicated octree tamanho %d.", this->edeDepth);
 	logger->logLineTimestamp(logLine);
 	octree = GLROctree(handler, this->edeDepth, logger);
-	logger->logLineTimestamp("Concluindo a s-octree!");
+	logger->logLineTimestamp("Concluindo a replicated octree!");
 	sprintf(logLine, "Memória usada: %d.", octree.getMemory());
 	logger->logLineTimestamp(logLine);
 }
