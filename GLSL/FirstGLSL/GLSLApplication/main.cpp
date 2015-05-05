@@ -43,7 +43,7 @@ int main()
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 18;
 
-	config.pathfileName = "goldrush";
+	config.pathfileName = "goldrush-[1][test]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
 	config.logResults = true;
@@ -58,9 +58,9 @@ int main()
 	//Adiciona um texto adicional ao arquivo de logw
 	config.logExtraMsg = "test";
 	//Altura padrão de uma EDE
-	config.edeDepth = 6;
+	config.edeDepth = 3;
 	//EDE escolhida
-	config.type = SOCTREE;
+	config.type = ROCTREE;
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
 
@@ -69,8 +69,8 @@ int main()
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
 	mode = EDE_MAKER;
-	mode = WALKTHROUGH_MODE;
 	mode = RECORD_PATH;
+	mode = WALKTHROUGH_MODE;
 
 	player = config.getGLPlayer(mode);
 
