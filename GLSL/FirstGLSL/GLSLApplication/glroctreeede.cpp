@@ -37,13 +37,12 @@ VISIBILITY_STATUS GLROctreeEDE::checkVisibility(GLFrustum* frustum, GLOctreeNode
 	info[0] += 1;
 	node->visible = INVISIBLE;
 
-	if(frustum->intercepts(&node->min, &node->max))
+	if(node->mesh.verticesCount != 0 && frustum->intercepts(&node->min, &node->max))
 	{
 		info[1] += 1;
 		node->visible = VISIBLE;
 		if(node->hasNodes)
 		{
-			bool test = true;
 			int visible = 0;
 			int invisible = 0;
 			int size = node->nodes.size();

@@ -94,12 +94,12 @@
     <ClCompile Include="glplayer.cpp" />
     <ClCompile Include="glrecordpathplayer.cpp" />
     <ClCompile Include="glroctree.cpp" />
+    <ClCompile Include="glroctreeede.cpp" />
     <ClCompile Include="glscenario.cpp" />
     <ClCompile Include="glshaderloader.cpp" />
     <ClCompile Include="glsoctree.cpp" />
     <ClCompile Include="glsoctreeede.cpp" />
     <ClCompile Include="glwalkthroughplayer.cpp" />
-    <ClCompile Include="groctreeede.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="openGLWrapper.cpp" />
     <ClCompile Include="triangle_cube.cpp" />

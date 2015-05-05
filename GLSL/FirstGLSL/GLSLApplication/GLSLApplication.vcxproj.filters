@@ -99,7 +99,7 @@
     <ClCompile Include="glroctree.cpp">
       <Filter>EDE\Raw EDE</Filter>
     </ClCompile>
-    <ClCompile Include="groctreeede.cpp">
+    <ClCompile Include="glroctreeede.cpp">
       <Filter>EDE</Filter>
     </ClCompile>
   </ItemGroup>
