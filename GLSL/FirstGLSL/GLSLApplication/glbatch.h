@@ -21,4 +21,7 @@ public:
 	~GLBatch(void);
 
 	std::vector<GLConfig> getTestBatch(void);
+
+private:
+	EDE_TYPE getEdetype(char* edename);
 };

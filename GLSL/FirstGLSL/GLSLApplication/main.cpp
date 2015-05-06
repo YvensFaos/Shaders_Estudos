@@ -59,7 +59,7 @@ int main()
 	config.pathIdentifier = 1;
 	//Adiciona um texto adicional ao arquivo de path
 	config.pathExtraMsg = "test";
-	//Inicializa com 0 e deve ser mudado em tmpo de execução, caso necessário
+	//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 	config.logIdentifier = 1;
 	//Adiciona um texto adicional ao arquivo de logw
 	config.logExtraMsg = "test";
