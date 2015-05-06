@@ -1,0 +1,16 @@
+#Teste de batch
+#repeated:1
+#resolution:800 600
+#scenario:18
+#objectPath:C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/
+#objectName:goldRush.obj
+#pathfilePath:C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/
+#pathfileName:goldrush--[1][test]
+#logPath:C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/
+#logresult:1
+#logidentifier:1
+#logextra:n
+#edetype:octree
+#ededepth:3
+#colorednodes:1
+#mode:walkthrough

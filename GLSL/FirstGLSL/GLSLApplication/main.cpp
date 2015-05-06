@@ -10,10 +10,10 @@
 #include <stdlib.h>  
 
 //#define mia
-#define desktop
-//#define notebook
+//#define desktop
+#define notebook
 
-#define individual
+//#define individual
 #define batch
 
 GLPlayer* player;
@@ -87,7 +87,6 @@ int main()
 #endif
 
 #ifdef batch
-
 	char batchPath[128];
 
 	#ifdef mia
@@ -98,7 +97,7 @@ int main()
 		sprintf(batchPath, "E:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
 	#endif
 	#ifdef notebook
-		sprintf(batchPath, "E:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
+		sprintf(batchPath, "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Batch/Batch Notebook/");
 	#endif
 
 	std::vector<char*> batchFiles;
@@ -108,7 +107,8 @@ int main()
 	for(int i = 0; i < batchFiles.size(); i++)
 	{
 		batchFile = new GLBatch(batchPath, batchFiles[i]);
-		std::vector<GLConfig> configurations = batchFile->getTestBatch();
+		std::vector<GLConfig> configurations;
+		batchFile->getTestBatch(&configurations);
 
 		for(int i = 0; i < configurations.size(); i++)
 		{

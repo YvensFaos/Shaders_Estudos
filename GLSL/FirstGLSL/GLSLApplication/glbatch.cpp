@@ -14,8 +14,8 @@ GLBatch::GLBatch(char* batchPath, char* batchFilename)
 	this->batchPath = new char[128];
 	sprintf(this->batchPath, "%s", batchPath);
 
-	this->bacthFilename = new char[128];
-	sprintf(this->bacthFilename, "%s", bacthFilename);
+	this->batchFilename = new char[128];
+	sprintf(this->batchFilename, "%s", batchFilename);
 
 	batchTestSize = 0;
 }
@@ -44,16 +44,15 @@ GLBatch::~GLBatch(void)
 
 */
 
-std::vector<GLConfig> GLBatch::getTestBatch(void)
+void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 {
 	char file[256];
-	sprintf(file, "%s%s%s", this->batchPath, this->bacthFilename, BATCH_TYPE);
+	sprintf(file, "%s%s%s", this->batchPath, this->batchFilename, BATCH_TYPE);
 
 	EDFileReader reader = EDFileReader(file);
 	char* line;
 	std::string copy;
 
-	std::vector<GLConfig> configurations;
 	int i = 0;
 
 	//Inicialização de variáveis
@@ -71,8 +70,8 @@ std::vector<GLConfig> GLBatch::getTestBatch(void)
 
 	while(!reader.eof())
 	{
+#pragma region leitura dos dados
 		line = reader.readLnStr();
-
 		//Nome do teste para a janela
 		char testName[256];
 		sprintf(testName, "%s", line);
@@ -102,6 +101,15 @@ std::vector<GLConfig> GLBatch::getTestBatch(void)
 		std::copy(copy.begin(), copy.end(), objectPath);
 		objectPath[copy.size()] = '\0';
 
+		//Nome do arquivo do obj do cenário
+		line = reader.readLnStr();
+		copy = std::string(line);
+		pos = copy.find_first_of(':');
+		copy = copy.substr(pos + 1, copy.length());
+		char* objectName = new char[copy.size() + 1];
+		std::copy(copy.begin(), copy.end(), objectName);
+		objectName[copy.size()] = '\0';
+
 		//Path para o arquivo de path
 		line = reader.readLnStr();
 		copy = std::string(line);
@@ -130,8 +138,10 @@ std::vector<GLConfig> GLBatch::getTestBatch(void)
 		logPath[copy.size()] = '\0';
 
 		//Se deve fazer o log dos resultados
+		int lr = 0;
 		line = reader.readLnStr();
-		sscanf(line, "#logresult:%d", &logresults);
+		sscanf(line, "#logresult:%d", &lr);
+		logresults = (lr == 0) ? false : true;
 
 		//Identificador do arquivo de log (padrão é 0)
 		line = reader.readLnStr();
@@ -142,19 +152,64 @@ std::vector<GLConfig> GLBatch::getTestBatch(void)
 		copy = std::string(line);
 		pos = copy.find_first_of(':');
 		copy = copy.substr(pos + 1, copy.length());
-		char* logExtra = new char[copy.size() + 1];
-		std::copy(copy.begin(), copy.end(), logExtra);
-		logExtra[copy.size()] = '\0';
+		char* logExtraMsg = new char[copy.size() + 1];
+		std::copy(copy.begin(), copy.end(), logExtraMsg);
+		logExtraMsg[copy.size()] = '\0';
 
+		//Busca o tipo da EDE a ser testada
 		char edename[128];
 		line = reader.readLnStr();
 		sscanf(line, "#edetype:%s", edename);
 		ede = getEdetype(edename);
 
+		//Altura da estrutura a ser testada (Default = 1)
+		ededepth = 1; 
+		line = reader.readLnStr();
+		sscanf(line, "#ededepth:%d", &ededepth);
 
+		//Nós coloridos
+		int cn = 0;
+		line = reader.readLnStr();
+		sscanf(line, "#colorednodes:%d", &cn);
+		coloredNodes = (cn == 0) ? false : true;
+
+		char modename[128];
+		line = reader.readLnStr();
+		sscanf(line, "#mode:%s", modename);
+		mode = getPlayermode(modename);
+#pragma endregion
+		
+		//Para garantir que haverá pelo menos 1 execução desse batch
+		repeated = (repeated <= 0)? 1 : repeated;
+		for(int i = 0; i < repeated; i++)
+		{
+			configurations->push_back(GLConfig());
+			GLConfig* pointer = &configurations->at(configurations->size() - 1);
+			pointer->scenarioNumber = scenario;
+			pointer->width = width;
+			pointer->height = height;
+			//Identificador é 10* o identificador + i, sendo i a iteração
+			pointer->logIdentifier = logidentifier*10 + i;
+			pointer->edeDepth = ededepth;
+			pointer->logResults = logresults;
+			pointer->mode = mode;
+			pointer->type = ede;
+
+			//Copiando as strings agora
+			pointer->objectName = new char[128];
+			sprintf(pointer->objectName,   "%s", objectName);
+			pointer->objectPath = new char[128];
+			sprintf(pointer->objectPath,   "%s", objectPath);
+			pointer->pathfilePath = new char[128];
+			sprintf(pointer->pathfilePath, "%s", pathfilePath);
+			pointer->pathfileName = new char[128];
+			sprintf(pointer->pathfileName, "%s", pathfileName);
+			pointer->logPath = new char[128];
+			sprintf(pointer->logPath,      "%s", logPath);
+			pointer->logExtraMsg = new char[128];
+			sprintf(pointer->logExtraMsg,  "%s", logExtraMsg);
+		}
 	}
-
-	return configurations;
 }
 
 EDE_TYPE GLBatch::getEdetype(char* edename)
@@ -173,4 +228,20 @@ EDE_TYPE GLBatch::getEdetype(char* edename)
 	}
 
 	return NONE;
+}
+
+PLAYER_MODE GLBatch::getPlayermode(char* modetype)
+{
+	char f = modetype[0];
+	switch (f)
+	{
+	case 'w': 
+		return WALKTHROUGH_MODE;
+	case 'e':
+		return EDE_MAKER;
+	case 'f':
+		return FREE_MODE;
+	default:
+		break;
+	}
 }

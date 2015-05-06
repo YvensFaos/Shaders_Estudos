@@ -12,7 +12,7 @@ class GLBatch
 private:
 	GLPlayer* player;
 	char* batchPath;
-	char* bacthFilename;
+	char* batchFilename;
 public:
 	int batchTestSize;
 
@@ -20,8 +20,8 @@ public:
 	GLBatch(char* batchPath, char* batchFilename);
 	~GLBatch(void);
 
-	std::vector<GLConfig> getTestBatch(void);
-
+	void getTestBatch(std::vector<GLConfig>* configurations);
 private:
 	EDE_TYPE getEdetype(char* edename);
+	PLAYER_MODE getPlayermode(char* modetype);
 };
