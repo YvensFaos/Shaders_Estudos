@@ -1,5 +1,5 @@
 #Teste de batch
-#repeated:1
+#repeated:3
 #resolution:800 600
 #scenario:18
 #objectPath:C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/
@@ -10,7 +10,7 @@
 #logresult:1
 #logidentifier:1
 #logextra:n
-#edetype:octree
-#ededepth:3
+#edetype:roctree
+#ededepth:2
 #colorednodes:1
 #mode:walkthrough

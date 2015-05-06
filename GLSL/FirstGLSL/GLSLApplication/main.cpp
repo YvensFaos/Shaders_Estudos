@@ -70,7 +70,7 @@ int main()
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
 
-	//Fazer um teste na replicated: verificar se a qtde. enviada é maior do que a total
+	config.title = "Teste de Título!";
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;

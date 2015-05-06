@@ -93,11 +93,12 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	{
 		sprintf(logName, "%s%s[%d]-%s%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, LOG_EXTENSION);
 	}
+
 	logger = new EDLogger(logName);
 
 	title = new char[256];
 	modeTitle = new char[256];
-	sprintf(modeTitle, "Walkthrough - Scenario:%s - ", scenario->name);
+	sprintf(modeTitle, "[%s] - Scenario:%s - ", config.title, scenario->name);
 }
 
 void GLWalkthroughPlayer::step(void)
@@ -149,7 +150,7 @@ void GLWalkthroughPlayer::step(void)
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s%s - fps[%.2f][%d]", modeTitle, config.title, (float) (1 / deltaTime), cameraHandler->getIndex());
+	sprintf(title, "%s - fps[%.2f][%d]", modeTitle, (float) (1 / deltaTime), cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 
 	if(config.logResults && !logged)

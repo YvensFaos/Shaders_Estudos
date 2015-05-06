@@ -73,7 +73,7 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 #pragma region leitura dos dados
 		line = reader.readLnStr();
 		//Nome do teste para a janela
-		char testName[256];
+		char testName[128];
 		sprintf(testName, "%s", line);
 
 		//Quantidade de repetições
@@ -196,6 +196,8 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 			pointer->type = ede;
 
 			//Copiando as strings agora
+			pointer->title = new char[128];
+			sprintf(pointer->title,   "%s", testName);
 			pointer->objectName = new char[128];
 			sprintf(pointer->objectName,   "%s", objectName);
 			pointer->objectPath = new char[128];
