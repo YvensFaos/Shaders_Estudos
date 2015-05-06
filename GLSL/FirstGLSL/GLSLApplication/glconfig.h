@@ -48,5 +48,6 @@ public:
 	GLConfig(void);
 	~GLConfig(void);
 
+	GLPlayer* getGLPlayer(void);
 	GLPlayer* getGLPlayer(PLAYER_MODE mode);
 };

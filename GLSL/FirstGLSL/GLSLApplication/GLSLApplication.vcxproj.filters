@@ -102,6 +102,9 @@
     <ClCompile Include="glroctreeede.cpp">
       <Filter>EDE</Filter>
     </ClCompile>
+    <ClCompile Include="glbatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -175,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="glroctreeede.h">
       <Filter>EDE</Filter>
+    </ClInclude>
+    <ClInclude Include="glbatch.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

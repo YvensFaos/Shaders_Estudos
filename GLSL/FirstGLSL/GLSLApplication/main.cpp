@@ -3,6 +3,7 @@
 #include "glplayer.h"
 #include "glshaderloader.h"
 #include "glenums.h"
+#include "glbatch.h"
 
 //Include the standard C++ headers  
 #include <stdio.h>  
@@ -12,10 +13,15 @@
 #define desktop
 //#define notebook
 
+#define individual
+#define batch
+
 GLPlayer* player;
 
 int main()  
 {  
+
+#ifdef individual
 	GLConfig config;
 	config.width  = 800;
 	config.height = 600;
@@ -72,9 +78,47 @@ int main()
 	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
 
+	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);
 
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, 4);
 	OpenGLWrapper::glLoop();
+#endif
+
+#ifdef batch
+
+	char batchPath[128];
+
+	#ifdef mia
+		//TODO ajustar
+		sprintf(batchPath, "E:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
+	#endif
+	#ifdef desktop
+		sprintf(batchPath, "E:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
+	#endif
+	#ifdef notebook
+		sprintf(batchPath, "E:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
+	#endif
+
+	std::vector<char*> batchFiles;
+	batchFiles.push_back("exemplo");
+
+	GLBatch* batchFile;
+	for(int i = 0; i < batchFiles.size(); i++)
+	{
+		batchFile = new GLBatch(batchPath, batchFiles[i]);
+		std::vector<GLConfig> configurations = batchFile->getTestBatch();
+
+		for(int i = 0; i < configurations.size(); i++)
+		{
+			player = configurations.at(i).getGLPlayer();
+			OpenGLWrapper::player = player;
+			OpenGLWrapper::initialize(true, 4);
+			OpenGLWrapper::glLoop();
+		}
+
+		delete batchFile;
+	}
+#endif
 }  

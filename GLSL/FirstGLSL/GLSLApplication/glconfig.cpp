@@ -33,9 +33,8 @@ GLConfig::GLConfig()
 GLConfig::~GLConfig()
 { }
 
-GLPlayer* GLConfig::getGLPlayer(PLAYER_MODE mode)
+GLPlayer* GLConfig::getGLPlayer(void)
 {
-	this->mode = mode;
 	switch(mode)
 	{
 		case FREE_MODE:        return new GLFreePlayer(*this);
@@ -45,3 +44,10 @@ GLPlayer* GLConfig::getGLPlayer(PLAYER_MODE mode)
 		default:               return new GLPlayer(*this);
 	}
 }
+
+GLPlayer* GLConfig::getGLPlayer(PLAYER_MODE mode)
+{
+	this->mode = mode;
+	return getGLPlayer();
+}
+
