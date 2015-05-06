@@ -66,7 +66,8 @@ void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 	camera->setValues(actualStep);
 	camera->calculateMatrix(actualStep, 0, config.width, config.height);
 	//camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
-	camera->speed = 0.75f;
+	camera->speed = 0.0f;
+	camera->mouseSpeed = 0.0025f;
 
 	meshHandler = &scenario->meshHandler;
 
@@ -169,6 +170,15 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		}
 		if (key == GLFW_KEY_W){
 			camera->position += camera->direction * 1.f * camera->speed;
+
+			if(action == GLFW_REPEAT)
+			{
+				if(camera->speed < 0.13f)
+				{
+					camera->speed += 0.01f;
+				}
+			}
+
 			if(recording)
 			{
 				cameraHandler->addStepRecording(camera);
@@ -251,6 +261,13 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 			char filename[256];
 			sprintf(filename, "%sRecordPrint-%s[%d]-x.bmp", config.objectPath, config.objectName, printCounter++);
 			printer.printScreen(&config, filename);
+		}
+	}
+
+	if(action == GLFW_RELEASE)
+	{
+		if (key == GLFW_KEY_W){
+			camera->speed = 0.00f;
 		}
 	}
 }
