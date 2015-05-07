@@ -10,8 +10,8 @@
 #include <stdlib.h>  
 
 //#define mia
-//#define desktop
-#define notebook
+#define desktop
+//#define notebook
 
 //#define individual
 #define batch
@@ -101,7 +101,7 @@ int main()
 	#endif
 
 	std::vector<char*> batchFiles;
-	batchFiles.push_back("exemplo");
+	batchFiles.push_back("octrees");
 
 	GLBatch* batchFile;
 	for(int i = 0; i < batchFiles.size(); i++)
