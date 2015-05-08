@@ -13,8 +13,8 @@
 //#define desktop
 #define notebook
 
-#define individual
-//#define batch
+//#define individual
+#define batch
 
 GLPlayer* player;
 
