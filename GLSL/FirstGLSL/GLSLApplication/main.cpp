@@ -10,11 +10,11 @@
 #include <stdlib.h>  
 
 //#define mia
-#define desktop
-//#define notebook
+//#define desktop
+#define notebook
 
-//#define individual
-#define batch
+#define individual
+//#define batch
 
 GLPlayer* player;
 
@@ -66,7 +66,7 @@ int main()
 	//Altura padrão de uma EDE
 	config.edeDepth = 3;
 	//EDE escolhida
-	config.type = ROCTREE;
+	config.type = NONE;
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
 
