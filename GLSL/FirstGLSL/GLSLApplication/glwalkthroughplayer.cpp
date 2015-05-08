@@ -87,11 +87,11 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 
 		edeLogger.closeLog();
 
-		sprintf(logName, "%s%s[%d]-%s[%s=%d]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, edeName, config.edeDepth, LOG_EXTENSION);
+		sprintf(logName, "%s%s[%d]-%s[%s=%d][%s]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, edeName, config.edeDepth, config.pathfileName, LOG_EXTENSION);
 	}
 	else
 	{
-		sprintf(logName, "%s%s[%d]-%s%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, LOG_EXTENSION);
+		sprintf(logName, "%s%s[%d]-%s[%s]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, config.pathfileName, LOG_EXTENSION);
 	}
 
 	logger = new EDLogger(logName);
