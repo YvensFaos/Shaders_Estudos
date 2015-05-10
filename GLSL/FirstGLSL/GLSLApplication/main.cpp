@@ -13,8 +13,8 @@
 //#define desktop
 #define notebook
 
-//#define individual
-#define batch
+#define individual
+//#define batch
 
 GLPlayer* player;
 
@@ -49,7 +49,7 @@ int main()
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 18;
 
-	config.pathfileName = "goldrush--[3][test]";
+	config.pathfileName = "goldrush--[2][test]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
 	config.logResults = true;
