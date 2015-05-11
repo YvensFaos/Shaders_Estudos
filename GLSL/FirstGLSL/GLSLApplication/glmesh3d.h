@@ -42,9 +42,9 @@ public:
 	GLMesh3D(int index, int glindex, const aiScene* scene);
 	~GLMesh3D(void);
 	
-	void render(void);
 	void prerender(void);
-	void render(int startIndex, int finishIndex);
+	int render(void);
+	int render(int startIndex, int finishIndex);
 
 	int getMemory(void);
 private: 
@@ -67,9 +67,9 @@ public:
 	GLMeshHandler(char* model3d, char* path);
 	~GLMeshHandler(void);
 
-	void render(void);
 	void prerender(int mesh);
-	void render(int mesh, int startIndex, int finishIndex);
+	int render(void);
+	int render(int mesh, int startIndex, int finishIndex);
 private:
 	bool loaded;
 };

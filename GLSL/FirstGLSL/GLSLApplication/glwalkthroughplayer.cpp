@@ -135,6 +135,7 @@ void GLWalkthroughPlayer::step(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(OpenGLWrapper::programObject);
 	
+	int verticesCount = 0;
 	memset(info, 0, sizeof(float)*INFO_SIZE);
 	if(config.type != NONE)
 	{
@@ -143,7 +144,7 @@ void GLWalkthroughPlayer::step(void)
 	}
 	else
 	{
-		meshHandler->render();
+		verticesCount = meshHandler->render();
 	}
 
 	double lastTime = glfwGetTime();
@@ -168,7 +169,9 @@ void GLWalkthroughPlayer::step(void)
 		{
 			delete logLine;
 			logLine = new char[64];
-			sprintf(logLine, "%f", deltaTime);
+			std::string sdeltaTime = std::to_string(deltaTime);
+			std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
+			sprintf(logLine, "%s;%d", sdeltaTime.c_str(), verticesCount);
 			logger->logLine(logLine);
 		}
 	}

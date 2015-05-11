@@ -41,12 +41,15 @@ GLMeshHandler::GLMeshHandler(char* model3d, char* path)
 	this->numMeshes = scene->mNumMeshes;
 }
 
-void GLMeshHandler::render(void)
+int GLMeshHandler::render(void)
 {
+	int verticesCount = 0;
 	for(int i = 0; i < numMeshes; i++)
 	{
-		meshes.at(i).render();
+		verticesCount += meshes.at(i).render();
 	}
+
+	return verticesCount;
 }
 
 void GLMeshHandler::prerender(int mesh)
@@ -54,10 +57,10 @@ void GLMeshHandler::prerender(int mesh)
 	meshes.at(mesh).prerender();
 }
 
-void GLMeshHandler::render(int mesh, int startIndex, int finishIndex)
+int GLMeshHandler::render(int mesh, int startIndex, int finishIndex)
 {
 	GLMesh3D* meshe = &meshes.at(mesh);
-	meshe->render(startIndex, finishIndex);
+	return meshe->render(startIndex, finishIndex);
 }
 
 //GLMesh3D
@@ -173,7 +176,7 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 GLMesh3D::~GLMesh3D(void)
 { }
 
-void GLMesh3D::render(void)
+int GLMesh3D::render(void)
 {
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
@@ -184,6 +187,8 @@ void GLMesh3D::render(void)
 		glVertexAttribPointer(OpenGLWrapper::normalLoc, 3, GL_FLOAT, GL_FALSE, 0, normals);
 	}
 	glDrawArrays(GL_TRIANGLES, 0, verticesCount);
+
+	return verticesCount;
 }
 
 void GLMesh3D::prerender(void)
@@ -198,9 +203,11 @@ void GLMesh3D::prerender(void)
 	}
 }
 
-void GLMesh3D::render(int startIndex, int finishIndex)
+int GLMesh3D::render(int startIndex, int finishIndex)
 {
 	glDrawArrays(GL_TRIANGLES, startIndex, finishIndex - startIndex + 1);
+
+	return finishIndex - startIndex + 1;
 }
 
 int GLMesh3D::getMemory(void)
