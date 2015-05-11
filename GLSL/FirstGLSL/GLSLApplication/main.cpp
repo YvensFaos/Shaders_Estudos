@@ -49,7 +49,7 @@ int main()
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 18;
 
-	config.pathfileName = "goldrush--[4][test]";
+	config.pathfileName = "goldrush--[1][test]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = true;
 	config.logResults = false;
