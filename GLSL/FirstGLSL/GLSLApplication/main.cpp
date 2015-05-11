@@ -35,9 +35,9 @@ int main()
 	config.logPath = "E:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
 #endif
 #ifdef desktop
-	config.objectPath = "E:/Repositorios/Shaders_Estudos/Models/";
-	config.pathfilePath = "E:/Repositorios/Shaders_Estudos/Paths/";
-	config.logPath = "E:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
+	config.objectPath = "F:/Repositorios/Shaders_Estudos/Models/";
+	config.pathfilePath = "F:/Repositorios/Shaders_Estudos/Paths/";
+	config.logPath = "F:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
 #endif
 #ifdef notebook
 	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
@@ -70,7 +70,7 @@ int main()
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
 
-	config.title = "Teste de Título!";
+	config.title = "Teste de Titulo!";
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
@@ -91,10 +91,10 @@ int main()
 
 	#ifdef mia
 		//TODO ajustar
-		sprintf(batchPath, "E:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
+		sprintf(batchPath, "F:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
 	#endif
 	#ifdef desktop
-		sprintf(batchPath, "E:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
+		sprintf(batchPath, "F:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
 	#endif
 	#ifdef notebook
 		sprintf(batchPath, "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Batch/Batch Notebook/");
