@@ -45,11 +45,11 @@ int main()
 	config.logPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
 #endif
 
-	config.objectName = "goldrush.obj";
+	config.objectName = "ravine.obj";
 	//Se eu setar o nome, não preciso do número, mas não tem problema
-	config.scenarioNumber = 18;
+	config.scenarioNumber = 16;
 
-	config.pathfileName = "goldrush--[1][test]";
+	config.pathfileName = "ravine";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = true;
 	config.logResults = false;
@@ -75,8 +75,8 @@ int main()
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
 	mode = EDE_MAKER;
-	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
+	mode = RECORD_PATH;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);
