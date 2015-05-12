@@ -45,14 +45,14 @@ int main()
 	config.logPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
 #endif
 
-	config.objectName = "ravine.obj";
+	config.objectName = "nucleus.obj";
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 16;
 
-	config.pathfileName = "ravine";
+	config.pathfileName = "nucleus-[1][test]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
-	config.repeatable = true;
-	config.logResults = false;
+	config.repeatable = false;
+	config.logResults = true;
 
 	//Seta um valor inicial para o identifier; Caso seja -1, o código
 	//Inicializa com 0 e começa a contagem a partir daí
@@ -64,9 +64,9 @@ int main()
 	//Adiciona um texto adicional ao arquivo de logw
 	config.logExtraMsg = "test";
 	//Altura padrão de uma EDE
-	config.edeDepth = 3;
+	config.edeDepth = 2;
 	//EDE escolhida
-	config.type = NONE;
+	config.type = ROCTREE;
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
 
@@ -75,8 +75,8 @@ int main()
 	PLAYER_MODE mode;
 	mode = FREE_MODE;
 	mode = EDE_MAKER;
-	mode = WALKTHROUGH_MODE;
 	mode = RECORD_PATH;
+	mode = WALKTHROUGH_MODE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);

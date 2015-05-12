@@ -110,6 +110,7 @@
     <ClInclude Include="edlogger.h" />
     <ClInclude Include="glbasicede.h" />
     <ClInclude Include="glbatch.h" />
+    <ClInclude Include="glbuffer.h" />
     <ClInclude Include="glcamera.h" />
     <ClInclude Include="glconfig.h" />
     <ClInclude Include="gledemakerplayer.h" />
