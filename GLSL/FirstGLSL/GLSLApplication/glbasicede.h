@@ -1,9 +1,17 @@
 #pragma once
 
+#include <string>
+
 class GLFrustum;
 class GLConfig;
 class GLMeshHandler;
 class EDLogger;
+
+#define IDENTIFIER_CODE config->objectName + ':' + std::to_string(config->edeDepth)
+
+#define OCTREE_NAME  "Octree\0"
+#define SOCTREE_NAME "Smart Octree\0"
+#define ROCTREE_NAME "Replicated Octree\0"
 
 class GLBasicEDE
 {
@@ -29,7 +37,9 @@ public:
 	//Seta um logger para a geração e funcionamento da ede
 	void setLogger(EDLogger* logger);
 	//Retorna o nome específico da ede
-	virtual char* getName(char* name) = 0;
+	virtual std::string getName(void) = 0;
+	//Bufferiza a ede de acordo com seu nome
+	void bufferizeEDE(GLConfig* config);
 private:
 	virtual void calculateMemory(void) = 0;
 

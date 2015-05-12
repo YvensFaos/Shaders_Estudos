@@ -83,6 +83,8 @@ void GLOctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 	logger->logLineTimestamp("Concluindo a octree!");
 	sprintf(logLine, "Memória usada: %d.", octree.getMemory());
 	logger->logLineTimestamp(logLine);
+
+	bufferizeEDE(config);
 }
 
 void GLOctreeEDE::exportEDE(GLConfig* config) 
@@ -106,10 +108,7 @@ void GLOctreeEDE::calculateMemory(void)
 	}
 }
 
-
-char* GLOctreeEDE::getName(char* name)
+std::string GLOctreeEDE::getName(void)
 {
-	sprintf(name, "Octree");
-
-	return name;
+	return OCTREE_NAME;
 }

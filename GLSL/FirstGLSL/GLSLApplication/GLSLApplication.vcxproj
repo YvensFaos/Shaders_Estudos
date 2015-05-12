@@ -84,6 +84,7 @@
     <ClCompile Include="edlogger.cpp" />
     <ClCompile Include="glbasicede.cpp" />
     <ClCompile Include="glbatch.cpp" />
+    <ClCompile Include="glbuffer.cpp" />
     <ClCompile Include="glcamera.cpp" />
     <ClCompile Include="glconfig.cpp" />
     <ClCompile Include="gledemakerplayer.cpp" />

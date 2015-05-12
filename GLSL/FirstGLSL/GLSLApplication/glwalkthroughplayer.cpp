@@ -16,6 +16,7 @@
 #include "edlogger.h"
 
 #include <stdio.h>
+#include <string>
 
 GLWalkthroughPlayer::GLWalkthroughPlayer(void)
 { }
@@ -59,20 +60,17 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	camera = new GLCamera();
 	cameraHandler = &scenario->cameraHandler;
 	camera->calculateMatrix(cameraHandler->actualStep(), 0, config.width, config.height);
-	meshHandler = &scenario->meshHandler;
+	meshHandler = scenario->meshHandler;
 
 	char logName[512];
 	if(config.type != NONE)
 	{
 		ede = GLBasicEDE::instantiate(&config);
 
-		char edeName[128];
-		ede->getName(edeName);
+		std::string edeName = ede->getName();
 
 		char edeLogName[512];
-		char sdepth[4];
-		sprintf(sdepth,"%d", config.edeDepth);
-		sprintf(edeLogName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName, sdepth, LOG_EXTENSION);
+		sprintf(edeLogName, "%s%s-%s-making[%d]%s", config.logPath, scenario->name, edeName.c_str(), config.edeDepth, LOG_EXTENSION);
 		EDLogger edeLogger(edeLogName);
 
 		double firstTime = glfwGetTime();
@@ -87,7 +85,7 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 
 		edeLogger.closeLog();
 
-		sprintf(logName, "%s%s[%d]-%s[%s=%d][%s]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, edeName, config.edeDepth, config.pathfileName, LOG_EXTENSION);
+		sprintf(logName, "%s%s[%d]-%s[%s=%d][%s]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, edeName.c_str(), config.edeDepth, config.pathfileName, LOG_EXTENSION);
 	}
 	else
 	{

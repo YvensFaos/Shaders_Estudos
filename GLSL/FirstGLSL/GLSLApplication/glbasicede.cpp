@@ -5,6 +5,8 @@
 #include "glsoctreeede.h"
 #include "glroctreeede.h"
 
+#include "glbuffer.h"
+
 GLBasicEDE::GLBasicEDE(void)
 {
 	memoryUsed = -1;
@@ -22,12 +24,40 @@ int GLBasicEDE::getMemory(void)
 
 GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 {
+	std::string identifier = IDENTIFIER_CODE;
 	switch(config->type)
 	{
 		case NONE: return nullptr;
-		case OCTREE: return new GLOctreeEDE();
-		case SOCTREE: return new GLSOctreeEDE();
-		case ROCTREE: return new GLROctreeEDE();
+		case OCTREE: 
+			identifier = identifier + OCTREE_NAME;
+			if(GLBufferHandler::checkForEDE(identifier))
+			{
+				return GLBufferHandler::edeBuffer[identifier];
+			}
+			else
+			{
+				return new GLOctreeEDE();
+			}
+		case SOCTREE: 
+			identifier = identifier + SOCTREE_NAME;
+			if(GLBufferHandler::checkForEDE(identifier))
+			{
+				return GLBufferHandler::edeBuffer[identifier];
+			}
+			else
+			{
+				return new GLSOctreeEDE();
+			}
+		case ROCTREE: 
+			identifier = identifier + ROCTREE_NAME;
+			if(GLBufferHandler::checkForEDE(identifier))
+			{
+				return GLBufferHandler::edeBuffer[identifier];
+			}
+			else
+			{
+				return new GLROctreeEDE();
+			}
 		default: return nullptr;
 	}
 }
@@ -35,4 +65,11 @@ GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 void GLBasicEDE::setLogger(EDLogger* logger)
 {
 	this->logger = logger;
+}
+
+void GLBasicEDE::bufferizeEDE(GLConfig* config)
+{
+	std::string identifier = IDENTIFIER_CODE;
+	identifier = identifier + this->getName();
+	GLBufferHandler::addToEDEBuffer(identifier, this);
 }

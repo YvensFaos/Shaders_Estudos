@@ -69,7 +69,7 @@ void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 	camera->speed = 0.0f;
 	camera->mouseSpeed = 0.0025f;
 
-	meshHandler = &scenario->meshHandler;
+	meshHandler = scenario->meshHandler;
 
 	title = new char[256];
 	modeTitle = new char[256];

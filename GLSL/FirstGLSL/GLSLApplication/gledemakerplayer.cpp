@@ -66,11 +66,10 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 	camera->calculateMatrix(firstStep, 0, config.width, config.height);
 	camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
 
-	meshHandler = &scenario->meshHandler;
+	meshHandler = scenario->meshHandler;
 	ede = GLBasicEDE::instantiate(&config);
 	
-	char edeName[128];
-	ede->getName(edeName);
+	std::string edeName = ede->getName();
 
 	char logName[512];
 	sprintf(logName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName, "-x", LOG_EXTENSION);

@@ -7,6 +7,7 @@
 #include "edfile.h"
 #include "glenums.h"
 #include "glmathhelper.h"
+#include "glbuffer.h"
 
 //GLCameraStep
 
@@ -103,7 +104,15 @@ GLCameraHandler::GLCameraHandler(char* pathfilePath, char* pathfileName, bool re
 	index = 0;
 	finished = false;
 
-	readPathFile();
+	if(GLBufferHandler::checkForPath(pathfileName))
+	{
+		steps = GLBufferHandler::pathBuffer[pathfileName];
+	}
+	else
+	{
+		readPathFile();
+		GLBufferHandler::addToPathBuffer(pathfileName, steps);
+	}
 }
 
 GLCameraHandler::GLCameraHandler(char* pathfilePath, char* pathfileName, int pathIdentifier, char* pathExtraMsg)
@@ -132,20 +141,20 @@ GLCameraStep* GLCameraHandler::nextStep()
 		else
 		{
 			finished = true;
-			return &steps[index];
+			return &steps->at(index);
 		}
 	}
-	return &steps[index++];
+	return &steps->at(index++);
 }
 
 GLCameraStep* GLCameraHandler::actualStep()
 {
-	return &steps[index];
+	return &steps->at(index);
 }
 
 GLCameraStep* GLCameraHandler::getStep(int index)
 {
-	return &steps[index];
+	return &steps->at(index);
 }
 
 void GLCameraHandler::readPathFile(void)
@@ -155,6 +164,8 @@ void GLCameraHandler::readPathFile(void)
 	
 	EDFileReader reader = EDFileReader(file);
 	this->size = reader.readLnInt();
+
+	steps = new std::vector<GLCameraStep>();
 
 	for(int i = 0; i < size; i++)
 	{
@@ -172,7 +183,7 @@ void GLCameraHandler::readPathFile(void)
 
 		float fov = reader.readLnFloat();
 
-		steps.push_back(GLCameraStep(glm::vec3(posx,posy,posz), glm::vec3(upx,upy,upz), glm::vec3(lookx,looky,lookz), fov));
+		steps->push_back(GLCameraStep(glm::vec3(posx,posy,posz), glm::vec3(upx,upy,upz), glm::vec3(lookx,looky,lookz), fov));
 	}
 
 	reader.close();
@@ -185,14 +196,14 @@ int GLCameraHandler::getIndex()
 
 void GLCameraHandler::stardRecording(GLCamera* firstStep)
 {
-	steps.clear();
-	steps.push_back(GLCameraStep(firstStep));
+	steps->clear();
+	steps->push_back(GLCameraStep(firstStep));
 	size = 1;
 }
 
 void GLCameraHandler::addStepRecording(GLCamera* step)
 {
-	steps.push_back(GLCameraStep(step));
+	steps->push_back(GLCameraStep(step));
 	size++;
 }
 
@@ -208,7 +219,7 @@ void GLCameraHandler::stopRecording(void)
 
 	for(int i = 0; i < size; i++)
 	{
-		GLCameraStep* step = &steps.at(i);
+		GLCameraStep* step = &steps->at(i);
 		writer.writeLnFloat(step->position.x);
 		writer.writeLnFloat(step->position.y);
 		writer.writeLnFloat(step->position.z);

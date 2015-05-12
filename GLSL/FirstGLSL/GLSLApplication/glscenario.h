@@ -10,7 +10,7 @@ public:
 	char* name;
 	int identifier;
 
-	GLMeshHandler meshHandler;
+	GLMeshHandler* meshHandler;
 	GLCameraHandler cameraHandler;
 
 private:

@@ -46,7 +46,7 @@ private:
 	int pathIdentifier;
 	char* pathExtraMsg;
 
-	std::vector<GLCameraStep> steps;
+	std::vector<GLCameraStep>* steps;
 public:
 	GLCameraHandler(void);
 	GLCameraHandler(char* pathfilePath, char* pathfileName, bool repeated);

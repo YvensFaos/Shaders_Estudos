@@ -122,6 +122,8 @@ void GLROctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 	logger->logLineTimestamp("Concluindo a replicated octree!");
 	sprintf(logLine, "Memória usada: %d.", octree.getMemory());
 	logger->logLineTimestamp(logLine);
+
+	bufferizeEDE(config);
 }
 
 void GLROctreeEDE::exportEDE(GLConfig* config) 
@@ -146,9 +148,7 @@ void GLROctreeEDE::calculateMemory(void)
 }
 
 
-char* GLROctreeEDE::getName(char* name)
+std::string GLROctreeEDE::getName(void)
 {
-	sprintf(name, "Replicated Octree");
-
-	return name;
+	return ROCTREE_NAME;
 }

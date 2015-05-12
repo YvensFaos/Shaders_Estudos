@@ -105,6 +105,9 @@
     <ClCompile Include="glbatch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="glbuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">

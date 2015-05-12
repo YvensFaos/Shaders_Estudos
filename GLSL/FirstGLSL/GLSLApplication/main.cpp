@@ -4,6 +4,7 @@
 #include "glshaderloader.h"
 #include "glenums.h"
 #include "glbatch.h"
+#include "glbuffer.h"
 
 //Include the standard C++ headers  
 #include <stdio.h>  
@@ -52,7 +53,7 @@ int main()
 	config.pathfileName = "nucleus-[1][test]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
-	config.logResults = true;
+	config.logResults = false;
 
 	//Seta um valor inicial para o identifier; Caso seja -1, o código
 	//Inicializa com 0 e começa a contagem a partir daí
@@ -121,4 +122,6 @@ int main()
 		delete batchFile;
 	}
 #endif
+
+	GLBufferHandler::clearBuffers();
 }  

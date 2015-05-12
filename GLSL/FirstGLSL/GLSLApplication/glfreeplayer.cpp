@@ -14,6 +14,7 @@
 
 #include "openGLWrapper.h"
 #include "edlogger.h"
+#include "glbuffer.h"
 
 #include <stdio.h>
 
@@ -45,7 +46,16 @@ void GLFreePlayer::initializeGLPlayer(GLConfig config)
 
 	camera = new GLCamera();
 	char* path = config.objectPath;
-	meshHandler = new GLMeshHandler(config.objectName, path);
+
+	if(GLBufferHandler::checkForMeshHandler(config.objectName))
+	{
+		meshHandler = GLBufferHandler::meshHandlerBuffer[config.objectName];
+	}
+	else
+	{
+		meshHandler = new GLMeshHandler(config.objectName, path);
+		GLBufferHandler::addToMeshHandlerBuffer(config.objectName, meshHandler);
+	}
 
 	title = new char[256];
 	modeTitle = new char[256];

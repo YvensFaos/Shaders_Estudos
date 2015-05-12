@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 
+#include "glbuffer.h"
+
 GLScenario::GLScenario(void)
 { }
 
@@ -34,7 +36,15 @@ void GLScenario::initialize(GLConfig* config)
 {
 	this->config = config;
 
-	meshHandler = GLMeshHandler(config->objectName, config->objectPath);
+	if(GLBufferHandler::checkForMeshHandler(config->objectName))
+	{
+		meshHandler = GLBufferHandler::meshHandlerBuffer[config->objectName];
+	}
+	else
+	{
+		meshHandler = new GLMeshHandler(config->objectName, config->objectPath);
+		GLBufferHandler::addToMeshHandlerBuffer(config->objectName, meshHandler);
+	}
 
 	switch (config->mode)
 	{
@@ -45,14 +55,13 @@ void GLScenario::initialize(GLConfig* config)
 	case RECORD_PATH:
 		//Aqui o pathfilePath será o destino do novo path, o identificar é para não sobreescrever
 		cameraHandler = GLCameraHandler(config->pathfilePath, config->pathfileName, config->pathIdentifier, config->pathExtraMsg);
-
 		break;
 	default:
 		break;
 	}
-	
 }
 
+#pragma region buscar identificadores
 int  GLScenario::getIdentifierByName(char* name)
 {
 	if(name[0] == 's')
@@ -121,6 +130,7 @@ void GLScenario::getNameByIdentifier(int identifier, char* dest)
 		default: dest = ""; break;
 	}
 }
+#pragma endregion
 
 GLCameraStep* GLScenario::defaultStartPosition(int identifier)
 {
@@ -155,6 +165,6 @@ GLCameraStep* GLScenario::defaultStartPosition(int identifier)
 
 float GLScenario::defaultCameraSpeed(int identifier)
 {
-	//Por enquanto, tá default 50 para qualquer cenário
+	//Por enquanto, tá default 0.75 para qualquer cenário
 	return 0.75f;
 }
