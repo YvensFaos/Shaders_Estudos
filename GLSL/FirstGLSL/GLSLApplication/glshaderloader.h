@@ -1,5 +1,4 @@
-#ifndef __GL_SHADER_LOADER__
-#define __GL_SHADER_LOADER__
+#pragma once
 
 #include <GL\glew.h>
 #include "GLFW/glfw3.h"
@@ -14,5 +13,3 @@ public:
 	static GLchar* loadshader(char* filename, unsigned long* len);
 	static void unloadshader(GLubyte** ShaderSource);
 };
-
-#endif

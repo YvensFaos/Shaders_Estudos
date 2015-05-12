@@ -1,5 +1,4 @@
-#ifndef __GL_MESH_3D__
-#define __GL_MESH_3D__
+#pragma once
 
 #include "assimp\Importer.hpp"
 #include "assimp\scene.h"
@@ -73,4 +72,3 @@ public:
 private:
 	bool loaded;
 };
-#endif

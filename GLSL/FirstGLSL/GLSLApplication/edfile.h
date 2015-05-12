@@ -1,5 +1,4 @@
-#ifndef __ED_FILE__
-#define __ED_FILE__
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -51,5 +50,3 @@ public:
 	void write(const void * ptr, size_t size, size_t count);
 	void close(void);
 };
-
-#endif
