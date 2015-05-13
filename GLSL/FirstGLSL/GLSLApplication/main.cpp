@@ -14,8 +14,8 @@
 //#define desktop
 #define notebook
 
-#define individual
-//#define batch
+//#define individual
+#define batch
 
 GLPlayer* player;
 
@@ -102,7 +102,7 @@ int main()
 	#endif
 
 	std::vector<char*> batchFiles;
-	batchFiles.push_back("octrees");
+	batchFiles.push_back("octrees-nos");
 
 	GLBatch* batchFile;
 	for(int i = 0; i < batchFiles.size(); i++)
