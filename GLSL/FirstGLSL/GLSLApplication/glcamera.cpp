@@ -132,7 +132,7 @@ GLCameraHandler::~GLCameraHandler(void)
 
 GLCameraStep* GLCameraHandler::nextStep()
 {
-	if(index == size - 1)
+	if(index >= steps->size() - 1)
 	{
 		if(repeated)
 		{
@@ -144,7 +144,9 @@ GLCameraStep* GLCameraHandler::nextStep()
 			return &steps->at(index);
 		}
 	}
-	return &steps->at(index++);
+	GLCameraStep* pointer = &steps->at(index);
+	index++;
+	return pointer;
 }
 
 GLCameraStep* GLCameraHandler::actualStep()

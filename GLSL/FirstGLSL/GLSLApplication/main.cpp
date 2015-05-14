@@ -111,12 +111,16 @@ int main()
 		std::vector<GLConfig> configurations;
 		batchFile->getTestBatch(&configurations);
 
-		for(int i = 0; i < configurations.size(); i++)
+		while(configurations.size() > 0)
 		{
-			player = configurations.at(i).getGLPlayer();
+			GLConfig* pointer = &configurations.at(0);
+
+			player = pointer->getGLPlayer();
 			OpenGLWrapper::player = player;
 			OpenGLWrapper::initialize(true, 4);
 			OpenGLWrapper::glLoop();
+
+			configurations.erase(configurations.begin());
 		}
 
 		delete batchFile;
