@@ -87,6 +87,7 @@
     <ClCompile Include="glbuffer.cpp" />
     <ClCompile Include="glcamera.cpp" />
     <ClCompile Include="glconfig.cpp" />
+    <ClCompile Include="gldynamic.cpp" />
     <ClCompile Include="gledemakerplayer.cpp" />
     <ClCompile Include="glfreeplayer.cpp" />
     <ClCompile Include="glmathhelper.cpp" />
