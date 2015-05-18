@@ -137,6 +137,8 @@
     <ClInclude Include="triangle_cube.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="dynamicnshader.txt" />
+    <Text Include="dynamicvshader.txt" />
     <Text Include="fragmentshader.txt" />
     <Text Include="mvpshader.txt" />
     <Text Include="normalfragmentshader.txt" />

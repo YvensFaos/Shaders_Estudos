@@ -211,5 +211,11 @@
     <Text Include="normalfragmentshader.txt">
       <Filter>Shaders</Filter>
     </Text>
+    <Text Include="dynamicvshader.txt">
+      <Filter>Shaders</Filter>
+    </Text>
+    <Text Include="dynamicnshader.txt">
+      <Filter>Shaders</Filter>
+    </Text>
   </ItemGroup>
 </Project>

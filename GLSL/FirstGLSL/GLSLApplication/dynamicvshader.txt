@@ -1,0 +1,22 @@
+uniform vec4 moveTo;
+uniform vec3 vDir;
+uniform vec4 baseColor;
+
+attribute vec3 vNormal;
+
+varying vec4 vColor;
+varying float intensity
+
+void main(void)
+{
+	vec4 a = gl_Vertex + moveTo;
+
+	vec3 b = normalize(vNormal);
+	vec3 c = normalize(vDir);
+
+	intensity = max(0.0, dot(b, -c));
+
+	vColor = baseColor;
+
+	gl_Position = a;
+}
