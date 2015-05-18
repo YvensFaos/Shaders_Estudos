@@ -114,6 +114,7 @@
     <ClInclude Include="glbuffer.h" />
     <ClInclude Include="glcamera.h" />
     <ClInclude Include="glconfig.h" />
+    <ClInclude Include="gldynamic.h" />
     <ClInclude Include="gledemakerplayer.h" />
     <ClInclude Include="glenums.h" />
     <ClInclude Include="glfreeplayer.h" />
