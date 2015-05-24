@@ -4,6 +4,19 @@
 
 #include <string.h>
 
+class GLDynamicObject
+{
+public:
+	std::string pathName;
+	std::string dynamicName;
+	int index;
+	
+public:
+	GLDynamicObject(void);
+	GLDynamicObject(std::string pathName, std::string dynamicName, int index);
+	~GLDynamicObject(void);
+};
+
 class GLDynamic
 {
 private:

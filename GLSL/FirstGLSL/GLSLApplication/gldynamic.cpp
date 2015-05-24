@@ -2,6 +2,25 @@
 
 #include "glbuffer.h"
 
+//GLDynamicObject
+GLDynamicObject::GLDynamicObject(void)
+{
+	pathName = "";
+	dynamicName = "";
+	index = -1;
+}
+
+GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, int index)
+{
+	this->pathName = pathName;
+	this->dynamicName = dynamicName;
+	this->index;
+}
+
+GLDynamicObject::~GLDynamicObject(void)
+{ }
+
+//GLDynamic
 GLDynamic::GLDynamic(void)
 { 
 	index = -1;
