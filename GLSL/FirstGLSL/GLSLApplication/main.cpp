@@ -14,8 +14,8 @@
 //#define desktop
 #define notebook
 
-//#define individual
-#define batch
+#define individual
+//#define batch
 
 GLPlayer* player;
 
@@ -27,6 +27,9 @@ int main()
 	config.width  = 800;
 	config.height = 600;
 	config.title  = "Teste";
+
+	std::string modelPath;
+	std::string modelPathLocation;
 
 	//Configurações de PATH que são exclusivos do computador usado
 #ifdef mia
@@ -44,6 +47,8 @@ int main()
 	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
 	config.pathfilePath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 	config.logPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
+	modelPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	modelPathLocation = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 #endif
 
 	config.objectName = "nucleus.obj";
@@ -71,7 +76,11 @@ int main()
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
 
+	config.enableDynamics = true;
+
 	config.title = "Teste de Titulo!";
+
+	config.dynamics = *GLDynamic::generateDynamics(modelPath, modelPathLocation, "bunny", "default-dyn-saw", 10, glm::vec3(0,0,0));
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;

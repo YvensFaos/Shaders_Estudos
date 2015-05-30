@@ -1,6 +1,7 @@
 #pragma once
 
 #include "glenums.h"
+#include "gldynamic.h"
 
 class GLPlayer;
 
@@ -43,7 +44,11 @@ public:
 	int edeDepth;
 	//Colore diferente os triângulos pertencentes a um nó da EDE
 	bool coloredNodes;
+	//Habilita os dinâmicos
+	bool enableDynamics;
 
+	//Lista de objetos dinâmicos
+	std::vector<GLDynamicObject> dynamics;
 public:
 	GLConfig(void);
 	~GLConfig(void);

@@ -111,6 +111,9 @@
     <ClCompile Include="gldynamic.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="glpath.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -192,6 +195,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="gldynamic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glpath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

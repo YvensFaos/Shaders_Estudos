@@ -94,6 +94,7 @@
     <ClCompile Include="glmesh3d.cpp" />
     <ClCompile Include="gloctree.cpp" />
     <ClCompile Include="gloctreeede.cpp" />
+    <ClCompile Include="glpath.cpp" />
     <ClCompile Include="glplayer.cpp" />
     <ClCompile Include="glrecordpathplayer.cpp" />
     <ClCompile Include="glroctree.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="glmesh3d.h" />
     <ClInclude Include="gloctree.h" />
     <ClInclude Include="gloctreeede.h" />
+    <ClInclude Include="glpath.h" />
     <ClInclude Include="glplayer.h" />
     <ClInclude Include="glprinthelper.h" />
     <ClInclude Include="glrecordpathplayer.h" />

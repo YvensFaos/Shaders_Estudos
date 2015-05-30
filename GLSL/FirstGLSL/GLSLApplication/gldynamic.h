@@ -1,6 +1,7 @@
 #pragma once
 
 #include "glmesh3d.h"
+#include "glpath.h"
 
 #include <string.h>
 
@@ -9,38 +10,22 @@ class GLDynamicObject
 public:
 	std::string pathName;
 	std::string dynamicName;
+
+	glm::vec3 translate;
+
 	int index;
-	
+	GLPath* pathReference;
 public:
 	GLDynamicObject(void);
-	GLDynamicObject(std::string pathName, std::string dynamicName, int index);
+	GLDynamicObject(std::string pathName, std::string dynamicName, int index, glm::vec3 translate);
 	~GLDynamicObject(void);
+
+	void update(void);
+	void draw(void);
 };
 
 class GLDynamic
 {
-private:
-	int index;
-	glm::vec3 standPosition;
-	std::vector<GLCameraStep>* steps;
 public:
-	GLMeshHandler* handler;
-	std::string name;
-	bool moveable;
-
-public:
-	GLDynamic(void);
-	GLDynamic(char* modelPath, char* model3d, glm::vec3 position);
-	GLDynamic(char* modelPath, char* model3d, char* pathLocation, char* pathName);
-	~GLDynamic(void);
-
-	void update(void);
-	int draw(void);
-
-public:
-	static void getTestDynamic(std::vector<GLDynamic>* dynamics);
-
-private:
-	void readDynamic(char* filepath, char* pathlocation);
-	void readPathFile(char* pathLocation, char* pathName);
+	static std::vector<GLDynamicObject>* generateDynamics(std::string modelPath, std::string model, std::string pathPath, std::string path, int quantity, glm::vec3 translate);
 };

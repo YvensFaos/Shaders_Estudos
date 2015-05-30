@@ -28,6 +28,7 @@ GLConfig::GLConfig()
 	repeatable = false;
 	logResults = false;
 	coloredNodes = false;
+	enableDynamics = false;
 }
 
 GLConfig::~GLConfig()

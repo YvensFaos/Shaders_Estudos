@@ -8,69 +8,44 @@ GLDynamicObject::GLDynamicObject(void)
 	pathName = "";
 	dynamicName = "";
 	index = -1;
+	translate = glm::vec3(0,0,0);
 }
 
-GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, int index)
+GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, int index, glm::vec3 translate)
 {
 	this->pathName = pathName;
+
+	if(GLBufferHandler::checkForPathObject(pathName))
+	{
+		pathReference = GLBufferHandler::pathObjectBuffer[pathName];
+	}
+	else
+	{
+		char * pa = new char[pathName.size() + 1];
+		std::copy(pathName.begin(), pathName.end(), pa);
+		pathReference = new GLPath(pa);
+
+		GLBufferHandler::addToPathObjectBuffer(pathName, pathReference);
+	}
+
 	this->dynamicName = dynamicName;
-	this->index;
+	this->index = index;
+	this->translate = glm::vec3(translate);
 }
 
 GLDynamicObject::~GLDynamicObject(void)
 { }
 
 //GLDynamic
-GLDynamic::GLDynamic(void)
-{ 
-	index = -1;
-	moveable = false;
-	standPosition = glm::vec3(0.0f, 0.0f, 0.0f);
+
+std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath, std::string model, std::string pathPath, std::string path, int quantity, glm::vec3 translate)
+{
+	std::vector<GLDynamicObject>* list = new std::vector<GLDynamicObject>();
+	std::string ppath = pathPath + path;
+	std::string mmodel = modelPath + model;
+
+	for(int i = 0; i < quantity; i++)
+	{
+		list->push_back(GLDynamicObject(ppath, mmodel, i * 3, translate));
+	}
 }
-
-GLDynamic::GLDynamic(char* modelPath, char* model3d, glm::vec3 position)
-{ 
-	if(GLBufferHandler::checkForMeshHandler(model3d))
-	{
-		handler = GLBufferHandler::meshHandlerBuffer[model3d];
-	}
-	else
-	{
-		handler = new GLMeshHandler(model3d, modelPath);
-		GLBufferHandler::addToMeshHandlerBuffer(model3d, handler);
-	}
-
-	index = 0;
-	moveable = true;
-	standPosition = glm::vec3(position.x, position.y, position.z);
-}
-
-GLDynamic::GLDynamic(char* modelPath, char* model3d, char* pathLocation, char* pathName)
-{ 
-	if(GLBufferHandler::checkForMeshHandler(model3d))
-	{
-		handler = GLBufferHandler::meshHandlerBuffer[model3d];
-	}
-	else
-	{
-		handler = new GLMeshHandler(model3d, modelPath);
-		GLBufferHandler::addToMeshHandlerBuffer(model3d, handler);
-	}
-
-	if(GLBufferHandler::checkForPath(pathName))
-	{
-		steps = GLBufferHandler::pathBuffer[pathName];
-	}
-	else
-	{
-		readPathFile(pathLocation, pathName);
-		GLBufferHandler::addToPathBuffer(pathName, steps);
-	}
-
-	index = 0;
-	moveable = true;
-	standPosition = glm::vec3(0.0f, 0.0f, 0.0f);
-}
-
-
-
