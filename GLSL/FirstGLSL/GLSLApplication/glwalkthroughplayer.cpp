@@ -127,6 +127,9 @@ void GLWalkthroughPlayer::step(void)
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
 	glUniform3f(pos, step->direction.x, step->direction.y, step->direction.z);
 
+	pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
+
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glViewport(0, 0, config.width, config.height);
@@ -153,8 +156,6 @@ void GLWalkthroughPlayer::step(void)
 
 			loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
 			glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
-
-			glUseProgram(OpenGLWrapper::dynamicObject);
 
 			obj->draw();
 			obj->update();

@@ -70,9 +70,9 @@ void GLDynamicObject::update(void)
 
 void GLDynamicObject::draw(void)
 {
-	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "moveTo");
+	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	GLCameraStep* step = pathReference->getStep(index, translate);
-	glUniform3f(pos, step->direction.x, step->direction.y, step->direction.z);
+	glUniform4f(pos, step->direction.x, step->direction.y, step->direction.z, 0.0f);
 
 	meshHandler->render();
 }

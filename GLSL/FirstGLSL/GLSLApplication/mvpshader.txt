@@ -1,5 +1,6 @@
 uniform mat4 mvp;
 uniform vec3 vDir;
+uniform vec4 pos;
 uniform vec4 baseColor;
 uniform float angle;
 
@@ -9,23 +10,16 @@ varying vec4 vColor;
 varying float intensity;
 void main(void)
 {
-	vec4 a = gl_Vertex;
+	vec4 a = gl_Vertex + pos;
 	vec3 b = normalize(vNormal);
-	//vec3 c = normalize(vec3(gl_LightSource[0].position));
 	vec3 c = normalize(vDir);
 
 	intensity = max(0.0, dot(b, -c));
 
-	//vColor = vec4(vNormal.x, vNormal.y, vNormal.z, 1.0);
 	vColor = baseColor;
 
 	float h = radians(angle);
 
-	//Around Y axis
-	//b.x = a.x * cos(h) + a.z * sin(h);
-	//b.y = a.y;
-	//b.z = - a.x * sin(h) + a.z * cos(h);
-	//a.xyz = b.xyz;
 	
 	gl_Position = mvp * a;
 }
