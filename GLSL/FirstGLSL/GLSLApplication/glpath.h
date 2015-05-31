@@ -5,10 +5,9 @@
 
 class GLPath
 {
-private:
+public:
 	int size;
 
-public:
 	GLPath(void);
 	GLPath(char* pathfile);
 	GLPath(char* pathfilePath, char* pathfileName);

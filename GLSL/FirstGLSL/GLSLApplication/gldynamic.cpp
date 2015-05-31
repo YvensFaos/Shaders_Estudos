@@ -36,6 +36,21 @@ GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, 
 GLDynamicObject::~GLDynamicObject(void)
 { }
 
+
+void GLDynamicObject::update(void)
+{
+	index++;
+	if(index >= pathReference->size)
+	{
+		index = 0;
+	}
+}
+
+void GLDynamicObject::draw(void)
+{
+
+}
+
 //GLDynamic
 
 std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath, std::string model, std::string pathPath, std::string path, int quantity, glm::vec3 translate)
@@ -48,4 +63,6 @@ std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath,
 	{
 		list->push_back(GLDynamicObject(ppath, mmodel, i * 3, translate));
 	}
+
+	return list;
 }

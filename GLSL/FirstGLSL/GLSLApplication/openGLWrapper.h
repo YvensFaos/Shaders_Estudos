@@ -15,6 +15,7 @@ public:
 	static glm::vec4 ACTUAL_CLEAR_COLOR;
 
 	static GLuint programObject;
+	static GLuint dynamicObject;
 	static GLuint normalLoc;
 	static GLuint positionLoc;
 

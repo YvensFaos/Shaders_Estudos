@@ -12,6 +12,7 @@ glm::vec4 OpenGLWrapper::RECORDING_CLEAR_COLOR = glm::vec4(0.6f, 0.2f, 0.2f, 0.0
 glm::vec4 OpenGLWrapper::ACTUAL_CLEAR_COLOR = glm::vec4(VEC4_PRINT(OpenGLWrapper::DEFAULT_CLEAR_COLOR));
 
 GLuint OpenGLWrapper::programObject;
+GLuint OpenGLWrapper::dynamicObject;
 GLuint OpenGLWrapper::normalLoc;
 GLuint OpenGLWrapper::positionLoc;
 GLPlayer* OpenGLWrapper::player;
@@ -67,21 +68,35 @@ void OpenGLWrapper::initialize(bool antialiasing, int multisampling)
 	unsigned long flen;
 	GLchar* vertexShaderText = GLShaderLoader::loadshader("mvpshader.txt", &vlen);
 	GLchar* fragmentShaderText = GLShaderLoader::loadshader("fragmentshader.txt", &flen);
-	//GLchar* fragmentShaderText = GLShaderLoader::loadshader("toonfragmentshader.txt", &flen);
+
+	GLchar* dynamicVertexText = GLShaderLoader::loadshader("dynamicvshader.txt", &vlen);
+	GLchar* dynamicFragmeText = GLShaderLoader::loadshader("dynamicnshader.txt", &vlen);
 
 	GLuint vertexShader;
 	GLuint fragmentShader;
+
+	GLuint dvertexShader;
+	GLuint dfragmentShader;
+
 	GLint linked;
 
 	vertexShader = OpenGLWrapper::loadShader(vertexShaderText, GL_VERTEX_SHADER);
 	fragmentShader = OpenGLWrapper::loadShader(fragmentShaderText, GL_FRAGMENT_SHADER);
 
+	dvertexShader = OpenGLWrapper::loadShader(dynamicVertexText, GL_VERTEX_SHADER);
+	dfragmentShader = OpenGLWrapper::loadShader(dynamicFragmeText, GL_FRAGMENT_SHADER);
+
 	OpenGLWrapper::programObject = glCreateProgram();
 	glAttachShader(OpenGLWrapper::programObject, vertexShader);
 	glAttachShader(OpenGLWrapper::programObject, fragmentShader);
 
+	OpenGLWrapper::dynamicObject = glCreateProgram();
+	glAttachShader(OpenGLWrapper::dynamicObject, dvertexShader);
+	glAttachShader(OpenGLWrapper::dynamicObject, dfragmentShader);
+
 	normalLoc = 1;
 	glBindAttribLocation(OpenGLWrapper::programObject, normalLoc, "vNormal");
+	glBindAttribLocation(OpenGLWrapper::dynamicObject, normalLoc, "vNormal");
 
 	int n = 0;
 
@@ -106,6 +121,26 @@ void OpenGLWrapper::initialize(bool antialiasing, int multisampling)
 		}
 
 		glDeleteProgram(OpenGLWrapper::programObject);
+	}
+
+	glLinkProgram(OpenGLWrapper::dynamicObject);
+	glGetProgramiv(OpenGLWrapper::dynamicObject, GL_LINK_STATUS, &linked);
+
+	if(!linked)
+	{
+		GLint infolen = 0;
+		glGetProgramiv(OpenGLWrapper::dynamicObject, GL_INFO_LOG_LENGTH, &infolen);
+
+		if(infolen > 1)
+		{
+			char* infolog = new char[infolen];
+			glGetProgramInfoLog(OpenGLWrapper::dynamicObject, infolen, NULL, infolog);
+			printf("%s\n", infolog);
+
+			delete infolog;
+		}
+
+		glDeleteProgram(OpenGLWrapper::dynamicObject);
 	}
 
 	player->lights();
