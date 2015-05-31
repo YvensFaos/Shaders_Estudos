@@ -5,8 +5,7 @@ uniform vec4 baseColor;
 attribute vec3 vNormal;
 
 varying vec4 vColor;
-varying float intensity
-
+varying float intensity;
 void main(void)
 {
 	vec4 a = gl_Vertex + moveTo;
