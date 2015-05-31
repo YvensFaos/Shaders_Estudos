@@ -145,12 +145,29 @@ void GLWalkthroughPlayer::step(void)
 		verticesCount = meshHandler->render();
 	}
 
+	if(config.enableDynamics)
+	{
+		for(int i  = 0; i < config.dynamics.size(); i++)
+		{
+			GLDynamicObject* obj = &config.dynamics.at(i);
+
+			loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+			glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
+
+			glUseProgram(OpenGLWrapper::dynamicObject);
+
+			obj->draw();
+			obj->update();
+		}
+	}
+
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
 	sprintf(title, "%s - fps[%.2f][%d]", modeTitle, (float) (1 / deltaTime), cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
+
 
 	if(config.logResults && !logged)
 	{

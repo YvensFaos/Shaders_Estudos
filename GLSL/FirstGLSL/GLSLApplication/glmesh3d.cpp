@@ -18,6 +18,21 @@ GLMeshHandler::GLMeshHandler(void)
 GLMeshHandler::~GLMeshHandler(void)
 { }
 
+GLMeshHandler::GLMeshHandler(char* file)
+{
+	printf("Loading: %s\n", file);
+
+	Assimp::Importer importer; 
+	const aiScene* scene = importer.ReadFile(file, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices  | aiProcess_SortByPType); 
+
+	for(int i = 0; i < scene->mNumMeshes; i++)
+	{
+		meshes.push_back(GLMesh3D(i, gl_index++, scene));
+	}
+
+	this->numMeshes = scene->mNumMeshes;
+}
+
 GLMeshHandler::GLMeshHandler(char* model3d, char* path)
 {
 	char sFilePath[512];

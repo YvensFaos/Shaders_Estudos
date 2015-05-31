@@ -12,9 +12,11 @@ public:
 	std::string dynamicName;
 
 	glm::vec3 translate;
+	glm::vec3 position;
 
 	int index;
 	GLPath* pathReference;
+	GLMeshHandler* meshHandler;
 public:
 	GLDynamicObject(void);
 	GLDynamicObject(std::string pathName, std::string dynamicName, int index, glm::vec3 translate);

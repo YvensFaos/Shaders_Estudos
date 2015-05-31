@@ -80,7 +80,7 @@ int main()
 
 	config.title = "Teste de Titulo!";
 
-	//config.dynamics = *GLDynamic::generateDynamics(modelPath, modelPathLocation, "bunny", "default-dyn-saw", 10, glm::vec3(0,0,0));
+	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "nucleus-[1][test].pathx", 10, glm::vec3(0,0,0));
 
 	PLAYER_MODE mode;
 	mode = FREE_MODE;

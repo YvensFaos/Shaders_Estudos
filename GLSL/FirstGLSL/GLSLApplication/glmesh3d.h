@@ -63,6 +63,7 @@ public:
 	std::vector<GLMesh3D> meshes;
 public:
 	GLMeshHandler(void);
+	GLMeshHandler(char* file);
 	GLMeshHandler(char* model3d, char* path);
 	~GLMeshHandler(void);
 

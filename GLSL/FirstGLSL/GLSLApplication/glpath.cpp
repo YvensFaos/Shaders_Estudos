@@ -51,3 +51,16 @@ void GLPath::readPathFile(char* pathfile)
 
 	reader.close();
 }
+
+GLCameraStep* GLPath::getStep(int index)
+{
+	return &steps->at(index);
+}
+
+GLCameraStep* GLPath::getStep(int index, glm::vec3 translate)
+{
+	GLCameraStep* nstep = new GLCameraStep(steps->at(index));
+	nstep->position += translate;
+
+	return nstep;
+}
