@@ -80,13 +80,13 @@ int main()
 
 	config.title = "Teste de Titulo!";
 
-	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "nucleus-[1][test].pathx", 10, glm::vec3(0,0,0));
+	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "nucleus-[1][test].pathx", 5, glm::vec3(0,0,0));
 
 	PLAYER_MODE mode;
-	mode = FREE_MODE;
 	mode = EDE_MAKER;
-	mode = RECORD_PATH;
+	mode = FREE_MODE;
 	mode = WALKTHROUGH_MODE;
+	mode = RECORD_PATH;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);

@@ -108,6 +108,9 @@ void GLRecordPathPlayer::step(void)
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
 	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
 
+	pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
+
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glViewport(0, 0, config.width, config.height);
@@ -116,6 +119,20 @@ void GLRecordPathPlayer::step(void)
 	glUseProgram(OpenGLWrapper::programObject);
 
 	meshHandler->render();
+
+	if(config.enableDynamics)
+	{
+		for(int i  = 0; i < config.dynamics.size(); i++)
+		{
+			GLDynamicObject* obj = &config.dynamics.at(i);
+
+			loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+			glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
+
+			obj->draw();
+			obj->update();
+		}
+	}
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
