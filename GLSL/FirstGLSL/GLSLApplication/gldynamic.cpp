@@ -72,7 +72,7 @@ void GLDynamicObject::draw(void)
 {
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	GLCameraStep* step = pathReference->getStep(index, translate);
-	glUniform4f(pos, step->direction.x, step->direction.y, step->direction.z, 0.0f);
+	glUniform4f(pos, step->position.x, step->position.y, step->position.z, 0.0f);
 
 	meshHandler->render();
 }
@@ -90,7 +90,7 @@ std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath,
 
 	for(int i = 0; i < quantity; i++)
 	{
-		list->push_back(GLDynamicObject(ppath, mmodel, i * 3, translate));
+		list->push_back(GLDynamicObject(ppath, mmodel, i * 10, translate));
 	}
 
 	return list;
