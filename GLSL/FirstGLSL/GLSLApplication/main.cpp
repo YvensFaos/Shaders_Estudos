@@ -80,7 +80,7 @@ int main()
 
 	config.title = "Teste de Titulo!";
 
-	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "nucleus-[1][test].pathx", 5, glm::vec3(0,0,0));
+	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "nucleus-[1][test].pathx", 500, glm::vec3(0,0,0));
 
 	PLAYER_MODE mode;
 	mode = EDE_MAKER;
