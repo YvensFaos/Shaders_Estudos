@@ -58,7 +58,7 @@ int main()
 	config.pathfileName = "nucleus-[1][test]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
-	config.logResults = false;
+	config.logResults = true;
 
 	//Seta um valor inicial para o identifier; Caso seja -1, o código
 	//Inicializa com 0 e começa a contagem a partir daí
@@ -68,7 +68,7 @@ int main()
 	//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 	config.logIdentifier = 1;
 	//Adiciona um texto adicional ao arquivo de logw
-	config.logExtraMsg = "test";
+	config.logExtraMsg = "test-dyn";
 	//Altura padrão de uma EDE
 	config.edeDepth = 2;
 	//EDE escolhida
@@ -80,13 +80,13 @@ int main()
 
 	config.title = "Teste de Titulo!";
 
-	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "nucleus-[1][test].pathx", 500, glm::vec3(0,0,0));
+	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "nucleus-[1][test].pathx", 10, glm::vec3(0,0,0));
 
 	PLAYER_MODE mode;
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
-	mode = WALKTHROUGH_MODE;
 	mode = RECORD_PATH;
+	mode = WALKTHROUGH_MODE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);

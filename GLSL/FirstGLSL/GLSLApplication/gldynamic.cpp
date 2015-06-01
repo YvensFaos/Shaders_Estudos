@@ -90,7 +90,7 @@ std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath,
 
 	for(int i = 0; i < quantity; i++)
 	{
-		list->push_back(GLDynamicObject(ppath, mmodel, i * 10, translate));
+		list->push_back(GLDynamicObject(ppath, mmodel, 100 + i * 10, translate));
 	}
 
 	return list;
