@@ -1,0 +1,61 @@
+{ 4: 6} - 12:10:  : Iniciado a octree tamanho 2.
+{ 4: 6} - 12:10:  : Calculando AABB da raíz
+{ 4: 6} - 12:10:  : Mínimo: -154.31 -51.20 -281.60
+{ 4: 6} - 12:10:  : Máximo: 153.60 58.49 192.00
+{ 4: 6} - 12:10:  : Node color: 0.839216 0.419608 0.160784
+{ 4: 6} - 12:10:  : Inside: 77682/77682
+{ 4: 6} - 12:10:  : Node color: 0.662745 0.172549 0.921569
+{ 4: 6} - 12:10:  : Inside: 84/77682
+{ 4: 6} - 12:10:  : Node color: 0.733333 0.129412 0.011765
+{ 4: 6} - 12:10:  : Inside: 32097/77682
+{ 4: 6} - 12:10:  : Node color: 0.372549 0.372549 0.937255
+{ 4: 6} - 12:10:  : Inside: 153/77682
+{ 4: 6} - 12:10:  : Node color: 0.062745 0.988235 0.298039
+{ 4: 6} - 12:10:  : Inside: 5823/77682
+{ 4: 6} - 12:10:  : Node color: 0.831373 0.745098 0.925490
+{ 4: 6} - 12:10:  : Inside: 1098/77682
+{ 4: 6} - 12:10:  : Node color: 0.023529 0.317647 0.929412
+{ 4: 6} - 12:10:  : Inside: 34794/77682
+{ 4: 6} - 12:10:  : Node color: 0.600000 0.301961 0.270588
+{ 4: 6} - 12:10:  : Inside: 816/77682
+{ 4: 6} - 12:10:  : Node color: 0.317647 0.556863 0.145098
+{ 4: 6} - 12:10:  : Inside: 6156/77682
+{ 4: 6} - 12:10:  : Otimizando node...
+{ 4: 6} - 12:10:  : Chamando nós filhos...
+{ 4: 6} - 12:10:  : Otimizando node...
+{ 4: 6} - 12:10:  : Otimizando arrays de mesh...
+{ 4: 6} - 12:10:  : [Mesh 0] Otimizado de 84 -> 20 índices.
+{ 4: 6} - 12:10:  : Otimizando node...
+{ 4: 6} - 12:10:  : Otimizando arrays de mesh...
+{ 4: 6} - 12:10:  : [Mesh 0] Otimizado de 32097 -> 550 índices.
+{ 4: 6} - 12:10:  : Otimizando node...
+{ 4: 6} - 12:10:  : Otimizando arrays de mesh...
+{ 4: 6} - 12:10:  : [Mesh 0] Otimizado de 153 -> 10 índices.
+{ 4: 6} - 12:10:  : Otimizando node...
+{ 4: 6} - 12:10:  : Otimizando arrays de mesh...
+{ 4: 6} - 12:10:  : [Mesh 0] Otimizado de 5823 -> 204 índices.
+{ 4: 6} - 12:10:  : Otimizando node...
+{ 4: 6} - 12:10:  : Otimizando arrays de mesh...
+{ 4: 6} - 12:10:  : [Mesh 0] Otimizado de 1098 -> 146 índices.
+{ 4: 6} - 12:10:  : Otimizando node...
+{ 4: 6} - 12:10:  : Otimizando arrays de mesh...
+{ 4: 6} - 12:10:  : [Mesh 0] Otimizado de 34794 -> 552 índices.
+{ 4: 6} - 12:10:  : Otimizando node...
+{ 4: 6} - 12:10:  : Otimizando arrays de mesh...
+{ 4: 6} - 12:10:  : [Mesh 0] Otimizado de 816 -> 96 índices.
+{ 4: 6} - 12:10:  : Otimizando node...
+{ 4: 6} - 12:10:  : Otimizando arrays de mesh...
+{ 4: 6} - 12:10:  : [Mesh 0] Otimizado de 6156 -> 168 índices.
+{ 4: 6} - 12:10:  : Node - [77682] - [8]
+{ 4: 6} - 12:10:  : Node - [168] - [0]
+{ 4: 6} - 12:10:  : Node - [96] - [0]
+{ 4: 6} - 12:10:  : Node - [552] - [0]
+{ 4: 6} - 12:10:  : Node - [146] - [0]
+{ 4: 6} - 12:10:  : Node - [204] - [0]
+{ 4: 6} - 12:10:  : Node - [10] - [0]
+{ 4: 6} - 12:10:  : Node - [550] - [0]
+{ 4: 6} - 12:10:  : Node - [20] - [0]
+{ 4: 6} - 12:10:  : Total Nodes: 9
+{ 4: 6} - 12:10:  : Concluindo a octree!
+{ 4: 6} - 12:10:  : Memória usada: 318774.
+{ 4: 6} - 12:10:  : Tempo de processamento: 0.000000

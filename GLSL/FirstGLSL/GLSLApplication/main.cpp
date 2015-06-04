@@ -55,7 +55,7 @@ int main()
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 16;
 
-	config.pathfileName = "coaltown-[1][test]";
+	config.pathfileName = "coaltown-[walk]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
 	config.logResults = false;
@@ -64,15 +64,15 @@ int main()
 	//Inicializa com 0 e começa a contagem a partir daí
 	config.pathIdentifier = 1;
 	//Adiciona um texto adicional ao arquivo de path
-	config.pathExtraMsg = "dynl";
+	config.pathExtraMsg = "walk";
 	//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 	config.logIdentifier = 1;
 	//Adiciona um texto adicional ao arquivo de logw
 	config.logExtraMsg = "test-dyn";
 	//Altura padrão de uma EDE
-	config.edeDepth = 2;
+	config.edeDepth = 1;
 	//EDE escolhida
-	config.type = ROCTREE;
+	config.type = NONE;
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
 
@@ -80,13 +80,27 @@ int main()
 
 	config.title = "Teste de Titulo!";
 
-	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test].pathx", 4, glm::vec3(0,0,0));
+	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
+
+	int qttDynamics = 10;
+
+	std::vector<GLDynamicObject>* pointerDynamics;
+	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
+	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
+	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[2][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
+	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
+	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[3][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
+	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
+	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[4][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
+	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
+
+	config.dynamics = totalDynamics;
 
 	PLAYER_MODE mode;
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
-	mode = WALKTHROUGH_MODE;
 	mode = RECORD_PATH;
+	mode = WALKTHROUGH_MODE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);
