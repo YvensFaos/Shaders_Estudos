@@ -99,7 +99,7 @@ void GLROctreeEDE::recursiveDraw(GLConfig* config, GLOctreeNode* node, float* in
 			info[2] += node->mesh.verticesCount;
 			info[3] += 1;
 
-			if(config->enableDynamics)
+			if(config->enableDynamics && testDynamics)
 			{
 				for(int i  = 0; i < config->dynamics.size(); i++)
 				{

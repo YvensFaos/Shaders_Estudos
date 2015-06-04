@@ -20,6 +20,9 @@ protected:
 	EDLogger* logger;
 
 public:
+	bool testDynamics;
+
+public:
 	GLBasicEDE(void);
 	virtual ~GLBasicEDE(void) {};
 

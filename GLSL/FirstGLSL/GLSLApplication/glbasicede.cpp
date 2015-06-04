@@ -9,6 +9,7 @@
 
 GLBasicEDE::GLBasicEDE(void)
 {
+	testDynamics = false;
 	memoryUsed = -1;
 }
 

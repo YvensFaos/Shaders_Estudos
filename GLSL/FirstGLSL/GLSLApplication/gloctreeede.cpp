@@ -67,7 +67,7 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 					}
 				}
 
-				if(config->enableDynamics)
+				if(config->enableDynamics && testDynamics)
 				{
 					for(int i  = 0; i < config->dynamics.size(); i++)
 					{

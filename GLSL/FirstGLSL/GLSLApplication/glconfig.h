@@ -46,6 +46,10 @@ public:
 	bool coloredNodes;
 	//Habilita os dinâmicos
 	bool enableDynamics;
+	//Habilita o teste de dinâmicos na EDE
+	bool edeTestDynamics;
+	//Habilita o teste de dinâmicos no frustum
+	bool frustumTestDynamics;
 
 	//Lista de objetos dinâmicos
 	std::vector<GLDynamicObject> dynamics;

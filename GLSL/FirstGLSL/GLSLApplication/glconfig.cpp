@@ -29,6 +29,8 @@ GLConfig::GLConfig()
 	logResults = false;
 	coloredNodes = false;
 	enableDynamics = false;
+	edeTestDynamics = false;
+	frustumTestDynamics = true;
 }
 
 GLConfig::~GLConfig()

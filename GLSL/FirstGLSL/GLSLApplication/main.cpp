@@ -70,19 +70,21 @@ int main()
 	//Adiciona um texto adicional ao arquivo de logw
 	config.logExtraMsg = "test-dyn";
 	//Altura padrão de uma EDE
-	config.edeDepth = 1;
+	config.edeDepth = 3;
 	//EDE escolhida
-	config.type = NONE;
+	config.type = ROCTREE;
 	//Colore os nós em tons diferente
 	config.coloredNodes = true;
 
 	config.enableDynamics = true;
+	config.edeTestDynamics = false;
+	config.frustumTestDynamics = true;
 
 	config.title = "Teste de Titulo!";
 
 	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
 
-	int qttDynamics = 10;
+	int qttDynamics = 50;
 
 	std::vector<GLDynamicObject>* pointerDynamics;
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, glm::vec3(0,0,0));

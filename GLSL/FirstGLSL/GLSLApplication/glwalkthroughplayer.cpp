@@ -66,6 +66,7 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	if(config.type != NONE)
 	{
 		ede = GLBasicEDE::instantiate(&config);
+		ede->testDynamics = config.edeTestDynamics;
 
 		std::string edeName = ede->getName();
 
@@ -138,6 +139,7 @@ void GLWalkthroughPlayer::step(void)
 	
 	int verticesCount = 0;
 	memset(info, 0, sizeof(float)*INFO_SIZE);
+
 	if(config.type != NONE)
 	{
 		frustum = GLFrustum(camera->fov + 15.0f, camera->fov + 15.0f, camera->near, camera->far, camera);
@@ -157,6 +159,13 @@ void GLWalkthroughPlayer::step(void)
 			if(config.type == NONE)
 			{
 				obj->visible = true;
+			}
+			else if(config.frustumTestDynamics)
+			{
+				if(frustum.intercepts(&obj->meshHandler->min, &obj->meshHandler->max))
+				{
+					obj->visible = true;
+				}
 			}
 
 			loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
