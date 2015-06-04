@@ -64,6 +64,12 @@ public:
 	static float dot(const GLPlane &p, const glm::vec3 &pt);
 };
 
+class GLAABB
+{
+public:
+	static bool intercepts(glm::vec3 max1, glm::vec3 min1, glm::vec3 max2, glm::vec3 min2);
+};
+
 class GLFrustum
 {
 public:

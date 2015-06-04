@@ -25,9 +25,44 @@ GLMeshHandler::GLMeshHandler(char* file)
 	Assimp::Importer importer; 
 	const aiScene* scene = importer.ReadFile(file, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices  | aiProcess_SortByPType); 
 
+	max = glm::vec3(MIN_FLOAT, MIN_FLOAT, MIN_FLOAT);
+	min = glm::vec3(MAX_FLOAT, MAX_FLOAT, MAX_FLOAT);
+
 	for(int i = 0; i < scene->mNumMeshes; i++)
 	{
 		meshes.push_back(GLMesh3D(i, gl_index++, scene));
+
+		GLMesh3D* meshp = &meshes.at(meshes.size() - 1);
+
+		//Pegar os maiores e menores
+#pragma region buscar valores max e min
+		if(meshp->max.x > max.x)
+		{
+			max.x = meshp->max.x;
+		}
+		if(meshp->max.y > max.y)
+		{
+			max.y = meshp->max.y;
+		}
+		if(meshp->max.z > max.z)
+		{
+			max.z = meshp->max.z;
+		}
+
+		if(meshp->min.x < min.x)
+		{
+			min.x = meshp->min.x;
+		}
+		if(meshp->min.y < min.y)
+		{
+			min.y = meshp->min.y;
+		}
+		if(meshp->min.z < min.z)
+		{
+			min.z = meshp->min.z;
+		}
+#pragma endregion
+
 	}
 
 	this->numMeshes = scene->mNumMeshes;

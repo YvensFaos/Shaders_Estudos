@@ -58,6 +58,21 @@ void GLSOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfi
 				mesh = &top->mesh;
 				mesh->prerender();
 				mesh->render();
+
+				if(config->enableDynamics)
+				{
+					for(int i  = 0; i < config->dynamics.size(); i++)
+					{
+						GLDynamicObject* obj = &config->dynamics.at(i);
+						if(!obj->visible)
+						{
+							if(GLAABB::intercepts(obj->meshHandler->max, obj->meshHandler->min, top->max, top->min))
+							{
+								obj->visible = true;
+							}
+						}
+					}
+				}
 			}
 		}
 	}

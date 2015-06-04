@@ -55,6 +55,9 @@ class GLMeshHandler
 public:
 	int numMeshes;
 
+	glm::vec3 max;
+	glm::vec3 min;
+
 	static GLuint gl_index;
 
 	char* model3d;

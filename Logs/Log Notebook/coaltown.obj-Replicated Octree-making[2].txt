@@ -1,0 +1,64 @@
+{ 4: 6} - 11:47:54: Iniciado a replicated octree tamanho 2.
+{ 4: 6} - 11:47:54: Calculando AABB da raíz
+{ 4: 6} - 11:47:54: Mínimo: -154.31 -51.20 -281.60
+{ 4: 6} - 11:47:54: Máximo: 153.60 58.49 192.00
+{ 4: 6} - 11:47:54: Static Meshes: 0
+                    Tested Meshes: 1
+{ 4: 6} - 11:47:54: Static Meshes Vertice Count: 0
+{ 4: 6} - 11:47:54: Gerando mesh estática única...
+{ 4: 6} - 11:47:54: Finalizado!
+{ 4: 6} - 11:47:54: Gerando nós a partir das malhas testáveis...
+{ 4: 6} - 11:47:54: Node color: 0.839216 0.419608 0.160784
+{ 4: 6} - 11:47:54: Inside: 77682/77682
+{ 4: 6} - 11:47:54: Node color: 0.662745 0.172549 0.921569
+{ 4: 6} - 11:47:54: Inside: 84/77682
+{ 4: 6} - 11:47:54: Node color: 0.733333 0.129412 0.011765
+{ 4: 6} - 11:47:54: Inside: 32097/77682
+{ 4: 6} - 11:47:54: Node color: 0.372549 0.372549 0.937255
+{ 4: 6} - 11:47:54: Inside: 153/77682
+{ 4: 6} - 11:47:54: Node color: 0.062745 0.988235 0.298039
+{ 4: 6} - 11:47:54: Inside: 5823/77682
+{ 4: 6} - 11:47:54: Node color: 0.831373 0.745098 0.925490
+{ 4: 6} - 11:47:54: Inside: 1098/77682
+{ 4: 6} - 11:47:54: Node color: 0.023529 0.317647 0.929412
+{ 4: 6} - 11:47:54: Inside: 34794/77682
+{ 4: 6} - 11:47:54: Node color: 0.600000 0.301961 0.270588
+{ 4: 6} - 11:47:54: Inside: 816/77682
+{ 4: 6} - 11:47:54: Node color: 0.317647 0.556863 0.145098
+{ 4: 6} - 11:47:54: Inside: 6156/77682
+{ 4: 6} - 11:47:54: Finalizado!
+{ 4: 6} - 11:47:54: Gerando meshes para os nós folhas ...
+{ 4: 6} - 11:47:54: Mesh de nó criada! - 77682 v e 77682 n.
+{ 4: 6} - 11:47:54: Custo da Mesh : 2796597
+{ 4: 6} - 11:47:54: Mesh de nó criada! - 6156 v e 6156 n.
+{ 4: 6} - 11:47:54: Custo da Mesh : 221661
+{ 4: 6} - 11:47:54: Mesh de nó criada! - 816 v e 816 n.
+{ 4: 6} - 11:47:54: Custo da Mesh : 29421
+{ 4: 6} - 11:47:54: Mesh de nó criada! - 34794 v e 34794 n.
+{ 4: 6} - 11:47:54: Custo da Mesh : 1252629
+{ 4: 6} - 11:47:54: Mesh de nó criada! - 1098 v e 1098 n.
+{ 4: 6} - 11:47:54: Custo da Mesh : 39573
+{ 4: 6} - 11:47:54: Mesh de nó criada! - 5823 v e 5823 n.
+{ 4: 6} - 11:47:54: Custo da Mesh : 209673
+{ 4: 6} - 11:47:54: Mesh de nó criada! - 153 v e 153 n.
+{ 4: 6} - 11:47:54: Custo da Mesh : 5553
+{ 4: 6} - 11:47:54: Mesh de nó criada! - 32097 v e 32097 n.
+{ 4: 6} - 11:47:54: Custo da Mesh : 1155537
+{ 4: 6} - 11:47:54: Mesh de nó criada! - 84 v e 84 n.
+{ 4: 6} - 11:47:54: Custo da Mesh : 3069
+{ 4: 6} - 11:47:54: Finalizado!
+{ 4: 6} - 11:47:54: Vertices count: 77682
+{ 4: 6} - 11:47:54: Vertices count: 6156
+{ 4: 6} - 11:47:54: Vertices count: 816
+{ 4: 6} - 11:47:54: Vertices count: 34794
+{ 4: 6} - 11:47:54: Vertices count: 1098
+{ 4: 6} - 11:47:54: Vertices count: 5823
+{ 4: 6} - 11:47:54: Vertices count: 153
+{ 4: 6} - 11:47:54: Vertices count: 32097
+{ 4: 6} - 11:47:54: Vertices count: 84
+{ 4: 6} - 11:47:54: Vértices duplicados: 81021
+{ 4: 6} - 11:47:54: Percentual de duplicados: 104.298294
+{ 4: 6} - 11:47:54: Total Nodes: 9
+{ 4: 6} - 11:47:54: Concluindo a replicated octree!
+{ 4: 6} - 11:47:54: Memória usada: 6349182.
+{ 4: 6} - 11:47:54: Tempo de processamento: 0.000000

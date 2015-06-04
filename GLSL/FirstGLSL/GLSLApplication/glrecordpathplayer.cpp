@@ -126,6 +126,8 @@ void GLRecordPathPlayer::step(void)
 		{
 			GLDynamicObject* obj = &config.dynamics.at(i);
 
+			obj->visible = true;
+
 			loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
 			glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
 

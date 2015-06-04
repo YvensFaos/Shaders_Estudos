@@ -14,6 +14,8 @@ public:
 	glm::vec3 translate;
 	glm::vec3 position;
 
+	bool visible;
+
 	int index;
 	GLPath* pathReference;
 	GLMeshHandler* meshHandler;

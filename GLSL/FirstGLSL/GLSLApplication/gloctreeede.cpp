@@ -66,9 +66,27 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 						j += 2;
 					}
 				}
+
+				if(config->enableDynamics)
+				{
+					for(int i  = 0; i < config->dynamics.size(); i++)
+					{
+						GLDynamicObject* obj = &config->dynamics.at(i);
+						if(!obj->visible)
+						{
+							if(GLAABB::intercepts(obj->meshHandler->max, obj->meshHandler->min, top->max, top->min))
+							{
+								obj->visible = true;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
+
+	//Verificar dinâmicos
+
 
 }
 

@@ -74,6 +74,18 @@ void GLPlane::set(float a, float b, float c, float d)
 	this->d = d;
 }
 
+//GLAABB
+
+bool GLAABB::intercepts(glm::vec3 max1, glm::vec3 min1, glm::vec3 max2, glm::vec3 min2)
+{
+	return max1.x >= min2.x 
+		&& max1.y >= min2.y
+		&& max1.z >= min2.z
+		&& min1.x <= max2.x
+		&& min1.y <= max2.y
+		&& min1.z <= max2.z;
+}
+
 //GLFrustum
 
 GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera* camera)

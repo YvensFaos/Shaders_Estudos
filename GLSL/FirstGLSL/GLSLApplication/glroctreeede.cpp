@@ -98,6 +98,21 @@ void GLROctreeEDE::recursiveDraw(GLConfig* config, GLOctreeNode* node, float* in
 			node->mesh.render();
 			info[2] += node->mesh.verticesCount;
 			info[3] += 1;
+
+			if(config->enableDynamics)
+			{
+				for(int i  = 0; i < config->dynamics.size(); i++)
+				{
+					GLDynamicObject* obj = &config->dynamics.at(i);
+					if(!obj->visible)
+					{
+						if(GLAABB::intercepts(obj->meshHandler->max, obj->meshHandler->min, node->max, node->min))
+						{
+							obj->visible = true;
+						}
+					}
+				}
+			}
 		}
 		break;
 	case PARTIALLY_VISIBLE:

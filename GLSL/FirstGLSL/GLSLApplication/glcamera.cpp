@@ -125,6 +125,7 @@ GLCameraHandler::GLCameraHandler(char* pathfilePath, char* pathfileName, int pat
 
 	index = 0;
 	finished = false;
+	steps = nullptr;
 }
 
 GLCameraHandler::~GLCameraHandler(void)
@@ -197,6 +198,11 @@ int GLCameraHandler::getIndex()
 
 void GLCameraHandler::stardRecording(GLCamera* firstStep)
 {
+	if(!steps)
+	{
+		steps = new std::vector<GLCameraStep>();
+	}
+
 	steps->clear();
 	steps->push_back(GLCameraStep(firstStep));
 	size = 1;

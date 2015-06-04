@@ -51,20 +51,20 @@ int main()
 	modelPathLocation = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 #endif
 
-	config.objectName = "nucleus.obj";
+	config.objectName = "coaltown.obj";
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 16;
 
-	config.pathfileName = "nucleus-[1][test]";
+	config.pathfileName = "coaltown-[1][test]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
-	config.logResults = true;
+	config.logResults = false;
 
 	//Seta um valor inicial para o identifier; Caso seja -1, o código
 	//Inicializa com 0 e começa a contagem a partir daí
 	config.pathIdentifier = 1;
 	//Adiciona um texto adicional ao arquivo de path
-	config.pathExtraMsg = "test";
+	config.pathExtraMsg = "dynl";
 	//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 	config.logIdentifier = 1;
 	//Adiciona um texto adicional ao arquivo de logw
@@ -80,13 +80,13 @@ int main()
 
 	config.title = "Teste de Titulo!";
 
-	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "nucleus-[1][test].pathx", 10, glm::vec3(0,0,0));
+	config.dynamics = *GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test].pathx", 4, glm::vec3(0,0,0));
 
 	PLAYER_MODE mode;
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
-	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
+	mode = RECORD_PATH;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);

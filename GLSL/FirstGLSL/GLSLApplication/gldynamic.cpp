@@ -9,6 +9,7 @@ GLDynamicObject::GLDynamicObject(void)
 {
 	pathName = "";
 	dynamicName = "";
+	visible = false;
 	index = -1;
 	translate = glm::vec3(0,0,0);
 	position =  glm::vec3(0,0,0);
@@ -17,6 +18,7 @@ GLDynamicObject::GLDynamicObject(void)
 GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, int index, glm::vec3 translate)
 {
 	this->pathName = pathName;
+	visible = false;
 
 	if(GLBufferHandler::checkForPathObject(pathName))
 	{
@@ -70,11 +72,17 @@ void GLDynamicObject::update(void)
 
 void GLDynamicObject::draw(void)
 {
-	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
-	GLCameraStep* step = pathReference->getStep(index, translate);
-	glUniform4f(pos, step->position.x, step->position.y, step->position.z, 0.0f);
+	if(visible)
+	{
+		GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+		GLCameraStep* step = pathReference->getStep(index, translate);
+		glUniform4f(pos, step->position.x, step->position.y, step->position.z, 0.0f);
 
-	meshHandler->render();
+		meshHandler->render();
+	}
+
+	//Reseta o visible para falso sempre que é desenhado
+	visible = false;
 }
 
 //GLDynamic
