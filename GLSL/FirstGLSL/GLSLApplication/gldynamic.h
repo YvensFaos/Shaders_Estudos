@@ -26,6 +26,8 @@ public:
 
 	void update(void);
 	void draw(void);
+
+	void getBounds(glm::vec3 bounds[2]);
 };
 
 class GLDynamic

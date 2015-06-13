@@ -150,8 +150,11 @@ void GLWalkthroughPlayer::step(void)
 		verticesCount = meshHandler->render();
 	}
 
+	int visibleBunnies = 0;
+
 	if(config.enableDynamics)
 	{
+		glm::vec3* bounds = new glm::vec3[2];
 		for(int i  = 0; i < config.dynamics.size(); i++)
 		{
 			GLDynamicObject* obj = &config.dynamics.at(i);
@@ -163,9 +166,11 @@ void GLWalkthroughPlayer::step(void)
 			if(config.frustumTestDynamics)
 			{
 				obj->visible = false;
-				if(frustum.intercepts(&obj->meshHandler->min, &obj->meshHandler->max))
+				obj->getBounds(bounds);
+				if(frustum.intercepts(&bounds[0], &bounds[1]))
 				{
 					obj->visible = true;
+					visibleBunnies++;
 				}
 			}
 
@@ -175,15 +180,16 @@ void GLWalkthroughPlayer::step(void)
 			obj->draw();
 			obj->update();
 		}
+
+		delete bounds;
 	}
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s - fps[%.2f][%d]", modeTitle, (float) (1 / deltaTime), cameraHandler->getIndex());
+	sprintf(title, "%s - fps[%.2f][v = %d][%d]", modeTitle, (float) (1 / deltaTime), visibleBunnies,cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
-
 
 	if(config.logResults && !logged)
 	{

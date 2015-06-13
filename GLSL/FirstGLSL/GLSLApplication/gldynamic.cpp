@@ -85,6 +85,12 @@ void GLDynamicObject::draw(void)
 	visible = false;
 }
 
+void GLDynamicObject::getBounds(glm::vec3 bounds[2])
+{
+	GLCameraStep* step = pathReference->getStep(index, translate);
+	bounds[0] = meshHandler->min + step->position;
+	bounds[1] = meshHandler->max + step->position;
+}
 //GLDynamic
 
 std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath,
