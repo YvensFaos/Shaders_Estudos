@@ -7,6 +7,7 @@
 #include "glwalkthroughplayer.h"
 #include "glrecordpathplayer.h"
 #include "gledemakerplayer.h"
+#include "glbirdseyeplayer.h"
 
 #pragma endregion
 
@@ -44,6 +45,7 @@ GLPlayer* GLConfig::getGLPlayer(void)
 		case WALKTHROUGH_MODE: return new GLWalkthroughPlayer(*this);
 		case RECORD_PATH:	   return new GLRecordPathPlayer(*this);
 		case EDE_MAKER:        return new GLEDEMakerPlayer(*this);
+		case BIRDS_EYE:		   return new GLBirdsEyePlayer(*this);
 		default:               return new GLPlayer(*this);
 	}
 }

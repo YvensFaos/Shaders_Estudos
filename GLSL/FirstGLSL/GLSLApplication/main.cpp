@@ -103,6 +103,7 @@ int main()
 	mode = FREE_MODE;
 	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
+	mode = BIRDS_EYE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);
