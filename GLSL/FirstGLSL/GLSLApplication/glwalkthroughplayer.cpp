@@ -156,12 +156,13 @@ void GLWalkthroughPlayer::step(void)
 		{
 			GLDynamicObject* obj = &config.dynamics.at(i);
 
-			if(config.type == NONE)
+			if(!config.edeTestDynamics)
 			{
 				obj->visible = true;
 			}
-			else if(config.frustumTestDynamics)
+			if(config.frustumTestDynamics)
 			{
+				obj->visible = false;
 				if(frustum.intercepts(&obj->meshHandler->min, &obj->meshHandler->max))
 				{
 					obj->visible = true;
