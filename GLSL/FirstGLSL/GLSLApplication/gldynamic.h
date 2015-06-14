@@ -12,7 +12,6 @@ public:
 	std::string dynamicName;
 
 	glm::vec3 translate;
-	glm::vec3 position;
 
 	bool visible;
 

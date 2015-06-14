@@ -4,7 +4,8 @@ void main (void)
 {
 	vec4 color = intensity * vColor;
 
-	color.w = 1.0f;
+	//Para manter o alfa original
+	color.w = vColor.w;
 
 	gl_FragColor = color;
 }

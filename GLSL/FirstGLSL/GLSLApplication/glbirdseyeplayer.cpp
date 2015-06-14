@@ -150,7 +150,7 @@ void GLBirdsEyePlayer::step(void)
 	int verticesCount = 0;
 	memset(info, 0, sizeof(float)*INFO_SIZE);
 
-	frustum = GLFrustum(camera->near, camera->far, walkStep);
+	frustum = GLFrustum(camera->near, 100, walkStep);
 	if(config.type != NONE)
 	{
 		ede->renderEDE(&frustum, meshHandler, &config, info);
@@ -189,6 +189,7 @@ void GLBirdsEyePlayer::step(void)
 
 			obj->draw();
 			obj->update();
+
 		}
 
 		delete bounds;
@@ -200,16 +201,14 @@ void GLBirdsEyePlayer::step(void)
 
 		obj->visible = true;
 		obj->draw(walkStep->position);
+
+		//Draw Frustum
+		frustum.draw();
 	}
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
-
-	if(cameraHandler->getIndex() == 292 || cameraHandler->getIndex() == 296)
-	{
-		printf("oi");
-	}
 
 	sprintf(title, "%s - fps[%.2f][v = %d][%d]", modeTitle, (float) (1 / deltaTime), visibleBunnies, cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);

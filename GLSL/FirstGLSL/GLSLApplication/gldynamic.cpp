@@ -12,7 +12,6 @@ GLDynamicObject::GLDynamicObject(void)
 	visible = false;
 	index = -1;
 	translate = glm::vec3(0,0,0);
-	position =  glm::vec3(0,0,0);
 }
 
 GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, int index, glm::vec3 translate)
@@ -52,7 +51,6 @@ GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, 
 
 	this->index = index;
 	GLCameraStep* step = pathReference->getStep(index, translate);
-	this->position = step->position;
 
 	this->translate = glm::vec3(translate);
 }
@@ -90,7 +88,6 @@ void GLDynamicObject::draw(glm::vec3 pos)
 	if(visible)
 	{
 		GLint poss = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
-		GLCameraStep* step = pathReference->getStep(index, translate);
 		glUniform4f(poss, pos.x, pos.y, pos.z, 0.0f);
 
 		meshHandler->render();

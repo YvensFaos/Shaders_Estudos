@@ -91,4 +91,6 @@ public:
 	bool containsSphere(glm::vec3* center, float radius);
 	//Testa se o frustum intercepta a AABB
 	bool intercepts(glm::vec3* min, glm::vec3* max);
+
+	void draw(void);
 };

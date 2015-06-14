@@ -2,6 +2,12 @@
 
 #include "glcamera.h"
 
+#include "openGLWrapper.h"
+#include <GL\glew.h>
+#include "GLFW\glfw3.h"
+
+#define SET_VERTEX_ARRAY(a,i,v) a[i++] = v;
+#define SET_NORMAL_ARRAY(a,i,v) glm::vec3 nn = glm::vec3(-1*v.x, -1*v.y, -1*v.z); a[i++] = nn;
 //GLPlane
 
 GLPlane::GLPlane(void)
@@ -401,4 +407,118 @@ bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 		delete lmax;
 	}
 	return found;
+}
+
+void GLFrustum::draw(void)
+{
+	GLint verticesCount = 36*3;
+	glm::vec3* vertexes = new glm::vec3[verticesCount];
+	glm::vec3* normals  = new glm::vec3[verticesCount];
+
+	int i = 0;
+	int j = 0;
+
+#pragma region near
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
+
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
+
+	for(int k = 0; k < 6; k++)
+	{
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_NEAR].n);
+	}
+#pragma endregion
+
+#pragma region far
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
+
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTR]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
+
+	for(int k = 0; k < 6; k++)
+	{
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_FAR].n);
+	}
+#pragma endregion
+
+#pragma region left
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
+
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
+
+	for(int k = 0; k < 6; k++)
+	{
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_LEFT].n);
+	}
+#pragma endregion
+
+#pragma region right
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
+
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTR]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
+
+	for(int k = 0; k < 6; k++)
+	{
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_RIGHT].n);
+	}
+#pragma endregion
+
+#pragma region bottom
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
+
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
+
+	for(int k = 0; k < 6; k++)
+	{
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_BOTTOM].n);
+	}
+#pragma endregion
+
+#pragma region top
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
+
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTR]);
+	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
+
+	for(int k = 0; k < 6; k++)
+	{
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_TOP].n);
+	}
+#pragma endregion
+
+	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+	glUniform4f(loc, 0.78f, 0.004f, 0.1025f, 0.4f);
+
+	GLint poss = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+	glUniform4f(poss, 0.0f, 0.0f, 0.0f, 0.0f);
+
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
+
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(OpenGLWrapper::normalLoc, 3, GL_FLOAT, GL_FALSE, 0, normals);
+
+	glDrawArrays(GL_TRIANGLES, 0, verticesCount);
 }
