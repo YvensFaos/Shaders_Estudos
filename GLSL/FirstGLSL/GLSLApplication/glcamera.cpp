@@ -3,6 +3,7 @@
 #include "glm\gtc\matrix_transform.hpp"
 
 #include <stdio.h>
+#include <math.h>
 
 #include "edfile.h"
 #include "glenums.h"
@@ -294,7 +295,10 @@ void GLCamera::setValues(GLCameraStep* step)
 	up.y = step->up.y;
 	up.z = step->up.z;
 
-	right = glm::cross(up, direction);
+	right = glm::cross(direction, up);
+
+	horizontalAngle = acos(right.z) + 1.57f;
+	verticalAngle   = asin(direction.y);
 }
 
 void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height)
@@ -340,5 +344,7 @@ void GLCamera::print(void)
 	printf("Right: %4.2f %4.2f %4.2f\n", VEC3_PRINT(right));
 	printf("FoV: %4.2f\n", fov);
 	printf("Speed: %4.2f\n", speed);
+	printf("Horizontal Angle: %4.2f\n", horizontalAngle);
+	printf("Vertical   Angle: %4.2f\n", verticalAngle);
 	printf("Mouse Speed: %4.2f\n", mouseSpeed);
 }

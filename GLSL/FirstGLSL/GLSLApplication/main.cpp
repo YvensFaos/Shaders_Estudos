@@ -74,7 +74,7 @@ int main()
 	//EDE escolhida
 	config.type = NONE;
 	//Colore os nós em tons diferente
-	config.coloredNodes = true;
+	config.coloredNodes = false;
 
 	config.enableDynamics = true;
 	config.edeTestDynamics = false;
@@ -101,8 +101,8 @@ int main()
 	PLAYER_MODE mode;
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
-	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
+	mode = RECORD_PATH;
 	mode = BIRDS_EYE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player

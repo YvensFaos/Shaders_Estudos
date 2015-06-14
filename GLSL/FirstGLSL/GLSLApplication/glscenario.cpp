@@ -168,6 +168,7 @@ GLCameraStep* GLScenario::defaultBirdPosition(int identifier)
 {
 	switch (identifier)
 	{
+		//TODO fazer para os demais
 		case 10: 
 			return new GLCameraStep(glm::vec3(287.0f,11.0f,17.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
 			break;
@@ -184,8 +185,7 @@ GLCameraStep* GLScenario::defaultBirdPosition(int identifier)
 			return new GLCameraStep(glm::vec3(7.3f,-8.2f,4.3f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
 			break;
 		case 17: 
-			//return new GLCameraStep(glm::vec3(-24.14f,265.91f,51.70f),glm::vec3(0.49f,0.19f,-0.85f),glm::vec3(0.10f,-0.98f,-0.17f),45.0); 
-			return new GLCameraStep(glm::vec3(-24.0f,20.0f,92.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			return new GLCameraStep(glm::vec3(-44.18f, 142.08f, 117.05f),glm::vec3(0.44f,0.59f,-0.68f),glm::vec3(0.32f,-0.81f,-0.49f),45.0); 
 			break;
 		case 18: 
 			return new GLCameraStep(glm::vec3(-42.0f,9.0f,-82.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 

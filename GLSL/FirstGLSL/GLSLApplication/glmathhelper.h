@@ -80,8 +80,7 @@ public:
 public:
 	GLFrustum(void) {};
 	GLFrustum::GLFrustum(GLCamera* camera);
-	GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera* camera);
-	GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCameraStep* cameraStep);
+	GLFrustum::GLFrustum(float nearp, float farp, GLCameraStep* cameraStep);
 	~GLFrustum(void);
 
 	//Testa um ponto no espaço

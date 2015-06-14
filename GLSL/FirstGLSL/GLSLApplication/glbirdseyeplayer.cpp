@@ -34,7 +34,6 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 	this->config = config;
 	this->printCounter = 0;
 
-	angle = 0.0f;
 	isRunning = true;
 	updateMouse = false;
 
@@ -42,7 +41,6 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 	ypos = config.height / 2.0f;
 
 	paused = false;
-
 	logged = false;
 
 	deltaTime = 1.0f/60.0f;
@@ -61,14 +59,15 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 		this->scenario = new GLScenario(config.scenarioNumber, &config);
 	}
 
-	camera = new GLCamera();
-	cameraHandler = &scenario->cameraHandler;
-
 	actualStep = GLScenario::defaultBirdPosition(scenario->identifier);
+
+	camera = new GLCamera();
 	camera->setValues(actualStep);
 	camera->calculateMatrix(actualStep, 0, config.width, config.height);
 	camera->speed = 0.13f;
 	camera->mouseSpeed = 0.0025f;
+
+	cameraHandler = &scenario->cameraHandler;
 	walkStep = cameraHandler->actualStep();
 
 	meshHandler = scenario->meshHandler;
@@ -145,12 +144,13 @@ void GLBirdsEyePlayer::step(void)
 	glLoadIdentity();
 	glViewport(0, 0, config.width, config.height);
 	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(VEC4_PRINT(OpenGLWrapper::ACTUAL_CLEAR_COLOR));
 	glUseProgram(OpenGLWrapper::programObject);
 	
 	int verticesCount = 0;
 	memset(info, 0, sizeof(float)*INFO_SIZE);
 
-	frustum = GLFrustum(walkStep->fov + 15.0f, walkStep->fov + 15.0f, camera->near, camera->far, walkStep);
+	frustum = GLFrustum(camera->near, camera->far, walkStep);
 	if(config.type != NONE)
 	{
 		ede->renderEDE(&frustum, meshHandler, &config, info);
@@ -205,6 +205,11 @@ void GLBirdsEyePlayer::step(void)
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
+
+	if(cameraHandler->getIndex() == 292 || cameraHandler->getIndex() == 296)
+	{
+		printf("oi");
+	}
 
 	sprintf(title, "%s - fps[%.2f][v = %d][%d]", modeTitle, (float) (1 / deltaTime), visibleBunnies, cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
