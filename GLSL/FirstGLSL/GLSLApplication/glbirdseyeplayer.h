@@ -23,6 +23,9 @@ private:
 
 	GLFrustum frustum;
 
+	GLCameraStep* actualStep;
+	GLCameraStep* walkStep;
+
 	float info[INFO_SIZE];
 public:
 	GLBirdsEyePlayer(void);
@@ -39,6 +42,7 @@ public:
 	void keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void mouse(GLFWwindow* window, int button, int action, int mods);
 
+	void updateMousePos(void);
 private:
 	void pause();
 	bool isPaused();

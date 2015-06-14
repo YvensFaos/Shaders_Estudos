@@ -85,6 +85,21 @@ void GLDynamicObject::draw(void)
 	visible = false;
 }
 
+void GLDynamicObject::draw(glm::vec3 pos)
+{
+	if(visible)
+	{
+		GLint poss = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+		GLCameraStep* step = pathReference->getStep(index, translate);
+		glUniform4f(poss, pos.x, pos.y, pos.z, 0.0f);
+
+		meshHandler->render();
+	}
+
+	//Reseta o visible para falso sempre que é desenhado
+	visible = false;
+}
+
 void GLDynamicObject::getBounds(glm::vec3 bounds[2])
 {
 	GLCameraStep* step = pathReference->getStep(index, translate);

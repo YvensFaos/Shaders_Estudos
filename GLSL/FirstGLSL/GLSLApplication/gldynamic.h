@@ -26,6 +26,7 @@ public:
 
 	void update(void);
 	void draw(void);
+	void draw(glm::vec3 pos);
 
 	void getBounds(glm::vec3 bounds[2]);
 };

@@ -49,6 +49,7 @@ void GLScenario::initialize(GLConfig* config)
 	switch (config->mode)
 	{
 	case WALKTHROUGH_MODE:
+	case BIRDS_EYE:
 		//Aqui o path é lido para ser executado
 		cameraHandler = GLCameraHandler(config->pathfilePath, config->pathfileName, config->repeatable);
 		break;
@@ -152,6 +153,38 @@ GLCameraStep* GLScenario::defaultStartPosition(int identifier)
 			return new GLCameraStep(glm::vec3(7.3f,-8.2f,4.3f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
 			break;
 		case 17: 
+			return new GLCameraStep(glm::vec3(-24.0f,20.0f,92.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 18: 
+			return new GLCameraStep(glm::vec3(-42.0f,9.0f,-82.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		default: 
+			return new GLCameraStep(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+	}
+}
+
+GLCameraStep* GLScenario::defaultBirdPosition(int identifier)
+{
+	switch (identifier)
+	{
+		case 10: 
+			return new GLCameraStep(glm::vec3(287.0f,11.0f,17.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 13:
+			return new GLCameraStep(glm::vec3(23.9f,-0.5f,-57.5f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 14: 
+			return new GLCameraStep(glm::vec3(-38.9f,3.2f,137.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 15: 
+			return new GLCameraStep(glm::vec3(-372.0f,3.6f,35.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 16: 
+			return new GLCameraStep(glm::vec3(7.3f,-8.2f,4.3f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 17: 
+			//return new GLCameraStep(glm::vec3(-24.14f,265.91f,51.70f),glm::vec3(0.49f,0.19f,-0.85f),glm::vec3(0.10f,-0.98f,-0.17f),45.0); 
 			return new GLCameraStep(glm::vec3(-24.0f,20.0f,92.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
 			break;
 		case 18: 

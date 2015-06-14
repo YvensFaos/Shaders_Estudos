@@ -142,7 +142,7 @@ void GLWalkthroughPlayer::step(void)
 
 	if(config.type != NONE)
 	{
-		frustum = GLFrustum(camera->fov + 15.0f, camera->fov + 15.0f, camera->near, camera->far, camera);
+		frustum = GLFrustum(camera);
 		ede->renderEDE(&frustum, meshHandler, &config, info);
 	}
 	else

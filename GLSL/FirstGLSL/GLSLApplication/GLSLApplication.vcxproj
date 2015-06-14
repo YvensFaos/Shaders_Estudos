@@ -84,6 +84,7 @@
     <ClCompile Include="edlogger.cpp" />
     <ClCompile Include="glbasicede.cpp" />
     <ClCompile Include="glbatch.cpp" />
+    <ClCompile Include="glbirdseyeplayer.cpp" />
     <ClCompile Include="glbuffer.cpp" />
     <ClCompile Include="glcamera.cpp" />
     <ClCompile Include="glconfig.cpp" />
@@ -113,6 +114,7 @@
     <ClInclude Include="edlogger.h" />
     <ClInclude Include="glbasicede.h" />
     <ClInclude Include="glbatch.h" />
+    <ClInclude Include="glbirdseyeplayer.h" />
     <ClInclude Include="glbuffer.h" />
     <ClInclude Include="glcamera.h" />
     <ClInclude Include="glconfig.h" />

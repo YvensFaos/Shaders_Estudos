@@ -114,6 +114,9 @@
     <ClCompile Include="glpath.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="glbirdseyeplayer.cpp">
+      <Filter>Players</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="glpath.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glbirdseyeplayer.h">
+      <Filter>Players</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

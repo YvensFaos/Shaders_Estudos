@@ -25,6 +25,7 @@ public:
 
 public:
 	static GLCameraStep* defaultStartPosition(int identifier);
+	static GLCameraStep* defaultBirdPosition(int identifier);
 	static float defaultCameraSpeed(int identifier);
 private:
 	void initialize(GLConfig* config);

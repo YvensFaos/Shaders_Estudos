@@ -18,13 +18,13 @@
 #include <stdio.h>
 #include <string>
 
-GLBirdsEyePlayer::GLWalkthroughPlayer(void)
+GLBirdsEyePlayer::GLBirdsEyePlayer(void)
 { }
 
-GLBirdsEyePlayer::~GLWalkthroughPlayer(void)
+GLBirdsEyePlayer::~GLBirdsEyePlayer(void)
 { }
 
-GLBirdsEyePlayer::GLWalkthroughPlayer(GLConfig config)
+GLBirdsEyePlayer::GLBirdsEyePlayer(GLConfig config)
 {
 	initializeGLPlayer(config);
 }
@@ -37,6 +37,10 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 	angle = 0.0f;
 	isRunning = true;
 	updateMouse = false;
+
+	xpos = config.width / 2.0f;
+	ypos = config.height / 2.0f;
+
 	paused = false;
 
 	logged = false;
@@ -59,7 +63,14 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 
 	camera = new GLCamera();
 	cameraHandler = &scenario->cameraHandler;
-	camera->calculateMatrix(cameraHandler->actualStep(), 0, config.width, config.height);
+
+	actualStep = GLScenario::defaultBirdPosition(scenario->identifier);
+	camera->setValues(actualStep);
+	camera->calculateMatrix(actualStep, 0, config.width, config.height);
+	camera->speed = 0.13f;
+	camera->mouseSpeed = 0.0025f;
+	walkStep = cameraHandler->actualStep();
+
 	meshHandler = scenario->meshHandler;
 
 	char logName[512];
@@ -97,24 +108,23 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 
 	title = new char[256];
 	modeTitle = new char[256];
-	sprintf(modeTitle, "[%s] - Scenario:%s - ", config.title, scenario->name);
+	sprintf(modeTitle, "Birds Eye [%s] - Scenario:%s - ", config.title, scenario->name);
 }
 
 void GLBirdsEyePlayer::step(void)
 {
 	double firstTime = glfwGetTime();
 	
-	GLCameraStep* step;
-	if(isPaused())
+	bool pressingMouse = glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
+
+	if(pressingMouse)
 	{
-		step = cameraHandler->actualStep();
-	}
-	else
-	{
-		step = cameraHandler->nextStep();
+		updateMousePos();		
 	}
 
-	camera->calculateMatrix(step, deltaTime, config.width, config.height);
+	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
+	xpos = config.width / 2.0f;
+	ypos = config.height / 2.0f;
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
@@ -126,7 +136,7 @@ void GLBirdsEyePlayer::step(void)
 	glUniform4f(loc, 0.75f, 0.64f, 0.04f, 1.0f);
 
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
-	glUniform3f(pos, step->direction.x, step->direction.y, step->direction.z);
+	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
 
 	pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
@@ -140,9 +150,9 @@ void GLBirdsEyePlayer::step(void)
 	int verticesCount = 0;
 	memset(info, 0, sizeof(float)*INFO_SIZE);
 
+	frustum = GLFrustum(walkStep->fov + 15.0f, walkStep->fov + 15.0f, camera->near, camera->far, walkStep);
 	if(config.type != NONE)
 	{
-		frustum = GLFrustum(camera->fov + 15.0f, camera->fov + 15.0f, camera->near, camera->far, camera);
 		ede->renderEDE(&frustum, meshHandler, &config, info);
 	}
 	else
@@ -155,6 +165,9 @@ void GLBirdsEyePlayer::step(void)
 	if(config.enableDynamics)
 	{
 		glm::vec3* bounds = new glm::vec3[2];
+		loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+		glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
+
 		for(int i  = 0; i < config.dynamics.size(); i++)
 		{
 			GLDynamicObject* obj = &config.dynamics.at(i);
@@ -174,21 +187,26 @@ void GLBirdsEyePlayer::step(void)
 				}
 			}
 
-			loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
-			glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
-
 			obj->draw();
 			obj->update();
 		}
 
 		delete bounds;
+
+		GLDynamicObject* obj = &config.dynamics.at(0);
+
+		loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+		glUniform4f(loc, 0.78f, 0.004f, 0.1025f, 1.0f);
+
+		obj->visible = true;
+		obj->draw(walkStep->position);
 	}
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s - fps[%.2f][v = %d][%d]", modeTitle, (float) (1 / deltaTime), visibleBunnies,cameraHandler->getIndex());
+	sprintf(title, "%s - fps[%.2f][v = %d][%d]", modeTitle, (float) (1 / deltaTime), visibleBunnies, cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 
 	if(config.logResults && !logged)
@@ -211,6 +229,15 @@ void GLBirdsEyePlayer::step(void)
 			sprintf(logLine, "%s;%d", sdeltaTime.c_str(), verticesCount);
 			logger->logLine(logLine);
 		}
+	}
+
+	if(isPaused())
+	{
+		walkStep = cameraHandler->actualStep();
+	}
+	else
+	{
+		walkStep = cameraHandler->nextStep();
 	}
 
 	if(cameraHandler->finished && !cameraHandler->repeated)
@@ -242,21 +269,71 @@ void GLBirdsEyePlayer::keyBoard(GLFWwindow* window, int key, int scancode, int a
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 
-		//Depuração
+		//Controle da Câmera
+	
+		if (key == GLFW_KEY_Z){
+			camera->position += camera->up * 1.f * camera->speed;
+		}
+		if (key == GLFW_KEY_X){
+			camera->position -= camera->up * 1.f * camera->speed;
+		}
+		if (key == GLFW_KEY_W){
+			camera->position += camera->direction * 1.f * camera->speed;
+		}
+		if (key == GLFW_KEY_S){
+			camera->position -= camera->direction * 1.f * camera->speed;
+		}
+		if (key == GLFW_KEY_A){
+			camera->position -= camera->right * 1.f * camera->speed;
+		}
+		if (key == GLFW_KEY_D){
+			camera->position += camera->right * 1.f * camera->speed;
+		}
 
-		if(key == GLFW_KEY_SPACE || key == GLFW_KEY_1)
+		//Controle de Zoom
+		if(key == GLFW_KEY_1)
 		{
-			//Pausa o Walkthrough
-			printf("PAUSE!");
+			//Zoom IN
+			camera->zoom(-0.005f);
+		}
+		if(key == GLFW_KEY_2)
+		{
+			//Zoom OUT
+			camera->zoom(+0.005f);
+		}
+
+		//Pausa a simulação
+		if(key == GLFW_KEY_3)
+		{
 			pause();
 		}
 
+		//Controle de Velocidade da Câmera
+		if(key == GLFW_KEY_6)
+		{
+			//Zoom IN
+			camera->speed += 0.01f;
+			printf("Speed: %f\n", camera->speed);
+		}
+		if(key == GLFW_KEY_7)
+		{
+			//Zoom OUT
+			camera->speed -= 0.01f;
+			printf("Speed: %f\n", camera->speed);
+		}
+
+		//Depuração
+		if(key == GLFW_KEY_4)
+		{
+			//TODO print da câmera e do actualstep aqui!
+			camera->print();
+		}
 		if(key == GLFW_KEY_5)
 		{
 			//PrintScreen
 			EDPrinter printer = EDPrinter();
 			char filename[256];
-			sprintf(filename, "%sWalkPrint-%s[%d]-x.bmp", config.objectPath, config.objectName, printCounter++);
+			sprintf(filename, "%sRecordPrint-%s[%d]-x.bmp", config.objectPath, config.objectName, printCounter++);
 			printer.printScreen(&config, filename);
 		}
 	}
@@ -273,7 +350,27 @@ bool GLBirdsEyePlayer::isPaused()
 }
 
 void GLBirdsEyePlayer::mouse(GLFWwindow* window, int button, int action, int mods)
-{ }
+{ 
+	if(action == GLFW_PRESS)
+	{
+		if (button == GLFW_MOUSE_BUTTON_LEFT)
+		{
+			updateMouse = true;
+		}
+	}
+	if(action == GLFW_RELEASE)
+	{
+		if (button == GLFW_MOUSE_BUTTON_LEFT)
+		{
+			updateMouse = false;
+		}
+	}
+}
+
+void GLBirdsEyePlayer::updateMousePos()
+{
+	glfwGetCursorPos(OpenGLWrapper::window, &xpos, &ypos);
+}
 
 void GLBirdsEyePlayer::lights(void)
 {

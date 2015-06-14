@@ -4,6 +4,7 @@
 
 //Forward
 class GLCamera;
+class GLCameraStep;
 
 #define VEC3_PRINT(v) v.x,v.y,v.z
 #define VEC3P_PRINT(v) v->x,v->y,v->z
@@ -78,7 +79,9 @@ public:
 
 public:
 	GLFrustum(void) {};
+	GLFrustum::GLFrustum(GLCamera* camera);
 	GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCamera* camera);
+	GLFrustum::GLFrustum(float fov, float aspect, float nearp, float farp, GLCameraStep* cameraStep);
 	~GLFrustum(void);
 
 	//Testa um ponto no espaço
