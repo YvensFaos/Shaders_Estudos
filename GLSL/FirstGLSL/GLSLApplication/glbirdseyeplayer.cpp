@@ -182,7 +182,7 @@ void GLBirdsEyePlayer::step(void)
 			{
 				obj->visible = false;
 				obj->getBounds(bounds);
-				if(frustum.intercepts(&bounds[0], &bounds[1]))
+				if(frustum.containsAnyVertexOf(&bounds[0], &bounds[1]))
 				{
 					obj->visible = true;
 					visibleBunnies++;
