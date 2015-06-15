@@ -18,6 +18,8 @@
 #include <stdio.h>
 #include <string>
 
+#define DRAW_BBOX
+
 GLBirdsEyePlayer::GLBirdsEyePlayer(void)
 { }
 
@@ -187,7 +189,12 @@ void GLBirdsEyePlayer::step(void)
 				}
 			}
 
+#ifndef DRAW_BBOX
 			obj->draw();
+#else
+			obj->drawBox();
+#endif
+
 			obj->update();
 
 		}

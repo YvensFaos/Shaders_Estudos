@@ -20,6 +20,10 @@ class GLCameraStep;
 #define MAX_FLOAT 2.0e10
 #define MIN_FLOAT 2.0e-10
 
+#define SET_VERTEX_ARRAY(a,i,v) a[i++] = v;
+//Inverte a normal, para o frustum
+#define SET_NORMAL_ARRAY(a,i,v,m) m = glm::vec3(-1*v.x, -1*v.y, -1*v.z); a[i++] = m;
+
 #define PI180 3.14159265f/180.0f
 
 #define FRUSTUM_FTL 0
@@ -69,6 +73,7 @@ class GLAABB
 {
 public:
 	static bool intercepts(glm::vec3 max1, glm::vec3 min1, glm::vec3 max2, glm::vec3 min2);
+	static void drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position);
 };
 
 class GLFrustum

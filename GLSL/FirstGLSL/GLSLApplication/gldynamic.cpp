@@ -3,6 +3,7 @@
 #include "openGLWrapper.h"
 
 #include "glbuffer.h"
+#include "glmathhelper.h"
 
 //GLDynamicObject
 GLDynamicObject::GLDynamicObject(void)
@@ -103,6 +104,25 @@ void GLDynamicObject::getBounds(glm::vec3 bounds[2])
 	bounds[0] = meshHandler->min + step->position;
 	bounds[1] = meshHandler->max + step->position;
 }
+
+void GLDynamicObject::drawBox(void)
+{
+	GLint loc = 0;
+	if(visible)
+	{
+		loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+		glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
+	}
+	else
+	{
+		loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+		glUniform4f(loc, 0.74f, 0.24f, 0.008f, 1.0f);
+	}
+
+	GLCameraStep* step = pathReference->getStep(index, translate);
+	GLAABB::drawAABB(meshHandler->min, meshHandler->max, step->position);
+}
+
 //GLDynamic
 
 std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath,

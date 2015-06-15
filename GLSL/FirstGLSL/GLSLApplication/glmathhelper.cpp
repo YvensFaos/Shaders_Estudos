@@ -6,8 +6,6 @@
 #include <GL\glew.h>
 #include "GLFW\glfw3.h"
 
-#define SET_VERTEX_ARRAY(a,i,v) a[i++] = v;
-#define SET_NORMAL_ARRAY(a,i,v) glm::vec3 nn = glm::vec3(-1*v.x, -1*v.y, -1*v.z); a[i++] = nn;
 //GLPlane
 
 GLPlane::GLPlane(void)
@@ -90,6 +88,147 @@ bool GLAABB::intercepts(glm::vec3 max1, glm::vec3 min1, glm::vec3 max2, glm::vec
 		&& min1.x <= max2.x
 		&& min1.y <= max2.y
 		&& min1.z <= max2.z;
+}
+
+void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
+{
+	GLint verticesCount = 36;
+	glm::vec3* vertexes = new glm::vec3[verticesCount];
+	glm::vec3* normals  = new glm::vec3[verticesCount];
+
+	int i = 0;
+	int j = 0;
+
+	glm::vec3 a;
+	glm::vec3 b;
+	glm::vec3 n;
+	glm::vec3 m = glm::vec3(0.0f, 0.0f, 0.0f);
+
+	vertexes[i++] = glm::vec3(min.x, min.y, min.z);
+	vertexes[i++] = glm::vec3(min.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(min.x, min.y, max.z);
+
+
+	vertexes[i++] = glm::vec3(min.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(min.x, max.y, max.z);
+	vertexes[i++] = glm::vec3(min.x, min.y, max.z);
+
+	a = (glm::vec3(min.x, max.y, min.z) - glm::vec3(min.x, min.y, min.z));
+	b = (glm::vec3(min.x, min.y, max.z) - glm::vec3(min.x, min.y, min.z));
+
+	n = glm::cross(a,b);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+
+	vertexes[i++] = glm::vec3(max.x, min.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, min.y, max.z);
+
+	vertexes[i++] = glm::vec3(max.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, max.y, max.z);
+	vertexes[i++] = glm::vec3(max.x, min.y, max.z);
+
+	a = (glm::vec3(max.x, max.y, min.z) - glm::vec3(max.x, min.y, min.z));
+	b = (glm::vec3(max.x, min.y, max.z) - glm::vec3(max.x, min.y, min.z));
+
+	n = glm::cross(a,b);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+
+	vertexes[i++] = glm::vec3(min.x, min.y, min.z);
+	vertexes[i++] = glm::vec3(min.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, min.y, min.z);
+
+	vertexes[i++] = glm::vec3(min.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, min.y, min.z);
+
+	a = (glm::vec3(min.x, max.y, min.z) - glm::vec3(min.x, min.y, min.z));
+	b = (glm::vec3(max.x, min.y, min.z) - glm::vec3(min.x, min.y, min.z));
+
+	n = glm::cross(a,b);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+
+	vertexes[i++] = glm::vec3(min.x, min.y, max.z);
+	vertexes[i++] = glm::vec3(min.x, max.y, max.z);
+	vertexes[i++] = glm::vec3(max.x, min.y, max.z);
+
+	vertexes[i++] = glm::vec3(min.x, max.y, max.z);
+	vertexes[i++] = glm::vec3(max.x, max.y, max.z);
+	vertexes[i++] = glm::vec3(max.x, min.y, max.z);
+
+	a = (glm::vec3(min.x, max.y, max.z) - glm::vec3(min.x, min.y, max.z));
+	b = (glm::vec3(max.x, min.y, max.z) - glm::vec3(min.x, min.y, max.z));
+
+	n = glm::cross(a,b);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+
+	vertexes[i++] = glm::vec3(min.x, min.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, min.y, min.z);
+	vertexes[i++] = glm::vec3(min.x, min.y, max.z);
+
+	vertexes[i++] = glm::vec3(max.x, min.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, min.y, max.z);
+	vertexes[i++] = glm::vec3(min.x, min.y, max.z);
+
+	a = (glm::vec3(max.x, min.y, min.z) - glm::vec3(min.x, min.y, min.z));
+	b = (glm::vec3(min.x, min.y, max.z) - glm::vec3(min.x, min.y, min.z));
+
+	n = glm::cross(a,b);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+
+	vertexes[i++] = glm::vec3(min.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(min.x, max.y, max.z);
+
+	vertexes[i++] = glm::vec3(max.x, max.y, min.z);
+	vertexes[i++] = glm::vec3(max.x, max.y, max.z);
+	vertexes[i++] = glm::vec3(min.x, max.y, max.z);
+
+	a = (glm::vec3(max.x, max.y, min.z) - glm::vec3(min.x, max.y, min.z));
+	b = (glm::vec3(min.x, max.y, max.z) - glm::vec3(min.x, max.y, min.z));
+
+	n = glm::cross(a,b);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+	SET_NORMAL_ARRAY(normals,j,n,m);
+
+	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+	glUniform4f(pos, position.x, position.y, position.z, 0.0f);
+
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
+
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(OpenGLWrapper::normalLoc, 3, GL_FLOAT, GL_FALSE, 0, normals);
+
+	glDrawArrays(GL_TRIANGLES, 0, verticesCount);
 }
 
 //GLFrustum
@@ -411,9 +550,10 @@ bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 
 void GLFrustum::draw(void)
 {
-	GLint verticesCount = 36*3;
+	GLint verticesCount = 36;
 	glm::vec3* vertexes = new glm::vec3[verticesCount];
 	glm::vec3* normals  = new glm::vec3[verticesCount];
+	glm::vec3 m = glm::vec3(0.0f, 0.0f, 0.0f);
 
 	int i = 0;
 	int j = 0;
@@ -429,7 +569,7 @@ void GLFrustum::draw(void)
 
 	for(int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_NEAR].n);
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_NEAR].n, m);
 	}
 #pragma endregion
 
@@ -444,7 +584,7 @@ void GLFrustum::draw(void)
 
 	for(int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_FAR].n);
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_FAR].n, m);
 	}
 #pragma endregion
 
@@ -459,7 +599,7 @@ void GLFrustum::draw(void)
 
 	for(int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_LEFT].n);
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_LEFT].n, m);
 	}
 #pragma endregion
 
@@ -474,7 +614,7 @@ void GLFrustum::draw(void)
 
 	for(int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_RIGHT].n);
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_RIGHT].n, m);
 	}
 #pragma endregion
 
@@ -489,7 +629,7 @@ void GLFrustum::draw(void)
 
 	for(int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_BOTTOM].n);
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_BOTTOM].n, m);
 	}
 #pragma endregion
 
@@ -504,7 +644,7 @@ void GLFrustum::draw(void)
 
 	for(int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_TOP].n);
+		SET_NORMAL_ARRAY(normals,j,planes[PLANE_TOP].n, m);
 	}
 #pragma endregion
 

@@ -27,6 +27,9 @@ public:
 	void draw(void);
 	void draw(glm::vec3 pos);
 
+	//Draw Bouding Box
+	void drawBox(void);
+
 	void getBounds(glm::vec3 bounds[2]);
 };
 
