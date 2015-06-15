@@ -58,6 +58,7 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	}
 
 	camera = new GLCamera();
+	camera->fov = 60.0f;
 	cameraHandler = &scenario->cameraHandler;
 	camera->calculateMatrix(cameraHandler->actualStep(), 0, config.width, config.height);
 	meshHandler = scenario->meshHandler;
@@ -167,7 +168,7 @@ void GLWalkthroughPlayer::step(void)
 			{
 				obj->visible = false;
 				obj->getBounds(bounds);
-				if(frustum.intercepts(&bounds[0], &bounds[1]))
+				if(frustum.containsAnyVertexOf(&bounds[0], &bounds[1]))
 				{
 					obj->visible = true;
 					visibleBunnies++;

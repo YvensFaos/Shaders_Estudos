@@ -6,6 +6,8 @@
 #include <GL\glew.h>
 #include "GLFW\glfw3.h"
 
+//#define DRAW_F_BBOX
+
 //GLPlane
 
 GLPlane::GLPlane(void)
@@ -282,15 +284,12 @@ GLFrustum::GLFrustum(float nearp, float farp, GLCameraStep* cameraStep)
 	ftl += farPoint;
 	ftl += farLeftPoint;
 	ftl += farTopPoint;
-
 	ftr += farPoint;
 	ftr += farRightPoint;
 	ftr += farTopPoint;
-
 	fbl += farPoint;
 	fbl += farLeftPoint;
 	fbl += farBottomPoint;
-
 	fbr += farPoint;
 	fbr += farRightPoint;
 	fbr += farBottomPoint;
@@ -380,15 +379,12 @@ GLFrustum::GLFrustum(GLCamera* camera)
 	ftl += farPoint;
 	ftl += farLeftPoint;
 	ftl += farTopPoint;
-
 	ftr += farPoint;
 	ftr += farRightPoint;
 	ftr += farTopPoint;
-
 	fbl += farPoint;
 	fbl += farLeftPoint;
 	fbl += farBottomPoint;
-
 	fbr += farPoint;
 	fbr += farRightPoint;
 	fbr += farBottomPoint;
@@ -484,17 +480,6 @@ bool GLFrustum::containsSphere(glm::vec3* center, float radius)
 bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 {
 	bool found = containsAnyVertexOf(min, max);
-	/*if (!found)
-	{
-		glm::vec3 center = glm::vec3(min->x + (max->x - min->x)/2.0f, min->y + (max->y - min->y)/2.0f, min->z + (max->z - min->z)/2.0f);
-		float x = abs(max->x - min->x);
-		float y = abs(max->y - min->y);
-		float z = abs(max->z - min->z);
-
-		float radius = x + y + (abs(x - y))/2.0f;
-		radius = radius + z + (abs(radius - z))/2.0f;
-		found = containsSphere(&center, radius);
-	}*/
 
 	if(!found)
 	{
@@ -538,9 +523,7 @@ bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 			j++;
 		}
 
-		found = (max->x >= lmin->x) && (min->x <= lmax->x) 
-			 && (max->y >= lmin->y) && (min->y <= lmax->y)
-			 && (max->z >= lmin->z) && (min->z <= lmax->z);
+		found = GLAABB::intercepts(*lmax, *lmin, *max, *min);
 
 		delete lmin;
 		delete lmax;
@@ -661,4 +644,45 @@ void GLFrustum::draw(void)
 	glVertexAttribPointer(OpenGLWrapper::normalLoc, 3, GL_FLOAT, GL_FALSE, 0, normals);
 
 	glDrawArrays(GL_TRIANGLES, 0, verticesCount);
+
+#ifdef DRAW_F_BBOX
+	glm::vec3* lmin = new glm::vec3(MAX_FLOAT);
+	glm::vec3* lmax = new glm::vec3(MIN_FLOAT);
+	
+	j = 0;
+	while(j < 8)
+	{
+		if(lmin->x >= corners[j].x)
+		{
+			lmin->x = corners[j].x;
+		}
+		if(lmax->x <= corners[j].x)
+		{
+			lmax->x = corners[j].x;
+		}
+		if(lmin->y >= corners[j].y)
+		{
+			lmin->y = corners[j].y;
+		}
+		if(lmax->y <= corners[j].y)
+		{
+			lmax->y = corners[j].y;
+		}
+		if(lmin->z >= corners[j].z)
+		{
+			lmin->z = corners[j].z;
+		}
+		if(lmax->z <= corners[j].z)
+		{
+			lmax->z = corners[j].z;
+		}
+		j++;
+	}
+
+	printf("Min: %4.2f %4.2f %4.2f = Max: %4.2f %4.2f %4.2f\n", VEC3P_PRINT(lmin), VEC3P_PRINT(lmax));
+	GLAABB::drawAABB(*lmin, *lmax, glm::vec3(0.0f, 0.0f, 0.0f));
+
+	delete lmin;
+	delete lmax;
+#endif
 }

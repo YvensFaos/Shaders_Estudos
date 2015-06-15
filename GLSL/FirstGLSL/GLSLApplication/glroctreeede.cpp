@@ -23,6 +23,9 @@ void GLROctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfi
 	//[2]~ Qtde. Triângulos Enviados
 	//[3]~ Qtde. Draw Calls
 
+	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
+
 	checkVisibility(frustum, &octree.root, info);
 	recursiveDraw(config, &octree.root, info);
 }

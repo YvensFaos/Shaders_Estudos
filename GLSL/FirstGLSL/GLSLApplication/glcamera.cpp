@@ -264,8 +264,8 @@ GLCamera::GLCamera(void)
 	up = glm::vec3(0.0, 1.0, 0.0f);
 	right = glm::cross(direction, up);
 
-	near = 0.1f;
-	far = 500.0f;
+	near =   0.1f;
+	far  = 250.0f;
 }
 
 GLCamera::~GLCamera(void)

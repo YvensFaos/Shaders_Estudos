@@ -18,6 +18,9 @@ void GLOctreeEDE::loadEDE(GLConfig* config)
 
 void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config, float* info) 
 {
+	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
+
 	GLOctreeNode* stack[256];
 	int stackSize = 1;
 	int nodeCounter = 0;

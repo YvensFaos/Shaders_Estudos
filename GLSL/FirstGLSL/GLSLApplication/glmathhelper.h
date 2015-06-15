@@ -18,7 +18,7 @@ class GLCameraStep;
 #define ZAXIS glm::vec3(0.0f,0.0f,1.0f)
 
 #define MAX_FLOAT 2.0e10
-#define MIN_FLOAT 2.0e-10
+#define MIN_FLOAT -2.0e10
 
 #define SET_VERTEX_ARRAY(a,i,v) a[i++] = v;
 //Inverte a normal, para o frustum
