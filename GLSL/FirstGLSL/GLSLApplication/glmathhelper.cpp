@@ -484,7 +484,7 @@ bool GLFrustum::containsSphere(glm::vec3* center, float radius)
 bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 {
 	bool found = containsAnyVertexOf(min, max);
-	if (!found)
+	/*if (!found)
 	{
 		glm::vec3 center = glm::vec3(min->x + (max->x - min->x)/2.0f, min->y + (max->y - min->y)/2.0f, min->z + (max->z - min->z)/2.0f);
 		float x = abs(max->x - min->x);
@@ -494,7 +494,7 @@ bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 		float radius = x + y + (abs(x - y))/2.0f;
 		radius = radius + z + (abs(radius - z))/2.0f;
 		found = containsSphere(&center, radius);
-	}
+	}*/
 
 	if(!found)
 	{

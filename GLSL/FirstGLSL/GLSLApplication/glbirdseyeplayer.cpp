@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <string>
 
-#define DRAW_BBOX
+//#define DRAW_BBOX
 
 GLBirdsEyePlayer::GLBirdsEyePlayer(void)
 { }

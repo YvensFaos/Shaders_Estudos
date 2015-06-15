@@ -72,9 +72,9 @@ int main()
 	//Altura padrão de uma EDE
 	config.edeDepth = 3;
 	//EDE escolhida
-	config.type = NONE;
+	config.type = ROCTREE;
 	//Colore os nós em tons diferente
-	config.coloredNodes = false;
+	config.coloredNodes = true;
 
 	config.enableDynamics = true;
 	config.edeTestDynamics = false;
