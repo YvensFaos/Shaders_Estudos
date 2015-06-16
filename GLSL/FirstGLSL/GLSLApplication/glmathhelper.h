@@ -21,7 +21,7 @@ class GLCameraStep;
 #define MIN_FLOAT -2.0e10
 
 #define SET_VERTEX_ARRAY(a,i,v) a[i++] = v;
-//Inverte a normal, para o frustum
+//Inverte a normal - usado para a visualização do frustum
 #define SET_NORMAL_ARRAY(a,i,v,m) m = glm::vec3(-1*v.x, -1*v.y, -1*v.z); a[i++] = m;
 
 #define PI180 3.14159265f/180.0f

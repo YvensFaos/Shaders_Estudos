@@ -9,6 +9,7 @@
 #include "glenums.h"
 #include "glmathhelper.h"
 #include "glbuffer.h"
+#include "glconfig.h"
 
 //GLCameraStep
 
@@ -266,6 +267,24 @@ GLCamera::GLCamera(void)
 
 	near =   0.1f;
 	far  = 250.0f;
+}
+
+GLCamera::GLCamera(GLConfig* config)
+{
+	position = glm::vec3(0,0,5);
+	horizontalAngle = 3.14f;
+	verticalAngle = 0.0f;
+	fov = config->fov;
+
+	speed = 100.0f;
+	mouseSpeed = 0.005;
+
+	direction = glm::vec3(0.0, 0.0, 1.0f);
+	up = glm::vec3(0.0, 1.0, 0.0f);
+	right = glm::cross(direction, up);
+
+	near = config->near;
+	far  = config->far;
 }
 
 GLCamera::~GLCamera(void)

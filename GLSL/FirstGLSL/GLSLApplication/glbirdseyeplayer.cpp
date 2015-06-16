@@ -63,7 +63,9 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 
 	actualStep = GLScenario::defaultBirdPosition(scenario->identifier);
 
-	camera = new GLCamera();
+	camera = new GLCamera(&config);
+	camera->fov = 45.0f;
+	camera->near = 0.1f;
 	camera->far = 500;
 	camera->setValues(actualStep);
 	camera->calculateMatrix(actualStep, 0, config.width, config.height);

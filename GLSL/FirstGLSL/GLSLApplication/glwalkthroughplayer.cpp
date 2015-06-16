@@ -57,7 +57,7 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 		this->scenario = new GLScenario(config.scenarioNumber, &config);
 	}
 
-	camera = new GLCamera();
+	camera = new GLCamera(&config);
 	camera->fov = 60.0f;
 	cameraHandler = &scenario->cameraHandler;
 	camera->calculateMatrix(cameraHandler->actualStep(), 0, config.width, config.height);

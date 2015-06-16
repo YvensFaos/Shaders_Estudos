@@ -237,7 +237,7 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 
 GLFrustum::GLFrustum(float nearp, float farp, GLCameraStep* cameraStep)
 {
-	float angle = cameraStep->fov/2;
+	float angle = cameraStep->fov;
 	angle = angle*PI180;
 
 	glm::vec3* up = &cameraStep->up;
@@ -332,7 +332,7 @@ GLFrustum::GLFrustum(float nearp, float farp, GLCameraStep* cameraStep)
 
 GLFrustum::GLFrustum(GLCamera* camera)
 {
-	float angle = camera->fov/2;
+	float angle = camera->fov;
 	angle = angle*PI180;
 
 	glm::vec3* up = &camera->up;

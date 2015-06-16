@@ -29,6 +29,7 @@ GLBatch::~GLBatch(void)
 #Teste de batch
 #repeated:1
 #resolution:800 600
+#camera:60.0 0.1 250.0
 #scenario:18
 #objectPath:E:/Repositorios/Shaders_Estudos/Models/
 #pathfilePath:E:/Repositorios/Shaders_Estudos/Paths/
@@ -60,6 +61,9 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 	int scenario = 0;
 	int width = 0;
 	int height = 0;
+	float fov = 0;
+	float near = 0;
+	float far = 0;
 	int repeated = 0;
 	int logidentifier = 0;
 	bool logresults = false;
@@ -86,6 +90,13 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 		height = 0;
 		line = reader.readLnStr();
 		sscanf(line, "#resolution:%d %d", &width, &height);
+
+		//Configurações da câmera
+		fov = 0;
+		near = 0;
+		far = 0;
+		line = reader.readLnStr();
+		sscanf(line, "#camera:%f %f %f", &fov, &near, &far);
 
 		//Numeração do cenário
 		scenario = 0;
@@ -188,6 +199,9 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 			pointer->scenarioNumber = scenario;
 			pointer->width = width;
 			pointer->height = height;
+			pointer->fov = fov;
+			pointer->near = near;
+			pointer->far = far;
 			//Identificador é 10* o identificador + i, sendo i a iteração
 			pointer->logIdentifier = logidentifier*10 + i;
 			pointer->edeDepth = ededepth;

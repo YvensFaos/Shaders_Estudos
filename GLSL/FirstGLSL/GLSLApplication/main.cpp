@@ -27,6 +27,9 @@ int main()
 	config.width  = 800;
 	config.height = 600;
 	config.title  = "Teste";
+	config.fov =  30.0f;
+	config.far = 250.0f;
+	config.near =  0.1f;
 
 	std::string modelPath;
 	std::string modelPathLocation;
@@ -102,8 +105,8 @@ int main()
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
 	mode = RECORD_PATH;
-	mode = BIRDS_EYE;
 	mode = WALKTHROUGH_MODE;
+	mode = BIRDS_EYE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);

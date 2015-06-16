@@ -7,6 +7,7 @@
 
 //Forward declaration
 class GLCamera;
+class GLConfig;
 
 class GLCameraStep
 {
@@ -90,6 +91,7 @@ public:
 	float far;
 public:
 	GLCamera(void);
+	GLCamera(GLConfig* config);
 	~GLCamera(void);
 
 	void zoom(float value);

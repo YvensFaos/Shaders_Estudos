@@ -11,6 +11,10 @@ public:
 	int height;
 	int width;
 
+	float fov;
+	float near;
+	float far;
+
 	PLAYER_MODE mode;
 	EDE_TYPE type;
 
