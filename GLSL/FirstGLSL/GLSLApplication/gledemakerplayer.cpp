@@ -117,7 +117,7 @@ void GLEDEMakerPlayer::step(void)
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
 	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
 
-	frustum = GLFrustum(camera);
+	frustum = GLFrustum(config.aspect, camera);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();

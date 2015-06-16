@@ -11,6 +11,8 @@ public:
 	int height;
 	int width;
 
+	float aspect;
+
 	float fov;
 	float near;
 	float far;

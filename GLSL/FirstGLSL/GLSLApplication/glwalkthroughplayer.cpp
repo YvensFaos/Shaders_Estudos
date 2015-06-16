@@ -58,7 +58,6 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	}
 
 	camera = new GLCamera(&config);
-	camera->fov = 60.0f;
 	cameraHandler = &scenario->cameraHandler;
 	camera->calculateMatrix(cameraHandler->actualStep(), 0, config.width, config.height);
 	meshHandler = scenario->meshHandler;
@@ -115,6 +114,7 @@ void GLWalkthroughPlayer::step(void)
 		step = cameraHandler->nextStep();
 	}
 
+	step->fov = camera->fov;
 	camera->calculateMatrix(step, deltaTime, config.width, config.height);
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
@@ -143,7 +143,7 @@ void GLWalkthroughPlayer::step(void)
 
 	if(config.type != NONE)
 	{
-		frustum = GLFrustum(camera);
+		frustum = GLFrustum(config.aspect, camera);
 		ede->renderEDE(&frustum, meshHandler, &config, info);
 	}
 	else
@@ -179,7 +179,10 @@ void GLWalkthroughPlayer::step(void)
 			glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
 
 			obj->draw();
-			obj->update();
+			if(!isPaused())
+			{
+				obj->update();
+			}
 		}
 
 		delete bounds;
@@ -248,7 +251,7 @@ void GLWalkthroughPlayer::keyBoard(GLFWwindow* window, int key, int scancode, in
 		if(key == GLFW_KEY_SPACE || key == GLFW_KEY_1)
 		{
 			//Pausa o Walkthrough
-			printf("PAUSE!");
+			printf("PAUSE!\n");
 			pause();
 		}
 

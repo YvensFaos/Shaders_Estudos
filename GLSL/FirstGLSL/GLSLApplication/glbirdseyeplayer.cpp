@@ -155,7 +155,8 @@ void GLBirdsEyePlayer::step(void)
 	int verticesCount = 0;
 	memset(info, 0, sizeof(float)*INFO_SIZE);
 
-	frustum = GLFrustum(camera->near, 100, walkStep);
+	walkStep->fov = config.fov;
+	frustum = GLFrustum(config.aspect, config.near, config.far, walkStep);
 	if(config.type != NONE)
 	{
 		ede->renderEDE(&frustum, meshHandler, &config, info);

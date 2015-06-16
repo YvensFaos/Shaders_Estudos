@@ -26,9 +26,10 @@ int main()
 	GLConfig config;
 	config.width  = 800;
 	config.height = 600;
+	config.aspect = config.width/config.height;
 	config.title  = "Teste";
-	config.fov =  30.0f;
-	config.far = 250.0f;
+	config.fov =  70.0f;
+	config.far = 100.0f;
 	config.near =  0.1f;
 
 	std::string modelPath;
@@ -83,7 +84,7 @@ int main()
 	config.edeTestDynamics = false;
 	config.frustumTestDynamics = true;
 
-	config.title = "Teste de Titulo!";
+	config.title = "T";
 
 	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
 

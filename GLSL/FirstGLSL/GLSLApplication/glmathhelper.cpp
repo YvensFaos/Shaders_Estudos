@@ -235,7 +235,7 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 
 //GLFrustum
 
-GLFrustum::GLFrustum(float nearp, float farp, GLCameraStep* cameraStep)
+GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* cameraStep)
 {
 	float angle = cameraStep->fov;
 	angle = angle*PI180;
@@ -330,7 +330,7 @@ GLFrustum::GLFrustum(float nearp, float farp, GLCameraStep* cameraStep)
 	corners[FRUSTUM_NBR] = nbr;
 }
 
-GLFrustum::GLFrustum(GLCamera* camera)
+GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 {
 	float angle = camera->fov;
 	angle = angle*PI180;
