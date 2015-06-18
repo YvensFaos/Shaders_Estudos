@@ -63,7 +63,7 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 	GLCameraStep* firstStep = GLScenario::defaultStartPosition(scenario->identifier);
 	camera = new GLCamera();
 	camera->setValues(firstStep);
-	camera->calculateMatrix(firstStep, 0, config.width, config.height);
+	camera->calculateMatrix(firstStep, &config, 0);
 	camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
 
 	meshHandler = scenario->meshHandler;
@@ -101,7 +101,7 @@ void GLEDEMakerPlayer::step(void)
 		updateMousePos();
 	}
 
-	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
+	camera->calculateMatrix(&config, xpos, ypos, deltaTime);
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 

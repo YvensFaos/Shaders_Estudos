@@ -320,10 +320,10 @@ void GLCamera::setValues(GLCameraStep* step)
 	verticalAngle   = asin(direction.y);
 }
 
-void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height)
+void GLCamera::calculateMatrix(GLConfig* config, float xpos, float ypos, float deltaTime)
 {
-	horizontalAngle += mouseSpeed * deltaTime * float(width/2 - xpos );
-	verticalAngle   += mouseSpeed * deltaTime * float(height/2 - ypos );
+	horizontalAngle += mouseSpeed * deltaTime * float(config->width/2 - xpos );
+	verticalAngle   += mouseSpeed * deltaTime * float(config->height/2 - ypos );
 
 	direction = glm::vec3(
 		cos(verticalAngle) * sin(horizontalAngle),
@@ -339,18 +339,18 @@ void GLCamera::calculateMatrix(float xpos, float ypos, float deltaTime, float wi
 
 	up = glm::cross(right, direction);
 
-	projectionMatrix = glm::perspective(fov, width/ (float)height, near, far);
+	projectionMatrix = glm::perspective(fov*PI180, config->aspect, near, far);
 	viewMatrix = glm::lookAt(position, position + direction, up);
 }
 
-void GLCamera::calculateMatrix(GLCameraStep* step, float deltaTime, float width, float height)
+void GLCamera::calculateMatrix(GLCameraStep* step, GLConfig* config, float deltaTime)
 {
 	this->position = step->position;
 	this->direction = step->direction;
 	this->up = step->up;
 	this->right = step->right;
 
-	projectionMatrix = glm::perspective(step->fov, width/ (float)height, 0.1f, 500.0f);
+	projectionMatrix = glm::perspective(config->fov*PI180, config->aspect, config->near, config->far);
 	viewMatrix = glm::lookAt(position, position + direction, up);
 }
 

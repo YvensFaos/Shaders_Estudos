@@ -68,7 +68,7 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 	camera->near = 0.1f;
 	camera->far = 500;
 	camera->setValues(actualStep);
-	camera->calculateMatrix(actualStep, 0, config.width, config.height);
+	camera->calculateMatrix(actualStep, &config, 0);
 	camera->speed = 0.13f;
 	camera->mouseSpeed = 0.0025f;
 
@@ -126,7 +126,7 @@ void GLBirdsEyePlayer::step(void)
 		updateMousePos();		
 	}
 
-	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
+	camera->calculateMatrix(&config, xpos, ypos, deltaTime);
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 
@@ -156,7 +156,7 @@ void GLBirdsEyePlayer::step(void)
 	memset(info, 0, sizeof(float)*INFO_SIZE);
 
 	walkStep->fov = config.fov;
-	frustum = GLFrustum(config.aspect, config.near, config.far, walkStep);
+	frustum = GLFrustum(config.near, config.far, config.aspect, walkStep);
 	if(config.type != NONE)
 	{
 		ede->renderEDE(&frustum, meshHandler, &config, info);

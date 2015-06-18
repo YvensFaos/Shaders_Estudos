@@ -98,8 +98,8 @@ public:
 
 	void setValues(GLCameraStep* step);
 
-	void calculateMatrix(float xpos, float ypos, float deltaTime, float width, float height);
-	void calculateMatrix(GLCameraStep* step, float deltaTime, float width, float height);
+	void calculateMatrix(GLConfig* config, float xpos, float ypos, float deltaTime);
+	void calculateMatrix(GLCameraStep* step, GLConfig* config, float deltaTime);
 
 	void print();
 };

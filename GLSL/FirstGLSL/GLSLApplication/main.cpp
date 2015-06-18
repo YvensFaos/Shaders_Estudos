@@ -26,10 +26,10 @@ int main()
 	GLConfig config;
 	config.width  = 800;
 	config.height = 600;
-	config.aspect = config.width/config.height;
+	config.aspect = (float) config.width/config.height;
 	config.title  = "Teste";
-	config.fov =  70.0f;
-	config.far = 100.0f;
+	config.fov =  45.0f;
+	config.far = 150.0f;
 	config.near =  0.1f;
 
 	std::string modelPath;
@@ -93,21 +93,21 @@ int main()
 	std::vector<GLDynamicObject>* pointerDynamics;
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
-	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[2][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
+	/*pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[2][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[3][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[4][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
-	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
+	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());*/
 
 	config.dynamics = totalDynamics;
 
 	PLAYER_MODE mode;
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
+	mode = BIRDS_EYE;
 	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
-	mode = BIRDS_EYE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);

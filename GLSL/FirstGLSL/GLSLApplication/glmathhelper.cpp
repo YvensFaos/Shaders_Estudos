@@ -237,8 +237,10 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 
 GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* cameraStep)
 {
-	float angle = cameraStep->fov;
-	angle = angle*PI180;
+	float fovx = tan((cameraStep->fov* aspect) * PI180);
+	float fovy = tan( cameraStep->fov*PI180);
+
+	float test = cameraStep->fov*aspect;
 
 	glm::vec3* up = &cameraStep->up;
 	glm::vec3* apex = &cameraStep->position;
@@ -253,8 +255,8 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	farPoint  *= farp;
 	farPoint  += *apex;
 
-	float nearValue = nearp*tan(angle);
-	float farValue  = farp*tan(angle);
+	float nearValue = nearp*fovx;
+	float farValue  = farp*fovx;
 
 	glm::vec3 nearRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
 	nearRightPoint *= nearValue;
@@ -265,10 +267,8 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	glm::vec3 farLeftPoint = glm::vec3(-auxAxis.x, -auxAxis.y, -auxAxis.z);
 	farLeftPoint *= farValue;
 
-	angle = cameraStep->fov/2;
-	angle = angle*PI180;
-	nearValue = nearp*tan(angle);
-	farValue = farp*tan(angle);
+	nearValue = nearp*fovy;
+	farValue = farp*fovy;
 
 	glm::vec3 nearTopPoint = glm::vec3(up->x, up->y, up->z);
 	nearTopPoint *= nearValue;
@@ -332,8 +332,8 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 
 GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 {
-	float angle = camera->fov;
-	angle = angle*PI180;
+	float fovx = tan((camera->fov* aspect) * PI180);
+	float fovy = tan( camera->fov*PI180);
 
 	glm::vec3* up = &camera->up;
 	glm::vec3* apex = &camera->position;
@@ -348,8 +348,8 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	farPoint  *= camera->far;
 	farPoint  += *apex;
 
-	float nearValue = camera->near*tan(angle);
-	float farValue  = camera->far*tan(angle);
+	float nearValue = camera->near*fovx;
+	float farValue  = camera->far*fovy;
 
 	glm::vec3 nearRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
 	nearRightPoint *= nearValue;
@@ -360,10 +360,8 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	glm::vec3 farLeftPoint = glm::vec3(-auxAxis.x, -auxAxis.y, -auxAxis.z);
 	farLeftPoint *= farValue;
 
-	angle = camera->fov/2;
-	angle = angle*PI180;
-	nearValue = camera->near*tan(angle);
-	farValue = camera->far*tan(angle);
+	nearValue = camera->near*fovy;
+	farValue = camera->far*fovy;
 
 	glm::vec3 nearTopPoint = glm::vec3(up->x, up->y, up->z);
 	nearTopPoint *= nearValue;

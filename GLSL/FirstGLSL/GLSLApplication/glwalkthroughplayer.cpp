@@ -59,7 +59,7 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 
 	camera = new GLCamera(&config);
 	cameraHandler = &scenario->cameraHandler;
-	camera->calculateMatrix(cameraHandler->actualStep(), 0, config.width, config.height);
+	camera->calculateMatrix(cameraHandler->actualStep(), &config, 0);
 	meshHandler = scenario->meshHandler;
 
 	char logName[512];
@@ -115,7 +115,7 @@ void GLWalkthroughPlayer::step(void)
 	}
 
 	step->fov = camera->fov;
-	camera->calculateMatrix(step, deltaTime, config.width, config.height);
+	camera->calculateMatrix(step, &config, deltaTime);
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
     glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;

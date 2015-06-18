@@ -17,7 +17,8 @@
 #include "glmathhelper.h"
 
 #include <stdio.h>
-#include <Windows.h>
+
+#define ZOOM_VALUE 1.0f
 
 GLRecordPathPlayer::GLRecordPathPlayer(void)
 { }
@@ -64,10 +65,13 @@ void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 
 	actualStep = GLScenario::defaultStartPosition(scenario->identifier);
 	camera->setValues(actualStep);
-	camera->calculateMatrix(actualStep, 0, config.width, config.height);
+	camera->calculateMatrix(actualStep, &config, 0);
 	//camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
 	camera->speed = 0.0f;
 	camera->mouseSpeed = 0.0025f;
+	camera->fov = config.fov;
+	camera->near = config.near;
+	camera->far = config.far;
 
 	meshHandler = scenario->meshHandler;
 
@@ -87,7 +91,7 @@ void GLRecordPathPlayer::step(void)
 		updateMousePos();		
 	}
 
-	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
+	camera->calculateMatrix(&config, xpos, ypos, deltaTime);
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 
@@ -139,13 +143,6 @@ void GLRecordPathPlayer::step(void)
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.015 : deltaTime;
-
-	if(deltaTime < 0.015)
-	{
-		float sleepTimer = 0.015 - deltaTime;
-		Sleep(sleepTimer);
-		deltaTime = 0.015;
-	}
 
 	sprintf(title, "%s%s - fps[%.2f][%d]", modeTitle, config.title, (float) (1 / deltaTime), cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
@@ -229,12 +226,12 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		if(key == GLFW_KEY_1)
 		{
 			//Zoom IN
-			camera->zoom(-0.005f);
+			camera->zoom(-1*ZOOM_VALUE);
 		}
 		if(key == GLFW_KEY_2)
 		{
 			//Zoom OUT
-			camera->zoom(+0.005f);
+			camera->zoom(+1*ZOOM_VALUE);
 		}
 
 		//Controle de Velocidade da Câmera

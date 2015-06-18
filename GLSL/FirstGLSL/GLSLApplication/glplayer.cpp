@@ -68,7 +68,7 @@ void GLPlayer::step(void)
 		updateMousePos();
 	}
 
-	camera->calculateMatrix(xpos, ypos, deltaTime, config.width, config.height);
+	camera->calculateMatrix(&config, xpos, ypos, deltaTime);
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 
