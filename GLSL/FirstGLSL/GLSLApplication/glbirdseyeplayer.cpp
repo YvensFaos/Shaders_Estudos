@@ -198,9 +198,7 @@ void GLBirdsEyePlayer::step(void)
 #else
 			obj->drawBox();
 #endif
-
 			obj->update();
-
 		}
 
 		delete bounds;

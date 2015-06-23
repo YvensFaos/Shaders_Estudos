@@ -237,8 +237,8 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 
 GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* cameraStep)
 {
-	float fovx = tan((cameraStep->fov* aspect) * PI180);
-	float fovy = tan( cameraStep->fov*PI180);
+	float fovx = tan(((cameraStep->fov / 2)*aspect) * PI180);
+	float fovy = tan( (cameraStep->fov / 2)*PI180);
 
 	float test = cameraStep->fov*aspect;
 
@@ -332,8 +332,8 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 
 GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 {
-	float fovx = tan((camera->fov* aspect) * PI180);
-	float fovy = tan( camera->fov*PI180);
+	float fovx = tan(((camera->fov / 2)*aspect) * PI180);
+	float fovy = tan( (camera->fov / 2)*PI180);
 
 	glm::vec3* up = &camera->up;
 	glm::vec3* apex = &camera->position;
@@ -349,7 +349,7 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	farPoint  += *apex;
 
 	float nearValue = camera->near*fovx;
-	float farValue  = camera->far*fovy;
+	float farValue  = camera->far*fovx;
 
 	glm::vec3 nearRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
 	nearRightPoint *= nearValue;

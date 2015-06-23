@@ -93,20 +93,20 @@ int main()
 	std::vector<GLDynamicObject>* pointerDynamics;
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
-	/*pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[2][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
+	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[2][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[3][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[4][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
-	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());*/
+	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
 
 	config.dynamics = totalDynamics;
 
 	PLAYER_MODE mode;
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
-	mode = BIRDS_EYE;
 	mode = RECORD_PATH;
+	mode = BIRDS_EYE;
 	mode = WALKTHROUGH_MODE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
