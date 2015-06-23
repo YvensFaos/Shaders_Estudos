@@ -78,9 +78,9 @@ int main()
 	//EDE escolhida
 	config.type = ROCTREE;
 	//Colore os nós em tons diferente
-	config.coloredNodes = true;
+	config.coloredNodes = false;
 
-	config.enableDynamics = true;
+	config.enableDynamics = false;
 	config.edeTestDynamics = false;
 	config.frustumTestDynamics = true;
 
@@ -106,8 +106,8 @@ int main()
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
 	mode = RECORD_PATH;
-	mode = BIRDS_EYE;
 	mode = WALKTHROUGH_MODE;
+	mode = BIRDS_EYE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);

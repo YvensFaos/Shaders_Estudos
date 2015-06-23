@@ -72,6 +72,16 @@ public:
 class GLAABB
 {
 public:
+	glm::vec3 min;
+	glm::vec3 max;
+
+public:
+	GLAABB(glm::vec3 min, glm::vec3 max);
+	~GLAABB(void);
+
+	bool intercepts(GLAABB* another);
+	bool intercepts(glm::vec3 min, glm::vec3 max);
+public:
 	static bool intercepts(glm::vec3 max1, glm::vec3 min1, glm::vec3 max2, glm::vec3 min2);
 	static void drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position);
 };
@@ -91,6 +101,7 @@ public:
 	//Testa um ponto no espaço
 	bool containsPoint(float x, float y, float z);
 	//Testa todos os vértices de uma AABB
+	bool containsAnyVertexOf(GLAABB* aabb);
 	bool containsAnyVertexOf(glm::vec3* min, glm::vec3* max);
 	//Testa uma esfera
 	bool containsSphere(glm::vec3* center, float radius);

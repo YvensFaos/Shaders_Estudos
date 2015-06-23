@@ -210,10 +210,10 @@ void GLBirdsEyePlayer::step(void)
 
 		obj->visible = true;
 		obj->draw(walkStep->position);
-
-		//Draw Frustum
-		frustum.draw();
 	}
+
+	//Draw Frustum
+	frustum.draw();
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);

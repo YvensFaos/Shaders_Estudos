@@ -16,6 +16,12 @@ void main(void)
 	intensity = max(0.0, dot(b, -c));
 
 	vColor = baseColor;
-	
+	if(b.y > -0.05 && b.y < 0.05)
+	{
+		vColor.x = 1;
+		vColor.y = 0;
+		vColor.z = 0;
+	}
+
 	gl_Position = mvp * a;
 }

@@ -1,384 +1,384 @@
-{23: 6} -  9:27:18: Iniciado a replicated octree tamanho 3.
-{23: 6} -  9:27:18: Calculando AABB da raíz
-{23: 6} -  9:27:18: Mínimo: -154.31 -51.20 -281.60
-{23: 6} -  9:27:18: Máximo: 153.60 58.49 192.00
-{23: 6} -  9:27:18: Static Meshes: 0
+{23: 6} -  9:57:28: Iniciado a replicated octree tamanho 3.
+{23: 6} -  9:57:28: Calculando AABB da raíz
+{23: 6} -  9:57:28: Mínimo: -154.31 -51.20 -281.60
+{23: 6} -  9:57:28: Máximo: 153.60 58.49 192.00
+{23: 6} -  9:57:28: Static Meshes: 0
                     Tested Meshes: 1
-{23: 6} -  9:27:18: Static Meshes Vertice Count: 0
-{23: 6} -  9:27:18: Gerando mesh estática única...
-{23: 6} -  9:27:18: Finalizado!
-{23: 6} -  9:27:18: Gerando nós a partir das malhas testáveis...
-{23: 6} -  9:27:18: Node color: 0.839216 0.419608 0.160784
-{23: 6} -  9:27:18: Inside: 77682/77682
-{23: 6} -  9:27:18: Node color: 0.662745 0.172549 0.921569
-{23: 6} -  9:27:18: Inside: 84/77682
-{23: 6} -  9:27:18: Node color: 0.733333 0.129412 0.011765
-{23: 6} -  9:27:18: Inside: 0/84
-{23: 6} -  9:27:18: Node color: 0.372549 0.372549 0.937255
-{23: 6} -  9:27:18: Inside: 18/84
-{23: 6} -  9:27:18: Node color: 0.062745 0.988235 0.298039
-{23: 6} -  9:27:18: Inside: 0/84
-{23: 6} -  9:27:18: Node color: 0.831373 0.745098 0.925490
-{23: 6} -  9:27:18: Inside: 0/84
-{23: 6} -  9:27:18: Node color: 0.023529 0.317647 0.929412
-{23: 6} -  9:27:18: Inside: 0/84
-{23: 6} -  9:27:18: Node color: 0.600000 0.301961 0.270588
-{23: 6} -  9:27:18: Inside: 6/84
-{23: 6} -  9:27:18: Node color: 0.317647 0.556863 0.145098
-{23: 6} -  9:27:18: Inside: 0/84
-{23: 6} -  9:27:18: Node color: 0.019608 0.325490 0.396078
-{23: 6} -  9:27:18: Inside: 63/84
-{23: 6} -  9:27:18: Node color: 0.925490 0.200000 0.360784
-{23: 6} -  9:27:18: Inside: 32097/77682
-{23: 6} -  9:27:18: Node color: 0.086275 0.329412 0.247059
-{23: 6} -  9:27:18: Inside: 5766/32097
-{23: 6} -  9:27:18: Node color: 0.803922 0.133333 0.654902
-{23: 6} -  9:27:18: Inside: 813/32097
-{23: 6} -  9:27:18: Node color: 0.376471 0.560784 0.800000
-{23: 6} -  9:27:18: Inside: 810/32097
-{23: 6} -  9:27:18: Node color: 0.305882 0.952941 0.831373
-{23: 6} -  9:27:18: Inside: 4905/32097
-{23: 6} -  9:27:18: Node color: 0.239216 0.376471 0.290196
-{23: 6} -  9:27:18: Inside: 8748/32097
-{23: 6} -  9:27:18: Node color: 0.184314 0.933333 0.796078
-{23: 6} -  9:27:18: Inside: 12417/32097
-{23: 6} -  9:27:18: Node color: 0.458824 0.086275 0.407843
-{23: 6} -  9:27:18: Inside: 636/32097
-{23: 6} -  9:27:18: Node color: 0.207843 0.427451 0.576471
-{23: 6} -  9:27:18: Inside: 933/32097
-{23: 6} -  9:27:18: Node color: 0.050980 0.956863 0.200000
-{23: 6} -  9:27:18: Inside: 153/77682
-{23: 6} -  9:27:18: Node color: 0.019608 0.901961 0.298039
-{23: 6} -  9:27:18: Inside: 0/153
-{23: 6} -  9:27:18: Node color: 0.062745 0.129412 0.223529
-{23: 6} -  9:27:18: Inside: 0/153
-{23: 6} -  9:27:18: Node color: 0.545098 0.066667 0.450980
-{23: 6} -  9:27:18: Inside: 0/153
-{23: 6} -  9:27:18: Node color: 0.352941 0.631373 0.815686
-{23: 6} -  9:27:18: Inside: 153/153
-{23: 6} -  9:27:18: Node color: 0.568627 0.388235 0.313726
-{23: 6} -  9:27:18: Inside: 0/153
-{23: 6} -  9:27:18: Node color: 0.964706 0.847059 0.196078
-{23: 6} -  9:27:18: Inside: 0/153
-{23: 6} -  9:27:18: Node color: 0.976471 0.913725 0.658824
-{23: 6} -  9:27:18: Inside: 0/153
-{23: 6} -  9:27:18: Node color: 0.250980 0.447059 0.501961
-{23: 6} -  9:27:18: Inside: 0/153
-{23: 6} -  9:27:18: Node color: 0.474510 0.431373 0.552941
-{23: 6} -  9:27:18: Inside: 5823/77682
-{23: 6} -  9:27:18: Node color: 0.168627 0.631373 0.925490
-{23: 6} -  9:27:18: Inside: 132/5823
-{23: 6} -  9:27:18: Node color: 0.572549 0.211765 0.447059
-{23: 6} -  9:27:18: Inside: 1731/5823
-{23: 6} -  9:27:18: Node color: 0.462745 0.713726 0.403922
-{23: 6} -  9:27:18: Inside: 726/5823
-{23: 6} -  9:27:18: Node color: 0.917647 0.164706 0.207843
-{23: 6} -  9:27:18: Inside: 0/5823
-{23: 6} -  9:27:18: Node color: 0.019608 0.952941 0.866667
-{23: 6} -  9:27:18: Inside: 198/5823
-{23: 6} -  9:27:18: Node color: 0.035294 0.305882 0.192157
-{23: 6} -  9:27:18: Inside: 63/5823
-{23: 6} -  9:27:18: Node color: 0.043137 0.811765 0.941176
-{23: 6} -  9:27:18: Inside: 3459/5823
-{23: 6} -  9:27:18: Node color: 0.690196 0.788235 0.207843
-{23: 6} -  9:27:18: Inside: 156/5823
-{23: 6} -  9:27:18: Node color: 0.792157 0.584314 0.725490
-{23: 6} -  9:27:18: Inside: 1098/77682
-{23: 6} -  9:27:18: Node color: 0.007843 0.858824 0.588235
-{23: 6} -  9:27:18: Inside: 0/1098
-{23: 6} -  9:27:18: Node color: 0.752941 0.988235 0.070588
-{23: 6} -  9:27:18: Inside: 855/1098
-{23: 6} -  9:27:18: Node color: 0.925490 0.117647 0.062745
-{23: 6} -  9:27:18: Inside: 75/1098
-{23: 6} -  9:27:18: Node color: 0.125490 0.666667 0.082353
-{23: 6} -  9:27:18: Inside: 0/1098
-{23: 6} -  9:27:18: Node color: 0.807843 0.074510 0.764706
-{23: 6} -  9:27:18: Inside: 0/1098
-{23: 6} -  9:27:18: Node color: 0.509804 0.254902 0.262745
-{23: 6} -  9:27:18: Inside: 54/1098
-{23: 6} -  9:27:18: Node color: 0.768627 0.192157 0.435294
-{23: 6} -  9:27:18: Inside: 0/1098
-{23: 6} -  9:27:18: Node color: 0.396078 0.988235 0.450980
-{23: 6} -  9:27:18: Inside: 189/1098
-{23: 6} -  9:27:18: Node color: 0.615686 0.458824 0.615686
-{23: 6} -  9:27:18: Inside: 34794/77682
-{23: 6} -  9:27:18: Node color: 0.717647 0.835294 0.184314
-{23: 6} -  9:27:18: Inside: 1002/34794
-{23: 6} -  9:27:18: Node color: 0.309804 0.937255 0.607843
-{23: 6} -  9:27:18: Inside: 8709/34794
-{23: 6} -  9:27:18: Node color: 0.894118 0.984314 0.266667
-{23: 6} -  9:27:18: Inside: 5418/34794
-{23: 6} -  9:27:18: Node color: 0.866667 0.827451 0.184314
-{23: 6} -  9:27:18: Inside: 1146/34794
-{23: 6} -  9:27:18: Node color: 0.384314 0.364706 0.098039
-{23: 6} -  9:27:18: Inside: 534/34794
-{23: 6} -  9:27:18: Node color: 0.576471 0.807843 0.529412
-{23: 6} -  9:27:18: Inside: 201/34794
-{23: 6} -  9:27:18: Node color: 0.937255 0.274510 0.490196
-{23: 6} -  9:27:18: Inside: 13941/34794
-{23: 6} -  9:27:18: Node color: 0.501961 0.537255 0.329412
-{23: 6} -  9:27:18: Inside: 7302/34794
-{23: 6} -  9:27:18: Node color: 0.847059 0.215686 0.423529
-{23: 6} -  9:27:18: Inside: 816/77682
-{23: 6} -  9:27:18: Node color: 0.356863 0.490196 0.125490
-{23: 6} -  9:27:18: Inside: 117/816
-{23: 6} -  9:27:18: Node color: 0.215686 0.760784 0.925490
-{23: 6} -  9:27:18: Inside: 0/816
-{23: 6} -  9:27:18: Node color: 0.247059 0.200000 0.023529
-{23: 6} -  9:27:18: Inside: 0/816
-{23: 6} -  9:27:18: Node color: 0.015686 0.129412 0.976471
-{23: 6} -  9:27:18: Inside: 132/816
-{23: 6} -  9:27:18: Node color: 0.207843 0.564706 0.474510
-{23: 6} -  9:27:18: Inside: 0/816
-{23: 6} -  9:27:18: Node color: 0.560784 0.600000 0.839216
-{23: 6} -  9:27:18: Inside: 621/816
-{23: 6} -  9:27:18: Node color: 0.086275 0.854902 0.058824
-{23: 6} -  9:27:18: Inside: 0/816
-{23: 6} -  9:27:18: Node color: 0.403922 0.619608 0.831373
-{23: 6} -  9:27:18: Inside: 0/816
-{23: 6} -  9:27:18: Node color: 0.831373 0.168627 0.658824
-{23: 6} -  9:27:18: Inside: 6156/77682
-{23: 6} -  9:27:18: Node color: 0.949020 0.117647 0.494118
-{23: 6} -  9:27:18: Inside: 975/6156
-{23: 6} -  9:27:18: Node color: 0.113725 0.309804 0.462745
-{23: 6} -  9:27:18: Inside: 348/6156
-{23: 6} -  9:27:18: Node color: 0.435294 0.254902 0.866667
-{23: 6} -  9:27:18: Inside: 126/6156
-{23: 6} -  9:27:18: Node color: 0.780392 0.584314 0.784314
-{23: 6} -  9:27:18: Inside: 132/6156
-{23: 6} -  9:27:18: Node color: 0.835294 0.403922 0.749020
-{23: 6} -  9:27:18: Inside: 3342/6156
-{23: 6} -  9:27:18: Node color: 0.917647 0.168627 0.407843
-{23: 6} -  9:27:18: Inside: 1608/6156
-{23: 6} -  9:27:18: Node color: 0.243137 0.780392 0.878431
-{23: 6} -  9:27:18: Inside: 327/6156
-{23: 6} -  9:27:18: Node color: 0.129412 0.333333 0.529412
-{23: 6} -  9:27:18: Inside: 42/6156
-{23: 6} -  9:27:18: Finalizado!
-{23: 6} -  9:27:18: Gerando meshes para os nós folhas ...
-{23: 6} -  9:27:18: Mesh de nó criada! - 77682 v e 77682 n.
-{23: 6} -  9:27:18: Custo da Mesh : 2796597
-{23: 6} -  9:27:18: Mesh de nó criada! - 6156 v e 6156 n.
-{23: 6} -  9:27:18: Custo da Mesh : 221661
-{23: 6} -  9:27:18: Mesh de nó criada! - 42 v e 42 n.
-{23: 6} -  9:27:18: Custo da Mesh : 1557
-{23: 6} -  9:27:18: Mesh de nó criada! - 327 v e 327 n.
-{23: 6} -  9:27:18: Custo da Mesh : 11817
-{23: 6} -  9:27:18: Mesh de nó criada! - 1608 v e 1608 n.
-{23: 6} -  9:27:18: Custo da Mesh : 57933
-{23: 6} -  9:27:18: Mesh de nó criada! - 3342 v e 3342 n.
-{23: 6} -  9:27:18: Custo da Mesh : 120357
-{23: 6} -  9:27:18: Mesh de nó criada! - 132 v e 132 n.
-{23: 6} -  9:27:18: Custo da Mesh : 4797
-{23: 6} -  9:27:18: Mesh de nó criada! - 126 v e 126 n.
-{23: 6} -  9:27:18: Custo da Mesh : 4581
-{23: 6} -  9:27:18: Mesh de nó criada! - 348 v e 348 n.
-{23: 6} -  9:27:18: Custo da Mesh : 12573
-{23: 6} -  9:27:18: Mesh de nó criada! - 975 v e 975 n.
-{23: 6} -  9:27:18: Custo da Mesh : 35145
-{23: 6} -  9:27:18: Mesh de nó criada! - 816 v e 816 n.
-{23: 6} -  9:27:18: Custo da Mesh : 29421
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 621 v e 621 n.
-{23: 6} -  9:27:18: Custo da Mesh : 22401
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 132 v e 132 n.
-{23: 6} -  9:27:18: Custo da Mesh : 4797
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 117 v e 117 n.
-{23: 6} -  9:27:18: Custo da Mesh : 4257
-{23: 6} -  9:27:18: Mesh de nó criada! - 34794 v e 34794 n.
-{23: 6} -  9:27:18: Custo da Mesh : 1252629
-{23: 6} -  9:27:18: Mesh de nó criada! - 7302 v e 7302 n.
-{23: 6} -  9:27:18: Custo da Mesh : 262917
-{23: 6} -  9:27:18: Mesh de nó criada! - 13941 v e 13941 n.
-{23: 6} -  9:27:18: Custo da Mesh : 501921
-{23: 6} -  9:27:18: Mesh de nó criada! - 201 v e 201 n.
-{23: 6} -  9:27:18: Custo da Mesh : 7281
-{23: 6} -  9:27:18: Mesh de nó criada! - 534 v e 534 n.
-{23: 6} -  9:27:18: Custo da Mesh : 19269
-{23: 6} -  9:27:18: Mesh de nó criada! - 1146 v e 1146 n.
-{23: 6} -  9:27:18: Custo da Mesh : 41301
-{23: 6} -  9:27:18: Mesh de nó criada! - 5418 v e 5418 n.
-{23: 6} -  9:27:18: Custo da Mesh : 195093
-{23: 6} -  9:27:18: Mesh de nó criada! - 8709 v e 8709 n.
-{23: 6} -  9:27:18: Custo da Mesh : 313569
-{23: 6} -  9:27:18: Mesh de nó criada! - 1002 v e 1002 n.
-{23: 6} -  9:27:18: Custo da Mesh : 36117
-{23: 6} -  9:27:18: Mesh de nó criada! - 1098 v e 1098 n.
-{23: 6} -  9:27:18: Custo da Mesh : 39573
-{23: 6} -  9:27:18: Mesh de nó criada! - 189 v e 189 n.
-{23: 6} -  9:27:18: Custo da Mesh : 6849
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 54 v e 54 n.
-{23: 6} -  9:27:18: Custo da Mesh : 1989
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 75 v e 75 n.
-{23: 6} -  9:27:18: Custo da Mesh : 2745
-{23: 6} -  9:27:18: Mesh de nó criada! - 855 v e 855 n.
-{23: 6} -  9:27:18: Custo da Mesh : 30825
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 5823 v e 5823 n.
-{23: 6} -  9:27:18: Custo da Mesh : 209673
-{23: 6} -  9:27:18: Mesh de nó criada! - 156 v e 156 n.
-{23: 6} -  9:27:18: Custo da Mesh : 5661
-{23: 6} -  9:27:18: Mesh de nó criada! - 3459 v e 3459 n.
-{23: 6} -  9:27:18: Custo da Mesh : 124569
-{23: 6} -  9:27:18: Mesh de nó criada! - 63 v e 63 n.
-{23: 6} -  9:27:18: Custo da Mesh : 2313
-{23: 6} -  9:27:18: Mesh de nó criada! - 198 v e 198 n.
-{23: 6} -  9:27:18: Custo da Mesh : 7173
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 726 v e 726 n.
-{23: 6} -  9:27:18: Custo da Mesh : 26181
-{23: 6} -  9:27:18: Mesh de nó criada! - 1731 v e 1731 n.
-{23: 6} -  9:27:18: Custo da Mesh : 62361
-{23: 6} -  9:27:18: Mesh de nó criada! - 132 v e 132 n.
-{23: 6} -  9:27:18: Custo da Mesh : 4797
-{23: 6} -  9:27:18: Mesh de nó criada! - 153 v e 153 n.
-{23: 6} -  9:27:18: Custo da Mesh : 5553
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 153 v e 153 n.
-{23: 6} -  9:27:18: Custo da Mesh : 5553
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 32097 v e 32097 n.
-{23: 6} -  9:27:18: Custo da Mesh : 1155537
-{23: 6} -  9:27:18: Mesh de nó criada! - 933 v e 933 n.
-{23: 6} -  9:27:18: Custo da Mesh : 33633
-{23: 6} -  9:27:18: Mesh de nó criada! - 636 v e 636 n.
-{23: 6} -  9:27:18: Custo da Mesh : 22941
-{23: 6} -  9:27:18: Mesh de nó criada! - 12417 v e 12417 n.
-{23: 6} -  9:27:18: Custo da Mesh : 447057
-{23: 6} -  9:27:18: Mesh de nó criada! - 8748 v e 8748 n.
-{23: 6} -  9:27:18: Custo da Mesh : 314973
-{23: 6} -  9:27:18: Mesh de nó criada! - 4905 v e 4905 n.
-{23: 6} -  9:27:18: Custo da Mesh : 176625
-{23: 6} -  9:27:18: Mesh de nó criada! - 810 v e 810 n.
-{23: 6} -  9:27:18: Custo da Mesh : 29205
-{23: 6} -  9:27:18: Mesh de nó criada! - 813 v e 813 n.
-{23: 6} -  9:27:18: Custo da Mesh : 29313
-{23: 6} -  9:27:18: Mesh de nó criada! - 5766 v e 5766 n.
-{23: 6} -  9:27:18: Custo da Mesh : 207621
-{23: 6} -  9:27:18: Mesh de nó criada! - 84 v e 84 n.
-{23: 6} -  9:27:18: Custo da Mesh : 3069
-{23: 6} -  9:27:18: Mesh de nó criada! - 63 v e 63 n.
-{23: 6} -  9:27:18: Custo da Mesh : 2313
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 6 v e 6 n.
-{23: 6} -  9:27:18: Custo da Mesh : 261
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Mesh de nó criada! - 18 v e 18 n.
-{23: 6} -  9:27:18: Custo da Mesh : 693
-{23: 6} -  9:27:18: Mesh de nó criada! - 0 v e 0 n.
-{23: 6} -  9:27:18: Custo da Mesh : 45
-{23: 6} -  9:27:18: Finalizado!
-{23: 6} -  9:27:18: Vertices count: 77682
-{23: 6} -  9:27:18: Vertices count: 6156
-{23: 6} -  9:27:18: Vertices count: 42
-{23: 6} -  9:27:18: Vertices count: 327
-{23: 6} -  9:27:18: Vertices count: 1608
-{23: 6} -  9:27:18: Vertices count: 3342
-{23: 6} -  9:27:18: Vertices count: 132
-{23: 6} -  9:27:18: Vertices count: 126
-{23: 6} -  9:27:18: Vertices count: 348
-{23: 6} -  9:27:18: Vertices count: 975
-{23: 6} -  9:27:18: Vertices count: 816
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 621
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 132
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 117
-{23: 6} -  9:27:18: Vertices count: 34794
-{23: 6} -  9:27:18: Vertices count: 7302
-{23: 6} -  9:27:18: Vertices count: 13941
-{23: 6} -  9:27:18: Vertices count: 201
-{23: 6} -  9:27:18: Vertices count: 534
-{23: 6} -  9:27:18: Vertices count: 1146
-{23: 6} -  9:27:18: Vertices count: 5418
-{23: 6} -  9:27:18: Vertices count: 8709
-{23: 6} -  9:27:18: Vertices count: 1002
-{23: 6} -  9:27:18: Vertices count: 1098
-{23: 6} -  9:27:18: Vertices count: 189
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 54
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 75
-{23: 6} -  9:27:18: Vertices count: 855
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 5823
-{23: 6} -  9:27:18: Vertices count: 156
-{23: 6} -  9:27:18: Vertices count: 3459
-{23: 6} -  9:27:18: Vertices count: 63
-{23: 6} -  9:27:18: Vertices count: 198
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 726
-{23: 6} -  9:27:18: Vertices count: 1731
-{23: 6} -  9:27:18: Vertices count: 132
-{23: 6} -  9:27:18: Vertices count: 153
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 153
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 32097
-{23: 6} -  9:27:18: Vertices count: 933
-{23: 6} -  9:27:18: Vertices count: 636
-{23: 6} -  9:27:18: Vertices count: 12417
-{23: 6} -  9:27:18: Vertices count: 8748
-{23: 6} -  9:27:18: Vertices count: 4905
-{23: 6} -  9:27:18: Vertices count: 810
-{23: 6} -  9:27:18: Vertices count: 813
-{23: 6} -  9:27:18: Vertices count: 5766
-{23: 6} -  9:27:18: Vertices count: 84
-{23: 6} -  9:27:18: Vertices count: 63
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 6
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vertices count: 18
-{23: 6} -  9:27:18: Vertices count: 0
-{23: 6} -  9:27:18: Vértices duplicados: 169950
-{23: 6} -  9:27:18: Percentual de duplicados: 218.776550
-{23: 6} -  9:27:18: Total Nodes: 73
-{23: 6} -  9:27:18: Concluindo a replicated octree!
-{23: 6} -  9:27:18: Memória usada: 9913894.
-{23: 6} -  9:27:18: Tempo de processamento: 0.000000
+{23: 6} -  9:57:28: Static Meshes Vertice Count: 0
+{23: 6} -  9:57:28: Gerando mesh estática única...
+{23: 6} -  9:57:28: Finalizado!
+{23: 6} -  9:57:28: Gerando nós a partir das malhas testáveis...
+{23: 6} -  9:57:28: Node color: 0.839216 0.419608 0.160784
+{23: 6} -  9:57:28: Inside: 77682/77682
+{23: 6} -  9:57:28: Node color: 0.662745 0.172549 0.921569
+{23: 6} -  9:57:28: Inside: 84/77682
+{23: 6} -  9:57:28: Node color: 0.733333 0.129412 0.011765
+{23: 6} -  9:57:28: Inside: 0/84
+{23: 6} -  9:57:28: Node color: 0.372549 0.372549 0.937255
+{23: 6} -  9:57:28: Inside: 18/84
+{23: 6} -  9:57:28: Node color: 0.062745 0.988235 0.298039
+{23: 6} -  9:57:28: Inside: 0/84
+{23: 6} -  9:57:28: Node color: 0.831373 0.745098 0.925490
+{23: 6} -  9:57:28: Inside: 0/84
+{23: 6} -  9:57:28: Node color: 0.023529 0.317647 0.929412
+{23: 6} -  9:57:28: Inside: 0/84
+{23: 6} -  9:57:28: Node color: 0.600000 0.301961 0.270588
+{23: 6} -  9:57:28: Inside: 6/84
+{23: 6} -  9:57:28: Node color: 0.317647 0.556863 0.145098
+{23: 6} -  9:57:28: Inside: 0/84
+{23: 6} -  9:57:28: Node color: 0.019608 0.325490 0.396078
+{23: 6} -  9:57:28: Inside: 63/84
+{23: 6} -  9:57:28: Node color: 0.925490 0.200000 0.360784
+{23: 6} -  9:57:28: Inside: 32097/77682
+{23: 6} -  9:57:28: Node color: 0.086275 0.329412 0.247059
+{23: 6} -  9:57:28: Inside: 5766/32097
+{23: 6} -  9:57:28: Node color: 0.803922 0.133333 0.654902
+{23: 6} -  9:57:28: Inside: 813/32097
+{23: 6} -  9:57:28: Node color: 0.376471 0.560784 0.800000
+{23: 6} -  9:57:28: Inside: 810/32097
+{23: 6} -  9:57:28: Node color: 0.305882 0.952941 0.831373
+{23: 6} -  9:57:28: Inside: 4905/32097
+{23: 6} -  9:57:28: Node color: 0.239216 0.376471 0.290196
+{23: 6} -  9:57:28: Inside: 8748/32097
+{23: 6} -  9:57:28: Node color: 0.184314 0.933333 0.796078
+{23: 6} -  9:57:28: Inside: 12417/32097
+{23: 6} -  9:57:28: Node color: 0.458824 0.086275 0.407843
+{23: 6} -  9:57:28: Inside: 636/32097
+{23: 6} -  9:57:28: Node color: 0.207843 0.427451 0.576471
+{23: 6} -  9:57:28: Inside: 933/32097
+{23: 6} -  9:57:28: Node color: 0.050980 0.956863 0.200000
+{23: 6} -  9:57:28: Inside: 153/77682
+{23: 6} -  9:57:28: Node color: 0.019608 0.901961 0.298039
+{23: 6} -  9:57:28: Inside: 0/153
+{23: 6} -  9:57:28: Node color: 0.062745 0.129412 0.223529
+{23: 6} -  9:57:28: Inside: 0/153
+{23: 6} -  9:57:28: Node color: 0.545098 0.066667 0.450980
+{23: 6} -  9:57:28: Inside: 0/153
+{23: 6} -  9:57:28: Node color: 0.352941 0.631373 0.815686
+{23: 6} -  9:57:28: Inside: 153/153
+{23: 6} -  9:57:28: Node color: 0.568627 0.388235 0.313726
+{23: 6} -  9:57:28: Inside: 0/153
+{23: 6} -  9:57:28: Node color: 0.964706 0.847059 0.196078
+{23: 6} -  9:57:28: Inside: 0/153
+{23: 6} -  9:57:28: Node color: 0.976471 0.913725 0.658824
+{23: 6} -  9:57:28: Inside: 0/153
+{23: 6} -  9:57:28: Node color: 0.250980 0.447059 0.501961
+{23: 6} -  9:57:28: Inside: 0/153
+{23: 6} -  9:57:28: Node color: 0.474510 0.431373 0.552941
+{23: 6} -  9:57:28: Inside: 5823/77682
+{23: 6} -  9:57:28: Node color: 0.168627 0.631373 0.925490
+{23: 6} -  9:57:28: Inside: 132/5823
+{23: 6} -  9:57:28: Node color: 0.572549 0.211765 0.447059
+{23: 6} -  9:57:28: Inside: 1731/5823
+{23: 6} -  9:57:28: Node color: 0.462745 0.713726 0.403922
+{23: 6} -  9:57:28: Inside: 726/5823
+{23: 6} -  9:57:28: Node color: 0.917647 0.164706 0.207843
+{23: 6} -  9:57:28: Inside: 0/5823
+{23: 6} -  9:57:28: Node color: 0.019608 0.952941 0.866667
+{23: 6} -  9:57:28: Inside: 198/5823
+{23: 6} -  9:57:28: Node color: 0.035294 0.305882 0.192157
+{23: 6} -  9:57:28: Inside: 63/5823
+{23: 6} -  9:57:28: Node color: 0.043137 0.811765 0.941176
+{23: 6} -  9:57:28: Inside: 3459/5823
+{23: 6} -  9:57:28: Node color: 0.690196 0.788235 0.207843
+{23: 6} -  9:57:28: Inside: 156/5823
+{23: 6} -  9:57:28: Node color: 0.792157 0.584314 0.725490
+{23: 6} -  9:57:28: Inside: 1098/77682
+{23: 6} -  9:57:28: Node color: 0.007843 0.858824 0.588235
+{23: 6} -  9:57:28: Inside: 0/1098
+{23: 6} -  9:57:28: Node color: 0.752941 0.988235 0.070588
+{23: 6} -  9:57:28: Inside: 855/1098
+{23: 6} -  9:57:28: Node color: 0.925490 0.117647 0.062745
+{23: 6} -  9:57:28: Inside: 75/1098
+{23: 6} -  9:57:28: Node color: 0.125490 0.666667 0.082353
+{23: 6} -  9:57:28: Inside: 0/1098
+{23: 6} -  9:57:28: Node color: 0.807843 0.074510 0.764706
+{23: 6} -  9:57:28: Inside: 0/1098
+{23: 6} -  9:57:28: Node color: 0.509804 0.254902 0.262745
+{23: 6} -  9:57:28: Inside: 54/1098
+{23: 6} -  9:57:28: Node color: 0.768627 0.192157 0.435294
+{23: 6} -  9:57:28: Inside: 0/1098
+{23: 6} -  9:57:28: Node color: 0.396078 0.988235 0.450980
+{23: 6} -  9:57:28: Inside: 189/1098
+{23: 6} -  9:57:28: Node color: 0.615686 0.458824 0.615686
+{23: 6} -  9:57:28: Inside: 34794/77682
+{23: 6} -  9:57:28: Node color: 0.717647 0.835294 0.184314
+{23: 6} -  9:57:28: Inside: 1002/34794
+{23: 6} -  9:57:28: Node color: 0.309804 0.937255 0.607843
+{23: 6} -  9:57:28: Inside: 8709/34794
+{23: 6} -  9:57:28: Node color: 0.894118 0.984314 0.266667
+{23: 6} -  9:57:28: Inside: 5418/34794
+{23: 6} -  9:57:28: Node color: 0.866667 0.827451 0.184314
+{23: 6} -  9:57:28: Inside: 1146/34794
+{23: 6} -  9:57:28: Node color: 0.384314 0.364706 0.098039
+{23: 6} -  9:57:28: Inside: 534/34794
+{23: 6} -  9:57:28: Node color: 0.576471 0.807843 0.529412
+{23: 6} -  9:57:28: Inside: 201/34794
+{23: 6} -  9:57:28: Node color: 0.937255 0.274510 0.490196
+{23: 6} -  9:57:28: Inside: 13941/34794
+{23: 6} -  9:57:28: Node color: 0.501961 0.537255 0.329412
+{23: 6} -  9:57:28: Inside: 7302/34794
+{23: 6} -  9:57:28: Node color: 0.847059 0.215686 0.423529
+{23: 6} -  9:57:28: Inside: 816/77682
+{23: 6} -  9:57:28: Node color: 0.356863 0.490196 0.125490
+{23: 6} -  9:57:28: Inside: 117/816
+{23: 6} -  9:57:28: Node color: 0.215686 0.760784 0.925490
+{23: 6} -  9:57:28: Inside: 0/816
+{23: 6} -  9:57:28: Node color: 0.247059 0.200000 0.023529
+{23: 6} -  9:57:28: Inside: 0/816
+{23: 6} -  9:57:28: Node color: 0.015686 0.129412 0.976471
+{23: 6} -  9:57:28: Inside: 132/816
+{23: 6} -  9:57:28: Node color: 0.207843 0.564706 0.474510
+{23: 6} -  9:57:28: Inside: 0/816
+{23: 6} -  9:57:28: Node color: 0.560784 0.600000 0.839216
+{23: 6} -  9:57:28: Inside: 621/816
+{23: 6} -  9:57:28: Node color: 0.086275 0.854902 0.058824
+{23: 6} -  9:57:28: Inside: 0/816
+{23: 6} -  9:57:28: Node color: 0.403922 0.619608 0.831373
+{23: 6} -  9:57:28: Inside: 0/816
+{23: 6} -  9:57:28: Node color: 0.831373 0.168627 0.658824
+{23: 6} -  9:57:28: Inside: 6156/77682
+{23: 6} -  9:57:28: Node color: 0.949020 0.117647 0.494118
+{23: 6} -  9:57:28: Inside: 975/6156
+{23: 6} -  9:57:28: Node color: 0.113725 0.309804 0.462745
+{23: 6} -  9:57:28: Inside: 348/6156
+{23: 6} -  9:57:28: Node color: 0.435294 0.254902 0.866667
+{23: 6} -  9:57:28: Inside: 126/6156
+{23: 6} -  9:57:28: Node color: 0.780392 0.584314 0.784314
+{23: 6} -  9:57:28: Inside: 132/6156
+{23: 6} -  9:57:28: Node color: 0.835294 0.403922 0.749020
+{23: 6} -  9:57:28: Inside: 3342/6156
+{23: 6} -  9:57:28: Node color: 0.917647 0.168627 0.407843
+{23: 6} -  9:57:28: Inside: 1608/6156
+{23: 6} -  9:57:28: Node color: 0.243137 0.780392 0.878431
+{23: 6} -  9:57:28: Inside: 327/6156
+{23: 6} -  9:57:28: Node color: 0.129412 0.333333 0.529412
+{23: 6} -  9:57:28: Inside: 42/6156
+{23: 6} -  9:57:28: Finalizado!
+{23: 6} -  9:57:28: Gerando meshes para os nós folhas ...
+{23: 6} -  9:57:28: Mesh de nó criada! - 77682 v e 77682 n.
+{23: 6} -  9:57:28: Custo da Mesh : 2796597
+{23: 6} -  9:57:28: Mesh de nó criada! - 6156 v e 6156 n.
+{23: 6} -  9:57:28: Custo da Mesh : 221661
+{23: 6} -  9:57:28: Mesh de nó criada! - 42 v e 42 n.
+{23: 6} -  9:57:28: Custo da Mesh : 1557
+{23: 6} -  9:57:28: Mesh de nó criada! - 327 v e 327 n.
+{23: 6} -  9:57:28: Custo da Mesh : 11817
+{23: 6} -  9:57:28: Mesh de nó criada! - 1608 v e 1608 n.
+{23: 6} -  9:57:28: Custo da Mesh : 57933
+{23: 6} -  9:57:28: Mesh de nó criada! - 3342 v e 3342 n.
+{23: 6} -  9:57:28: Custo da Mesh : 120357
+{23: 6} -  9:57:28: Mesh de nó criada! - 132 v e 132 n.
+{23: 6} -  9:57:28: Custo da Mesh : 4797
+{23: 6} -  9:57:28: Mesh de nó criada! - 126 v e 126 n.
+{23: 6} -  9:57:28: Custo da Mesh : 4581
+{23: 6} -  9:57:28: Mesh de nó criada! - 348 v e 348 n.
+{23: 6} -  9:57:28: Custo da Mesh : 12573
+{23: 6} -  9:57:28: Mesh de nó criada! - 975 v e 975 n.
+{23: 6} -  9:57:28: Custo da Mesh : 35145
+{23: 6} -  9:57:28: Mesh de nó criada! - 816 v e 816 n.
+{23: 6} -  9:57:28: Custo da Mesh : 29421
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 621 v e 621 n.
+{23: 6} -  9:57:28: Custo da Mesh : 22401
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 132 v e 132 n.
+{23: 6} -  9:57:28: Custo da Mesh : 4797
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 117 v e 117 n.
+{23: 6} -  9:57:28: Custo da Mesh : 4257
+{23: 6} -  9:57:28: Mesh de nó criada! - 34794 v e 34794 n.
+{23: 6} -  9:57:28: Custo da Mesh : 1252629
+{23: 6} -  9:57:28: Mesh de nó criada! - 7302 v e 7302 n.
+{23: 6} -  9:57:28: Custo da Mesh : 262917
+{23: 6} -  9:57:28: Mesh de nó criada! - 13941 v e 13941 n.
+{23: 6} -  9:57:28: Custo da Mesh : 501921
+{23: 6} -  9:57:28: Mesh de nó criada! - 201 v e 201 n.
+{23: 6} -  9:57:28: Custo da Mesh : 7281
+{23: 6} -  9:57:28: Mesh de nó criada! - 534 v e 534 n.
+{23: 6} -  9:57:28: Custo da Mesh : 19269
+{23: 6} -  9:57:28: Mesh de nó criada! - 1146 v e 1146 n.
+{23: 6} -  9:57:28: Custo da Mesh : 41301
+{23: 6} -  9:57:28: Mesh de nó criada! - 5418 v e 5418 n.
+{23: 6} -  9:57:28: Custo da Mesh : 195093
+{23: 6} -  9:57:28: Mesh de nó criada! - 8709 v e 8709 n.
+{23: 6} -  9:57:28: Custo da Mesh : 313569
+{23: 6} -  9:57:28: Mesh de nó criada! - 1002 v e 1002 n.
+{23: 6} -  9:57:28: Custo da Mesh : 36117
+{23: 6} -  9:57:28: Mesh de nó criada! - 1098 v e 1098 n.
+{23: 6} -  9:57:28: Custo da Mesh : 39573
+{23: 6} -  9:57:28: Mesh de nó criada! - 189 v e 189 n.
+{23: 6} -  9:57:28: Custo da Mesh : 6849
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 54 v e 54 n.
+{23: 6} -  9:57:28: Custo da Mesh : 1989
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 75 v e 75 n.
+{23: 6} -  9:57:28: Custo da Mesh : 2745
+{23: 6} -  9:57:28: Mesh de nó criada! - 855 v e 855 n.
+{23: 6} -  9:57:28: Custo da Mesh : 30825
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 5823 v e 5823 n.
+{23: 6} -  9:57:28: Custo da Mesh : 209673
+{23: 6} -  9:57:28: Mesh de nó criada! - 156 v e 156 n.
+{23: 6} -  9:57:28: Custo da Mesh : 5661
+{23: 6} -  9:57:28: Mesh de nó criada! - 3459 v e 3459 n.
+{23: 6} -  9:57:28: Custo da Mesh : 124569
+{23: 6} -  9:57:28: Mesh de nó criada! - 63 v e 63 n.
+{23: 6} -  9:57:28: Custo da Mesh : 2313
+{23: 6} -  9:57:28: Mesh de nó criada! - 198 v e 198 n.
+{23: 6} -  9:57:28: Custo da Mesh : 7173
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 726 v e 726 n.
+{23: 6} -  9:57:28: Custo da Mesh : 26181
+{23: 6} -  9:57:28: Mesh de nó criada! - 1731 v e 1731 n.
+{23: 6} -  9:57:28: Custo da Mesh : 62361
+{23: 6} -  9:57:28: Mesh de nó criada! - 132 v e 132 n.
+{23: 6} -  9:57:28: Custo da Mesh : 4797
+{23: 6} -  9:57:28: Mesh de nó criada! - 153 v e 153 n.
+{23: 6} -  9:57:28: Custo da Mesh : 5553
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 153 v e 153 n.
+{23: 6} -  9:57:28: Custo da Mesh : 5553
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 32097 v e 32097 n.
+{23: 6} -  9:57:28: Custo da Mesh : 1155537
+{23: 6} -  9:57:28: Mesh de nó criada! - 933 v e 933 n.
+{23: 6} -  9:57:28: Custo da Mesh : 33633
+{23: 6} -  9:57:28: Mesh de nó criada! - 636 v e 636 n.
+{23: 6} -  9:57:28: Custo da Mesh : 22941
+{23: 6} -  9:57:28: Mesh de nó criada! - 12417 v e 12417 n.
+{23: 6} -  9:57:28: Custo da Mesh : 447057
+{23: 6} -  9:57:28: Mesh de nó criada! - 8748 v e 8748 n.
+{23: 6} -  9:57:28: Custo da Mesh : 314973
+{23: 6} -  9:57:28: Mesh de nó criada! - 4905 v e 4905 n.
+{23: 6} -  9:57:28: Custo da Mesh : 176625
+{23: 6} -  9:57:28: Mesh de nó criada! - 810 v e 810 n.
+{23: 6} -  9:57:28: Custo da Mesh : 29205
+{23: 6} -  9:57:28: Mesh de nó criada! - 813 v e 813 n.
+{23: 6} -  9:57:28: Custo da Mesh : 29313
+{23: 6} -  9:57:28: Mesh de nó criada! - 5766 v e 5766 n.
+{23: 6} -  9:57:28: Custo da Mesh : 207621
+{23: 6} -  9:57:28: Mesh de nó criada! - 84 v e 84 n.
+{23: 6} -  9:57:28: Custo da Mesh : 3069
+{23: 6} -  9:57:28: Mesh de nó criada! - 63 v e 63 n.
+{23: 6} -  9:57:28: Custo da Mesh : 2313
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 6 v e 6 n.
+{23: 6} -  9:57:28: Custo da Mesh : 261
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Mesh de nó criada! - 18 v e 18 n.
+{23: 6} -  9:57:28: Custo da Mesh : 693
+{23: 6} -  9:57:28: Mesh de nó criada! - 0 v e 0 n.
+{23: 6} -  9:57:28: Custo da Mesh : 45
+{23: 6} -  9:57:28: Finalizado!
+{23: 6} -  9:57:28: Vertices count: 77682
+{23: 6} -  9:57:28: Vertices count: 6156
+{23: 6} -  9:57:28: Vertices count: 42
+{23: 6} -  9:57:28: Vertices count: 327
+{23: 6} -  9:57:28: Vertices count: 1608
+{23: 6} -  9:57:28: Vertices count: 3342
+{23: 6} -  9:57:28: Vertices count: 132
+{23: 6} -  9:57:28: Vertices count: 126
+{23: 6} -  9:57:28: Vertices count: 348
+{23: 6} -  9:57:28: Vertices count: 975
+{23: 6} -  9:57:28: Vertices count: 816
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 621
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 132
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 117
+{23: 6} -  9:57:28: Vertices count: 34794
+{23: 6} -  9:57:28: Vertices count: 7302
+{23: 6} -  9:57:28: Vertices count: 13941
+{23: 6} -  9:57:28: Vertices count: 201
+{23: 6} -  9:57:28: Vertices count: 534
+{23: 6} -  9:57:28: Vertices count: 1146
+{23: 6} -  9:57:28: Vertices count: 5418
+{23: 6} -  9:57:28: Vertices count: 8709
+{23: 6} -  9:57:28: Vertices count: 1002
+{23: 6} -  9:57:28: Vertices count: 1098
+{23: 6} -  9:57:28: Vertices count: 189
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 54
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 75
+{23: 6} -  9:57:28: Vertices count: 855
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 5823
+{23: 6} -  9:57:28: Vertices count: 156
+{23: 6} -  9:57:28: Vertices count: 3459
+{23: 6} -  9:57:28: Vertices count: 63
+{23: 6} -  9:57:28: Vertices count: 198
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 726
+{23: 6} -  9:57:28: Vertices count: 1731
+{23: 6} -  9:57:28: Vertices count: 132
+{23: 6} -  9:57:28: Vertices count: 153
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 153
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 32097
+{23: 6} -  9:57:28: Vertices count: 933
+{23: 6} -  9:57:28: Vertices count: 636
+{23: 6} -  9:57:28: Vertices count: 12417
+{23: 6} -  9:57:28: Vertices count: 8748
+{23: 6} -  9:57:28: Vertices count: 4905
+{23: 6} -  9:57:28: Vertices count: 810
+{23: 6} -  9:57:28: Vertices count: 813
+{23: 6} -  9:57:28: Vertices count: 5766
+{23: 6} -  9:57:28: Vertices count: 84
+{23: 6} -  9:57:28: Vertices count: 63
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 6
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vertices count: 18
+{23: 6} -  9:57:28: Vertices count: 0
+{23: 6} -  9:57:28: Vértices duplicados: 169950
+{23: 6} -  9:57:28: Percentual de duplicados: 218.776550
+{23: 6} -  9:57:28: Total Nodes: 73
+{23: 6} -  9:57:28: Concluindo a replicated octree!
+{23: 6} -  9:57:28: Memória usada: 9913894.
+{23: 6} -  9:57:28: Tempo de processamento: 0.000000

@@ -146,11 +146,11 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 	for(int i = 0; i < verticesCount /3; i++)
 	{
 		aiFace* face = &mesh->mFaces[i];
-		if(hasNormals)
+		/*if(hasNormals)
 		{
 			aiVector3D* norm = &mesh->mNormals[i];
 			normals[i] = glm::vec3(norm->x, norm->y, norm->z);
-		}
+		}*/
 
 		for(int j = 0; j < face->mNumIndices; j++)
 		{
@@ -188,11 +188,11 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 			}
 #pragma endregion
 
-			if(hasNormals)
-			{
-				aiVector3D* norm = &mesh->mNormals[face->mIndices[j]];
-				normals[k] = glm::vec3(norm->x, norm->y, norm->z);
-			}
+			//if(hasNormals)
+			//{
+			//	aiVector3D* norm = &mesh->mNormals[face->mIndices[j]];
+			//	normals[k] = glm::vec3(norm->x, norm->y, norm->z);
+			//}
 
 			k++;
 		}
@@ -200,27 +200,36 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 
 	center = glm::vec3(min.x + (max.x - min.x)/2.0f, min.y + (max.y - min.y)/2.0f, min.z + (max.z - min.z)/2.0f);
 
-	hasNormals = false;
-	if(!hasNormals)
-	{
+	int walls = 0;
+	//hasNormals = false;
+	//if(!hasNormals)
+	//{
 		//Calculate
-		int j = 0;
-		for(int i = 0; i < verticesCount; i += 3)
+	int j = 0;
+	for(int i = 0; i < verticesCount; i += 3)
+	{
+		glm::vec3 a = glm::vec3(vertexes[i]);
+		a -= vertexes[i + 1];
+		glm::vec3 b = glm::vec3(vertexes[i + 2]);
+		b -= vertexes[i + 1];
+
+		glm::vec3 normal = glm::normalize(glm::cross(b,a));
+
+		if(normal.y == 0)
 		{
-			glm::vec3 a = glm::vec3(vertexes[i]);
-			a -= vertexes[i + 1];
-			glm::vec3 b = glm::vec3(vertexes[i + 2]);
-			b -= vertexes[i + 1];
-
-			normals[j]     = glm::normalize(glm::cross(b,a));
-			normals[j + 1] = glm::normalize(glm::cross(b,a));
-			normals[j + 2] = glm::normalize(glm::cross(b,a));
-
-			j += 3;
+			walls++;
 		}
 
-		hasNormals = true;
+		normals[j]     = normal;
+		normals[j + 1] = normal;
+		normals[j + 2] = normal;
+
+		j += 3;
 	}
+
+	hasNormals = true;
+	printf("Walls count: %d\n", walls);
+	//}
 }
 
 GLMesh3D::~GLMesh3D(void)
