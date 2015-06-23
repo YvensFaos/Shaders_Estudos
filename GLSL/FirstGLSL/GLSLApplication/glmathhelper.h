@@ -74,13 +74,19 @@ class GLAABB
 public:
 	glm::vec3 min;
 	glm::vec3 max;
+	GLPlane planes[6];
 
+private:
+	bool hasPlanes;
 public:
 	GLAABB(glm::vec3 min, glm::vec3 max);
 	~GLAABB(void);
 
 	bool intercepts(GLAABB* another);
 	bool intercepts(glm::vec3 min, glm::vec3 max);
+	bool interceptsAsPlanes(glm::vec3* corners, int size);
+
+	void generatePlanes(void);
 public:
 	static bool intercepts(glm::vec3 max1, glm::vec3 min1, glm::vec3 max2, glm::vec3 min2);
 	static void drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position);

@@ -82,6 +82,78 @@ void GLPlane::set(float a, float b, float c, float d)
 
 //GLAABB
 
+GLAABB::GLAABB(glm::vec3 min, glm::vec3 max)
+{
+	this->min = min;
+	this->max = max;
+	hasPlanes = false;
+}
+
+GLAABB::~GLAABB(void)
+{ }
+
+bool GLAABB::intercepts(GLAABB* another)
+{
+	glm::vec3 anotherMin = glm::vec3(another->min);
+	glm::vec3 anotherMax = glm::vec3(another->max);
+
+	return GLAABB::intercepts(this->max, this->min, anotherMax, anotherMin);
+}
+
+bool GLAABB::intercepts(glm::vec3 min, glm::vec3 max)
+{
+	return GLAABB::intercepts(this->max, this->min, max, min);
+}
+
+bool GLAABB::interceptsAsPlanes(glm::vec3* corners, int size)
+{
+	if(!hasPlanes)
+	{
+		generatePlanes();
+	}
+
+	float x = 0;
+	float y = 0;
+	float z = 0;
+
+	for(int j = 0; j < size; j++)
+	{
+		x = corners[j].x;
+		y = corners[j].y;
+		z = corners[j].z;
+
+		for (int i = 0; i < 6; ++i)
+		{
+			GLPlane* plane = &planes[i];
+			float side = plane->n.x * x + plane->n.y * y + plane->n.z * z + plane->d;
+			if (side <= 0)
+			{
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+void GLAABB::generatePlanes(void)
+{
+	glm::vec3 ntl, fbl, nbr, fbr;
+
+	ntl = glm::vec3(min.x, max.y, min.z);
+	fbl = glm::vec3(min.x, min.y, max.z);
+	nbr = glm::vec3(max.x, min.y, min.z);
+	fbr = glm::vec3(max.x, min.y, max.z);
+
+	int i = 0;
+	//TODO
+	planes[i++].fromPoints(min, ntl, nbr);
+	planes[i++].fromPoints(min, ntl, nbr);
+	planes[i++].fromPoints(min, ntl, nbr);
+	planes[i++].fromPoints(min, ntl, nbr);
+	planes[i++].fromPoints(min, ntl, nbr);
+	planes[i++].fromPoints(min, ntl, nbr);
+}
+
 bool GLAABB::intercepts(glm::vec3 max1, glm::vec3 min1, glm::vec3 max2, glm::vec3 min2)
 {
 	return max1.x >= min2.x 
