@@ -17,6 +17,9 @@ class GLCameraStep;
 #define YAXIS glm::vec3(0.0f,1.0f,0.0f)
 #define ZAXIS glm::vec3(0.0f,0.0f,1.0f)
 
+#define MAX(a,b) (a > b)? a : b
+#define MIN(a,b) (a < b)? a : b
+
 #define MAX_FLOAT 2.0e10
 #define MIN_FLOAT -2.0e10
 
@@ -92,11 +95,27 @@ public:
 	static void drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position);
 };
 
+class GLRay
+{
+public:
+	glm::vec3 dir;
+	glm::vec3 org;
+
+public:
+	GLRay(void);
+	GLRay(glm::vec3 dir, glm::vec3 org);
+	~GLRay(void);
+
+public:
+	bool intersect(GLAABB* aabb);
+};
+
 class GLFrustum
 {
 public:
 	glm::vec3 corners[8];
-	GLPlane planes[6];
+	GLPlane   planes[6];
+	GLRay     rays[4];
 
 public:
 	GLFrustum(void) {};
@@ -112,7 +131,11 @@ public:
 	//Testa uma esfera
 	bool containsSphere(glm::vec3* center, float radius);
 	//Testa se o frustum intercepta a AABB
+	bool intercepts(GLAABB* aabb);
 	bool intercepts(glm::vec3* min, glm::vec3* max);
 
 	void draw(void);
+
+private:
+	void generateRays(void);
 };

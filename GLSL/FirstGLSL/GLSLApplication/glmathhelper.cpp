@@ -80,6 +80,70 @@ void GLPlane::set(float a, float b, float c, float d)
 	this->d = d;
 }
 
+//GLRay
+
+GLRay::GLRay(void)
+{
+	dir = glm::vec3(0.0f, 0.0f, 1.0f);
+	org = glm::vec3(0.0f, 0.0f, 0.0f);
+}
+
+GLRay::GLRay(glm::vec3 dir, glm::vec3 org)
+{
+	this->dir = glm::vec3(dir);
+	this->dir = glm::normalize(this->dir);
+
+	this->org = glm::vec3(org);
+}
+
+GLRay::~GLRay(void)
+{ }
+
+bool GLRay::intersect(GLAABB* aabb)
+{
+	glm::vec3 dirfrac;
+	glm::vec3 lb = aabb->min;
+	glm::vec3 rt = aabb->max;
+
+	// r.dir is unit direction vector of ray
+	dirfrac.x = 1.0f / dir.x;
+	dirfrac.y = 1.0f / dir.y;
+	dirfrac.z = 1.0f / dir.z;
+	// lb is the corner of AABB with minimal coordinates - left bottom, rt is maximal corner
+	// r.org is origin of ray
+
+	float t1 = (lb.x - org.x)*dirfrac.x;
+	float t2 = (rt.x - org.x)*dirfrac.x;
+	float t3 = (lb.y - org.y)*dirfrac.y;
+	float t4 = (rt.y - org.y)*dirfrac.y;
+	float t5 = (lb.z - org.z)*dirfrac.z;
+	float t6 = (rt.z - org.z)*dirfrac.z;
+
+	float tmin = MAX(MAX(MIN(t1, t2), MIN(t3, t4)), MIN(t5, t6));
+	float tmax = MIN(MIN(MAX(t1, t2), MAX(t3, t4)), MAX(t5, t6));
+	float t = 0;
+
+	// if tmax < 0, ray (line) is intersecting AABB, but whole AABB is behing us
+	if (tmax < 0)
+	{
+		t = tmax;
+		return false;
+	}
+
+	// if tmin > tmax, ray doesn't intersect AABB
+	if (tmin > tmax)
+	{
+		t = tmax;
+		return false;
+	}
+
+	t = tmin;
+
+	//Talvez checar o tamanho do T com o tamanho do Frustum
+
+	return true;
+}
+
 //GLAABB
 
 GLAABB::GLAABB(glm::vec3 min, glm::vec3 max)
@@ -128,30 +192,30 @@ bool GLAABB::interceptsAsPlanes(glm::vec3* corners, int size)
 			float side = plane->n.x * x + plane->n.y * y + plane->n.z * z + plane->d;
 			if (side <= 0)
 			{
-				return false;
+				return true;
 			}
 		}
 	}
-	return true;
+	return false;
 }
 
 void GLAABB::generatePlanes(void)
 {
-	glm::vec3 ntl, fbl, nbr, fbr;
+	glm::vec3 ntl, ftl, fbl, nbr, fbr;
 
 	ntl = glm::vec3(min.x, max.y, min.z);
 	fbl = glm::vec3(min.x, min.y, max.z);
 	nbr = glm::vec3(max.x, min.y, min.z);
 	fbr = glm::vec3(max.x, min.y, max.z);
+	ftl = glm::vec3(min.x, max.y, max.z);
 
 	int i = 0;
-	//TODO
+	planes[i++].fromPoints(min, ntl, fbl);
+	planes[i++].fromPoints(fbr, max, nbr);
+	planes[i++].fromPoints(fbr, max, fbl);
 	planes[i++].fromPoints(min, ntl, nbr);
-	planes[i++].fromPoints(min, ntl, nbr);
-	planes[i++].fromPoints(min, ntl, nbr);
-	planes[i++].fromPoints(min, ntl, nbr);
-	planes[i++].fromPoints(min, ntl, nbr);
-	planes[i++].fromPoints(min, ntl, nbr);
+	planes[i++].fromPoints(min, fbl, nbr);
+	planes[i++].fromPoints(max, ftl, ntl);
 }
 
 bool GLAABB::intercepts(glm::vec3 max1, glm::vec3 min1, glm::vec3 max2, glm::vec3 min2)
@@ -400,6 +464,8 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	corners[FRUSTUM_NTR] = ntr;
 	corners[FRUSTUM_NBL] = nbl;
 	corners[FRUSTUM_NBR] = nbr;
+
+	generateRays();
 }
 
 GLFrustum::GLFrustum(float aspect, GLCamera* camera)
@@ -493,6 +559,8 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	corners[FRUSTUM_NTR] = ntr;
 	corners[FRUSTUM_NBL] = nbl;
 	corners[FRUSTUM_NBR] = nbr;
+
+	generateRays();
 }
 
 GLFrustum::~GLFrustum(void)
@@ -547,57 +615,32 @@ bool GLFrustum::containsSphere(glm::vec3* center, float radius)
 	return true;
 }
 
+bool GLFrustum::intercepts(GLAABB* aabb)
+{
+	return intercepts(&aabb->min, &aabb->max);
+}
+
 bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 {
+
 	bool found = containsAnyVertexOf(min, max);
 
 	if(!found)
 	{
-		glm::vec3 nbl = corners[FRUSTUM_NBL];
-		glm::vec3 ftr = corners[FRUSTUM_FTR];
+		GLAABB* aabb = new GLAABB(*min, *max);
 
-		float x = ftr.x - nbl.x;
-		float y = ftr.y - nbl.y;
-		float z = ftr.z - nbl.z;
-
-		glm::vec3* lmin = new glm::vec3(MAX_FLOAT);
-		glm::vec3* lmax = new glm::vec3(MIN_FLOAT);
-	
-		int j = 0;
-		while(j < 8)
+		//colocar o teste de raio aqui
+		for(int i = 0; i < 4; i++)
 		{
-			if(lmin->x >= corners[j].x)
+			if(rays[i].intersect(aabb))
 			{
-				lmin->x = corners[j].x;
+				found = true;
 			}
-			if(lmax->x <= corners[j].x)
-			{
-				lmax->x = corners[j].x;
-			}
-			if(lmin->y >= corners[j].y)
-			{
-				lmin->y = corners[j].y;
-			}
-			if(lmax->y <= corners[j].y)
-			{
-				lmax->y = corners[j].y;
-			}
-			if(lmin->z >= corners[j].z)
-			{
-				lmin->z = corners[j].z;
-			}
-			if(lmax->z <= corners[j].z)
-			{
-				lmax->z = corners[j].z;
-			}
-			j++;
 		}
 
-		found = GLAABB::intercepts(*lmax, *lmin, *max, *min);
-
-		delete lmin;
-		delete lmax;
+		delete aabb;
 	}
+
 	return found;
 }
 
@@ -755,4 +798,13 @@ void GLFrustum::draw(void)
 	delete lmin;
 	delete lmax;
 #endif
+}
+
+void GLFrustum::generateRays(void)
+{
+	int i = 0;
+	rays[i++] = GLRay(corners[FRUSTUM_FBL] - corners[FRUSTUM_NBL], corners[FRUSTUM_NBL]);
+	rays[i++] = GLRay(corners[FRUSTUM_FTL] - corners[FRUSTUM_NTL], corners[FRUSTUM_NTL]);
+	rays[i++] = GLRay(corners[FRUSTUM_FBR] - corners[FRUSTUM_NBR], corners[FRUSTUM_NBR]);
+	rays[i++] = GLRay(corners[FRUSTUM_FTR] - corners[FRUSTUM_NTR], corners[FRUSTUM_NTR]);
 }
