@@ -110,6 +110,11 @@ int  GLScenario::getIdentifierByName(char* name)
 	}
 	if(name[0] == 'c')
 	{
+		//Citycycles
+		if(name[1] == 'i')
+		{
+			return 11;
+		}
 		//Coaltown
 		return 17;
 	}
@@ -122,6 +127,7 @@ void GLScenario::getNameByIdentifier(int identifier, char* dest)
 	switch (identifier)
 	{
 		case 10: dest = "saw"; break;
+		case 11: dest = "citycycles"; break;
 		case 13: dest = "ravine"; break;
 		case 14: dest = "viaduct"; break;
 		case 15: dest = "gorge"; break;
@@ -139,6 +145,9 @@ GLCameraStep* GLScenario::defaultStartPosition(int identifier)
 	{
 		case 10: 
 			return new GLCameraStep(glm::vec3(287.0f,11.0f,17.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
+		case 11:
+			return new GLCameraStep(glm::vec3(0.47, -1.35f, -4.68f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f, 1.0f),45.0); 
 			break;
 		case 13:
 			return new GLCameraStep(glm::vec3(23.9f,-0.5f,-57.5f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
@@ -172,6 +181,9 @@ GLCameraStep* GLScenario::defaultBirdPosition(int identifier)
 		case 10: 
 			return new GLCameraStep(glm::vec3(287.0f,11.0f,17.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
 			break;
+		case 11:
+			return new GLCameraStep(glm::vec3(287.0f,11.0f,17.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			break;
 		case 13:
 			return new GLCameraStep(glm::vec3(23.9f,-0.5f,-57.5f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
 			break;
@@ -199,5 +211,9 @@ GLCameraStep* GLScenario::defaultBirdPosition(int identifier)
 float GLScenario::defaultCameraSpeed(int identifier)
 {
 	//Por enquanto, tá default 0.75 para qualquer cenário
+	if(identifier == 11)
+	{
+		return 0.25f;
+	}
 	return 0.75f;
 }

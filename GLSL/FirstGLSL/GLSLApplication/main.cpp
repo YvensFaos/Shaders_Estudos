@@ -56,8 +56,9 @@ int main()
 #endif
 
 	config.objectName = "coaltown.obj";
+	config.objectName = "citycycles.obj";
 	//Se eu setar o nome, não preciso do número, mas não tem problema
-	config.scenarioNumber = 16;
+	config.scenarioNumber = 11;
 
 	config.pathfileName = "coaltown-[walk]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
@@ -105,9 +106,9 @@ int main()
 	PLAYER_MODE mode;
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
-	mode = RECORD_PATH;
 	mode = WALKTHROUGH_MODE;
 	mode = BIRDS_EYE;
+	mode = RECORD_PATH;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);
