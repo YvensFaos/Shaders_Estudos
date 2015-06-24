@@ -63,6 +63,8 @@ void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 	camera = new GLCamera();
 	cameraHandler = &scenario->cameraHandler;
 
+	maxCameraSpeed = scenario->defaultCameraSpeed();
+
 	actualStep = GLScenario::defaultStartPosition(scenario->identifier);
 	camera->setValues(actualStep);
 	camera->calculateMatrix(actualStep, &config, 0);
@@ -189,7 +191,7 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 
 			if(action == GLFW_REPEAT)
 			{
-				if(camera->speed < 0.13f)
+				if(camera->speed < maxCameraSpeed)
 				{
 					camera->speed += 0.01f;
 				}

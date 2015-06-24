@@ -8,6 +8,7 @@ class GLRecordPathPlayer : public GLPlayer
 private:
 	int printCounter;
 	int pathCounter;
+	float maxCameraSpeed;
 	char* modeTitle;
 
 	bool recording;

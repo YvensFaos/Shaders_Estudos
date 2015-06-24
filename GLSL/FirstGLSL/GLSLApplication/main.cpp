@@ -60,7 +60,7 @@ int main()
 	//Se eu setar o nome, não preciso do número, mas não tem problema
 	config.scenarioNumber = 11;
 
-	config.pathfileName = "coaltown-[walk]";
+	config.pathfileName = "citycycles-[walk]";
 	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
 	config.logResults = false;

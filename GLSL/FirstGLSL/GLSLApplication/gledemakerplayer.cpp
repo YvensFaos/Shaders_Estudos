@@ -64,7 +64,7 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 	camera = new GLCamera();
 	camera->setValues(firstStep);
 	camera->calculateMatrix(firstStep, &config, 0);
-	camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
+	camera->speed = scenario->defaultCameraSpeed();
 
 	meshHandler = scenario->meshHandler;
 	ede = GLBasicEDE::instantiate(&config);
