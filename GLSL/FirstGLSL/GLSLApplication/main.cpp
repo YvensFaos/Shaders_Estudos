@@ -77,7 +77,7 @@ int main()
 	//Altura padrão de uma EDE
 	config.edeDepth = 3;
 	//EDE escolhida
-	config.type = ROCTREE;
+	config.type = SOCTREE;
 	//Colore os nós em tons diferente
 	config.coloredNodes = false;
 
@@ -106,9 +106,9 @@ int main()
 	PLAYER_MODE mode;
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
-	mode = WALKTHROUGH_MODE;
-	mode = BIRDS_EYE;
 	mode = RECORD_PATH;
+	mode = BIRDS_EYE;
+	mode = WALKTHROUGH_MODE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);

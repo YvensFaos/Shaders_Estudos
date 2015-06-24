@@ -465,7 +465,8 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	corners[FRUSTUM_NBL] = nbl;
 	corners[FRUSTUM_NBR] = nbr;
 
-	generateRays();
+	//generateRays();
+	generateAABB();
 }
 
 GLFrustum::GLFrustum(float aspect, GLCamera* camera)
@@ -560,7 +561,8 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	corners[FRUSTUM_NBL] = nbl;
 	corners[FRUSTUM_NBR] = nbr;
 
-	generateRays();
+	//generateRays();
+	generateAABB();
 }
 
 GLFrustum::~GLFrustum(void)
@@ -629,14 +631,16 @@ bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 	{
 		GLAABB* aabb = new GLAABB(*min, *max);
 
-		//colocar o teste de raio aqui
-		for(int i = 0; i < 4; i++)
-		{
-			if(rays[i].intersect(aabb))
-			{
-				found = true;
-			}
-		}
+		////colocar o teste de raio aqui
+		//for(int i = 0; i < 4; i++)
+		//{
+		//	if(rays[i].intersect(aabb))
+		//	{
+		//		found = true;
+		//	}
+		//}
+
+		found = aabb->intercepts(this->min, this->max);
 
 		delete aabb;
 	}
@@ -807,4 +811,42 @@ void GLFrustum::generateRays(void)
 	rays[i++] = GLRay(corners[FRUSTUM_FTL] - corners[FRUSTUM_NTL], corners[FRUSTUM_NTL]);
 	rays[i++] = GLRay(corners[FRUSTUM_FBR] - corners[FRUSTUM_NBR], corners[FRUSTUM_NBR]);
 	rays[i++] = GLRay(corners[FRUSTUM_FTR] - corners[FRUSTUM_NTR], corners[FRUSTUM_NTR]);
+}
+
+void GLFrustum::generateAABB(void)
+{
+	min = glm::vec3(MAX_FLOAT, MAX_FLOAT, MAX_FLOAT);
+	max = glm::vec3(MIN_FLOAT, MIN_FLOAT, MIN_FLOAT);
+
+	glm::vec3* corner;
+	for(int i = 0; i < 8; i++)
+	{
+		corner = &corners[i];
+
+		if(min.x > corner->x)
+		{
+			min.x = corner->x;
+		}
+		if(min.y > corner->y)
+		{
+			min.y = corner->y;
+		}
+		if(min.z > corner->z)
+		{
+			min.z = corner->z;
+		}
+
+		if(max.x < corner->x)
+		{
+			max.x = corner->x;
+		}
+		if(max.y < corner->y)
+		{
+			max.y = corner->y;
+		}
+		if(max.z < corner->z)
+		{
+			max.z = corner->z;
+		}
+	}
 }

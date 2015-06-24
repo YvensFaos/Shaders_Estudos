@@ -117,6 +117,8 @@ public:
 	GLPlane   planes[6];
 	GLRay     rays[4];
 
+	glm::vec3 min;
+	glm::vec3 max;
 public:
 	GLFrustum(void) {};
 	GLFrustum::GLFrustum(float aspect, GLCamera* camera);
@@ -138,4 +140,5 @@ public:
 
 private:
 	void generateRays(void);
+	void generateAABB(void);
 };

@@ -14,8 +14,8 @@ GLSOctree::GLSOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 {
 	this->logger = logger;
 
-	glm::vec3 max = glm::vec3(0.0f);
-	glm::vec3 min = glm::vec3(0.0f);
+	glm::vec3 max = glm::vec3(MIN_FLOAT);
+	glm::vec3 min = glm::vec3(MAX_FLOAT);
 
 	logger->logLineTimestamp("Calculando AABB da raíz");
 #pragma region calculando aabb
@@ -164,9 +164,17 @@ void GLSOctree::createNodeMeshes(GLMeshHandler* handler)
 			{
 				GLMesh3D* mesh = &handler->meshes.at(i);
 
-				for(int j = 0; j < top->indexes->size(); j++)
+				int size = top->indexes[i].size();
+				for(int j = 0; j < size; j++)
 				{
-					index = top->indexes->at(j);
+					index = top->indexes[i].at(j);
+
+					//TODO precisa verificar isso aqui
+					if(mesh->verticesCount < index)
+					{
+						printf("ERRO!\n");
+					}
+
 					glm::vec3* vertex = &mesh->vertexes[index];
 					glm::vec3* normal = &mesh->normals[index];
 
