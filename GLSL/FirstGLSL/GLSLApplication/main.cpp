@@ -6,6 +6,18 @@
 #include "glbatch.h"
 #include "glbuffer.h"
 
+#pragma region define cenarios
+
+#define CITYCYCLES config.objectName = "citycycles.obj"; \
+				 config.scenarioNumber = 11; \
+				 config.pathfileName = "citycycles-[walk]";
+
+#define COALTOWN config.objectName = "coaltown.obj"; \
+				 config.scenarioNumber = 17; \
+				 config.pathfileName = "coaltown-[walk]";
+
+#pragma endregion
+
 //Include the standard C++ headers  
 #include <stdio.h>  
 #include <stdlib.h>  
@@ -55,13 +67,9 @@ int main()
 	modelPathLocation = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 #endif
 
-	config.objectName = "coaltown.obj";
-	config.objectName = "citycycles.obj";
-	//Se eu setar o nome, não preciso do número, mas não tem problema
-	config.scenarioNumber = 11;
+	//Setando a configuração pelo macro
+	COALTOWN
 
-	config.pathfileName = "citycycles-[walk]";
-	//config.pathfileName = "saw-[1][test]-[1][test]";
 	config.repeatable = false;
 	config.logResults = false;
 
@@ -77,11 +85,11 @@ int main()
 	//Altura padrão de uma EDE
 	config.edeDepth = 3;
 	//EDE escolhida
-	config.type = SOCTREE;
+	config.type = ROCTREE;
 	//Colore os nós em tons diferente
 	config.coloredNodes = false;
 
-	config.enableDynamics = false;
+	config.enableDynamics = true;
 	config.edeTestDynamics = false;
 	config.frustumTestDynamics = true;
 
@@ -89,18 +97,22 @@ int main()
 
 	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
 
-	int qttDynamics = 50;
+	//Quando passa de 150 que a coisa começa a degringolar total
+	int qttDynamics = 100;
 
 	std::vector<GLDynamicObject>* pointerDynamics;
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
+	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, glm::vec3(0,0,-2));
+	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
+	/*
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[2][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[3][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
 	pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[4][dynl].pathx", qttDynamics, glm::vec3(0,0,0));
 	totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end());
-
+	*/
 	config.dynamics = totalDynamics;
 
 	PLAYER_MODE mode;

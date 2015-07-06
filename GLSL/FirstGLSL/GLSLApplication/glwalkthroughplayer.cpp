@@ -188,11 +188,13 @@ void GLWalkthroughPlayer::step(void)
 		delete bounds;
 	}
 
+	int drawCalls = (int)info[3] + visibleBunnies;
+
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s - fps[%.2f][v = %d][%d]", modeTitle, (float) (1 / deltaTime), visibleBunnies,cameraHandler->getIndex());
+	sprintf(title, "%s - fps[%.2f][v = %d][%d][Calls = %d]", modeTitle, (float) (1 / deltaTime), visibleBunnies,cameraHandler->getIndex(), drawCalls);
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 
 	if(config.logResults && !logged)
