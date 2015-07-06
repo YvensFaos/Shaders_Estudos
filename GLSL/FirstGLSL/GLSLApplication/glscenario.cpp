@@ -203,7 +203,7 @@ GLCameraStep* GLScenario::defaultBirdPosition(int identifier)
 			return new GLCameraStep(glm::vec3(-42.0f,9.0f,-82.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
 			break;
 		default: 
-			return new GLCameraStep(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f),glm::vec3(0.0f,0.0f,1.0f),45.0); 
+			return new GLCameraStep(glm::vec3(155.62f,363.80f,128.16f),glm::vec3(-0.76f,0.56f,-0.33f),glm::vec3(-0.51f,-0.83f,-0.22f),45.0); 
 			break;
 	}
 }

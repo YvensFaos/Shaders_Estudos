@@ -66,7 +66,7 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 	camera = new GLCamera(&config);
 	camera->fov = 45.0f;
 	camera->near = 0.1f;
-	camera->far = 500;
+	camera->far = 1000;
 	camera->setValues(actualStep);
 	camera->calculateMatrix(actualStep, &config, 0);
 	camera->speed = 0.13f;
