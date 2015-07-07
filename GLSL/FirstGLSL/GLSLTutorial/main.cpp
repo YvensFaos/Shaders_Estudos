@@ -76,8 +76,9 @@ int main( void )
         return -1;  
     }  
 
-	char* model = "el_favorit_escena_simple.obj";
-	char* path = "E:/Repositorios/Shaders_Estudos/Models/";
+	char* model = "ravine.obj";
+	//char* path = "E:/Repositorios/Shaders_Estudos/Models/";
+	char* path = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
 
 	char sFilePath[512];
 	sprintf(sFilePath, "%s%s", path, model);
