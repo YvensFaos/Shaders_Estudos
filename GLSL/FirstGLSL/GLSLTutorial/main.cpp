@@ -78,7 +78,8 @@ int main( void )
 
 	char* model = "ravine.obj";
 	//char* path = "E:/Repositorios/Shaders_Estudos/Models/";
-	char* path = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
+	char* path = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	//char* path = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
 
 	char sFilePath[512];
 	sprintf(sFilePath, "%s%s", path, model);

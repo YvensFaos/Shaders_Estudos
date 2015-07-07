@@ -65,9 +65,9 @@ int main()
 	//Configurações de PATH que são exclusivos do computador usado
 #ifdef mia
 	//TODO ajustar
-	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
-	config.pathfilePath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
-	config.logPath = "E:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
+	config.objectPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
+	config.pathfilePath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
+	config.logPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Logs/Log Desktop/";
 #endif
 #ifdef desktop
 	config.objectPath = "F:/Repositorios/Shaders_Estudos/Models/";

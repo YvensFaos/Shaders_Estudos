@@ -4,8 +4,11 @@
 
 int main()
 {
-	char* model = "el_favorit_escena_simple.obj";
-	char* path = "E:/Repositorios/Shaders_Estudos/Models/";
+	char* model = "ravine.obj";
+
+	//char* path = "E:/Repositorios/Shaders_Estudos/Models/";
+	char* path = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	//char* path = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
 
 	char sFilePath[512];
 	sprintf(sFilePath, "%s%s", path, model);
@@ -24,6 +27,8 @@ int main()
 	}
 
 	printf("Loaded! %s\n", sFilePath);
+	int exit = 0;
+	scanf("%d", &exit);
 
-	return 0;
+	return exit;
 }
