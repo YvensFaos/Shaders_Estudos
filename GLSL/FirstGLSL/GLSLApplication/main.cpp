@@ -68,6 +68,8 @@ int main()
 	config.objectPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
 	config.pathfilePath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
 	config.logPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Logs/Log Desktop/";
+	modelPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
+	modelPathLocation = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
 #endif
 #ifdef desktop
 	config.objectPath = "F:/Repositorios/Shaders_Estudos/Models/";
