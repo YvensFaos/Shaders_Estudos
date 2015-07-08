@@ -100,7 +100,7 @@ int main()
 	//Adiciona um texto adicional ao arquivo de path
 	config.pathExtraMsg = "walk";
 
-	int numberTests = 2;
+	int numberTests = 1;
 	for(int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
