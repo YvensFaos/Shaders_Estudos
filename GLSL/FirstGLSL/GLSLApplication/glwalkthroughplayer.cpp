@@ -212,22 +212,24 @@ void GLWalkthroughPlayer::step(void)
 
 	if(config.logResults && !logged)
 	{
+		std::string sdeltaTime = std::to_string(deltaTime);
+		std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
+
+		std::string sfps = std::to_string((float) (1 / deltaTime));
+		std::replace(sfps.begin(), sfps.end(), '.', ',');
 		if(config.type != NONE)
 		{
 			delete logLine;
 			logLine = new char[64];
-			std::string sdeltaTime = std::to_string(deltaTime);
-			std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
-			sprintf(logLine, "%s;%f;%d;%d;%d;%d", sdeltaTime.c_str(), (float) (1 / deltaTime), (int)info[0], (int)info[1], (int)info[2], (int)info[3]);
+
+			sprintf(logLine, "%s;%f;%d;%d;%d;%d", sdeltaTime.c_str(), sfps, (int)info[0], (int)info[1], (int)info[2], (int)info[3]);
 			logger->logLine(logLine);
 		}
 		else
 		{
 			delete logLine;
 			logLine = new char[64];
-			std::string sdeltaTime = std::to_string(deltaTime);
-			std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
-			sprintf(logLine, "%s;%f;%d", sdeltaTime.c_str(), (float) (1 / deltaTime), verticesCount);
+			sprintf(logLine, "%s;%f;%d", sdeltaTime.c_str(), sfps, verticesCount);
 			logger->logLine(logLine);
 		}
 	}
