@@ -38,9 +38,9 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-#define mia
+//#define mia
 //#define desktop
-//#define notebook
+#define notebook
 
 #define individual
 //#define batch
@@ -88,7 +88,8 @@ int main()
 	
 	//Setando a configuração pelo macro
 	//COALTOWN;
-	GOLDRUSH;
+	//GOLDRUSH;
+	CITYCYCLES;
 
 	config.repeatable = false;
 	config.logResults = true;
@@ -98,36 +99,41 @@ int main()
 	config.pathIdentifier = 1;
 	//Adiciona um texto adicional ao arquivo de path
 	config.pathExtraMsg = "walk";
-	//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-	config.logIdentifier = 1;
-	//Adiciona um texto adicional ao arquivo de log
-	config.logExtraMsg = "test-mia-";
-	//Altura padrão de uma EDE
-	config.edeDepth = 3;
-	//EDE escolhida
-	config.type = ROCTREE;
-	//Colore os nós em tons diferente
-	config.coloredNodes = false;
 
-	config.enableDynamics = false;
-	config.edeTestDynamics = false;
-	config.frustumTestDynamics = true;
+	int numberTests = 2;
+	for(int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Adiciona um texto adicional ao arquivo de log
+		config.logExtraMsg = "test-mia-";
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = OCTREE;
+		//Colore os nós em tons diferente
+		config.coloredNodes = false;
 
-	config.title = "T";
+		config.enableDynamics = false;
+		config.edeTestDynamics = false;
+		config.frustumTestDynamics = true;
 
-	PLAYER_MODE mode;
-	mode = EDE_MAKER;
-	mode = FREE_MODE;
-	mode = RECORD_PATH;
-	mode = BIRDS_EYE;
-	mode = WALKTHROUGH_MODE;
+		config.title = "T";
 
-	//Nesse método, o player é inicializado e a configuração é linkada ao player
-	player = config.getGLPlayer(mode);
+		PLAYER_MODE mode;
+		mode = EDE_MAKER;
+		mode = FREE_MODE;
+		mode = RECORD_PATH;
+		mode = BIRDS_EYE;
+		mode = WALKTHROUGH_MODE;
 
-	OpenGLWrapper::player = player;
-	OpenGLWrapper::initialize(true, 4);
-	OpenGLWrapper::glLoop();
+		//Nesse método, o player é inicializado e a configuração é linkada ao player
+		player = config.getGLPlayer(mode);
+
+		OpenGLWrapper::player = player;
+		OpenGLWrapper::initialize(true, 4);
+		OpenGLWrapper::glLoop();
+	}
 #endif
 
 #ifdef batch

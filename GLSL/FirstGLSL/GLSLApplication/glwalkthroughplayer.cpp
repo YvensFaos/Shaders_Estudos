@@ -14,6 +14,7 @@
 
 #include "openGLWrapper.h"
 #include "edlogger.h"
+#include "glbuffer.h"
 
 #include <stdio.h>
 #include <string>
@@ -73,11 +74,23 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 		char edeLogName[512];
 		sprintf(edeLogName, "%s%s-%s-making[%d]%s", config.logPath, scenario->name, edeName.c_str(), config.edeDepth, LOG_EXTENSION);
 		EDLogger edeLogger(edeLogName);
+		ede->setLogger(&edeLogger);
 
 		double firstTime = glfwGetTime();
-		printf("Carregar a EDE\n");
-		ede->setLogger(&edeLogger);
-		ede->calculateEDE(meshHandler, &config);
+
+		if(GLBufferHandler::checkForEDE(edeName))
+		{
+			printf("Carregar a EDE\n");
+			ede = GLBufferHandler::edeBuffer[edeName];
+			ede->setLogger(&edeLogger);
+		}
+		else
+		{
+			printf("Carregar a EDE do Buffer\n");
+			ede->calculateEDE(meshHandler, &config);
+			GLBufferHandler::addToEDEBuffer(edeName, ede);
+		}
+
 		double lastTime = glfwGetTime();
 		lastTime = float(lastTime - firstTime);
 
