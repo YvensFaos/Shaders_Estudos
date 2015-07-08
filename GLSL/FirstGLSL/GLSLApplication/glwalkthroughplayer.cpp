@@ -218,7 +218,7 @@ void GLWalkthroughPlayer::step(void)
 			logLine = new char[64];
 			std::string sdeltaTime = std::to_string(deltaTime);
 			std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
-			sprintf(logLine, "%s;%d;%d;%d;%d", sdeltaTime.c_str(), (int)info[0], (int)info[1], (int)info[2], (int)info[3]);
+			sprintf(logLine, "%s;%f;%d;%d;%d;%d", sdeltaTime.c_str(), (float) (1 / deltaTime), (int)info[0], (int)info[1], (int)info[2], (int)info[3]);
 			logger->logLine(logLine);
 		}
 		else
@@ -227,7 +227,7 @@ void GLWalkthroughPlayer::step(void)
 			logLine = new char[64];
 			std::string sdeltaTime = std::to_string(deltaTime);
 			std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
-			sprintf(logLine, "%s;%d", sdeltaTime.c_str(), verticesCount);
+			sprintf(logLine, "%s;%f;%d", sdeltaTime.c_str(), (float) (1 / deltaTime), verticesCount);
 			logger->logLine(logLine);
 		}
 	}
