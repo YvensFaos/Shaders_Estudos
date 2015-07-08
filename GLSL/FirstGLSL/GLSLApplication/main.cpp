@@ -38,9 +38,9 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-//#define mia
+#define mia
 //#define desktop
-#define notebook
+//#define notebook
 
 #define individual
 //#define batch
@@ -64,7 +64,6 @@ int main()
 
 	//Configurações de PATH que são exclusivos do computador usado
 #ifdef mia
-	//TODO ajustar
 	config.objectPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
 	config.pathfilePath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
 	config.logPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Logs/Log Desktop/";
@@ -91,8 +90,8 @@ int main()
 	//COALTOWN;
 	GOLDRUSH;
 
-	config.repeatable = true;
-	config.logResults = false;
+	config.repeatable = false;
+	config.logResults = true;
 
 	//Seta um valor inicial para o identifier; Caso seja -1, o código
 	//Inicializa com 0 e começa a contagem a partir daí
@@ -101,8 +100,8 @@ int main()
 	config.pathExtraMsg = "walk";
 	//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 	config.logIdentifier = 1;
-	//Adiciona um texto adicional ao arquivo de logw
-	config.logExtraMsg = "test-dyn";
+	//Adiciona um texto adicional ao arquivo de log
+	config.logExtraMsg = "test-mia-";
 	//Altura padrão de uma EDE
 	config.edeDepth = 3;
 	//EDE escolhida
@@ -120,8 +119,8 @@ int main()
 	mode = EDE_MAKER;
 	mode = FREE_MODE;
 	mode = RECORD_PATH;
-	mode = WALKTHROUGH_MODE;
 	mode = BIRDS_EYE;
+	mode = WALKTHROUGH_MODE;
 
 	//Nesse método, o player é inicializado e a configuração é linkada ao player
 	player = config.getGLPlayer(mode);
