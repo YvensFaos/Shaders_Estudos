@@ -222,14 +222,14 @@ void GLWalkthroughPlayer::step(void)
 			delete logLine;
 			logLine = new char[64];
 
-			sprintf(logLine, "%s;%s;%d;%d;%d;%d", sdeltaTime.c_str(), sfps, (int)info[0], (int)info[1], (int)info[2], (int)info[3]);
+			sprintf(logLine, "%s;%s;%d;%d;%d;%d", sdeltaTime.c_str(), sfps.c_str(), (int)info[0], (int)info[1], (int)info[2], (int)info[3]);
 			logger->logLine(logLine);
 		}
 		else
 		{
 			delete logLine;
 			logLine = new char[64];
-			sprintf(logLine, "%s;%s;%d", sdeltaTime.c_str(), sfps, verticesCount);
+			sprintf(logLine, "%s;%s;%d", sdeltaTime.c_str(), sfps.c_str(), verticesCount);
 			logger->logLine(logLine);
 		}
 	}
