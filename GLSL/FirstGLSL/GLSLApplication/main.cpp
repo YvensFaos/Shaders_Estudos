@@ -88,8 +88,8 @@ int main()
 	
 	//Setando a configuração pelo macro
 	//COALTOWN;
-	GOLDRUSH;
-	//CITYCYCLES;
+	//GOLDRUSH;
+	CITYCYCLES;
 
 	config.repeatable = false;
 	config.logResults = true;
@@ -100,7 +100,7 @@ int main()
 	//Adiciona um texto adicional ao arquivo de path
 	config.pathExtraMsg = "walk";
 
-	int numberTests = 5;
+	int numberTests = 0;
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -135,7 +135,7 @@ int main()
 		OpenGLWrapper::glLoop();
 	}
 
-	numberTests = 0;
+	numberTests = 5;
 	for(int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -170,7 +170,7 @@ int main()
 		OpenGLWrapper::glLoop();
 	}
 
-	numberTests = 0;
+	numberTests = 5;
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
