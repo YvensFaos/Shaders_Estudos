@@ -100,13 +100,13 @@ int main()
 	//Adiciona um texto adicional ao arquivo de path
 	config.pathExtraMsg = "walk";
 
-	int numberTests = 2;
+	int numberTests = 5;
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 		config.logIdentifier = i + 1;
 		//Adiciona um texto adicional ao arquivo de log
-		config.logExtraMsg = "test-mia-";
+		config.logExtraMsg = "test-mia-x";
 		//Altura padrão de uma EDE
 		config.edeDepth = 3;
 		//EDE escolhida
@@ -135,6 +135,7 @@ int main()
 		OpenGLWrapper::glLoop();
 	}
 
+	numberTests = 0;
 	for(int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -169,6 +170,7 @@ int main()
 		OpenGLWrapper::glLoop();
 	}
 
+	numberTests = 0;
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
