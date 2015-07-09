@@ -211,9 +211,10 @@ GLCameraStep* GLScenario::defaultBirdPosition(int identifier)
 float GLScenario::defaultCameraSpeed()
 {
 	//Por enquanto, tá default 0.75 para qualquer cenário
-	if(identifier == 11)
+	switch (identifier)
 	{
-		return 0.02f;
+		case 10: return 0.75f;
+		case 11: return 0.02f;
+		default: return 0.13f;
 	}
-	return 0.13f;
 }

@@ -8,6 +8,10 @@
 
 #pragma region define cenarios
 
+#define SAW config.objectName = "saw.obj"; \
+			config.scenarioNumber = 10; \
+			config.pathfileName = "saw-[walk]-[1]";
+
 #define CITYCYCLES config.objectName = "citycycles.obj"; \
 				 config.scenarioNumber = 11; \
 				 config.pathfileName = "citycycles-[walk]";
@@ -33,6 +37,18 @@
 				 config.scenarioNumber = 18; \
 				 config.pathfileName = "goldrush-[walk]-[1]";
 
+//Macro de teste
+#define TEST_BODY(modeM,t) config.coloredNodes = false; \
+	config.enableDynamics = false; \
+	config.edeTestDynamics = false; \
+	config.frustumTestDynamics = true; \
+	config.title = t; \
+	PLAYER_MODE mode = modeM; \
+	player = config.getGLPlayer(mode); \
+	OpenGLWrapper::player = player; \
+	OpenGLWrapper::initialize(true, 4); \
+	OpenGLWrapper::glLoop();
+
 #pragma endregion
 
 #include <stdio.h>  
@@ -44,6 +60,7 @@
 
 #define individual
 //#define batch
+//#define recordPath
 
 GLPlayer* player;
 
@@ -56,7 +73,7 @@ int main()
 	config.aspect = (float) config.width/config.height;
 	config.title  = "Teste";
 	config.fov =  45.0f;
-	config.far = 150.0f;
+	config.far = 500.0f;
 	config.near =  0.1f;
 
 	std::string modelPath;
@@ -89,6 +106,7 @@ int main()
 	//Setando a configuração pelo macro
 	//COALTOWN;
 	//GOLDRUSH;
+	//SAW;
 	CITYCYCLES;
 
 	config.repeatable = false;
@@ -100,109 +118,193 @@ int main()
 	//Adiciona um texto adicional ao arquivo de path
 	config.pathExtraMsg = "walk";
 
-	int numberTests = 1;
+	int numberTests = 2;
+	config.logExtraMsg = "test-mia-x";
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 		config.logIdentifier = i + 1;
 		//Adiciona um texto adicional ao arquivo de log
-		config.logExtraMsg = "test-mia-x";
 		//Altura padrão de uma EDE
 		config.edeDepth = 3;
 		//EDE escolhida
 		config.type = ROCTREE;
-		//Colore os nós em tons diferente
-		config.coloredNodes = false;
-
-		config.enableDynamics = false;
-		config.edeTestDynamics = false;
-		config.frustumTestDynamics = true;
-
-		config.title = "T";
-
-		PLAYER_MODE mode;
-		mode = EDE_MAKER;
-		mode = FREE_MODE;
-		mode = RECORD_PATH;
-		mode = BIRDS_EYE;
-		mode = WALKTHROUGH_MODE;
-
-		//Nesse método, o player é inicializado e a configuração é linkada ao player
-		player = config.getGLPlayer(mode);
-
-		OpenGLWrapper::player = player;
-		OpenGLWrapper::initialize(true, 4);
-		OpenGLWrapper::glLoop();
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
 	}
-
-	numberTests = 0;
 	for(int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 		config.logIdentifier = i + 1;
-		//Adiciona um texto adicional ao arquivo de log
-		config.logExtraMsg = "test-mia-";
 		//Altura padrão de uma EDE
 		config.edeDepth = 3;
 		//EDE escolhida
 		config.type = SOCTREE;
-		//Colore os nós em tons diferente
-		config.coloredNodes = false;
 
-		config.enableDynamics = false;
-		config.edeTestDynamics = false;
-		config.frustumTestDynamics = true;
-
-		config.title = "T";
-
-		PLAYER_MODE mode;
-		mode = EDE_MAKER;
-		mode = FREE_MODE;
-		mode = RECORD_PATH;
-		mode = BIRDS_EYE;
-		mode = WALKTHROUGH_MODE;
-
-		//Nesse método, o player é inicializado e a configuração é linkada ao player
-		player = config.getGLPlayer(mode);
-
-		OpenGLWrapper::player = player;
-		OpenGLWrapper::initialize(true, 4);
-		OpenGLWrapper::glLoop();
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
 	}
-
-	numberTests = 0;
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = OCTREE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = NONE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	GLBufferHandler::clearBuffers();
+	SAW;
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 		config.logIdentifier = i + 1;
 		//Adiciona um texto adicional ao arquivo de log
-		config.logExtraMsg = "test-mia-";
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = ROCTREE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for(int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = SOCTREE;
+
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
 		//Altura padrão de uma EDE
 		config.edeDepth = 3;
 		//EDE escolhida
 		config.type = OCTREE;
-		//Colore os nós em tons diferente
-		config.coloredNodes = false;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = NONE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	GLBufferHandler::clearBuffers();
+	COALTOWN;
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Adiciona um texto adicional ao arquivo de log
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = ROCTREE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for(int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = SOCTREE;
 
-		config.enableDynamics = false;
-		config.edeTestDynamics = false;
-		config.frustumTestDynamics = true;
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = OCTREE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = NONE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	GLBufferHandler::clearBuffers();
+	GOLDRUSH;
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Adiciona um texto adicional ao arquivo de log
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = ROCTREE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for(int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = SOCTREE;
 
-		config.title = "T";
-
-		PLAYER_MODE mode;
-		mode = EDE_MAKER;
-		mode = FREE_MODE;
-		mode = RECORD_PATH;
-		mode = BIRDS_EYE;
-		mode = WALKTHROUGH_MODE;
-
-		//Nesse método, o player é inicializado e a configuração é linkada ao player
-		player = config.getGLPlayer(mode);
-
-		OpenGLWrapper::player = player;
-		OpenGLWrapper::initialize(true, 4);
-		OpenGLWrapper::glLoop();
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = OCTREE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = NONE;
+		
+		TEST_BODY(WALKTHROUGH_MODE, "teste");
 	}
 #endif
 
@@ -246,5 +348,101 @@ int main()
 	}
 #endif
 
+#ifdef recordPath
+	GLConfig config;
+	config.width  = 800;
+	config.height = 600;
+	config.aspect = (float) config.width/config.height;
+	config.title  = "Teste";
+	config.fov =  45.0f;
+	config.far = 500.0f;
+	config.near =  0.1f;
+
+	std::string modelPath;
+	std::string modelPathLocation;
+
+	//Configurações de PATH que são exclusivos do computador usado
+#ifdef mia
+	config.objectPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
+	config.pathfilePath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
+	config.logPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Logs/Log Mia/";
+	modelPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
+	modelPathLocation = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
+#endif
+#ifdef desktop
+	config.objectPath = "F:/Repositorios/Shaders_Estudos/Models/";
+	config.pathfilePath = "F:/Repositorios/Shaders_Estudos/Paths/";
+	config.logPath = "F:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
+#endif
+#ifdef notebook
+	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	config.pathfilePath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
+	config.logPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
+	modelPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	modelPathLocation = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
+#endif
+
+	//Quando passa de 150 que a coisa começa a degringolar total
+	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
+	
+	//Setando a configuração pelo macro
+	//COALTOWN;
+	//GOLDRUSH;
+	SAW
+	//CITYCYCLES;
+
+	config.repeatable = false;
+	config.logResults = true;
+
+	config.pathIdentifier = 1;
+	config.pathExtraMsg = "walk";
+	config.logExtraMsg = "test-mia-x";
+	config.logIdentifier = 0;
+	config.edeDepth = 0;
+	config.type = NONE;
+		
+	TEST_BODY(WALKTHROUGH_MODE, "teste");
+#endif
+
 	GLBufferHandler::clearBuffers();
 }  
+
+
+/////////////////////////////////////////////////////////////////////////////
+///BACK UP DE CÓDIGO
+/*
+int numberTests = 1;
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Adiciona um texto adicional ao arquivo de log
+		config.logExtraMsg = "test-mia-x";
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = ROCTREE;
+		//Colore os nós em tons diferente
+		config.coloredNodes = false;
+
+		config.enableDynamics = false;
+		config.edeTestDynamics = false;
+		config.frustumTestDynamics = true;
+
+		config.title = "T";
+
+		PLAYER_MODE mode;
+		mode = EDE_MAKER;
+		mode = FREE_MODE;
+		mode = RECORD_PATH;
+		mode = BIRDS_EYE;
+		mode = WALKTHROUGH_MODE;
+
+		//Nesse método, o player é inicializado e a configuração é linkada ao player
+		player = config.getGLPlayer(mode);
+
+		OpenGLWrapper::player = player;
+		OpenGLWrapper::initialize(true, 4);
+		OpenGLWrapper::glLoop();
+	}
+*/
