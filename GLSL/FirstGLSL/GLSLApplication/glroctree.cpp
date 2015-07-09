@@ -165,7 +165,7 @@ void GLROctree::createNodeMeshes(GLMeshHandler* handler)
 
 			int size = top->indexes[i].size();
 
-			for(int j = 0; j < top->indexes->size(); j++)
+			for(int j = 0; j < size; j++)
 			{
 				index = top->indexes[i].at(j);
 
