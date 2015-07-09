@@ -215,6 +215,17 @@ float GLScenario::defaultCameraSpeed()
 	{
 		case 10: return 0.75f;
 		case 11: return 0.02f;
+		case 13: return 0.50f;
 		default: return 0.13f;
+	}
+}
+
+float GLScenario::defaultMouseSpeed()
+{
+	//Por enquanto, tá default 0.75 para qualquer cenário
+	switch (identifier)
+	{
+		case 13: return 0.01f;
+		default: return 0.0025f;
 	}
 }

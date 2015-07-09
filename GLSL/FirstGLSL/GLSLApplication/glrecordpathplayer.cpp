@@ -70,7 +70,7 @@ void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 	camera->calculateMatrix(actualStep, &config, 0);
 	//camera->speed = GLScenario::defaultCameraSpeed(scenario->identifier);
 	camera->speed = 0.0f;
-	camera->mouseSpeed = 0.0025f;
+	camera->mouseSpeed = scenario->defaultMouseSpeed();
 	camera->fov = config.fov;
 	camera->near = config.near;
 	camera->far = config.far;

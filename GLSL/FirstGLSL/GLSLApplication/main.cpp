@@ -33,6 +33,10 @@
 				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
 				 config.dynamics = totalDynamics;
 
+#define RAVINE config.objectName = "ravine.obj"; \
+				 config.scenarioNumber = 18; \
+				 config.pathfileName = "ravine-[walk]-[1][walk]";
+
 #define GOLDRUSH config.objectName = "goldrush.obj"; \
 				 config.scenarioNumber = 18; \
 				 config.pathfileName = "goldrush-[walk]-[1]";
@@ -54,9 +58,9 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-//#define mia
+#define mia
 //#define desktop
-#define notebook
+//#define notebook
 
 #define individual
 //#define batch
@@ -107,7 +111,8 @@ int main()
 	//COALTOWN;
 	//GOLDRUSH;
 	//SAW;
-	CITYCYCLES;
+	RAVINE;
+	//CITYCYCLES;
 
 	config.repeatable = false;
 	config.logResults = true;
@@ -120,147 +125,6 @@ int main()
 
 	int numberTests = 2;
 	config.logExtraMsg = "test-mia-x";
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Adiciona um texto adicional ao arquivo de log
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = ROCTREE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	for(int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = SOCTREE;
-
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = OCTREE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = NONE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	GLBufferHandler::clearBuffers();
-	SAW;
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Adiciona um texto adicional ao arquivo de log
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = ROCTREE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	for(int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = SOCTREE;
-
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = OCTREE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = NONE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	GLBufferHandler::clearBuffers();
-	COALTOWN;
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Adiciona um texto adicional ao arquivo de log
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = ROCTREE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	for(int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = SOCTREE;
-
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = OCTREE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = NONE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
-	}
-	GLBufferHandler::clearBuffers();
-	GOLDRUSH;
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -388,7 +252,8 @@ int main()
 	//Setando a configuração pelo macro
 	//COALTOWN;
 	//GOLDRUSH;
-	SAW
+	RAVINE;
+	//SAW;
 	//CITYCYCLES;
 
 	config.repeatable = false;
@@ -401,6 +266,7 @@ int main()
 	config.edeDepth = 0;
 	config.type = NONE;
 		
+	//TEST_BODY(RECORD_PATH, "teste");
 	TEST_BODY(WALKTHROUGH_MODE, "teste");
 #endif
 
