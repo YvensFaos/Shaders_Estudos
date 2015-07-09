@@ -54,9 +54,9 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-#define mia
+//#define mia
 //#define desktop
-//#define notebook
+#define notebook
 
 #define individual
 //#define batch
