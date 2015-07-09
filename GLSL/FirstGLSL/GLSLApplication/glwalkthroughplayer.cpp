@@ -80,13 +80,12 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 
 		if(GLBufferHandler::checkForEDE(edeName))
 		{
-			printf("Carregar a EDE\n");
+			printf("Carregar a EDE do Buffer\n");
 			ede = GLBufferHandler::edeBuffer[edeName];
-			ede->setLogger(&edeLogger);
 		}
 		else
 		{
-			printf("Carregar a EDE do Buffer\n");
+			printf("Carregar a EDE\n");
 			ede->calculateEDE(meshHandler, &config);
 			GLBufferHandler::addToEDEBuffer(edeName, ede);
 		}
