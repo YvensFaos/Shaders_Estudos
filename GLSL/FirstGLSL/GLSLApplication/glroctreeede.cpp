@@ -165,7 +165,6 @@ void GLROctreeEDE::calculateMemory(void)
 	}
 }
 
-
 std::string GLROctreeEDE::getName(void)
 {
 	return ROCTREE_NAME;

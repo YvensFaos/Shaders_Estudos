@@ -163,9 +163,18 @@ void GLROctree::createNodeMeshes(GLMeshHandler* handler)
 		{
 			GLMesh3D* mesh = &handler->meshes.at(i);
 
+			int size = top->indexes[i].size();
+
 			for(int j = 0; j < top->indexes->size(); j++)
 			{
-				index = top->indexes->at(j);
+				index = top->indexes[i].at(j);
+
+				//TODO precisa verificar isso aqui
+				if(mesh->verticesCount < index)
+				{
+					printf("ERRO!\n");
+				}
+
 				glm::vec3* vertex = &mesh->vertexes[index];
 				glm::vec3* normal = &mesh->normals[index];
 
