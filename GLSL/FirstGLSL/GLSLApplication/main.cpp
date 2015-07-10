@@ -46,7 +46,7 @@
 				 config.pathfileName = "goldrush-[walk]-[1]";
 
 //Macro de teste
-#define TEST_BODY(modeM,t) config.coloredNodes = false; \
+#define TEST_BODY(modeM,t,aa) config.coloredNodes = false; \
 	config.enableDynamics = false; \
 	config.edeTestDynamics = false; \
 	config.frustumTestDynamics = true; \
@@ -54,7 +54,7 @@
 	PLAYER_MODE mode = modeM; \
 	player = config.getGLPlayer(mode); \
 	OpenGLWrapper::player = player; \
-	OpenGLWrapper::initialize(true, 4); \
+	OpenGLWrapper::initialize(true, aa); \
 	OpenGLWrapper::glLoop();
 
 #pragma endregion
@@ -115,8 +115,8 @@ int main()
 	//COALTOWN;
 	//GOLDRUSH;
 	//SAW;
-	RAVINE;
-	//CITYCYCLES;
+	//RAVINE;
+	CITYCYCLES;
 
 	config.repeatable = false;
 	config.logResults = true;
@@ -128,7 +128,7 @@ int main()
 	config.pathExtraMsg = "walk";
 
 	int numberTests = 2;
-	config.logExtraMsg = "test-mia-x";
+	config.logExtraMsg = "test-mia-aa[0]";
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -139,8 +139,35 @@ int main()
 		//EDE escolhida
 		config.type = ROCTREE;
 		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
+		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	}
+	config.logExtraMsg = "test-mia-aa[1]";
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Adiciona um texto adicional ao arquivo de log
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = ROCTREE;
+
+		TEST_BODY(WALKTHROUGH_MODE, "teste", 1);
+	}
+	config.logExtraMsg = "test-mia-aa[2]";
+	for (int i = 0; i < numberTests; i++)
+	{
+		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
+		config.logIdentifier = i + 1;
+		//Adiciona um texto adicional ao arquivo de log
+		//Altura padrão de uma EDE
+		config.edeDepth = 3;
+		//EDE escolhida
+		config.type = ROCTREE;
+
+		TEST_BODY(WALKTHROUGH_MODE, "teste", 2);
+	}
+	config.logExtraMsg = "test-mia-aa[0]";
 	for(int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -150,7 +177,7 @@ int main()
 		//EDE escolhida
 		config.type = SOCTREE;
 
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
+		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	}
 	for (int i = 0; i < numberTests; i++)
 	{
@@ -161,7 +188,7 @@ int main()
 		//EDE escolhida
 		config.type = OCTREE;
 		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
+		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	}
 	for (int i = 0; i < numberTests; i++)
 	{
@@ -172,7 +199,7 @@ int main()
 		//EDE escolhida
 		config.type = NONE;
 		
-		TEST_BODY(WALKTHROUGH_MODE, "teste");
+		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	}
 #endif
 
