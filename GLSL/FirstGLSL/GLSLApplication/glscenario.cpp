@@ -216,6 +216,7 @@ float GLScenario::defaultCameraSpeed()
 		case 10: return 0.75f;
 		case 11: return 0.02f;
 		case 13: return 0.50f;
+		case 14: return 0.60f;
 		default: return 0.13f;
 	}
 }
@@ -226,6 +227,7 @@ float GLScenario::defaultMouseSpeed()
 	switch (identifier)
 	{
 		case 13: return 0.01f;
+		case 14: return 0.011f;
 		default: return 0.0025f;
 	}
 }

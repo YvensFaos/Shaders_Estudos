@@ -16,6 +16,14 @@
 				 config.scenarioNumber = 11; \
 				 config.pathfileName = "citycycles-[walk]";
 
+#define RAVINE config.objectName = "ravine.obj"; \
+				 config.scenarioNumber = 13; \
+				 config.pathfileName = "ravine-[walk]-[1]";
+
+#define VIADUCT config.objectName= "viaduct.obj"; \
+				config.scenarioNumber = 14; \
+				config.pathfileName = "viaduct-[walk]-[1]";
+
 #define COALTOWN config.objectName = "coaltown.obj"; \
 				 config.scenarioNumber = 17; \
 				 config.pathfileName = "coaltown-[walk]"; \
@@ -32,10 +40,6 @@
 				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[4][dynl].pathx", qttDynamics, glm::vec3(0,0,0)); \
 				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
 				 config.dynamics = totalDynamics;
-
-#define RAVINE config.objectName = "ravine.obj"; \
-				 config.scenarioNumber = 18; \
-				 config.pathfileName = "ravine-[walk]-[1][walk]";
 
 #define GOLDRUSH config.objectName = "goldrush.obj"; \
 				 config.scenarioNumber = 18; \
@@ -58,13 +62,13 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-#define mia
+//#define mia
 //#define desktop
-//#define notebook
+#define notebook
 
-#define individual
+//#define individual
 //#define batch
-//#define recordPath
+#define recordPath
 
 GLPlayer* player;
 
@@ -250,10 +254,11 @@ int main()
 	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
 	
 	//Setando a configuração pelo macro
+	//RAVINE;
+	VIADUCT;
+	//SAW;
 	//COALTOWN;
 	//GOLDRUSH;
-	RAVINE;
-	//SAW;
 	//CITYCYCLES;
 
 	config.repeatable = false;
