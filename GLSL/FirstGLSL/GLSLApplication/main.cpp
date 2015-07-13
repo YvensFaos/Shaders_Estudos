@@ -62,9 +62,9 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-//#define mia
+#define mia
 //#define desktop
-#define notebook
+//#define notebook
 
 //#define individual
 //#define batch
@@ -289,17 +289,21 @@ int main()
 	//CITYCYCLES;
 
 	config.repeatable = false;
-	config.logResults = false;
+	config.logResults = true;
 
 	config.pathIdentifier = 1;
 	config.pathExtraMsg = "walk";
-	config.logExtraMsg = "test-mia-x";
+	config.logExtraMsg = "test-mia-comparacao-x";
 	config.logIdentifier = 0;
 	config.edeDepth = 3;
 	config.type = ROCTREE;
 		
 	//TEST_BODY(RECORD_PATH, "teste", 0);
-	TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
+	for (int i = 0; i < 3; i++)
+	{
+		config.logIdentifier = i + 1;
+		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
+	}
 #endif
 
 	GLBufferHandler::clearBuffers();
