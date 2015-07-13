@@ -66,9 +66,9 @@
 //#define desktop
 //#define notebook
 
-//#define individual
+#define individual
 //#define batch
-#define recordPath
+//#define recordPath
 
 GLPlayer* player;
 
@@ -128,7 +128,7 @@ int main()
 	config.pathExtraMsg = "walk";
 
 	int numberTests = 2;
-	config.logExtraMsg = "test-mia-aa[0]";
+	config.logExtraMsg = "test-mia-release";
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -141,33 +141,6 @@ int main()
 		
 		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	}
-	config.logExtraMsg = "test-mia-aa[1]";
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Adiciona um texto adicional ao arquivo de log
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = ROCTREE;
-
-		TEST_BODY(WALKTHROUGH_MODE, "teste", 1);
-	}
-	config.logExtraMsg = "test-mia-aa[2]";
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Adiciona um texto adicional ao arquivo de log
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = ROCTREE;
-
-		TEST_BODY(WALKTHROUGH_MODE, "teste", 2);
-	}
-	config.logExtraMsg = "test-mia-aa[0]";
 	for(int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -308,43 +281,3 @@ int main()
 
 	GLBufferHandler::clearBuffers();
 }  
-
-
-/////////////////////////////////////////////////////////////////////////////
-///BACK UP DE CÓDIGO
-/*
-int numberTests = 1;
-	for (int i = 0; i < numberTests; i++)
-	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
-		config.logIdentifier = i + 1;
-		//Adiciona um texto adicional ao arquivo de log
-		config.logExtraMsg = "test-mia-x";
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
-		config.type = ROCTREE;
-		//Colore os nós em tons diferente
-		config.coloredNodes = false;
-
-		config.enableDynamics = false;
-		config.edeTestDynamics = false;
-		config.frustumTestDynamics = true;
-
-		config.title = "T";
-
-		PLAYER_MODE mode;
-		mode = EDE_MAKER;
-		mode = FREE_MODE;
-		mode = RECORD_PATH;
-		mode = BIRDS_EYE;
-		mode = WALKTHROUGH_MODE;
-
-		//Nesse método, o player é inicializado e a configuração é linkada ao player
-		player = config.getGLPlayer(mode);
-
-		OpenGLWrapper::player = player;
-		OpenGLWrapper::initialize(true, 4);
-		OpenGLWrapper::glLoop();
-	}
-*/
