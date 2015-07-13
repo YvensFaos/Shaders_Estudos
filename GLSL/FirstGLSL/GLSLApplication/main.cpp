@@ -289,17 +289,17 @@ int main()
 	//CITYCYCLES;
 
 	config.repeatable = false;
-	config.logResults = true;
+	config.logResults = false;
 
 	config.pathIdentifier = 1;
 	config.pathExtraMsg = "walk";
 	config.logExtraMsg = "test-mia-x";
 	config.logIdentifier = 0;
-	config.edeDepth = 0;
-	config.type = NONE;
+	config.edeDepth = 3;
+	config.type = ROCTREE;
 		
-	//TEST_BODY(RECORD_PATH, "teste");
-	TEST_BODY(WALKTHROUGH_MODE, "teste");
+	//TEST_BODY(RECORD_PATH, "teste", 0);
+	TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 #endif
 
 	GLBufferHandler::clearBuffers();
