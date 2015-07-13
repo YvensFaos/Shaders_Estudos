@@ -112,11 +112,11 @@ int main()
 	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
 	
 	//Setando a configuração pelo macro
-	//COALTOWN;
+	COALTOWN;
 	//GOLDRUSH;
 	//SAW;
 	//RAVINE;
-	CITYCYCLES;
+	//CITYCYCLES;
 
 	config.repeatable = false;
 	config.logResults = true;
