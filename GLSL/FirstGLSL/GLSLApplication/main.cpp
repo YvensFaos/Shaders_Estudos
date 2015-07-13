@@ -282,8 +282,8 @@ int main()
 	
 	//Setando a configuração pelo macro
 	//RAVINE;
-	VIADUCT;
-	//SAW;
+	//VIADUCT;
+	SAW;
 	//COALTOWN;
 	//GOLDRUSH;
 	//CITYCYCLES;
@@ -299,7 +299,7 @@ int main()
 	config.type = ROCTREE;
 		
 	//TEST_BODY(RECORD_PATH, "teste", 0);
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		config.logIdentifier = i + 1;
 		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
