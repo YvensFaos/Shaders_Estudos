@@ -174,7 +174,7 @@ void GLBirdsEyePlayer::step(void)
 		loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
 		glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
 
-		for(int i  = 0; i < config.dynamics.size(); i++)
+		for(unsigned int i  = 0; i < config.dynamics.size(); i++)
 		{
 			GLDynamicObject* obj = &config.dynamics.at(i);
 

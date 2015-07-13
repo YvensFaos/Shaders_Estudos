@@ -2,8 +2,6 @@
 
 #include "gloctree.h"
 
-#define STATIC_THRESHOLD 600
-
 class GLSOctree 
 {
 public:

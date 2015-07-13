@@ -2,8 +2,6 @@
 
 #include "gloctree.h"
 
-#define STATIC_THRESHOLD 210
-
 class GLROctree 
 {
 public:

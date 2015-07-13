@@ -3,6 +3,8 @@
 #include "glmesh3d.h"
 #include "edlogger.h"
 
+#define STATIC_THRESHOLD 600
+
 class GLOctreeNode
 {
 public:

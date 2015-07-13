@@ -83,7 +83,7 @@ GLMeshHandler::GLMeshHandler(char* model3d, char* path)
 	Assimp::Importer importer; 
 	const aiScene* scene = importer.ReadFile(sFilePath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices  | aiProcess_SortByPType); 
 
-	for(int i = 0; i < scene->mNumMeshes; i++)
+	for(unsigned int i = 0; i < scene->mNumMeshes; i++)
 	{
 		meshes.push_back(GLMesh3D(i, gl_index++, scene));
 	}

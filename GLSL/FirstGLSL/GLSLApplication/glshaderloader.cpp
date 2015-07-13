@@ -4,9 +4,9 @@ unsigned long GLShaderLoader::getFileLength(std::ifstream& file)
 {
     if(!file.good()) return 0;
     
-    unsigned long pos=file.tellg();
+    unsigned long pos = (unsigned long)file.tellg();
     file.seekg(0, std::ios::end);
-    unsigned long len = file.tellg();
+    unsigned long len = (unsigned long)file.tellg();
     file.seekg(std::ios::beg);
     
     return len;

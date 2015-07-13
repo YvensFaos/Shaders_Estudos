@@ -259,7 +259,7 @@ GLCamera::GLCamera(void)
 	fov = 45.0f;
 
 	speed = 100.0f;
-	mouseSpeed = 0.005;
+	mouseSpeed = 0.005f;
 
 	direction = glm::vec3(0.0, 0.0, 1.0f);
 	up = glm::vec3(0.0, 1.0, 0.0f);
@@ -277,7 +277,7 @@ GLCamera::GLCamera(GLConfig* config)
 	fov = config->fov;
 
 	speed = 100.0f;
-	mouseSpeed = 0.005;
+	mouseSpeed = 0.005f;
 
 	direction = glm::vec3(0.0, 0.0, 1.0f);
 	up = glm::vec3(0.0, 1.0, 0.0f);
