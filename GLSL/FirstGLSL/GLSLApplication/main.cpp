@@ -115,8 +115,8 @@ int main()
 	//COALTOWN;
 	//GOLDRUSH;
 	//SAW;
-	//RAVINE;
-	CITYCYCLES;
+	RAVINE;
+	//CITYCYCLES;
 
 	config.repeatable = false;
 	config.logResults = true;
