@@ -114,9 +114,9 @@ int main()
 	//Setando a configuração pelo macro
 	//COALTOWN;
 	//GOLDRUSH;
-	SAW;
+	//SAW;
 	//RAVINE;
-	//CITYCYCLES;
+	CITYCYCLES;
 
 	config.repeatable = false;
 	config.logResults = true;
