@@ -14,7 +14,19 @@
 
 #define CITYCYCLES config.objectName = "citycycles.obj"; \
 				 config.scenarioNumber = 11; \
-				 config.pathfileName = "citycycles-[walk]";
+				 config.pathfileName = "citycycles-[walk]"; \
+				 dynamicScale = glm::vec3(0.2f, 0.2f, 0.2f); \
+				 int qttDynamics = 10; \
+				 std::vector<GLDynamicObject>* pointerDynamics; \
+				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "citycycles-[walk]-[1][[dyn]].pathx", qttDynamics, dynamicTrans, dynamicScale); \
+				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
+				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "citycycles-[walk]-[2][[dyn]].pathx", qttDynamics, dynamicTrans, dynamicScale); \
+				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
+				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "citycycles-[walk]-[3][[dyn]].pathx", qttDynamics, dynamicTrans, dynamicScale); \
+				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
+				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "citycycles-[walk]-[4][[dyn]].pathx", qttDynamics, dynamicTrans, dynamicScale); \
+				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
+				 config.dynamics = totalDynamics;
 
 #define RAVINE config.objectName = "ravine.obj"; \
 				 config.scenarioNumber = 13; \
@@ -29,15 +41,13 @@
 				 config.pathfileName = "coaltown-[walk]"; \
 			     int qttDynamics = 10; \
 				 std::vector<GLDynamicObject>* pointerDynamics; \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, glm::vec3(0,0,0)); \
+				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, dynamicTrans, dynamicScale); \
 				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, glm::vec3(0,0,-2)); \
+				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[2][dynl].pathx", qttDynamics, dynamicTrans, dynamicScale); \
 				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[2][dynl].pathx", qttDynamics, glm::vec3(0,0,0)); \
+				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[3][dynl].pathx", qttDynamics, dynamicTrans, dynamicScale); \
 				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[3][dynl].pathx", qttDynamics, glm::vec3(0,0,0)); \
-				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[4][dynl].pathx", qttDynamics, glm::vec3(0,0,0)); \
+				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[4][dynl].pathx", qttDynamics, dynamicTrans, dynamicScale); \
 				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
 				 config.dynamics = totalDynamics;
 
@@ -46,8 +56,8 @@
 				 config.pathfileName = "goldrush-[walk]-[1]";
 
 //Macro de teste
-#define TEST_BODY(modeM,t,aa) config.coloredNodes = false; \
-	config.enableDynamics = false; \
+#define TEST_BODY(modeM,t,aa) config.coloredNodes = true; \
+	config.enableDynamics = true; \
 	config.edeTestDynamics = false; \
 	config.frustumTestDynamics = true; \
 	config.title = t; \
@@ -74,6 +84,9 @@ GLPlayer* player;
 
 int main()  
 {  
+	glm::vec3 dynamicScale = glm::vec3(1.0f, 1.0f, 1.0f);
+	glm::vec3 dynamicTrans = glm::vec3(0.0f, 0.0f, 0.0f);
+
 #ifdef individual
 	GLConfig config;
 	config.width  = 800;
@@ -112,11 +125,11 @@ int main()
 	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
 	
 	//Setando a configuração pelo macro
-	COALTOWN;
+	//COALTOWN;
 	//GOLDRUSH;
 	//SAW;
 	//RAVINE;
-	//CITYCYCLES;
+	CITYCYCLES;
 
 	config.repeatable = false;
 	config.logResults = true;
@@ -128,7 +141,7 @@ int main()
 	config.pathExtraMsg = "walk";
 
 	int numberTests = 2;
-	config.logExtraMsg = "test-mia-release";
+	config.logExtraMsg = "test-dinamicos-mia-release";
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -139,7 +152,7 @@ int main()
 		//EDE escolhida
 		config.type = ROCTREE;
 		
-		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
+		TEST_BODY(WALKTHROUGH_MODE, "roctree", 0);
 	}
 	for(int i = 0; i < numberTests; i++)
 	{
@@ -150,7 +163,7 @@ int main()
 		//EDE escolhida
 		config.type = SOCTREE;
 
-		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
+		TEST_BODY(WALKTHROUGH_MODE, "soctree", 0);
 	}
 	for (int i = 0; i < numberTests; i++)
 	{
@@ -161,7 +174,7 @@ int main()
 		//EDE escolhida
 		config.type = OCTREE;
 		
-		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
+		TEST_BODY(WALKTHROUGH_MODE, "octree", 0);
 	}
 	for (int i = 0; i < numberTests; i++)
 	{
@@ -172,7 +185,7 @@ int main()
 		//EDE escolhida
 		config.type = NONE;
 		
-		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
+		TEST_BODY(WALKTHROUGH_MODE, "none", 0);
 	}
 #endif
 
@@ -256,22 +269,23 @@ int main()
 	//Setando a configuração pelo macro
 	//RAVINE;
 	//VIADUCT;
-	SAW;
+	//SAW;
 	//COALTOWN;
 	//GOLDRUSH;
-	//CITYCYCLES;
+	CITYCYCLES;
 
 	config.repeatable = false;
-	config.logResults = true;
+	config.logResults = false;
 
 	config.pathIdentifier = 1;
-	config.pathExtraMsg = "walk";
+	config.pathExtraMsg = "[dyn]";
 	config.logExtraMsg = "test-mia-comparacao-x";
 	config.logIdentifier = 0;
 	config.edeDepth = 3;
 	config.type = ROCTREE;
 		
 	//TEST_BODY(RECORD_PATH, "teste", 0);
+	//TEST_BODY(BIRDS_EYE, "teste", 0);
 	for (int i = 0; i < 1; i++)
 	{
 		config.logIdentifier = i + 1;

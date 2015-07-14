@@ -20,6 +20,8 @@ void GLSOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfi
 {
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
+	GLint sca = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
+	glUniform4f(sca, 1.0f, 1.0f, 1.0f, 1.0f);
 
 	GLOctreeNode* stack[256];
 	int stackSize = 1;

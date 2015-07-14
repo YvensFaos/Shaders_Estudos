@@ -135,7 +135,7 @@ GLCameraHandler::~GLCameraHandler(void)
 
 GLCameraStep* GLCameraHandler::nextStep()
 {
-	if(index >= steps->size() - 1)
+	if(index >= (unsigned) steps->size() - 1)
 	{
 
 		if(repeated)

@@ -15,7 +15,7 @@ GLDynamicObject::GLDynamicObject(void)
 	translate = glm::vec3(0,0,0);
 }
 
-GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, int index, glm::vec3 translate)
+GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, int index, glm::vec3 translate, glm::vec3 scale)
 {
 	this->pathName = pathName;
 	visible = false;
@@ -54,6 +54,7 @@ GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, 
 	GLCameraStep* step = pathReference->getStep(index, translate);
 
 	this->translate = glm::vec3(translate);
+	this->scale = glm::vec3(scale);
 }
 
 GLDynamicObject::~GLDynamicObject(void)
@@ -74,8 +75,10 @@ void GLDynamicObject::draw(void)
 	if(visible)
 	{
 		GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+		GLint sca = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
 		GLCameraStep* step = pathReference->getStep(index, translate);
 		glUniform4f(pos, step->position.x, step->position.y, step->position.z, 0.0f);
+		glUniform4f(sca, scale.x, scale.y, scale.z, 1.0f);
 
 		meshHandler->render();
 	}
@@ -89,7 +92,9 @@ void GLDynamicObject::draw(glm::vec3 pos)
 	if(visible)
 	{
 		GLint poss = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+		GLint sca = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
 		glUniform4f(poss, pos.x, pos.y, pos.z, 0.0f);
+		glUniform4f(sca, scale.x, scale.y, scale.z, 1.0f);
 
 		meshHandler->render();
 	}
@@ -128,7 +133,7 @@ void GLDynamicObject::drawBox(void)
 std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath,
 														  std::string model, 
 														  std::string pathPath, 
-														  std::string path, int quantity, glm::vec3 translate)
+														  std::string path, int quantity, glm::vec3 translate, glm::vec3 scale)
 {
 	std::vector<GLDynamicObject>* list = new std::vector<GLDynamicObject>();
 	std::string ppath = pathPath + path;
@@ -136,7 +141,7 @@ std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath,
 
 	for(int i = 0; i < quantity; i++)
 	{
-		list->push_back(GLDynamicObject(ppath, mmodel, 100 + i * 10, translate));
+		list->push_back(GLDynamicObject(ppath, mmodel, 100 + i * 10, translate, scale));
 	}
 
 	return list;

@@ -360,6 +360,9 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	glUniform4f(pos, position.x, position.y, position.z, 0.0f);
 
+	GLint sca = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
+	glUniform4f(sca, 1.0f, 1.0f, 1.0f, 1.0f);
+
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
 
@@ -753,6 +756,9 @@ void GLFrustum::draw(void)
 
 	GLint poss = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	glUniform4f(poss, 0.0f, 0.0f, 0.0f, 0.0f);
+
+	GLint sca = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
+	glUniform4f(sca, 1.0f, 1.0f, 1.0f, 1.0f);
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);

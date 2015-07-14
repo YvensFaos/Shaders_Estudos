@@ -20,6 +20,8 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 {
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
+	GLint sca = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
+	glUniform4f(sca, 1.0f, 1.0f, 1.0f, 1.0f);
 
 	GLOctreeNode* stack[256];
 	int stackSize = 1;
@@ -89,8 +91,6 @@ void GLOctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig
 	}
 
 	//Verificar dinâmicos
-
-
 }
 
 void GLOctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 

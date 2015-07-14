@@ -1,6 +1,7 @@
 uniform mat4 mvp;
 uniform vec3 vDir;
 uniform vec4 pos;
+uniform vec4 sca;
 uniform vec4 baseColor;
 
 attribute vec3 vNormal;
@@ -9,19 +10,19 @@ varying vec4 vColor;
 varying float intensity;
 void main(void)
 {
-	vec4 a = gl_Vertex + pos;
+	vec4 a = (gl_Vertex*sca) + pos;
 	vec3 b = normalize(vNormal);
 	vec3 c = normalize(vDir);
 
 	intensity = max(0.0, dot(b, -c));
 
 	vColor = baseColor;
-	if(b.y > -0.05 && b.y < 0.05)
-	{
-		vColor.x = 1;
-		vColor.y = 0;
-		vColor.z = 0;
-	}
+	//if(b.y > -0.05 && b.y < 0.05)
+	//{
+	//	vColor.x = 1;
+	//	vColor.y = 0;
+	//	vColor.z = 0;
+	//}
 
 	gl_Position = mvp * a;
 }
