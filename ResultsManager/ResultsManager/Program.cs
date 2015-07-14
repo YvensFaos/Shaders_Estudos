@@ -28,6 +28,11 @@ namespace ResultsManager
             int row = 1;
             int column = 1;
             int baseColumn = 1;
+
+            int condensate = 10;
+            float[] condensatedTokens = null;
+
+            int condensity = 1;
             if (result == DialogResult.OK)
             {
                 Excel.Application excelApp = new Excel.Application();
@@ -54,13 +59,37 @@ namespace ResultsManager
                         column = baseColumn;
 
                         string[] tokens = line.Split(';');
-
-                        foreach (string token in tokens)
+                        if (condensatedTokens == null)
                         {
-                            workSheet.Cells[row, column++] = float.Parse(token);
+                            condensatedTokens = new float[tokens.Length];
                         }
 
-                        row++;
+                        for (int i = 0; i < tokens.Length; i++)
+                        {
+                            condensatedTokens[i] += float.Parse(tokens[i]);
+                        }
+
+                        condensity++;
+                        if(condensity == condensate)
+                        {
+                            foreach (float condensatedToken in condensatedTokens)
+                            {
+                                workSheet.Cells[row, column++] = condensatedToken / condensate;
+                            }
+                            row++;
+                            condensity = 1;
+                            condensatedTokens = null;
+                        }
+                    }
+
+                    if (condensatedTokens != null)
+                    {
+                        foreach (float condensatedToken in condensatedTokens)
+                        {
+                            workSheet.Cells[row, column++] = condensatedToken / condensate;
+                        }
+                        condensity = 1;
+                        condensatedTokens = null;
                     }
 
                     column += 2;

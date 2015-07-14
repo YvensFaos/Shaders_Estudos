@@ -10,7 +10,12 @@
 
 #define SAW config.objectName = "saw.obj"; \
 			config.scenarioNumber = 10; \
-			config.pathfileName = "saw-[walk]-[1]";
+			config.pathfileName = "saw-[walk]-[1]"; \
+			int qttDynamics = 1; \
+			std::vector<GLDynamicObject>* pointerDynamics; \
+			pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "saw-[walk]-[1].pathx", qttDynamics, dynamicTrans, dynamicScale); \
+			totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
+			config.dynamics = totalDynamics;
 
 #define CITYCYCLES config.objectName = "citycycles.obj"; \
 				 config.scenarioNumber = 11; \
@@ -72,13 +77,13 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-#define mia
+//#define mia
 //#define desktop
-//#define notebook
+#define notebook
 
-#define individual
+//#define individual
 //#define batch
-//#define recordPath
+#define recordPath
 
 GLPlayer* player;
 
@@ -269,10 +274,10 @@ int main()
 	//Setando a configuração pelo macro
 	//RAVINE;
 	//VIADUCT;
-	//SAW;
+	SAW;
 	//COALTOWN;
 	//GOLDRUSH;
-	CITYCYCLES;
+	//CITYCYCLES;
 
 	config.repeatable = false;
 	config.logResults = false;
@@ -284,13 +289,13 @@ int main()
 	config.edeDepth = 3;
 	config.type = ROCTREE;
 		
-	//TEST_BODY(RECORD_PATH, "teste", 0);
+	TEST_BODY(RECORD_PATH, "teste", 0);
 	//TEST_BODY(BIRDS_EYE, "teste", 0);
-	for (int i = 0; i < 1; i++)
+	/*for (int i = 0; i < 1; i++)
 	{
 		config.logIdentifier = i + 1;
 		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
-	}
+	}*/
 #endif
 
 	GLBufferHandler::clearBuffers();
