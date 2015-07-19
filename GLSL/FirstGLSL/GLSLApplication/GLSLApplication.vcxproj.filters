@@ -117,6 +117,12 @@
     <ClCompile Include="glbirdseyeplayer.cpp">
       <Filter>Players</Filter>
     </ClCompile>
+    <ClCompile Include="glbasegrid.cpp">
+      <Filter>EDE\Raw EDE</Filter>
+    </ClCompile>
+    <ClCompile Include="glbasegridede.cpp">
+      <Filter>EDE\Raw EDE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -205,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="glbirdseyeplayer.h">
       <Filter>Players</Filter>
+    </ClInclude>
+    <ClInclude Include="glbasegrid.h">
+      <Filter>EDE\Raw EDE</Filter>
+    </ClInclude>
+    <ClInclude Include="glbasegridede.h">
+      <Filter>EDE\Raw EDE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

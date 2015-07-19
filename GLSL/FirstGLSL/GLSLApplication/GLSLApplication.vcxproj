@@ -84,6 +84,8 @@
   <ItemGroup>
     <ClCompile Include="edfile.cpp" />
     <ClCompile Include="edlogger.cpp" />
+    <ClCompile Include="glbasegrid.cpp" />
+    <ClCompile Include="glbasegridede.cpp" />
     <ClCompile Include="glbasicede.cpp" />
     <ClCompile Include="glbatch.cpp" />
     <ClCompile Include="glbirdseyeplayer.cpp" />
@@ -114,6 +116,8 @@
   <ItemGroup>
     <ClInclude Include="edfile.h" />
     <ClInclude Include="edlogger.h" />
+    <ClInclude Include="glbasegrid.h" />
+    <ClInclude Include="glbasegridede.h" />
     <ClInclude Include="glbasicede.h" />
     <ClInclude Include="glbatch.h" />
     <ClInclude Include="glbirdseyeplayer.h" />
