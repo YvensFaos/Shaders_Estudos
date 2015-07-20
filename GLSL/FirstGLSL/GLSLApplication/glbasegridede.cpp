@@ -33,21 +33,59 @@ void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConf
 		info[0] += 1;
 		node = &grid.nodes[i];
 
-		if(frustum->intercepts(&node->min, &node->max))
+		if(node->numIndicesTotal > 0 && frustum->intercepts(&node->min, &node->max))
 		{
 			info[1] += 1;
 
 			visibleNodes.push_back(node);
-			node->visible = VISIBLE;
 		}
 	}
 
+	int numMeshes = handler->numMeshes;
+	int indexSize = 0;
 
+	std::vector<glm::vec3> vertexes;
+	std::vector<glm::vec3> normals;
+
+	GLMesh3D* mesh;
+
+	for(int i = 0; i < visibleNodes.size(); i++)
+	{
+		node = visibleNodes[i];
+
+		for(int j = 0; j < numMeshes; j++)
+		{
+			indexSize = node->localIndexes[j].size();
+			mesh = &handler->meshes[j];
+
+			for(int k = 0; k < indexSize; k++)
+			{
+				if(indexes[j][node->localIndexes[j].at(k)] == 0)
+				{
+					vertexes.push_back(mesh->vertexes[node->localIndexes[j].at(k)]);
+					normals.push_back(mesh->normals[node->localIndexes[j].at(k)]);
+
+					indexes[j][node->localIndexes[j].at(k)] = 0;
+				}
+			}
+		}
+	}
+
+	mesh = new GLMesh3D(&vertexes, &normals);
+	mesh->prerender();
+	mesh->render();
+
+	delete mesh;
+
+	cleanIndexes(handler);
 }
 
 void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 
 {
 	this->edeDepth = config->edeDepth;
+	
+	indexes = new int*[handler->numMeshes];
+	createIndexes(handler);
 
 	char logLine[128];
 	sprintf(logLine, "Iniciado a octree tamanho %d.", this->edeDepth);
@@ -78,6 +116,41 @@ void GLBaseGridEDE::calculateMemory(void)
 	else
 	{
 		memoryUsed = grid.memoryUsed;
+	}
+}
+
+void GLBaseGridEDE::createIndexes(GLMeshHandler* handler) 
+{
+	int count = 0;
+
+	for(int i = 0; i < handler->numMeshes; i++)
+	{
+		GLMesh3D* mesh = &handler->meshes[i];
+
+		count = mesh->verticesCount;
+		indexes[i] = new int[count];
+
+		for(int j = 0; j < count; j++)
+		{
+			indexes[i][j] = 0;
+		}
+	}
+}
+
+void GLBaseGridEDE::cleanIndexes(GLMeshHandler* handler) 
+{
+	int count = 0;
+
+	for(int i = 0; i < handler->numMeshes; i++)
+	{
+		GLMesh3D* mesh = &handler->meshes[i];
+
+		count = mesh->verticesCount;
+
+		for(int j = 0; j < count; j++)
+		{
+			indexes[i][j] = 0;
+		}
 	}
 }
 

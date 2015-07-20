@@ -83,7 +83,8 @@
 
 //#define individual
 //#define batch
-#define recordPath
+//#define recordPath
+#define cleanBuild
 
 GLPlayer* player;
 
@@ -274,8 +275,8 @@ int main()
 	//Setando a configuração pelo macro
 	//RAVINE;
 	//VIADUCT;
-	SAW;
-	//COALTOWN;
+	//SAW;
+	COALTOWN;
 	//GOLDRUSH;
 	//CITYCYCLES;
 
@@ -287,15 +288,61 @@ int main()
 	config.logExtraMsg = "test-mia-comparacao-x";
 	config.logIdentifier = 0;
 	config.edeDepth = 3;
-	config.type = ROCTREE;
+	config.type = OCTREE;
 		
-	TEST_BODY(RECORD_PATH, "teste", 0);
-	//TEST_BODY(BIRDS_EYE, "teste", 0);
+	//TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
+	//TEST_BODY(RECORD_PATH, "teste", 0);
+	TEST_BODY(BIRDS_EYE, "teste", 0);
 	/*for (int i = 0; i < 1; i++)
 	{
 		config.logIdentifier = i + 1;
 		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	}*/
+#endif
+
+#ifdef cleanBuild
+	GLConfig config;
+	config.width  = 800;
+	config.height = 600;
+	config.aspect = (float) config.width/config.height;
+	config.title  = "Teste";
+	config.fov =  45.0f;
+	config.far = 500.0f;
+	config.near =  0.1f;
+
+	std::string modelPath;
+	std::string modelPathLocation;
+
+	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	config.pathfilePath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
+	config.logPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
+	modelPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	modelPathLocation = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
+
+	config.repeatable = false;
+	config.logResults = false;
+
+	config.objectName = "coaltown.obj";
+	config.scenarioNumber = 17;
+	config.pathfileName = "coaltown-[walk]";
+
+	config.pathIdentifier = 1;
+	config.pathExtraMsg = "[dyn]";
+	config.logExtraMsg = "test-mia-comparacao-x";
+	config.logIdentifier = 0;
+	config.edeDepth = 3;
+	config.type = BASEGRID;
+
+	config.coloredNodes = true;
+	config.enableDynamics = false;
+	config.edeTestDynamics = false;
+	config.frustumTestDynamics = true;
+	config.title = "title";
+	PLAYER_MODE mode = BIRDS_EYE;
+	player = config.getGLPlayer(mode);
+	OpenGLWrapper::player = player;
+	OpenGLWrapper::initialize(true, 0);
+	OpenGLWrapper::glLoop();
 #endif
 
 	GLBufferHandler::clearBuffers();

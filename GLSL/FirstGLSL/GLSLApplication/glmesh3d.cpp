@@ -125,6 +125,26 @@ GLMesh3D::GLMesh3D(void)
 	verticesCount = 0;
 }
 
+GLMesh3D::GLMesh3D(std::vector<glm::vec3>* vertexes, std::vector<glm::vec3>* normals)
+{
+	index = 1;
+	max = glm::vec3(-1.0f);
+	min = glm::vec3(-1.0f);
+	center = glm::vec3(-1.0f);
+
+	hasNormals = true;
+	verticesCount = vertexes->size();
+
+	this->vertexes = new glm::vec3[vertexes->size()];
+	this->normals = new glm::vec3[normals->size()];
+
+	for(int i = 0; i < verticesCount; i++)
+	{
+		this->vertexes[i] = vertexes->at(i);
+		this->normals[i] = normals->at(i);
+	}
+}
+
 GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 {
 	aiMesh* mesh = scene->mMeshes[index];

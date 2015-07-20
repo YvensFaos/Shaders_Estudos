@@ -16,7 +16,7 @@ GLBaseGridNode::GLBaseGridNode(void)
 	visible = INVISIBLE;
 }
 
-GLBaseGridNode::GLBaseGridNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, EDLogger* logger)
+GLBaseGridNode::GLBaseGridNode(glm::vec3 min, glm::vec3 max, std::vector<int>* indexes, GLMeshHandler* handler, EDLogger* logger)
 {
 	this->min = glm::vec3(min);
 	this->max = glm::vec3(max);
@@ -34,11 +34,11 @@ GLBaseGridNode::GLBaseGridNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* hand
 	numMeshes = handler->numMeshes;
 
 	//Verifica o que pertence e o que não
-	indexes = new std::vector<int>[numMeshes];
-
+	localIndexes = new std::vector<int>[numMeshes];
 
 	for(int i = 0; i < numMeshes; i++)
 	{
+		localIndexes[i].clear();
 		GLMesh3D* mesh = &handler->meshes.at(i);
 		
 		for(int j = 0; j < indexes->size();)
@@ -49,9 +49,9 @@ GLBaseGridNode::GLBaseGridNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* hand
 			
 			if(TriangleCube::testIntersection(p1, p2, p3, &this->min, &this->max))
 			{
-				indexes[i].push_back(indexes->at(j));
-				indexes[i].push_back(indexes->at(j + 1));
-				indexes[i].push_back(indexes->at(j + 2));
+				localIndexes[i].push_back(indexes->at(j));
+				localIndexes[i].push_back(indexes->at(j + 1));
+				localIndexes[i].push_back(indexes->at(j + 2));
 
 				inside += 3;
 			}
@@ -60,6 +60,7 @@ GLBaseGridNode::GLBaseGridNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* hand
 	}
 
 	sprintf(logLine,"Inside: %d/%d", inside, totalV);
+
 	numIndicesTotal = inside;
 	logger->logLineTimestamp(logLine);
 }
@@ -75,7 +76,7 @@ int GLBaseGridNode::getMemory(void)
 	//Memória da lista de índices
 	for(int i = 0; i < numMeshes; i++)
 	{
-		memory += sizeof(int) * indexes[i].size();
+		memory += sizeof(int) * localIndexes[i].size();
 	}
 
 	return memory;
@@ -149,10 +150,11 @@ GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, EDLogger* logger)
 	logger->logLineTimestamp(logLine);
 
 	nodesCount = NODE_COUNT;
+	float sqrtNodesCount = sqrt(nodesCount);
 	float minX = min.x;
 
-	float stepX = (max.x - min.x) / nodesCount;
-	float stepZ = (max.z - min.z) / nodesCount;
+	float stepX = (max.x - min.x) / sqrtNodesCount;
+	float stepZ = (max.z - min.z) / sqrtNodesCount;
 
 	glm::vec3 stepMin = min;
 	glm::vec3 stepMax = min;
@@ -162,11 +164,11 @@ GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, EDLogger* logger)
 
 	nodes = new GLBaseGridNode[nodesCount];
 	int k = 0;
-	for(int i = 0; i < stepZ; i++)
+	for(int i = 0; i < sqrtNodesCount; i++)
 	{
-		for(int j = 0; j < stepX; j++)
+		for(int j = 0; j < sqrtNodesCount; j++)
 		{
-			nodes[k++] = GLBaseGridNode(stepMin, stepMax, handler, logger);
+			nodes[k++] = GLBaseGridNode(stepMin, stepMax, indexes, handler, logger);
 			stepMin.x += stepX;
 			stepMax.x += stepX;
 		}

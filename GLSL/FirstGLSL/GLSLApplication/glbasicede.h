@@ -7,8 +7,6 @@ class GLConfig;
 class GLMeshHandler;
 class EDLogger;
 
-#define IDENTIFIER_CODE config->objectName + ':' + std::to_string(config->edeDepth)
-
 #define OCTREE_NAME  "Octree\0"
 #define SOCTREE_NAME "Smart Octree\0"
 #define ROCTREE_NAME "Replicated Octree\0"

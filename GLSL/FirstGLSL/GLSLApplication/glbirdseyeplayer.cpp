@@ -39,8 +39,8 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 	isRunning = true;
 	updateMouse = false;
 
-	xpos = config.width / 2.0f;
-	ypos = config.height / 2.0f;
+	xpos = this->config.width / 2.0f;
+	ypos = this->config.height / 2.0f;
 
 	paused = false;
 	logged = false;
@@ -48,20 +48,20 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 	deltaTime = 1.0f/60.0f;
 	lastTime = 0;
 
-	char* path = config.objectPath;
+	char* path = this->config.objectPath;
 
 	//Checando se o nome foi setado corretamente
-	if(config.objectName && config.objectName[0] != '\0')
+	if(this->config.objectName && this->config.objectName[0] != '\0')
 	{
-		this->scenario = new GLScenario(config.objectName, &config);
+		this->scenario = new GLScenario(this->config.objectName, &config);
 	}
 	else
 	{
 		//Se não tiver o nome, busca pelo identificador
-		this->scenario = new GLScenario(config.scenarioNumber, &config);
+		this->scenario = new GLScenario(this->config.scenarioNumber, &config);
 	}
 
-	actualStep = GLScenario::defaultBirdPosition(scenario->identifier);
+ 	actualStep = GLScenario::defaultBirdPosition(scenario->identifier);
 
 	camera = new GLCamera(&config);
 	camera->fov = 45.0f;
@@ -78,15 +78,15 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 	meshHandler = scenario->meshHandler;
 
 	char logName[512];
-	if(config.type != NONE)
+	if(this->config.type != NONE)
 	{
-		ede = GLBasicEDE::instantiate(&config);
-		ede->testDynamics = config.edeTestDynamics;
+		ede = GLBasicEDE::instantiate(&this->config);
+		ede->testDynamics = this->config.edeTestDynamics;
 
 		std::string edeName = ede->getName();
 
 		char edeLogName[512];
-		sprintf(edeLogName, "%s%s-%s-making[%d]%s", config.logPath, scenario->name, edeName.c_str(), config.edeDepth, LOG_EXTENSION);
+		sprintf(edeLogName, "%s%s-%s-making[%d]%s", this->config.logPath, scenario->name, edeName.c_str(), this->config.edeDepth, LOG_EXTENSION);
 		EDLogger edeLogger(edeLogName);
 
 		double firstTime = glfwGetTime();
@@ -101,18 +101,18 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 
 		edeLogger.closeLog();
 
-		sprintf(logName, "%s%s[%d]-%s[%s=%d][%s]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, edeName.c_str(), config.edeDepth, config.pathfileName, LOG_EXTENSION);
+		sprintf(logName, "%s%s[%d]-%s[%s=%d][%s]%s", this->config.logPath, scenario->name, this->config.logIdentifier, this->config.logExtraMsg, edeName.c_str(), this->config.edeDepth, this->config.pathfileName, LOG_EXTENSION);
 	}
 	else
 	{
-		sprintf(logName, "%s%s[%d]-%s[%s]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, config.pathfileName, LOG_EXTENSION);
+		sprintf(logName, "%s%s[%d]-%s[%s]%s", this->config.logPath, scenario->name, this->config.logIdentifier, this->config.logExtraMsg, this->config.pathfileName, LOG_EXTENSION);
 	}
 
 	logger = new EDLogger(logName);
 
 	title = new char[256];
 	modeTitle = new char[256];
-	sprintf(modeTitle, "Birds Eye [%s] - Scenario:%s - ", config.title, scenario->name);
+	sprintf(modeTitle, "Birds Eye [%s] - Scenario:%s - ", this->config.title, scenario->name);
 }
 
 void GLBirdsEyePlayer::step(void)

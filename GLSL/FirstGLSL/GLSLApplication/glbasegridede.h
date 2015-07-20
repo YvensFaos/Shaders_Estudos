@@ -8,11 +8,11 @@ class GLBaseGridEDE : public GLBasicEDE
 private:
 	GLBaseGrid grid;
 	int edeDepth;
-
+	
+	int** indexes;
 public:
 	GLBaseGridEDE(void);
 	~GLBaseGridEDE(void);
-
 public:
 	//Carregar a EDE de um arquivo
 	void loadEDE(GLConfig* config);
@@ -26,4 +26,7 @@ public:
 	std::string getName(void);
 private:
 	void calculateMemory(void);
+
+	void createIndexes(GLMeshHandler* handler);
+	void cleanIndexes(GLMeshHandler* handler);
 };
