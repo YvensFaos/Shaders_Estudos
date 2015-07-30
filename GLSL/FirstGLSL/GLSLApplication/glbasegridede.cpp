@@ -33,13 +33,26 @@ void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConf
 		info[0] += 1;
 		node = &grid.nodes[i];
 
-		if(node->numIndicesTotal > 0 && frustum->intercepts(&node->min, &node->max))
+
+		if (node->numIndicesTotal > 0 && frustum->containsAnyVertexOf(&node->min, &node->max))
 		{
+			if (config->coloredNodes)
+			{
+				GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+				glUniform4f(loc, node->nodeColor.r, node->nodeColor.g, node->nodeColor.b, 1.0f);
+			}
 			info[1] += 1;
 
 			node->mesh->prerender();
 			info[2] += node->mesh->render();
 		}
+
+		/*if (config->coloredNodes)
+		{
+			GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+			glUniform4f(loc, node->nodeColor.r, node->nodeColor.g, node->nodeColor.b, 0.1f);
+		}
+		GLAABB::drawAABB(node->min, node->max, glm::vec3(0.0f, 0.0f, 0.0f));*/
 	}
 }
 

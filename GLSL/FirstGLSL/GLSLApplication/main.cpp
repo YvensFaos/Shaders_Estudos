@@ -292,9 +292,9 @@ int main()
 	config.edeDepth = 3;
 	config.type = BASEGRID;
 		
-	//TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
+	TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	//TEST_BODY(RECORD_PATH, "teste", 0);
-	TEST_BODY(BIRDS_EYE, "teste", 0);
+	//TEST_BODY(BIRDS_EYE, "teste", 0);
 	/*for (int i = 0; i < 1; i++)
 	{
 		config.logIdentifier = i + 1;

@@ -185,12 +185,21 @@ GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, EDLogger* logger)
 	stepMax.y = max.y;
 	stepMax.z += stepZ;
 
+	sprintf(logLine, "Step X: %4.2f", stepX);
+	logger->logLineTimestamp(logLine);
+	sprintf(logLine, "Step Z: %4.2f", stepZ);
+	logger->logLineTimestamp(logLine);
+
 	nodes = new GLBaseGridNode[nodesCount];
 	int k = 0;
 	for(int i = 0; i < sqrtNodesCount; i++)
 	{
 		for(int j = 0; j < sqrtNodesCount; j++)
 		{
+			char logLine[128];
+			sprintf(logLine, "Criando Node [%d]\r\n%sMínimo: %4.2f %4.2f %4.2f\r\n%sMáximo: %4.2f %4.2f %4.2f", k + 1, LOG_SPACING, VEC3_PRINT(stepMin), LOG_SPACING, VEC3_PRINT(stepMax));
+			logger->logLineTimestamp(logLine);
+
 			nodes[k++] = GLBaseGridNode(stepMin, stepMax, indexes, handler, logger);
 			stepMin.x += stepX;
 			stepMax.x += stepX;
