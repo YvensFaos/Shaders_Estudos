@@ -63,6 +63,29 @@ GLBaseGridNode::GLBaseGridNode(glm::vec3 min, glm::vec3 max, std::vector<int>* i
 
 	numIndicesTotal = inside;
 	logger->logLineTimestamp(logLine);
+
+	generateMesh(handler, logger);
+}
+
+void GLBaseGridNode::generateMesh(GLMeshHandler* handler, EDLogger* logger)
+{
+	int indexSize = localIndexes->size();
+	std::vector<glm::vec3> vertexes;
+	std::vector<glm::vec3> normals;
+
+	for (int j = 0; j < numMeshes; j++)
+	{
+		indexSize = localIndexes[j].size();
+		mesh = &handler->meshes[j];
+
+		for (int k = 0; k < indexSize; k++)
+		{
+			vertexes.push_back(mesh->vertexes[localIndexes[j].at(k)]);
+			normals.push_back(mesh->normals[localIndexes[j].at(k)]);
+		}
+	}
+
+	mesh = new GLMesh3D(&vertexes, &normals);
 }
 
 GLBaseGridNode::~GLBaseGridNode(void)

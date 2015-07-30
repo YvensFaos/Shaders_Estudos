@@ -278,6 +278,11 @@ void GLBirdsEyePlayer::keyBoard(GLFWwindow* window, int key, int scancode, int a
 	{
 		if (key == GLFW_KEY_ESCAPE)
 		{
+			if (config.logResults)
+			{
+				logger->closeLog();
+				logged = true;
+			}
 			isRunning = false;
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}

@@ -37,47 +37,10 @@ void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConf
 		{
 			info[1] += 1;
 
-			visibleNodes.push_back(node);
+			node->mesh->prerender();
+			info[2] += node->mesh->render();
 		}
 	}
-
-	int numMeshes = handler->numMeshes;
-	int indexSize = 0;
-
-	std::vector<glm::vec3> vertexes;
-	std::vector<glm::vec3> normals;
-
-	GLMesh3D* mesh;
-
-	for(int i = 0; i < visibleNodes.size(); i++)
-	{
-		node = visibleNodes[i];
-
-		for(int j = 0; j < numMeshes; j++)
-		{
-			indexSize = node->localIndexes[j].size();
-			mesh = &handler->meshes[j];
-
-			for(int k = 0; k < indexSize; k++)
-			{
-				if(indexes[j][node->localIndexes[j].at(k)] == 0)
-				{
-					vertexes.push_back(mesh->vertexes[node->localIndexes[j].at(k)]);
-					normals.push_back(mesh->normals[node->localIndexes[j].at(k)]);
-
-					indexes[j][node->localIndexes[j].at(k)] = 0;
-				}
-			}
-		}
-	}
-
-	mesh = new GLMesh3D(&vertexes, &normals);
-	mesh->prerender();
-	mesh->render();
-
-	delete mesh;
-
-	cleanIndexes(handler);
 }
 
 void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 

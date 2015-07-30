@@ -20,12 +20,17 @@ public:
 	int numMeshes;
 	int numIndicesTotal;
 	std::vector<int>* localIndexes;
+
+	GLMesh3D* mesh;
 public:
 	GLBaseGridNode(void);
 	GLBaseGridNode(glm::vec3 min, glm::vec3 max, std::vector<int>* indexes, GLMeshHandler* handler, EDLogger* logger);
 	~GLBaseGridNode(void);
 
 	int getMemory(void);
+
+private:
+	void generateMesh(GLMeshHandler* handler, EDLogger* logger);
 };
 
 class GLBaseGrid
