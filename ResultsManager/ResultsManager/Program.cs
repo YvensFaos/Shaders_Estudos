@@ -21,7 +21,8 @@ namespace ResultsManager
             openFileDialog1.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.Multiselect = true;
-            openFileDialog1.InitialDirectory = @"C:\Users\Yvens\Documents\GitHub\Shaders_Estudos\Logs\";
+            //openFileDialog1.InitialDirectory = @"C:\Users\Yvens\Documents\GitHub\Shaders_Estudos\Logs\";
+            openFileDialog1.InitialDirectory = @"F:\Repositorios\Shaders_Estudos\Logs\";
 
             DialogResult result = openFileDialog1.ShowDialog();
 

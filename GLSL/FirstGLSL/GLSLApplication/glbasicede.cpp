@@ -4,6 +4,7 @@
 #include "gloctreeede.h"
 #include "glsoctreeede.h"
 #include "glroctreeede.h"
+#include "glbasegridede.h"
 
 #include "glbuffer.h"
 
@@ -25,7 +26,7 @@ int GLBasicEDE::getMemory(void)
 
 GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 {
-	std::string identifier = IDENTIFIER_CODE;
+	std::string identifier = config->objectName + ':' + std::to_string(config->edeDepth);
 	switch(config->type)
 	{
 		case NONE: return nullptr;
@@ -59,6 +60,16 @@ GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 			{
 				return new GLROctreeEDE();
 			}
+		case BASEGRID:
+			identifier = identifier + BASEGRID_NAME;
+			if (GLBufferHandler::checkForEDE(identifier))
+			{
+				return GLBufferHandler::edeBuffer[identifier];
+			}
+			else
+			{
+				return new GLBaseGridEDE();
+			}
 		default: return nullptr;
 	}
 }
@@ -70,7 +81,7 @@ void GLBasicEDE::setLogger(EDLogger* logger)
 
 void GLBasicEDE::bufferizeEDE(GLConfig* config)
 {
-	std::string identifier = IDENTIFIER_CODE;
+	std::string identifier = config->objectName + ':' + std::to_string(config->edeDepth);
 	identifier = identifier + this->getName();
 	GLBufferHandler::addToEDEBuffer(identifier, this);
 }

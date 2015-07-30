@@ -121,7 +121,7 @@
       <Filter>EDE\Raw EDE</Filter>
     </ClCompile>
     <ClCompile Include="glbasegridede.cpp">
-      <Filter>EDE\Raw EDE</Filter>
+      <Filter>EDE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -216,7 +216,7 @@
       <Filter>EDE\Raw EDE</Filter>
     </ClInclude>
     <ClInclude Include="glbasegridede.h">
-      <Filter>EDE\Raw EDE</Filter>
+      <Filter>EDE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

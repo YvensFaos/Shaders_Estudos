@@ -78,8 +78,8 @@
 #include <stdlib.h>  
 
 //#define mia
-//#define desktop
-#define notebook
+#define desktop
+//#define notebook
 
 //#define individual
 //#define batch
@@ -259,6 +259,8 @@ int main()
 	config.objectPath = "F:/Repositorios/Shaders_Estudos/Models/";
 	config.pathfilePath = "F:/Repositorios/Shaders_Estudos/Paths/";
 	config.logPath = "F:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
+	modelPath = "F:/Repositorios/Shaders_Estudos/Models/";
+	modelPathLocation = "F:/Repositorios/Shaders_Estudos/Paths/";
 #endif
 #ifdef notebook
 	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
@@ -279,7 +281,7 @@ int main()
 	//GOLDRUSH;
 	//CITYCYCLES;
 
-	config.repeatable = false;
+	config.repeatable = true;
 	config.logResults = false;
 
 	config.pathIdentifier = 1;
@@ -287,15 +289,17 @@ int main()
 	config.logExtraMsg = "test-mia-comparacao-x";
 	config.logIdentifier = 0;
 	config.edeDepth = 3;
-	config.type = ROCTREE;
+	config.type = BASEGRID;
 		
-	TEST_BODY(RECORD_PATH, "teste", 0);
-	//TEST_BODY(BIRDS_EYE, "teste", 0);
+	//TEST_BODY(RECORD_PATH, "teste", 2);
+	TEST_BODY(BIRDS_EYE, "teste", 0);
 	/*for (int i = 0; i < 1; i++)
 	{
 		config.logIdentifier = i + 1;
 		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	}*/
+
+	//TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 #endif
 
 	GLBufferHandler::clearBuffers();

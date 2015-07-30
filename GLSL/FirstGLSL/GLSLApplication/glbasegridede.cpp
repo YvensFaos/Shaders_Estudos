@@ -41,8 +41,6 @@ void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConf
 			node->visible = VISIBLE;
 		}
 	}
-
-
 }
 
 void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 
