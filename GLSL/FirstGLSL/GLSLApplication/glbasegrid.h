@@ -3,7 +3,8 @@
 #include "glmesh3d.h"
 #include "edlogger.h"
 
-#define NODE_COUNT 36
+//Deve ter raiz quadrada exata
+#define NODE_COUNT 4
 
 class GLBaseGridNode
 {
@@ -18,10 +19,10 @@ public:
 
 	int numMeshes;
 	int numIndicesTotal;
-	std::vector<int>* indexes;
+	std::vector<int>* localIndexes;
 public:
 	GLBaseGridNode(void);
-	GLBaseGridNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler, EDLogger* logger);
+	GLBaseGridNode(glm::vec3 min, glm::vec3 max, std::vector<int>* indexes, GLMeshHandler* handler, EDLogger* logger);
 	~GLBaseGridNode(void);
 
 	int getMemory(void);
@@ -35,6 +36,7 @@ public:
 	int memoryUsed;
 
 	int nodesCount;
+	
 public:
 	GLBaseGrid(void);
 	GLBaseGrid(GLMeshHandler* handler, EDLogger* logger);

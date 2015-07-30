@@ -26,7 +26,11 @@ int GLBasicEDE::getMemory(void)
 
 GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 {
-	std::string identifier = config->objectName + ':' + std::to_string(config->edeDepth);
+	std::string identifier = "";
+	identifier += config->objectName;
+	identifier += ":";
+	identifier += std::to_string(config->edeDepth);
+
 	switch(config->type)
 	{
 		case NONE: return nullptr;

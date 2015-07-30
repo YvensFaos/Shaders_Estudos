@@ -39,6 +39,7 @@ public:
 public:
 	GLMesh3D(void);
 	GLMesh3D(int index, int glindex, const aiScene* scene);
+	GLMesh3D(std::vector<glm::vec3>* vertexes, std::vector<glm::vec3>* normals);
 	~GLMesh3D(void);
 	
 	void prerender(void);
