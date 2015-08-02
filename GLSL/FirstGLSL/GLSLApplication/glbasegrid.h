@@ -4,7 +4,7 @@
 #include "edlogger.h"
 
 //Deve ter raiz quadrada exata
-#define BASE_NODE_COUNT 8
+#define BASE_NODE_COUNT 2
 
 class GLBaseGridNode
 {

@@ -15,10 +15,10 @@
 #define desktop
 //#define notebook
 
-//#define individual
+#define individual
 //#define batch
 //#define recordPath
-#define cleanBuild
+//#define cleanBuild
 
 GLPlayer* player;
 
@@ -70,8 +70,8 @@ int main()
 #pragma endregion
 	
 	//Macro do cenário:
-	//COALTOWN;
-	GOLDRUSH;
+	COALTOWN;
+	//GOLDRUSH;
 	//SAW;
 	//RAVINE;
 	//CITYCYCLES;
@@ -79,59 +79,43 @@ int main()
 #ifdef individual
 	config.repeatable = false;
 	config.logResults = false;
-
-	//Seta um valor inicial para o identifier; Caso seja -1, o código
-	//Inicializa com 0 e começa a contagem a partir daí
 	config.pathIdentifier = 1;
-	//Adiciona um texto adicional ao arquivo de path
-	config.pathExtraMsg = "walk";
 
 	int numberTests = 2;
-	config.logExtraMsg = "test-desktop-mia-release";
+	config.edeDepth = 3;
+	config.logExtraMsg = "mia-release";
 	for (int i = 0; i < numberTests; i++)
 	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 		config.logIdentifier = i + 1;
-		//Adiciona um texto adicional ao arquivo de log
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
 		config.type = ROCTREE;
-		
-		TEST_BODY(WALKTHROUGH_MODE, "roctree", 0);
+		TEST_BODY(WALKTHROUGH_MODE, "roctree", antialiasing);
 	}
 	for(int i = 0; i < numberTests; i++)
 	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
 		config.type = SOCTREE;
-
-		TEST_BODY(WALKTHROUGH_MODE, "soctree", 0);
+		TEST_BODY(WALKTHROUGH_MODE, "soctree", antialiasing);
 	}
 	for (int i = 0; i < numberTests; i++)
 	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
 		config.type = OCTREE;
 		
-		TEST_BODY(WALKTHROUGH_MODE, "octree", 0);
+		TEST_BODY(WALKTHROUGH_MODE, "octree", antialiasing);
 	}
 	for (int i = 0; i < numberTests; i++)
 	{
-		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
 		config.logIdentifier = i + 1;
-		//Altura padrão de uma EDE
-		config.edeDepth = 3;
-		//EDE escolhida
+		config.type = BASEGRID;
+		config.edeDepth = 6; //64 nós
+		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		config.logIdentifier = i + 1;
 		config.type = NONE;
 		
-		TEST_BODY(WALKTHROUGH_MODE, "none", 0);
+		TEST_BODY(WALKTHROUGH_MODE, "none", antialiasing);
 	}
 #endif
 
@@ -226,14 +210,14 @@ int main()
 #endif
 
 #ifdef cleanBuild
-	config.repeatable = false;
+	config.repeatable = true;
 	config.logResults = false;
 
 	config.pathIdentifier = 1;
 	config.pathExtraMsg = "[dyn]";
 	config.logExtraMsg = "clean";
 	config.logIdentifier = 0;
-	config.edeDepth = 2;
+	config.edeDepth = 10;
 	config.type = BASEGRID;
 
 	config.coloredNodes = true;

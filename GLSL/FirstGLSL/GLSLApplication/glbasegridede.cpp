@@ -34,7 +34,7 @@ void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConf
 		node = &grid.nodes[i];
 
 
-		if (node->numIndicesTotal > 0 && frustum->containsAnyVertexOf(&node->min, &node->max))
+		if (node->numIndicesTotal > 0 && frustum->intercepts(&node->min, &node->max))
 		{
 			if (config->coloredNodes)
 			{

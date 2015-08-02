@@ -6,7 +6,7 @@
 #include <GL\glew.h>
 #include "GLFW\glfw3.h"
 
-//#define DRAW_F_BBOX
+#define DRAW_F_BBOX
 
 //GLPlane
 
@@ -379,8 +379,6 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	float fovx = tan(((cameraStep->fov / 2)*aspect) * PI180);
 	float fovy = tan( (cameraStep->fov / 2)*PI180);
 
-	float test = cameraStep->fov*aspect;
-
 	glm::vec3* up = &cameraStep->up;
 	glm::vec3* apex = &cameraStep->position;
 	glm::vec3* direction = &cameraStep->direction;
@@ -390,12 +388,17 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	glm::vec3 nearPoint = glm::vec3(direction->x, direction->y, direction->z);
 	nearPoint *= nearp;
 	nearPoint += *apex;
-	glm::vec3 farPoint  = glm::vec3(direction->x, direction->y, direction->z);
-	farPoint  *= farp;
-	farPoint  += *apex;
+	glm::vec3 farPoint = glm::vec3(direction->x, direction->y, direction->z);
+	farPoint *= farp;
+	farPoint += *apex;
+	//New
+	glm::vec3 cfarPoint = glm::vec3(direction->x, direction->y, direction->z);
+	cfarPoint *= farp * 0.1f; //10% do frustum
+	cfarPoint += *apex;
 
 	float nearValue = nearp*fovx;
-	float farValue  = farp*fovx;
+	float farValue =  farp*fovx;
+	float cfarValue = farp*fovx* 0.1f;
 
 	glm::vec3 nearRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
 	nearRightPoint *= nearValue;
@@ -405,9 +408,15 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	farRightPoint *= farValue;
 	glm::vec3 farLeftPoint = glm::vec3(-auxAxis.x, -auxAxis.y, -auxAxis.z);
 	farLeftPoint *= farValue;
+	//New
+	glm::vec3 cfarRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
+	cfarRightPoint *= cfarValue;
+	glm::vec3 cfarLeftPoint = glm::vec3(-auxAxis.x, -auxAxis.y, -auxAxis.z);
+	cfarLeftPoint *= cfarValue;
 
 	nearValue = nearp*fovy;
-	farValue = farp*fovy;
+	farValue =  farp*fovy;
+	cfarValue = farp*fovy * 0.1f;
 
 	glm::vec3 nearTopPoint = glm::vec3(up->x, up->y, up->z);
 	nearTopPoint *= nearValue;
@@ -417,8 +426,14 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	farTopPoint *= farValue;
 	glm::vec3 farBottomPoint = glm::vec3(-up->x, -up->y, -up->z);
 	farBottomPoint *= farValue;
+	//New
+	glm::vec3 cfarTopPoint = glm::vec3(up->x, up->y, up->z);
+	cfarTopPoint *= cfarValue;
+	glm::vec3 cfarBottomPoint = glm::vec3(-up->x, -up->y, -up->z);
+	cfarBottomPoint *= cfarValue;
 
 	glm::vec3 ftl, ftr, fbr, fbl, ntl, ntr, nbr, nbl;
+	glm::vec3 cftl, cftr, cfbr, cfbl;
 
 	ftl += farPoint;
 	ftl += farLeftPoint;
@@ -432,6 +447,19 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	fbr += farPoint;
 	fbr += farRightPoint;
 	fbr += farBottomPoint;
+
+	cftl += cfarPoint;
+	cftl += cfarLeftPoint;
+	cftl += cfarTopPoint;
+	cftr += cfarPoint;
+	cftr += cfarRightPoint;
+	cftr += cfarTopPoint;
+	cfbl += cfarPoint;
+	cfbl += cfarLeftPoint;
+	cfbl += cfarBottomPoint;
+	cfbr += cfarPoint;
+	cfbr += cfarRightPoint;
+	cfbr += cfarBottomPoint;
 
 	ntl += nearPoint;
 	ntl += nearLeftPoint;
@@ -467,6 +495,11 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	corners[FRUSTUM_NTR] = ntr;
 	corners[FRUSTUM_NBL] = nbl;
 	corners[FRUSTUM_NBR] = nbr;
+
+	closeCorners[FRUSTUM_FTL] = cftl;
+	closeCorners[FRUSTUM_FTR] = cftr;
+	closeCorners[FRUSTUM_FBL] = cfbl;
+	closeCorners[FRUSTUM_FBR] = cfbr;
 
 	//generateRays();
 	generateAABB();
@@ -489,9 +522,14 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	glm::vec3 farPoint  = glm::vec3(direction->x, direction->y, direction->z);
 	farPoint  *= camera->far;
 	farPoint  += *apex;
+	//New
+	glm::vec3 cfarPoint = glm::vec3(direction->x, direction->y, direction->z);
+	cfarPoint *= camera->far * 0.1f; //10% do frustum
+	cfarPoint += *apex;
 
 	float nearValue = camera->near*fovx;
 	float farValue  = camera->far*fovx;
+	float cfarValue = camera->far*fovx* 0.1f;
 
 	glm::vec3 nearRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
 	nearRightPoint *= nearValue;
@@ -501,9 +539,15 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	farRightPoint *= farValue;
 	glm::vec3 farLeftPoint = glm::vec3(-auxAxis.x, -auxAxis.y, -auxAxis.z);
 	farLeftPoint *= farValue;
+	//New
+	glm::vec3 cfarRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
+	cfarRightPoint *= cfarValue;
+	glm::vec3 cfarLeftPoint = glm::vec3(-auxAxis.x, -auxAxis.y, -auxAxis.z);
+	cfarLeftPoint *= cfarValue;
 
 	nearValue = camera->near*fovy;
 	farValue = camera->far*fovy;
+	cfarValue = camera->far*fovy * 0.1f;
 
 	glm::vec3 nearTopPoint = glm::vec3(up->x, up->y, up->z);
 	nearTopPoint *= nearValue;
@@ -513,8 +557,14 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	farTopPoint *= farValue;
 	glm::vec3 farBottomPoint = glm::vec3(-up->x, -up->y, -up->z);
 	farBottomPoint *= farValue;
+	//New
+	glm::vec3 cfarTopPoint = glm::vec3(up->x, up->y, up->z);
+	cfarTopPoint *= cfarValue;
+	glm::vec3 cfarBottomPoint = glm::vec3(-up->x, -up->y, -up->z);
+	cfarBottomPoint *= cfarValue;
 
 	glm::vec3 ftl, ftr, fbr, fbl, ntl, ntr, nbr, nbl;
+	glm::vec3 cftl, cftr, cfbr, cfbl;
 
 	ftl += farPoint;
 	ftl += farLeftPoint;
@@ -528,6 +578,19 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	fbr += farPoint;
 	fbr += farRightPoint;
 	fbr += farBottomPoint;
+
+	cftl += cfarPoint;
+	cftl += cfarLeftPoint;
+	cftl += cfarTopPoint;
+	cftr += cfarPoint;
+	cftr += cfarRightPoint;
+	cftr += cfarTopPoint;
+	cfbl += cfarPoint;
+	cfbl += cfarLeftPoint;
+	cfbl += cfarBottomPoint;
+	cfbr += cfarPoint;
+	cfbr += cfarRightPoint;
+	cfbr += cfarBottomPoint;
 
 	ntl += nearPoint;
 	ntl += nearLeftPoint;
@@ -563,6 +626,11 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	corners[FRUSTUM_NTR] = ntr;
 	corners[FRUSTUM_NBL] = nbl;
 	corners[FRUSTUM_NBR] = nbr;
+
+	closeCorners[FRUSTUM_FTL] = cftl;
+	closeCorners[FRUSTUM_FTR] = cftr;
+	closeCorners[FRUSTUM_FBL] = cfbl;
+	closeCorners[FRUSTUM_FBR] = cfbr;
 
 	//generateRays();
 	generateAABB();
@@ -633,15 +701,6 @@ bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 	if(!found)
 	{
 		GLAABB* aabb = new GLAABB(*min, *max);
-
-		////colocar o teste de raio aqui
-		//for(int i = 0; i < 4; i++)
-		//{
-		//	if(rays[i].intersect(aabb))
-		//	{
-		//		found = true;
-		//	}
-		//}
 
 		found = aabb->intercepts(this->min, this->max);
 
@@ -769,44 +828,7 @@ void GLFrustum::draw(void)
 	glDrawArrays(GL_TRIANGLES, 0, verticesCount);
 
 #ifdef DRAW_F_BBOX
-	glm::vec3* lmin = new glm::vec3(MAX_FLOAT);
-	glm::vec3* lmax = new glm::vec3(MIN_FLOAT);
-	
-	j = 0;
-	while(j < 8)
-	{
-		if(lmin->x >= corners[j].x)
-		{
-			lmin->x = corners[j].x;
-		}
-		if(lmax->x <= corners[j].x)
-		{
-			lmax->x = corners[j].x;
-		}
-		if(lmin->y >= corners[j].y)
-		{
-			lmin->y = corners[j].y;
-		}
-		if(lmax->y <= corners[j].y)
-		{
-			lmax->y = corners[j].y;
-		}
-		if(lmin->z >= corners[j].z)
-		{
-			lmin->z = corners[j].z;
-		}
-		if(lmax->z <= corners[j].z)
-		{
-			lmax->z = corners[j].z;
-		}
-		j++;
-	}
-
-	printf("Min: %4.2f %4.2f %4.2f = Max: %4.2f %4.2f %4.2f\n", VEC3P_PRINT(lmin), VEC3P_PRINT(lmax));
-	GLAABB::drawAABB(*lmin, *lmax, glm::vec3(0.0f, 0.0f, 0.0f));
-
-	delete lmin;
-	delete lmax;
+	GLAABB::drawAABB(this->min, this->max, glm::vec3(0.0f, 0.0f, 0.0f));
 #endif
 }
 
@@ -827,7 +849,14 @@ void GLFrustum::generateAABB(void)
 	glm::vec3* corner;
 	for(int i = 0; i < 8; i++)
 	{
-		corner = &corners[i];
+		if (i < 4)
+		{
+			corner = &closeCorners[i];
+		}
+		else
+		{
+			corner = &corners[i];
+		}
 
 		if(min.x > corner->x)
 		{

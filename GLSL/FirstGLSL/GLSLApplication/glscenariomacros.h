@@ -60,7 +60,7 @@
 
 //Macro de teste
 #define TEST_BODY(modeM,t,aa) \
-    config.coloredNodes = true; \
+    config.coloredNodes = false; \
 	config.enableDynamics = false; \
 	config.edeTestDynamics = false; \
 	config.frustumTestDynamics = true; \

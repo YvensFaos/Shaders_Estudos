@@ -1,1 +1,0 @@
-{14: 7} - 14:53:38: Tempo de processamento: 0.000085

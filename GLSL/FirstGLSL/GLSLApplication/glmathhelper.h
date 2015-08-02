@@ -114,6 +114,7 @@ class GLFrustum
 {
 public:
 	glm::vec3 corners[8];
+	glm::vec3 closeCorners[4];
 	GLPlane   planes[6];
 	GLRay     rays[4];
 
