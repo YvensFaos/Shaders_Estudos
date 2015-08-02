@@ -11,8 +11,8 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-//#define mia
-#define desktop
+#define mia
+//#define desktop
 //#define notebook
 
 #define individual
@@ -78,7 +78,7 @@ int main()
 
 #ifdef individual
 	config.repeatable = false;
-	config.logResults = false;
+	config.logResults = true;
 	config.pathIdentifier = 1;
 
 	int numberTests = 2;
