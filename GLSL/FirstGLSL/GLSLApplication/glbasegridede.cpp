@@ -66,7 +66,7 @@ void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 	char logLine[128];
 	sprintf(logLine, "Iniciado a octree tamanho %d.", this->edeDepth);
 	logger->logLineTimestamp(logLine);
-	grid = GLBaseGrid(handler, logger);
+	grid = GLBaseGrid(handler, config->edeDepth, logger);
 	logger->logLineTimestamp("Concluindo a octree!");
 	sprintf(logLine, "Memória usada: %d.", grid.getMemory());
 	logger->logLineTimestamp(logLine);

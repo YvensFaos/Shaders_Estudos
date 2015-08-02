@@ -4,7 +4,7 @@
 #include "edlogger.h"
 
 //Deve ter raiz quadrada exata
-#define NODE_COUNT 64
+#define BASE_NODE_COUNT 8
 
 class GLBaseGridNode
 {
@@ -14,7 +14,6 @@ public:
 
 	glm::vec3 nodeColor;
 
-	//Usado por alguns algoritmos
 	VISIBILITY_STATUS visible;
 
 	int numMeshes;
@@ -44,7 +43,7 @@ public:
 	
 public:
 	GLBaseGrid(void);
-	GLBaseGrid(GLMeshHandler* handler, EDLogger* logger);
+	GLBaseGrid(GLMeshHandler* handler, int depth, EDLogger* logger);
 	~GLBaseGrid(void);
 
 	int getMemory(void);

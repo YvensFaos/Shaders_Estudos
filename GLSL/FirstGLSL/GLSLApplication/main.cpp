@@ -6,73 +6,7 @@
 #include "glbatch.h"
 #include "glbuffer.h"
 
-#pragma region define cenarios
-
-#define SAW config.objectName = "saw.obj"; \
-			config.scenarioNumber = 10; \
-			config.pathfileName = "saw-[walk]-[1]"; \
-			int qttDynamics = 1; \
-			std::vector<GLDynamicObject>* pointerDynamics; \
-			pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "saw-[walk]-[1].pathx", qttDynamics, dynamicTrans, dynamicScale); \
-			totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-			config.dynamics = totalDynamics;
-
-#define CITYCYCLES config.objectName = "citycycles.obj"; \
-				 config.scenarioNumber = 11; \
-				 config.pathfileName = "citycycles-[walk]"; \
-				 dynamicScale = glm::vec3(0.2f, 0.2f, 0.2f); \
-				 int qttDynamics = 10; \
-				 std::vector<GLDynamicObject>* pointerDynamics; \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "citycycles-[walk]-[1][[dyn]].pathx", qttDynamics, dynamicTrans, dynamicScale); \
-				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "citycycles-[walk]-[2][[dyn]].pathx", qttDynamics, dynamicTrans, dynamicScale); \
-				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "citycycles-[walk]-[3][[dyn]].pathx", qttDynamics, dynamicTrans, dynamicScale); \
-				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "citycycles-[walk]-[4][[dyn]].pathx", qttDynamics, dynamicTrans, dynamicScale); \
-				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 config.dynamics = totalDynamics;
-
-#define RAVINE config.objectName = "ravine.obj"; \
-				 config.scenarioNumber = 13; \
-				 config.pathfileName = "ravine-[walk]-[1]";
-
-#define VIADUCT config.objectName= "viaduct.obj"; \
-				config.scenarioNumber = 14; \
-				config.pathfileName = "viaduct-[walk]-[1]";
-
-#define COALTOWN config.objectName = "coaltown.obj"; \
-				 config.scenarioNumber = 17; \
-				 config.pathfileName = "coaltown-[walk]"; \
-			     int qttDynamics = 10; \
-				 std::vector<GLDynamicObject>* pointerDynamics; \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[1][dynl].pathx", qttDynamics, dynamicTrans, dynamicScale); \
-				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[2][dynl].pathx", qttDynamics, dynamicTrans, dynamicScale); \
-				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[3][dynl].pathx", qttDynamics, dynamicTrans, dynamicScale); \
-				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 pointerDynamics = GLDynamic::generateDynamics(modelPath, "bunny.obj",  modelPathLocation, "coaltown-[1][test]-[4][dynl].pathx", qttDynamics, dynamicTrans, dynamicScale); \
-				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
-				 config.dynamics = totalDynamics;
-
-#define GOLDRUSH config.objectName = "goldrush.obj"; \
-				 config.scenarioNumber = 18; \
-				 config.pathfileName = "goldrush-[walk]-[1]";
-
-//Macro de teste
-#define TEST_BODY(modeM,t,aa) config.coloredNodes = true; \
-	config.enableDynamics = true; \
-	config.edeTestDynamics = false; \
-	config.frustumTestDynamics = true; \
-	config.title = t; \
-	PLAYER_MODE mode = modeM; \
-	player = config.getGLPlayer(mode); \
-	OpenGLWrapper::player = player; \
-	OpenGLWrapper::initialize(true, aa); \
-	OpenGLWrapper::glLoop();
-
-#pragma endregion
+#include "glscenariomacros.h"
 
 #include <stdio.h>  
 #include <stdlib.h>  
@@ -83,62 +17,68 @@
 
 //#define individual
 //#define batch
-#define recordPath
-//#define cleanBuild
+//#define recordPath
+#define cleanBuild
 
 GLPlayer* player;
 
 int main()  
 {  
+	GLConfig config;
+
 	glm::vec3 dynamicScale = glm::vec3(1.0f, 1.0f, 1.0f);
 	glm::vec3 dynamicTrans = glm::vec3(0.0f, 0.0f, 0.0f);
-
-#ifdef individual
-	GLConfig config;
-	config.width  = 800;
-	config.height = 600;
-	config.aspect = (float) config.width/config.height;
-	config.title  = "Teste";
-	config.fov =  45.0f;
-	config.far = 500.0f;
-	config.near =  0.1f;
 
 	std::string modelPath;
 	std::string modelPathLocation;
 
-	//Configurações de PATH que são exclusivos do computador usado
+	int antialiasing = 0;
+
+	config.width  = 800;
+	config.height = 600;
+	config.aspect = (float) config.width/config.height;
+	config.title  = "Teste";
+	config.fov = 45.0f;
+	config.far = 500.0f;
+	config.near = 0.1f;
+
+	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
+
+	//Identifica qual a maquina que rodará os testes
+#pragma region definir a maquina de teste
 #ifdef mia
-	config.objectPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
+	config.objectPath =   "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
 	config.pathfilePath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
-	config.logPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Logs/Log Mia/";
-	modelPath = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
-	modelPathLocation = "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
+	config.logPath =      "X:/Yvens Rebouças/GIT/Shaders_Estudos/Logs/Log Mia/";
+	modelPath =           "X:/Yvens Rebouças/GIT/Shaders_Estudos/Models/";
+	modelPathLocation =   "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
 #endif
 #ifdef desktop
-	config.objectPath = "F:/Repositorios/Shaders_Estudos/Models/";
+	config.objectPath =   "F:/Repositorios/Shaders_Estudos/Models/";
 	config.pathfilePath = "F:/Repositorios/Shaders_Estudos/Paths/";
-	config.logPath = "F:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
+	config.logPath =      "F:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
+	modelPath =           "F:/Repositorios/Shaders_Estudos/Models/";
+	modelPathLocation =   "F:/Repositorios/Shaders_Estudos/Paths/";
 #endif
 #ifdef notebook
-	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	config.objectPath =   "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
 	config.pathfilePath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
-	config.logPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
-	modelPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
-	modelPathLocation = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
+	config.logPath =      "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
+	modelPath =           "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
+	modelPathLocation =   "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 #endif
-
-	//Quando passa de 150 que a coisa começa a degringolar total
-	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
+#pragma endregion
 	
-	//Setando a configuração pelo macro
+	//Macro do cenário:
 	//COALTOWN;
-	//GOLDRUSH;
+	GOLDRUSH;
 	//SAW;
 	//RAVINE;
-	CITYCYCLES;
+	//CITYCYCLES;
 
+#ifdef individual
 	config.repeatable = false;
-	config.logResults = true;
+	config.logResults = false;
 
 	//Seta um valor inicial para o identifier; Caso seja -1, o código
 	//Inicializa com 0 e começa a contagem a partir daí
@@ -147,7 +87,7 @@ int main()
 	config.pathExtraMsg = "walk";
 
 	int numberTests = 2;
-	config.logExtraMsg = "test-dinamicos-mia-release";
+	config.logExtraMsg = "test-desktop-mia-release";
 	for (int i = 0; i < numberTests; i++)
 	{
 		//Inicializa com 0 e deve ser mudado em tempo de execução, caso necessário
@@ -195,6 +135,7 @@ int main()
 	}
 #endif
 
+	//TODO precisa ser atualizado!
 #ifdef batch
 	char batchPath[128];
 
@@ -236,15 +177,6 @@ int main()
 #endif
 
 #ifdef recordPath
-	GLConfig config;
-	config.width  = 800;
-	config.height = 600;
-	config.aspect = (float) config.width/config.height;
-	config.title  = "Teste";
-	config.fov =  45.0f;
-	config.far = 500.0f;
-	config.near =  0.1f;
-
 	std::string modelPath;
 	std::string modelPathLocation;
 
@@ -271,26 +203,15 @@ int main()
 	modelPathLocation = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 #endif
 
-	//Quando passa de 150 que a coisa começa a degringolar total
-	std::vector<GLDynamicObject> totalDynamics = std::vector<GLDynamicObject>();
-	
-	//Setando a configuração pelo macro
-	//RAVINE;
-	//VIADUCT;
-	//SAW;
-	COALTOWN;
-	//GOLDRUSH;
-	//CITYCYCLES;
-
-	config.repeatable = true;
-	config.logResults = true;
+	config.repeatable = false;
+	config.logResults = false;
 
 	config.pathIdentifier = 1;
 	config.pathExtraMsg = "[dyn]";
 	config.logExtraMsg = "test-mia-comparacao-x";
 	config.logIdentifier = 0;
-	config.edeDepth = 3;
-	config.type = BASEGRID;
+	config.edeDepth = 6;
+	config.type = NONE;
 		
 	TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	//TEST_BODY(RECORD_PATH, "teste", 0);
@@ -305,47 +226,26 @@ int main()
 #endif
 
 #ifdef cleanBuild
-	GLConfig config;
-	config.width  = 800;
-	config.height = 600;
-	config.aspect = (float) config.width/config.height;
-	config.title  = "Teste";
-	config.fov =  45.0f;
-	config.far = 500.0f;
-	config.near =  0.1f;
-
-	std::string modelPath;
-	std::string modelPathLocation;
-
-	config.objectPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
-	config.pathfilePath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
-	config.logPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Logs/Log Notebook/";
-	modelPath = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
-	modelPathLocation = "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
-
 	config.repeatable = false;
 	config.logResults = false;
 
-	config.objectName = "coaltown.obj";
-	config.scenarioNumber = 17;
-	config.pathfileName = "coaltown-[walk]";
-
 	config.pathIdentifier = 1;
 	config.pathExtraMsg = "[dyn]";
-	config.logExtraMsg = "test-mia-comparacao-x";
+	config.logExtraMsg = "clean";
 	config.logIdentifier = 0;
-	config.edeDepth = 3;
+	config.edeDepth = 2;
 	config.type = BASEGRID;
 
 	config.coloredNodes = true;
 	config.enableDynamics = false;
 	config.edeTestDynamics = false;
 	config.frustumTestDynamics = true;
-	config.title = "title";
+	config.title = "Clean Build";
+
 	PLAYER_MODE mode = BIRDS_EYE;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
-	OpenGLWrapper::initialize(true, 0);
+	OpenGLWrapper::initialize(true, antialiasing);
 	OpenGLWrapper::glLoop();
 #endif
 

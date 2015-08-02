@@ -13,6 +13,7 @@ GLBaseGridNode::GLBaseGridNode(void)
 
 	numMeshes = -1;
 	numIndicesTotal = -1;
+
 	visible = INVISIBLE;
 }
 
@@ -112,7 +113,7 @@ GLBaseGrid::GLBaseGrid(void)
 	memoryUsed = 0;
 }
 
-GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, EDLogger* logger)
+GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, int depth, EDLogger* logger)
 {
 	this->logger = logger;
 
@@ -172,7 +173,7 @@ GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, EDLogger* logger)
 	sprintf(logLine, "Máximo: %4.2f %4.2f %4.2f", VEC3_PRINT(max));
 	logger->logLineTimestamp(logLine);
 
-	nodesCount = NODE_COUNT;
+	nodesCount = powf(BASE_NODE_COUNT, depth);
 	float sqrtNodesCount = sqrt(nodesCount);
 	float minX = min.x;
 

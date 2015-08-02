@@ -139,6 +139,7 @@
     <ClInclude Include="glroctree.h" />
     <ClInclude Include="glroctreeede.h" />
     <ClInclude Include="glscenario.h" />
+    <ClInclude Include="glscenariomacros.h" />
     <ClInclude Include="glshaderloader.h" />
     <ClInclude Include="glsoctree.h" />
     <ClInclude Include="glsoctreeede.h" />
