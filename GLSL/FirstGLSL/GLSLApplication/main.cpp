@@ -71,8 +71,8 @@ int main()
 	
 	//Macro do cenário:
 	//COALTOWN;
-	GOLDRUSH;
-	//SAW;
+	//GOLDRUSH;
+	SAW;
 	//RAVINE;
 	//CITYCYCLES;
 
@@ -82,7 +82,7 @@ int main()
 	config.pathIdentifier = 1;
 
 	int numberTests = 2;
-	config.edeDepth = 4;
+	config.edeDepth = 3;
 	config.logExtraMsg = "mia-release";
 	for (int i = 0; i < numberTests; i++)
 	{
@@ -107,7 +107,7 @@ int main()
 	{
 		config.logIdentifier = i + 1;
 		config.type = BASEGRID;
-		config.edeDepth = 8; //64 nós
+		config.edeDepth = 6; //64 nós
 		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
 	}
 	for (int i = 0; i < numberTests; i++)
