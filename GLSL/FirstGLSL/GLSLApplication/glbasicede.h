@@ -11,6 +11,7 @@ class EDLogger;
 #define SOCTREE_NAME "Smart Octree\0"
 #define ROCTREE_NAME "Replicated Octree\0"
 #define BASEGRID_NAME "Base Grid\0"
+#define CGRID_NAME "Condensed Grid\0"
 
 class GLBasicEDE
 {

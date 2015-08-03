@@ -36,22 +36,22 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 
 	numMeshes = handler->numMeshes;
 
-	for(int i = 0; i < handler->numMeshes; i++)
+	for (int i = 0; i < handler->numMeshes; i++)
 	{
 		GLMesh3D* mesh = &handler->meshes.at(i);
-		
+
 		std::vector<int>* previousList = &previousIndexes[i];
 
-		if(previousList && !previousList->empty())
+		if (previousList && !previousList->empty())
 		{
 			totalV += previousList->size();
-			for(int j = 0; j < previousList->size();)
+			for (int j = 0; j < previousList->size();)
 			{
 				glm::vec3* p1 = &mesh->vertexes[previousList->at(j)];
 				glm::vec3* p2 = &mesh->vertexes[previousList->at(j + 1)];
 				glm::vec3* p3 = &mesh->vertexes[previousList->at(j + 2)];
-			
-				if(TriangleCube::testIntersection(p1, p2, p3, &this->min, &this->max))
+
+				if (TriangleCube::testIntersection(p1, p2, p3, &this->min, &this->max))
 				{
 					indexes[i].push_back(previousList->at(j));
 					indexes[i].push_back(previousList->at(j + 1));
@@ -64,13 +64,13 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 		}
 	}
 
-	sprintf(logLine,"Inside: %d/%d", inside, totalV);
+	sprintf(logLine, "Inside: %d/%d", inside, totalV);
 	logger->logLineTimestamp(logLine);
 
-	if(--depth > 0 && inside > 0)
+	if (--depth > 0 && inside > 0)
 	{
 		//Então possui filhos
-		glm::vec3 center = glm::vec3(min.x + (max.x - min.x)/2.0f, min.y + (max.y - min.y)/2.0f, min.z + (max.z - min.z)/2.0f);
+		glm::vec3 center = glm::vec3(min.x + (max.x - min.x) / 2.0f, min.y + (max.y - min.y) / 2.0f, min.z + (max.z - min.z) / 2.0f);
 		hasNodes = true;
 		//Triviais
 		nodes.push_back(GLOctreeNode(min, center, handler, depth, indexes, logger, clearIndexes));
@@ -86,9 +86,9 @@ GLOctreeNode::GLOctreeNode(glm::vec3 min, glm::vec3 max, GLMeshHandler* handler,
 
 		//Depois de todos os filhos processados
 		//Apaga os vetores de índices porque são usados apenas pelos filhos
-		if(clearIndexes)
+		if (clearIndexes)
 		{
-			for(int i = 0; i < handler->numMeshes; i++)
+			for (int i = 0; i < handler->numMeshes; i++)
 			{
 				indexes[i].clear();
 			}
@@ -106,7 +106,7 @@ int GLOctreeNode::getMemory(void)
 	int memory = sizeof(min) + sizeof(max) + sizeof(int) + sizeof(bool) + sizeof(nodeColor);
 
 	//Memória da lista de índices
-	for(int i = 0; i < numMeshes; i++)
+	for (int i = 0; i < numMeshes; i++)
 	{
 		memory += sizeof(int) * indexes[i].size();
 	}
@@ -115,9 +115,9 @@ int GLOctreeNode::getMemory(void)
 	memory += sizeof(normals);
 	memory += mesh.getMemory();
 
-	if(hasNodes)
+	if (hasNodes)
 	{
-		for(int i = 0; i < nodes.size(); i++)
+		for (int i = 0; i < nodes.size(); i++)
 		{
 			memory += nodes.at(i).getMemory();
 		}
@@ -130,10 +130,10 @@ void GLOctreeNode::optimizeNode(EDLogger* logger)
 {
 	logger->logLineTimestamp("Otimizando node...");
 
-	if(hasNodes)
+	if (hasNodes)
 	{
 		logger->logLineTimestamp("Chamando nós filhos...");
-		for(int i = 0; i < nodes.size(); i++)
+		for (int i = 0; i < nodes.size(); i++)
 		{
 			nodes.at(i).optimizeNode(logger);
 		}
@@ -142,11 +142,11 @@ void GLOctreeNode::optimizeNode(EDLogger* logger)
 	{
 		logger->logLineTimestamp("Otimizando arrays de mesh...");
 		char logLine[128];
-		for(int i = 0; i < numMeshes; i++)
+		for (int i = 0; i < numMeshes; i++)
 		{
 			std::vector<int>* lindexes = &indexes[i];
 
-			if(lindexes->size() > 0)
+			if (lindexes->size() > 0)
 			{
 				std::sort(lindexes->begin(), lindexes->end());
 				std::vector<int> continuosIndexes;
@@ -155,9 +155,9 @@ void GLOctreeNode::optimizeNode(EDLogger* logger)
 				int preOpt = lindexes->size();
 
 				int previous = lindexes->at(0);
-				for(int j = 1; j < lindexes->size(); j++)
+				for (int j = 1; j < lindexes->size(); j++)
 				{
-					if(previous + 1 != lindexes->at(j))
+					if (previous + 1 != lindexes->at(j))
 					{
 						continuosIndexes.push_back(previous);
 						continuosIndexes.push_back(lindexes->at(j));
@@ -167,7 +167,7 @@ void GLOctreeNode::optimizeNode(EDLogger* logger)
 				continuosIndexes.push_back(lindexes->at(lindexes->size() - 1));
 
 				lindexes->clear();
-				for(int j = 0; j < continuosIndexes.size(); j++)
+				for (int j = 0; j < continuosIndexes.size(); j++)
 				{
 					lindexes->push_back(continuosIndexes.at(j));
 				}
@@ -190,8 +190,8 @@ void GLOctreeNode::generateMesh(EDLogger* logger)
 	mesh.verticesCount = vertexes.size();
 
 	mesh.vertexes = new glm::vec3[mesh.verticesCount];
-	mesh.normals  = new glm::vec3[mesh.verticesCount];
-	for(int i = 0; i < mesh.verticesCount; i++)
+	mesh.normals = new glm::vec3[mesh.verticesCount];
+	for (int i = 0; i < mesh.verticesCount; i++)
 	{
 		glm::vec3* v = &vertexes.at(i);
 		mesh.vertexes[i] = glm::vec3(v->x, v->y, v->z);
@@ -212,7 +212,7 @@ void GLOctreeNode::generateMesh(EDLogger* logger)
 //GLOctree
 
 GLOctree::GLOctree()
-{ 
+{
 	memoryUsed = 0;
 }
 
@@ -225,44 +225,44 @@ GLOctree::GLOctree(GLMeshHandler* handler, int depth, EDLogger* logger)
 
 	logger->logLineTimestamp("Calculando AABB da raíz");
 	std::vector<int>* indexes = new std::vector<int>[handler->numMeshes];
-	for(int i = 0; i < handler->numMeshes; i++)
+	for (int i = 0; i < handler->numMeshes; i++)
 	{
 		GLMesh3D* mesh = &handler->meshes.at(i);
 
-		if(mesh->verticesCount > 0)
+		if (mesh->verticesCount > 0)
 		{
-			for(int j = 0; j < mesh->verticesCount; j++)
+			for (int j = 0; j < mesh->verticesCount; j++)
 			{
 				indexes[i].push_back(j);
 			}
 
-			#pragma region buscar valores max e min
-			if(mesh->max.x > max.x)
+#pragma region buscar valores max e min
+			if (mesh->max.x > max.x)
 			{
 				max.x = mesh->max.x;
 			}
-			if(mesh->max.y > max.y)
+			if (mesh->max.y > max.y)
 			{
 				max.y = mesh->max.y;
 			}
-			if(mesh->max.z > max.z)
+			if (mesh->max.z > max.z)
 			{
 				max.z = mesh->max.z;
 			}
 
-			if(mesh->min.x < min.x)
+			if (mesh->min.x < min.x)
 			{
 				min.x = mesh->min.x;
 			}
-			if(mesh->min.y < min.y)
+			if (mesh->min.y < min.y)
 			{
 				min.y = mesh->min.y;
 			}
-			if(mesh->min.z < min.z)
+			if (mesh->min.z < min.z)
 			{
 				min.z = mesh->min.z;
 			}
-			#pragma endregion
+#pragma endregion
 		}
 		else
 		{
@@ -304,7 +304,7 @@ void GLOctree::logTree(void)
 	stack[0] = &root;
 
 	char logLine[128];
-	while(stackSize != 0)
+	while (stackSize != 0)
 	{
 		GLOctreeNode* top = stack[--stackSize];
 		nodeCounter++;
@@ -312,9 +312,9 @@ void GLOctree::logTree(void)
 		sprintf(logLine, "Node - [%d] - [%d]", top->indexes[0].size(), top->nodes.size());
 		logger->logLineTimestamp(logLine);
 
-		if(top->hasNodes)
+		if (top->hasNodes)
 		{
-			for(int i = 0; i < top->nodes.size(); i++)
+			for (int i = 0; i < top->nodes.size(); i++)
 			{
 				stack[stackSize++] = &top->nodes.at(i);
 			}

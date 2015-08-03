@@ -40,7 +40,7 @@ public:
 	int memoryUsed;
 
 	int nodesCount;
-	
+
 public:
 	GLBaseGrid(void);
 	GLBaseGrid(GLMeshHandler* handler, int depth, EDLogger* logger);

@@ -5,6 +5,7 @@
 #include "glsoctreeede.h"
 #include "glroctreeede.h"
 #include "glbasegridede.h"
+#include "glcgridede.h"
 
 #include "glbuffer.h"
 
@@ -73,6 +74,16 @@ GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 			else
 			{
 				return new GLBaseGridEDE();
+			}
+		case CGRID:
+			identifier = identifier + CGRID_NAME;
+			if (GLBufferHandler::checkForEDE(identifier))
+			{
+				return GLBufferHandler::edeBuffer[identifier];
+			}
+			else
+			{
+				return new GLCGridEDE();
 			}
 		default: return nullptr;
 	}

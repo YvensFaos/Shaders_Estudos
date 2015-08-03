@@ -91,6 +91,7 @@
     <ClCompile Include="glbirdseyeplayer.cpp" />
     <ClCompile Include="glbuffer.cpp" />
     <ClCompile Include="glcamera.cpp" />
+    <ClCompile Include="glcgridede.cpp" />
     <ClCompile Include="glconfig.cpp" />
     <ClCompile Include="gldynamic.cpp" />
     <ClCompile Include="gledemakerplayer.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="glbirdseyeplayer.h" />
     <ClInclude Include="glbuffer.h" />
     <ClInclude Include="glcamera.h" />
+    <ClInclude Include="glcgridede.h" />
     <ClInclude Include="glconfig.h" />
     <ClInclude Include="gldynamic.h" />
     <ClInclude Include="gledemakerplayer.h" />

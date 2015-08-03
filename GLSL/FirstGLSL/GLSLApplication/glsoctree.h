@@ -2,7 +2,7 @@
 
 #include "gloctree.h"
 
-class GLSOctree 
+class GLSOctree
 {
 public:
 	EDLogger* logger;

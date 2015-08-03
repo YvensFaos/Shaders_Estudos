@@ -11,14 +11,14 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-#define mia
-//#define desktop
+//#define mia
+#define desktop
 //#define notebook
 
-#define individual
+//#define individual
 //#define batch
 //#define recordPath
-//#define cleanBuild
+#define cleanBuild
 
 GLPlayer* player;
 
@@ -217,7 +217,7 @@ int main()
 	config.pathExtraMsg = "[dyn]";
 	config.logExtraMsg = "clean";
 	config.logIdentifier = 0;
-	config.edeDepth = 10;
+	config.edeDepth = 6;
 	config.type = BASEGRID;
 
 	config.coloredNodes = true;

@@ -46,13 +46,6 @@ void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConf
 			node->mesh->prerender();
 			info[2] += node->mesh->render();
 		}
-
-		/*if (config->coloredNodes)
-		{
-			GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
-			glUniform4f(loc, node->nodeColor.r, node->nodeColor.g, node->nodeColor.b, 0.1f);
-		}
-		GLAABB::drawAABB(node->min, node->max, glm::vec3(0.0f, 0.0f, 0.0f));*/
 	}
 }
 
@@ -60,14 +53,11 @@ void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 {
 	this->edeDepth = config->edeDepth;
 	
-	indexes = new int*[handler->numMeshes];
-	createIndexes(handler);
-
 	char logLine[128];
-	sprintf(logLine, "Iniciado a octree tamanho %d.", this->edeDepth);
+	sprintf(logLine, "Iniciado a grid tamanho %f.", powf(BASE_NODE_COUNT, config->edeDepth));
 	logger->logLineTimestamp(logLine);
 	grid = GLBaseGrid(handler, config->edeDepth, logger);
-	logger->logLineTimestamp("Concluindo a octree!");
+	logger->logLineTimestamp("Concluindo a grid!");
 	sprintf(logLine, "Memória usada: %d.", grid.getMemory());
 	logger->logLineTimestamp(logLine);
 
@@ -92,41 +82,6 @@ void GLBaseGridEDE::calculateMemory(void)
 	else
 	{
 		memoryUsed = grid.memoryUsed;
-	}
-}
-
-void GLBaseGridEDE::createIndexes(GLMeshHandler* handler) 
-{
-	int count = 0;
-
-	for(int i = 0; i < handler->numMeshes; i++)
-	{
-		GLMesh3D* mesh = &handler->meshes[i];
-
-		count = mesh->verticesCount;
-		indexes[i] = new int[count];
-
-		for(int j = 0; j < count; j++)
-		{
-			indexes[i][j] = 0;
-		}
-	}
-}
-
-void GLBaseGridEDE::cleanIndexes(GLMeshHandler* handler) 
-{
-	int count = 0;
-
-	for(int i = 0; i < handler->numMeshes; i++)
-	{
-		GLMesh3D* mesh = &handler->meshes[i];
-
-		count = mesh->verticesCount;
-
-		for(int j = 0; j < count; j++)
-		{
-			indexes[i][j] = 0;
-		}
 	}
 }
 

@@ -37,18 +37,18 @@ GLBaseGridNode::GLBaseGridNode(glm::vec3 min, glm::vec3 max, std::vector<int>* i
 	//Verifica o que pertence e o que não
 	localIndexes = new std::vector<int>[numMeshes];
 
-	for(int i = 0; i < numMeshes; i++)
+	for (int i = 0; i < numMeshes; i++)
 	{
 		localIndexes[i].clear();
 		GLMesh3D* mesh = &handler->meshes.at(i);
-		
-		for(int j = 0; j < indexes->size();)
+
+		for (int j = 0; j < indexes->size();)
 		{
 			glm::vec3* p1 = &mesh->vertexes[indexes->at(j)];
 			glm::vec3* p2 = &mesh->vertexes[indexes->at(j + 1)];
 			glm::vec3* p3 = &mesh->vertexes[indexes->at(j + 2)];
-			
-			if(TriangleCube::testIntersection(p1, p2, p3, &this->min, &this->max))
+
+			if (TriangleCube::testIntersection(p1, p2, p3, &this->min, &this->max))
 			{
 				localIndexes[i].push_back(indexes->at(j));
 				localIndexes[i].push_back(indexes->at(j + 1));
@@ -60,7 +60,7 @@ GLBaseGridNode::GLBaseGridNode(glm::vec3 min, glm::vec3 max, std::vector<int>* i
 		}
 	}
 
-	sprintf(logLine,"Inside: %d/%d", inside, totalV);
+	sprintf(logLine, "Inside: %d/%d", inside, totalV);
 
 	numIndicesTotal = inside;
 	logger->logLineTimestamp(logLine);
@@ -98,7 +98,7 @@ int GLBaseGridNode::getMemory(void)
 	int memory = sizeof(min) + sizeof(max) + sizeof(int) + sizeof(bool) + sizeof(nodeColor);
 
 	//Memória da lista de índices
-	for(int i = 0; i < numMeshes; i++)
+	for (int i = 0; i < numMeshes; i++)
 	{
 		memory += sizeof(int) * localIndexes[i].size();
 	}
@@ -122,44 +122,44 @@ GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, int depth, EDLogger* logger)
 
 	logger->logLineTimestamp("Calculando AABB da estrutura toda");
 	std::vector<int>* indexes = new std::vector<int>[handler->numMeshes];
-	for(int i = 0; i < handler->numMeshes; i++)
+	for (int i = 0; i < handler->numMeshes; i++)
 	{
 		GLMesh3D* mesh = &handler->meshes.at(i);
 
-		if(mesh->verticesCount > 0)
+		if (mesh->verticesCount > 0)
 		{
-			for(int j = 0; j < mesh->verticesCount; j++)
+			for (int j = 0; j < mesh->verticesCount; j++)
 			{
 				indexes[i].push_back(j);
 			}
 
-			#pragma region buscar valores max e min
-			if(mesh->max.x > max.x)
+#pragma region buscar valores max e min
+			if (mesh->max.x > max.x)
 			{
 				max.x = mesh->max.x;
 			}
-			if(mesh->max.y > max.y)
+			if (mesh->max.y > max.y)
 			{
 				max.y = mesh->max.y;
 			}
-			if(mesh->max.z > max.z)
+			if (mesh->max.z > max.z)
 			{
 				max.z = mesh->max.z;
 			}
 
-			if(mesh->min.x < min.x)
+			if (mesh->min.x < min.x)
 			{
 				min.x = mesh->min.x;
 			}
-			if(mesh->min.y < min.y)
+			if (mesh->min.y < min.y)
 			{
 				min.y = mesh->min.y;
 			}
-			if(mesh->min.z < min.z)
+			if (mesh->min.z < min.z)
 			{
 				min.z = mesh->min.z;
 			}
-			#pragma endregion
+#pragma endregion
 		}
 		else
 		{
@@ -193,9 +193,9 @@ GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, int depth, EDLogger* logger)
 
 	nodes = new GLBaseGridNode[nodesCount];
 	int k = 0;
-	for(int i = 0; i < sqrtNodesCount; i++)
+	for (int i = 0; i < sqrtNodesCount; i++)
 	{
-		for(int j = 0; j < sqrtNodesCount; j++)
+		for (int j = 0; j < sqrtNodesCount; j++)
 		{
 			char logLine[128];
 			sprintf(logLine, "Criando Node [%d]\r\n%sMínimo: %4.2f %4.2f %4.2f\r\n%sMáximo: %4.2f %4.2f %4.2f", k + 1, LOG_SPACING, VEC3_PRINT(stepMin), LOG_SPACING, VEC3_PRINT(stepMax));
@@ -212,7 +212,7 @@ GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, int depth, EDLogger* logger)
 		stepMax.z += stepZ;
 	}
 
-	for(int i = 0; i < nodesCount; i++)
+	for (int i = 0; i < nodesCount; i++)
 	{
 		memoryUsed += nodes[i].getMemory();
 	}
@@ -232,7 +232,7 @@ void GLBaseGrid::logStructure(void)
 	char logLine[128];
 
 	GLBaseGridNode* node;
-	for(int i = 0; i < nodesCount; i++)
+	for (int i = 0; i < nodesCount; i++)
 	{
 		node = &nodes[i];
 

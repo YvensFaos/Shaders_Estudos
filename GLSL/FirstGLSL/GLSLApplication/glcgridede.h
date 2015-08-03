@@ -3,15 +3,15 @@
 #include "glbasicede.h"
 #include "glbasegrid.h"
 
-class GLBaseGridEDE : public GLBasicEDE
+class GLCGridEDE : public GLBasicEDE
 {
 private:
 	GLBaseGrid grid;
 	int edeDepth;
-	
+
 public:
-	GLBaseGridEDE(void);
-	~GLBaseGridEDE(void);
+	GLCGridEDE(void);
+	~GLCGridEDE(void);
 public:
 	//Carregar a EDE de um arquivo
 	void loadEDE(GLConfig* config);
