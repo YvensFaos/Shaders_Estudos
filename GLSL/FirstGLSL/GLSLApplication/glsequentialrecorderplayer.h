@@ -2,25 +2,37 @@
 
 #include "glplayer.h"
 #include "glscenario.h"
+#include "glbasicede.h"
+#include "edlogger.h"
+#include "glmathhelper.h"
 
-class GLRecordPathPlayer : public GLPlayer
+class GLSequentialRecorderPlayer : public GLPlayer
 {
 private:
 	int printCounter;
-	int pathCounter;
-	float maxCameraSpeed;
-	char* modeTitle;
+	int printIndex;
 
+	char* modeTitle;
+	char* logLine;
+
+	bool paused;
+	bool logged;
 	bool recording;
 
-	GLCameraStep* actualStep;
+	EDPrinter recorder;
 
+	GLBasicEDE* ede;
 	GLScenario* scenario;
 	GLCameraHandler* cameraHandler;
+	EDLogger* logger;
+
+	GLFrustum frustum;
+
+	float info[INFO_SIZE];
 public:
-	GLRecordPathPlayer(void);
-	GLRecordPathPlayer(GLConfig config);
-	~GLRecordPathPlayer(void);
+	GLSequentialRecorderPlayer(void);
+	GLSequentialRecorderPlayer(GLConfig config);
+	~GLSequentialRecorderPlayer(void);
 
 	void initializeGLPlayer(GLConfig config);
 
@@ -32,8 +44,7 @@ public:
 	void keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void mouse(GLFWwindow* window, int button, int action, int mods);
 
-	void updateMousePos();
 private:
-	void record();
-	bool isRecording();
+	void pause();
+	bool isPaused();
 };

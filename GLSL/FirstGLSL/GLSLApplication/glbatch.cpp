@@ -72,7 +72,7 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 	bool coloredNodes = false;
 	PLAYER_MODE mode = WALKTHROUGH_MODE;
 
-	while(!reader.eof())
+	while (!reader.eof())
 	{
 #pragma region leitura dos dados
 		line = reader.readLnStr();
@@ -174,7 +174,7 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 		ede = getEdetype(edename);
 
 		//Altura da estrutura a ser testada (Default = 1)
-		ededepth = 1; 
+		ededepth = 1;
 		line = reader.readLnStr();
 		sscanf(line, "#ededepth:%d", &ededepth);
 
@@ -189,10 +189,10 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 		sscanf(line, "#mode:%s", modename);
 		mode = getPlayermode(modename);
 #pragma endregion
-		
+
 		//Para garantir que haverá pelo menos 1 execução desse batch
-		repeated = (repeated <= 0)? 1 : repeated;
-		for(int i = 0; i < repeated; i++)
+		repeated = (repeated <= 0) ? 1 : repeated;
+		for (int i = 0; i < repeated; i++)
 		{
 			configurations->push_back(GLConfig());
 			GLConfig* pointer = &configurations->at(configurations->size() - 1);
@@ -203,7 +203,7 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 			pointer->near = near;
 			pointer->far = far;
 			//Identificador é 10* o identificador + i, sendo i a iteração
-			pointer->logIdentifier = logidentifier*10 + i;
+			pointer->logIdentifier = logidentifier * 10 + i;
 			pointer->edeDepth = ededepth;
 			pointer->logResults = logresults;
 			pointer->mode = mode;
@@ -211,19 +211,19 @@ void GLBatch::getTestBatch(std::vector<GLConfig>* configurations)
 
 			//Copiando as strings agora
 			pointer->title = new char[128];
-			sprintf(pointer->title,   "%s", testName);
+			sprintf(pointer->title, "%s", testName);
 			pointer->objectName = new char[128];
-			sprintf(pointer->objectName,   "%s", objectName);
+			sprintf(pointer->objectName, "%s", objectName);
 			pointer->objectPath = new char[128];
-			sprintf(pointer->objectPath,   "%s", objectPath);
+			sprintf(pointer->objectPath, "%s", objectPath);
 			pointer->pathfilePath = new char[128];
 			sprintf(pointer->pathfilePath, "%s", pathfilePath);
 			pointer->pathfileName = new char[128];
 			sprintf(pointer->pathfileName, "%s", pathfileName);
 			pointer->logPath = new char[128];
-			sprintf(pointer->logPath,      "%s", logPath);
+			sprintf(pointer->logPath, "%s", logPath);
 			pointer->logExtraMsg = new char[128];
-			sprintf(pointer->logExtraMsg,  "%s", logExtraMsg);
+			sprintf(pointer->logExtraMsg, "%s", logExtraMsg);
 		}
 	}
 }
@@ -251,7 +251,7 @@ PLAYER_MODE GLBatch::getPlayermode(char* modetype)
 	char f = modetype[0];
 	switch (f)
 	{
-	case 'w': 
+	case 'w':
 		return WALKTHROUGH_MODE;
 	case 'e':
 		return EDE_MAKER;

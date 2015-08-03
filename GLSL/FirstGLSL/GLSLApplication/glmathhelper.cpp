@@ -13,7 +13,7 @@
 GLPlane::GLPlane(void)
 { }
 
-GLPlane::GLPlane(float a, float b, float c, float d) : n(a,b,c), d(d)
+GLPlane::GLPlane(float a, float b, float c, float d) : n(a, b, c), d(d)
 { }
 
 GLPlane::GLPlane(const glm::vec3 &pt, const glm::vec3 &normal)
@@ -26,50 +26,50 @@ GLPlane::~GLPlane(void)
 
 GLPlane::GLPlane(const glm::vec3 &pt1, const glm::vec3 &pt2, const glm::vec3 &pt3)
 {
-    fromPoints(pt1, pt2, pt3);
+	fromPoints(pt1, pt2, pt3);
 }
 
 float GLPlane::dot(const GLPlane &p, const glm::vec3 &pt)
 {
-    // Returns:
-    //  > 0 if the point 'pt' lies in front of the plane 'p'
-    //  < 0 if the point 'pt' lies behind the plane 'p'
-    //    0 if the point 'pt' lies on the plane 'p'
-    //
-    // The signed distance from the point 'pt' to the plane 'p' is returned.
+	// Returns:
+	//  > 0 if the point 'pt' lies in front of the plane 'p'
+	//  < 0 if the point 'pt' lies behind the plane 'p'
+	//    0 if the point 'pt' lies on the plane 'p'
+	//
+	// The signed distance from the point 'pt' to the plane 'p' is returned.
 
-    return glm::dot(p.n, pt) + p.d;
+	return glm::dot(p.n, pt) + p.d;
 }
 
 void GLPlane::fromPointNormal(const glm::vec3 &pt, const glm::vec3 &normal)
 {
-    set(normal.x, normal.y, normal.z, -glm::dot(normal, pt));
-    normalize();
+	set(normal.x, normal.y, normal.z, -glm::dot(normal, pt));
+	normalize();
 }
 
 void GLPlane::fromPoints(const glm::vec3 &pt1, const glm::vec3 &pt2, const glm::vec3 &pt3)
 {
-    n = glm::cross(pt2 - pt1, pt3 - pt1);
+	n = glm::cross(pt2 - pt1, pt3 - pt1);
 	n = glm::normalize(n);
-    d = -glm::dot(n, pt1);
-    //normalize();
+	d = -glm::dot(n, pt1);
+	//normalize();
 }
 
 const glm::vec3 &GLPlane::normal() const
 {
-    return n;
+	return n;
 }
 
 glm::vec3 &GLPlane::normal()
 {
-    return n;
+	return n;
 }
 
 void GLPlane::normalize()
 {
 	float length = 1.0f / n.length();
-    n *= length;
-    d *= length;
+	n *= length;
+	d *= length;
 }
 
 void GLPlane::set(float a, float b, float c, float d)
@@ -171,7 +171,7 @@ bool GLAABB::intercepts(glm::vec3 min, glm::vec3 max)
 
 bool GLAABB::interceptsAsPlanes(glm::vec3* corners, int size)
 {
-	if(!hasPlanes)
+	if (!hasPlanes)
 	{
 		generatePlanes();
 	}
@@ -180,7 +180,7 @@ bool GLAABB::interceptsAsPlanes(glm::vec3* corners, int size)
 	float y = 0;
 	float z = 0;
 
-	for(int j = 0; j < size; j++)
+	for (int j = 0; j < size; j++)
 	{
 		x = corners[j].x;
 		y = corners[j].y;
@@ -220,7 +220,7 @@ void GLAABB::generatePlanes(void)
 
 bool GLAABB::intercepts(glm::vec3 max1, glm::vec3 min1, glm::vec3 max2, glm::vec3 min2)
 {
-	return max1.x >= min2.x 
+	return max1.x >= min2.x
 		&& max1.y >= min2.y
 		&& max1.z >= min2.z
 		&& min1.x <= max2.x
@@ -232,7 +232,7 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 {
 	GLint verticesCount = 36;
 	glm::vec3* vertexes = new glm::vec3[verticesCount];
-	glm::vec3* normals  = new glm::vec3[verticesCount];
+	glm::vec3* normals = new glm::vec3[verticesCount];
 
 	int i = 0;
 	int j = 0;
@@ -246,7 +246,6 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 	vertexes[i++] = glm::vec3(min.x, max.y, min.z);
 	vertexes[i++] = glm::vec3(min.x, min.y, max.z);
 
-
 	vertexes[i++] = glm::vec3(min.x, max.y, min.z);
 	vertexes[i++] = glm::vec3(min.x, max.y, max.z);
 	vertexes[i++] = glm::vec3(min.x, min.y, max.z);
@@ -254,13 +253,13 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 	a = (glm::vec3(min.x, max.y, min.z) - glm::vec3(min.x, min.y, min.z));
 	b = (glm::vec3(min.x, min.y, max.z) - glm::vec3(min.x, min.y, min.z));
 
-	n = glm::cross(a,b);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
+	n = glm::cross(a, b);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
 
 	vertexes[i++] = glm::vec3(max.x, min.y, min.z);
 	vertexes[i++] = glm::vec3(max.x, max.y, min.z);
@@ -273,13 +272,13 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 	a = (glm::vec3(max.x, max.y, min.z) - glm::vec3(max.x, min.y, min.z));
 	b = (glm::vec3(max.x, min.y, max.z) - glm::vec3(max.x, min.y, min.z));
 
-	n = glm::cross(a,b);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
+	n = glm::cross(a, b);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
 
 	vertexes[i++] = glm::vec3(min.x, min.y, min.z);
 	vertexes[i++] = glm::vec3(min.x, max.y, min.z);
@@ -292,13 +291,13 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 	a = (glm::vec3(min.x, max.y, min.z) - glm::vec3(min.x, min.y, min.z));
 	b = (glm::vec3(max.x, min.y, min.z) - glm::vec3(min.x, min.y, min.z));
 
-	n = glm::cross(a,b);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
+	n = glm::cross(a, b);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
 
 	vertexes[i++] = glm::vec3(min.x, min.y, max.z);
 	vertexes[i++] = glm::vec3(min.x, max.y, max.z);
@@ -311,13 +310,13 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 	a = (glm::vec3(min.x, max.y, max.z) - glm::vec3(min.x, min.y, max.z));
 	b = (glm::vec3(max.x, min.y, max.z) - glm::vec3(min.x, min.y, max.z));
 
-	n = glm::cross(a,b);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
+	n = glm::cross(a, b);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
 
 	vertexes[i++] = glm::vec3(min.x, min.y, min.z);
 	vertexes[i++] = glm::vec3(max.x, min.y, min.z);
@@ -330,13 +329,13 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 	a = (glm::vec3(max.x, min.y, min.z) - glm::vec3(min.x, min.y, min.z));
 	b = (glm::vec3(min.x, min.y, max.z) - glm::vec3(min.x, min.y, min.z));
 
-	n = glm::cross(a,b);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
+	n = glm::cross(a, b);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
 
 	vertexes[i++] = glm::vec3(min.x, max.y, min.z);
 	vertexes[i++] = glm::vec3(max.x, max.y, min.z);
@@ -349,13 +348,13 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 	a = (glm::vec3(max.x, max.y, min.z) - glm::vec3(min.x, max.y, min.z));
 	b = (glm::vec3(min.x, max.y, max.z) - glm::vec3(min.x, max.y, min.z));
 
-	n = glm::cross(a,b);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
-	SET_NORMAL_ARRAY(normals,j,n,m);
+	n = glm::cross(a, b);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
+	SET_NORMAL_ARRAY(normals, j, n, m);
 
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	glUniform4f(pos, position.x, position.y, position.z, 0.0f);
@@ -377,7 +376,7 @@ void GLAABB::drawAABB(glm::vec3 min, glm::vec3 max, glm::vec3 position)
 GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* cameraStep)
 {
 	float fovx = tan(((cameraStep->fov / 2)*aspect) * PI180);
-	float fovy = tan( (cameraStep->fov / 2)*PI180);
+	float fovy = tan((cameraStep->fov / 2)*PI180);
 
 	glm::vec3* up = &cameraStep->up;
 	glm::vec3* apex = &cameraStep->position;
@@ -397,7 +396,7 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	cfarPoint += *apex;
 
 	float nearValue = nearp*fovx;
-	float farValue =  farp*fovx;
+	float farValue = farp*fovx;
 	float cfarValue = farp*fovx* 0.1f;
 
 	glm::vec3 nearRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
@@ -415,7 +414,7 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	cfarLeftPoint *= cfarValue;
 
 	nearValue = nearp*fovy;
-	farValue =  farp*fovy;
+	farValue = farp*fovy;
 	cfarValue = farp*fovy * 0.1f;
 
 	glm::vec3 nearTopPoint = glm::vec3(up->x, up->y, up->z);
@@ -508,7 +507,7 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 {
 	float fovx = tan(((camera->fov / 2)*aspect) * PI180);
-	float fovy = tan( (camera->fov / 2)*PI180);
+	float fovy = tan((camera->fov / 2)*PI180);
 
 	glm::vec3* up = &camera->up;
 	glm::vec3* apex = &camera->position;
@@ -519,16 +518,16 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	glm::vec3 nearPoint = glm::vec3(direction->x, direction->y, direction->z);
 	nearPoint *= camera->near;
 	nearPoint += *apex;
-	glm::vec3 farPoint  = glm::vec3(direction->x, direction->y, direction->z);
-	farPoint  *= camera->far;
-	farPoint  += *apex;
+	glm::vec3 farPoint = glm::vec3(direction->x, direction->y, direction->z);
+	farPoint *= camera->far;
+	farPoint += *apex;
 	//New
 	glm::vec3 cfarPoint = glm::vec3(direction->x, direction->y, direction->z);
 	cfarPoint *= camera->far * 0.1f; //10% do frustum
 	cfarPoint += *apex;
 
 	float nearValue = camera->near*fovx;
-	float farValue  = camera->far*fovx;
+	float farValue = camera->far*fovx;
 	float cfarValue = camera->far*fovx* 0.1f;
 
 	glm::vec3 nearRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
@@ -641,7 +640,7 @@ GLFrustum::~GLFrustum(void)
 
 bool GLFrustum::containsAnyVertexOf(glm::vec3* min, glm::vec3* max)
 {
-	glm::vec3* corners[2] = {min, max};
+	glm::vec3* corners[2] = { min, max };
 	int cx = 0, cy = 0, cz = 0;
 	for (int i = 0; i < 8; i++)
 	{
@@ -695,10 +694,9 @@ bool GLFrustum::intercepts(GLAABB* aabb)
 
 bool GLFrustum::intercepts(glm::vec3* min, glm::vec3* max)
 {
-
 	bool found = containsAnyVertexOf(min, max);
 
-	if(!found)
+	if (!found)
 	{
 		GLAABB* aabb = new GLAABB(*min, *max);
 
@@ -714,99 +712,99 @@ void GLFrustum::draw(void)
 {
 	GLint verticesCount = 36;
 	glm::vec3* vertexes = new glm::vec3[verticesCount];
-	glm::vec3* normals  = new glm::vec3[verticesCount];
+	glm::vec3* normals = new glm::vec3[verticesCount];
 	glm::vec3 m = glm::vec3(0.0f, 0.0f, 0.0f);
 
 	int i = 0;
 	int j = 0;
 
 #pragma region near
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NBL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NBR]);
 
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NBR]);
 
-	for(int k = 0; k < 6; k++)
+	for (int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_NEAR].n, m);
+		SET_NORMAL_ARRAY(normals, j, planes[PLANE_NEAR].n, m);
 	}
 #pragma endregion
 
 #pragma region far
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBR]);
 
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTR]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FTR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBR]);
 
-	for(int k = 0; k < 6; k++)
+	for (int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_FAR].n, m);
+		SET_NORMAL_ARRAY(normals, j, planes[PLANE_FAR].n, m);
 	}
 #pragma endregion
 
 #pragma region left
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NBL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBL]);
 
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBL]);
 
-	for(int k = 0; k < 6; k++)
+	for (int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_LEFT].n, m);
+		SET_NORMAL_ARRAY(normals, j, planes[PLANE_LEFT].n, m);
 	}
 #pragma endregion
 
 #pragma region right
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBR]);
 
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTR]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FTR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBR]);
 
-	for(int k = 0; k < 6; k++)
+	for (int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_RIGHT].n, m);
+		SET_NORMAL_ARRAY(normals, j, planes[PLANE_RIGHT].n, m);
 	}
 #pragma endregion
 
 #pragma region bottom
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NBL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NBR]);
 
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FBR]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FBR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NBR]);
 
-	for(int k = 0; k < 6; k++)
+	for (int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_BOTTOM].n, m);
+		SET_NORMAL_ARRAY(normals, j, planes[PLANE_BOTTOM].n, m);
 	}
 #pragma endregion
 
 #pragma region top
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTR]);
 
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTL]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_FTR]);
-	SET_VERTEX_ARRAY(vertexes,i,corners[FRUSTUM_NTR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FTL]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_FTR]);
+	SET_VERTEX_ARRAY(vertexes, i, corners[FRUSTUM_NTR]);
 
-	for(int k = 0; k < 6; k++)
+	for (int k = 0; k < 6; k++)
 	{
-		SET_NORMAL_ARRAY(normals,j,planes[PLANE_TOP].n, m);
+		SET_NORMAL_ARRAY(normals, j, planes[PLANE_TOP].n, m);
 	}
 #pragma endregion
 
@@ -847,7 +845,7 @@ void GLFrustum::generateAABB(void)
 	max = glm::vec3(MIN_FLOAT, MIN_FLOAT, MIN_FLOAT);
 
 	glm::vec3* corner;
-	for(int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		if (i < 4)
 		{
@@ -858,28 +856,28 @@ void GLFrustum::generateAABB(void)
 			corner = &corners[i];
 		}
 
-		if(min.x > corner->x)
+		if (min.x > corner->x)
 		{
 			min.x = corner->x;
 		}
-		if(min.y > corner->y)
+		if (min.y > corner->y)
 		{
 			min.y = corner->y;
 		}
-		if(min.z > corner->z)
+		if (min.z > corner->z)
 		{
 			min.z = corner->z;
 		}
 
-		if(max.x < corner->x)
+		if (max.x < corner->x)
 		{
 			max.x = corner->x;
 		}
-		if(max.y < corner->y)
+		if (max.y < corner->y)
 		{
 			max.y = corner->y;
 		}
-		if(max.z < corner->z)
+		if (max.z < corner->z)
 		{
 			max.z = corner->z;
 		}

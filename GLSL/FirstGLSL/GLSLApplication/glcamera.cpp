@@ -45,17 +45,17 @@ void GLCameraStep::initialize(glm::vec3 position, glm::vec3 up, glm::vec3 direct
 void GLCameraStep::zoom(float value)
 {
 	fov += value;
-	fov = (fov <= 0)? value : fov;
-	fov = (fov > 180)? 180.0f - value : fov;
+	fov = (fov <= 0) ? value : fov;
+	fov = (fov > 180) ? 180.0f - value : fov;
 }
 
 void GLCameraStep::rotate(glm::vec3 around, float angle)
 {
-	if(VEC3_EQUALS(XAXIS, around))
+	if (VEC3_EQUALS(XAXIS, around))
 	{
 		//TODO
 	}
-	if(VEC3_EQUALS(YAXIS, around))
+	if (VEC3_EQUALS(YAXIS, around))
 	{
 		float _xV = 0.f;
 		float _zV = 0.f;
@@ -69,11 +69,11 @@ void GLCameraStep::rotate(glm::vec3 around, float angle)
 
 		_xV = direction.x;
 		_zV = direction.z;
-			
-		direction.x =  _xV*cosa + _zV*sina;
+
+		direction.x = _xV*cosa + _zV*sina;
 		direction.z = -_xV*sina + _zV*cosa;
 	}
-	if(VEC3_EQUALS(ZAXIS, around))
+	if (VEC3_EQUALS(ZAXIS, around))
 	{
 		//TODO
 	}
@@ -106,7 +106,7 @@ GLCameraHandler::GLCameraHandler(char* pathfilePath, char* pathfileName, bool re
 	index = 0;
 	finished = false;
 
-	if(GLBufferHandler::checkForPath(pathfileName))
+	if (GLBufferHandler::checkForPath(pathfileName))
 	{
 		steps = GLBufferHandler::pathBuffer[pathfileName];
 	}
@@ -135,10 +135,9 @@ GLCameraHandler::~GLCameraHandler(void)
 
 GLCameraStep* GLCameraHandler::nextStep()
 {
-	if(index >= (unsigned) steps->size() - 1)
+	if (index >= (unsigned)steps->size() - 1)
 	{
-
-		if(repeated)
+		if (repeated)
 		{
 			index = 0;
 		}
@@ -165,13 +164,13 @@ void GLCameraHandler::readPathFile(void)
 {
 	char file[256];
 	sprintf(file, "%s%s%s", this->path, this->filename, PATH_EXTENSION);
-	
+
 	EDFileReader reader = EDFileReader(file);
 	this->size = reader.readLnInt();
 
 	steps = new std::vector<GLCameraStep>();
 
-	for(int i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		float posx = reader.readLnFloat();
 		float posy = reader.readLnFloat();
@@ -187,7 +186,7 @@ void GLCameraHandler::readPathFile(void)
 
 		float fov = reader.readLnFloat();
 
-		steps->push_back(GLCameraStep(glm::vec3(posx,posy,posz), glm::vec3(upx,upy,upz), glm::vec3(lookx,looky,lookz), fov));
+		steps->push_back(GLCameraStep(glm::vec3(posx, posy, posz), glm::vec3(upx, upy, upz), glm::vec3(lookx, looky, lookz), fov));
 	}
 
 	reader.close();
@@ -200,7 +199,7 @@ int GLCameraHandler::getIndex()
 
 void GLCameraHandler::stardRecording(GLCamera* firstStep)
 {
-	if(!steps)
+	if (!steps)
 	{
 		steps = new std::vector<GLCameraStep>();
 	}
@@ -226,7 +225,7 @@ void GLCameraHandler::stopRecording(void)
 	EDFileWriter writer = EDFileWriter(recordedFilename);
 	writer.writeLnInt(size);
 
-	for(int i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		GLCameraStep* step = &steps->at(i);
 		writer.writeLnFloat(step->position.x);
@@ -253,7 +252,7 @@ void GLCameraHandler::stopRecording(void)
 
 GLCamera::GLCamera(void)
 {
-	position = glm::vec3(0,0,5);
+	position = glm::vec3(0, 0, 5);
 	horizontalAngle = 3.14f;
 	verticalAngle = 0.0f;
 	fov = 45.0f;
@@ -265,13 +264,13 @@ GLCamera::GLCamera(void)
 	up = glm::vec3(0.0, 1.0, 0.0f);
 	right = glm::cross(direction, up);
 
-	near =   0.1f;
-	far  = 250.0f;
+	near = 0.1f;
+	far = 250.0f;
 }
 
 GLCamera::GLCamera(GLConfig* config)
 {
-	position = glm::vec3(0,0,5);
+	position = glm::vec3(0, 0, 5);
 	horizontalAngle = 3.14f;
 	verticalAngle = 0.0f;
 	fov = config->fov;
@@ -284,18 +283,17 @@ GLCamera::GLCamera(GLConfig* config)
 	right = glm::cross(direction, up);
 
 	near = config->near;
-	far  = config->far;
+	far = config->far;
 }
 
 GLCamera::~GLCamera(void)
 { }
 
-
 void GLCamera::zoom(float value)
 {
 	fov += value;
-	fov = (fov <= 0)? value : fov;
-	fov = (fov > 180)? 180.0f - value : fov;
+	fov = (fov <= 0) ? value : fov;
+	fov = (fov > 180) ? 180.0f - value : fov;
 
 	//printf("FOV atual: [%f] (zoom de %f)\n", fov, value);
 }
@@ -317,25 +315,25 @@ void GLCamera::setValues(GLCameraStep* step)
 	right = glm::cross(direction, up);
 
 	horizontalAngle = acos(right.z) + 1.57f;
-	verticalAngle   = asin(direction.y);
+	verticalAngle = asin(direction.y);
 }
 
 void GLCamera::calculateMatrix(GLConfig* config, float xpos, float ypos, float deltaTime)
 {
-	horizontalAngle += mouseSpeed * deltaTime * float(config->width/2 - xpos );
-	verticalAngle   += mouseSpeed * deltaTime * float(config->height/2 - ypos );
+	horizontalAngle += mouseSpeed * deltaTime * float(config->width / 2 - xpos);
+	verticalAngle += mouseSpeed * deltaTime * float(config->height / 2 - ypos);
 
 	direction = glm::vec3(
 		cos(verticalAngle) * sin(horizontalAngle),
 		sin(verticalAngle),
 		cos(verticalAngle) * cos(horizontalAngle)
-	);
+		);
 
 	right = glm::vec3(
-		sin(horizontalAngle - 3.14f/2.0f),
+		sin(horizontalAngle - 3.14f / 2.0f),
 		0,
-		cos(horizontalAngle - 3.14f/2.0f)
-	);
+		cos(horizontalAngle - 3.14f / 2.0f)
+		);
 
 	up = glm::cross(right, direction);
 

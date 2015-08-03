@@ -30,12 +30,12 @@
 #define RAVINE config.objectName = "ravine.obj"; \
 				 config.scenarioNumber = 13; \
 				 config.pathfileName = "ravine-[walk]-[1]"; \
-				 int qttDynamics = 0; 
+				 int qttDynamics = 0;
 
 #define VIADUCT config.objectName= "viaduct.obj"; \
 				config.scenarioNumber = 14; \
 				config.pathfileName = "viaduct-[walk]-[1]"; \
-				 int qttDynamics = 0; 
+				 int qttDynamics = 0;
 
 #define COALTOWN config.objectName = "coaltown.obj"; \
 				 config.scenarioNumber = 17; \
@@ -55,7 +55,7 @@
 #define GOLDRUSH config.objectName = "goldrush.obj"; \
 				 config.scenarioNumber = 18; \
 				 config.pathfileName = "goldrush-[walk]-[1]"; \
-				 int qttDynamics = 0; 
+				 int qttDynamics = 0;
 #pragma endregion
 
 //Macro de teste

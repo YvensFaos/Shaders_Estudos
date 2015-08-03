@@ -42,13 +42,13 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 
 	logged = false;
 
-	deltaTime = 1.0f/60.0f;
+	deltaTime = 1.0f / 60.0f;
 	lastTime = 0;
 
 	char* path = config.objectPath;
 
 	//Checando se o nome foi setado corretamente
-	if(config.objectName && config.objectName[0] != '\0')
+	if (config.objectName && config.objectName[0] != '\0')
 	{
 		this->scenario = new GLScenario(config.objectName, &config);
 	}
@@ -64,7 +64,7 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 	meshHandler = scenario->meshHandler;
 
 	char logName[512];
-	if(config.type != NONE)
+	if (config.type != NONE)
 	{
 		ede = GLBasicEDE::instantiate(&config);
 		ede->testDynamics = config.edeTestDynamics;
@@ -78,7 +78,7 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 
 		double firstTime = glfwGetTime();
 
-		if(GLBufferHandler::checkForEDE(edeName))
+		if (GLBufferHandler::checkForEDE(edeName))
 		{
 			printf("Carregar a EDE do Buffer\n");
 			ede = GLBufferHandler::edeBuffer[edeName];
@@ -115,9 +115,9 @@ void GLWalkthroughPlayer::initializeGLPlayer(GLConfig config)
 void GLWalkthroughPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
-	
+
 	GLCameraStep* step;
-	if(isPaused())
+	if (isPaused())
 	{
 		step = cameraHandler->actualStep();
 	}
@@ -130,11 +130,11 @@ void GLWalkthroughPlayer::step(void)
 	camera->calculateMatrix(step, &config, deltaTime);
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
-    glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
+	glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
 
 	GLint model = glGetUniformLocation(OpenGLWrapper::programObject, "mvp");
 	glUniformMatrix4fv(model, 1, GL_FALSE, glm::value_ptr(MVP));
-	
+
 	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
 	glUniform4f(loc, 0.75f, 0.64f, 0.04f, 1.0f);
 
@@ -149,11 +149,11 @@ void GLWalkthroughPlayer::step(void)
 	glViewport(0, 0, config.width, config.height);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(OpenGLWrapper::programObject);
-	
+
 	int verticesCount = 0;
 	memset(info, 0, sizeof(float)*INFO_SIZE);
 
-	if(config.type != NONE)
+	if (config.type != NONE)
 	{
 		frustum = GLFrustum(config.aspect, camera);
 		ede->renderEDE(&frustum, meshHandler, &config, info);
@@ -165,22 +165,22 @@ void GLWalkthroughPlayer::step(void)
 
 	int visibleBunnies = 0;
 
-	if(config.enableDynamics)
+	if (config.enableDynamics)
 	{
 		glm::vec3* bounds = new glm::vec3[2];
-		for(int i  = 0; i < config.dynamics.size(); i++)
+		for (int i = 0; i < config.dynamics.size(); i++)
 		{
 			GLDynamicObject* obj = &config.dynamics.at(i);
 
-			if(!config.edeTestDynamics)
+			if (!config.edeTestDynamics)
 			{
 				obj->visible = true;
 			}
-			if(config.frustumTestDynamics)
+			if (config.frustumTestDynamics)
 			{
 				obj->visible = false;
 				obj->getBounds(bounds);
-				if(frustum.containsAnyVertexOf(&bounds[0], &bounds[1]))
+				if (frustum.containsAnyVertexOf(&bounds[0], &bounds[1]))
 				{
 					obj->visible = true;
 					visibleBunnies++;
@@ -191,7 +191,7 @@ void GLWalkthroughPlayer::step(void)
 			glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
 
 			obj->draw();
-			if(!isPaused())
+			if (!isPaused())
 			{
 				obj->update();
 			}
@@ -206,17 +206,17 @@ void GLWalkthroughPlayer::step(void)
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s - fps[%.2f][v = %d][%d][Calls = %d]", modeTitle, (float) (1 / deltaTime), visibleBunnies,cameraHandler->getIndex(), drawCalls);
+	sprintf(title, "%s - fps[%.2f][v = %d][%d][Calls = %d]", modeTitle, (float)(1 / deltaTime), visibleBunnies, cameraHandler->getIndex(), drawCalls);
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 
-	if(config.logResults && !logged)
+	if (config.logResults && !logged)
 	{
 		std::string sdeltaTime = std::to_string(deltaTime);
 		std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
 
-		std::string sfps = std::to_string((float) (1 / deltaTime));
+		std::string sfps = std::to_string((float)(1 / deltaTime));
 		std::replace(sfps.begin(), sfps.end(), '.', ',');
-		if(config.type != NONE)
+		if (config.type != NONE)
 		{
 			delete logLine;
 			logLine = new char[64];
@@ -233,14 +233,14 @@ void GLWalkthroughPlayer::step(void)
 		}
 	}
 
-	if(cameraHandler->finished && !cameraHandler->repeated)
+	if (cameraHandler->finished && !cameraHandler->repeated)
 	{
-		if(config.logResults)
+		if (config.logResults)
 		{
 			logger->closeLog();
 			logged = true;
 		}
-		if(!cameraHandler->repeated)
+		if (!cameraHandler->repeated)
 		{
 			isRunning = false;
 		}
@@ -254,7 +254,7 @@ bool GLWalkthroughPlayer::running(void)
 
 void GLWalkthroughPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	if(action == GLFW_PRESS || action == GLFW_REPEAT)
+	if (action == GLFW_PRESS || action == GLFW_REPEAT)
 	{
 		if (key == GLFW_KEY_ESCAPE)
 		{
@@ -264,14 +264,14 @@ void GLWalkthroughPlayer::keyBoard(GLFWwindow* window, int key, int scancode, in
 
 		//Depuração
 
-		if(key == GLFW_KEY_SPACE || key == GLFW_KEY_1)
+		if (key == GLFW_KEY_SPACE || key == GLFW_KEY_1)
 		{
 			//Pausa o Walkthrough
 			printf("PAUSE!\n");
 			pause();
 		}
 
-		if(key == GLFW_KEY_5)
+		if (key == GLFW_KEY_5)
 		{
 			//PrintScreen
 			EDPrinter printer = EDPrinter();
@@ -299,17 +299,17 @@ void GLWalkthroughPlayer::lights(void)
 {
 	GLfloat matAmbient[] = { 0.6f, 0.6f, 0.6f, 1.0f };
 	GLfloat matDiffuse[] = { 0.8f, 0.4f, 0.4f, 1.0f };
-	GLfloat lightAmbient[] = {1.f, 1.f, 1.f, 1.f} ;
-	GLfloat lightDiffuse[] = {1.f, 1.f, 1.f, 1.f} ;
+	GLfloat lightAmbient[] = { 1.f, 1.f, 1.f, 1.f };
+	GLfloat lightDiffuse[] = { 1.f, 1.f, 1.f, 1.f };
 
 	GLfloat lightPos1[] = { 20.0, 20.0, 20.0, 1.0 };
 	GLfloat lightPos2[] = { -20.0, 20.0, 20.0, 1.0 };
 	GLfloat lightPos3[] = { 20.0, 20.0, -20.0, 1.0 };
 	GLfloat lightPos4[] = { -20.0, 20.0, -20.0, 1.0 };
-	GLfloat spotDir1[] =  { -0.5f, -0.5f, -0.5f };
-	GLfloat spotDir2[] =  { 0.5f, -0.5f, -0.5f };
-	GLfloat spotDir3[] =  { -0.5f, -0.5f, 0.5f };
-	GLfloat spotDir4[] =  { 0.5f, -0.5f, 0.5f };
+	GLfloat spotDir1[] = { -0.5f, -0.5f, -0.5f };
+	GLfloat spotDir2[] = { 0.5f, -0.5f, -0.5f };
+	GLfloat spotDir3[] = { -0.5f, -0.5f, 0.5f };
+	GLfloat spotDir4[] = { 0.5f, -0.5f, 0.5f };
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
@@ -336,7 +336,7 @@ void GLWalkthroughPlayer::lights(void)
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);
 	glLightfv(GL_LIGHT1, GL_AMBIENT, lightAmbient);
 	glLightfv(GL_LIGHT1, GL_POSITION, lightPos4);
-	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, spotDir4);	
+	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, spotDir4);
 	glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 40.0);
 	glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 30.0);
 

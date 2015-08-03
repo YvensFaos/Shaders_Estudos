@@ -17,7 +17,7 @@ GLBasicEDE::GLBasicEDE(void)
 
 int GLBasicEDE::getMemory(void)
 {
-	if(memoryUsed == -1)
+	if (memoryUsed == -1)
 	{
 		//Calcula o valor da memória
 		calculateMemory();
@@ -32,60 +32,60 @@ GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 	identifier += ":";
 	identifier += std::to_string(config->edeDepth);
 
-	switch(config->type)
+	switch (config->type)
 	{
-		case NONE: return nullptr;
-		case OCTREE: 
-			identifier = identifier + OCTREE_NAME;
-			if(GLBufferHandler::checkForEDE(identifier))
-			{
-				return GLBufferHandler::edeBuffer[identifier];
-			}
-			else
-			{
-				return new GLOctreeEDE();
-			}
-		case SOCTREE: 
-			identifier = identifier + SOCTREE_NAME;
-			if(GLBufferHandler::checkForEDE(identifier))
-			{
-				return GLBufferHandler::edeBuffer[identifier];
-			}
-			else
-			{
-				return new GLSOctreeEDE();
-			}
-		case ROCTREE: 
-			identifier = identifier + ROCTREE_NAME;
-			if(GLBufferHandler::checkForEDE(identifier))
-			{
-				return GLBufferHandler::edeBuffer[identifier];
-			}
-			else
-			{
-				return new GLROctreeEDE();
-			}
-		case BASEGRID:
-			identifier = identifier + BASEGRID_NAME;
-			if (GLBufferHandler::checkForEDE(identifier))
-			{
-				return GLBufferHandler::edeBuffer[identifier];
-			}
-			else
-			{
-				return new GLBaseGridEDE();
-			}
-		case CGRID:
-			identifier = identifier + CGRID_NAME;
-			if (GLBufferHandler::checkForEDE(identifier))
-			{
-				return GLBufferHandler::edeBuffer[identifier];
-			}
-			else
-			{
-				return new GLCGridEDE();
-			}
-		default: return nullptr;
+	case NONE: return nullptr;
+	case OCTREE:
+		identifier = identifier + OCTREE_NAME;
+		if (GLBufferHandler::checkForEDE(identifier))
+		{
+			return GLBufferHandler::edeBuffer[identifier];
+		}
+		else
+		{
+			return new GLOctreeEDE();
+		}
+	case SOCTREE:
+		identifier = identifier + SOCTREE_NAME;
+		if (GLBufferHandler::checkForEDE(identifier))
+		{
+			return GLBufferHandler::edeBuffer[identifier];
+		}
+		else
+		{
+			return new GLSOctreeEDE();
+		}
+	case ROCTREE:
+		identifier = identifier + ROCTREE_NAME;
+		if (GLBufferHandler::checkForEDE(identifier))
+		{
+			return GLBufferHandler::edeBuffer[identifier];
+		}
+		else
+		{
+			return new GLROctreeEDE();
+		}
+	case BASEGRID:
+		identifier = identifier + BASEGRID_NAME;
+		if (GLBufferHandler::checkForEDE(identifier))
+		{
+			return GLBufferHandler::edeBuffer[identifier];
+		}
+		else
+		{
+			return new GLBaseGridEDE();
+		}
+	case CGRID:
+		identifier = identifier + CGRID_NAME;
+		if (GLBufferHandler::checkForEDE(identifier))
+		{
+			return GLBufferHandler::edeBuffer[identifier];
+		}
+		else
+		{
+			return new GLCGridEDE();
+		}
+	default: return nullptr;
 	}
 }
 

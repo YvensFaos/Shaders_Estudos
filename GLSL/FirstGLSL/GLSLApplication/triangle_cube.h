@@ -18,12 +18,12 @@
   (C).x =  (A).y * (B).z - (A).z * (B).y; \
   (C).y = -(A).x * (B).z + (A).z * (B).x; \
   (C).z =  (A).x * (B).y - (A).y * (B).x; \
-   }
+      }
 #define SUB( A, B, C ) { \
   (C).x =  (A).x - (B).x; \
   (C).y =  (A).y - (B).y; \
   (C).z =  (A).z - (B).z; \
-   }
+      }
 #define LERP( A, B, C) ((B)+(A)*((C)-(B)))
 #define MIN3(a,b,c) ((((a)<(b))&&((a)<(c))) ? (a) : (((b)<(c)) ? (b) : (c)))
 #define MAX3(a,b,c) ((((a)>(b))&&((a)>(c))) ? (a) : (((b)>(c)) ? (b) : (c)))
@@ -33,11 +33,11 @@
 typedef glm::vec3 Point3;
 
 typedef struct{
-   Point3 v1;                 /* Vertex1 */
-   Point3 v2;                 /* Vertex2 */
-   Point3 v3;                 /* Vertex3 */
-   } Triangle3; 
-   
+	Point3 v1;                 /* Vertex1 */
+	Point3 v2;                 /* Vertex2 */
+	Point3 v3;                 /* Vertex3 */
+} Triangle3;
+
 class TriangleCube
 {
 public:

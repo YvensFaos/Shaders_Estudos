@@ -126,6 +126,9 @@
     <ClCompile Include="glcgridede.cpp">
       <Filter>EDE</Filter>
     </ClCompile>
+    <ClCompile Include="glsequentialrecorderplayer.cpp">
+      <Filter>Players</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -226,6 +229,9 @@
     </ClInclude>
     <ClInclude Include="glcgridede.h">
       <Filter>EDE</Filter>
+    </ClInclude>
+    <ClInclude Include="glsequentialrecorderplayer.h">
+      <Filter>Players</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

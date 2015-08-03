@@ -22,7 +22,7 @@ public:
 	~GLBatch(void);
 
 	void getTestBatch(std::vector<GLConfig>* configurations);
-	
+
 private:
 	EDE_TYPE getEdetype(char* edename);
 	PLAYER_MODE getPlayermode(char* modetype);

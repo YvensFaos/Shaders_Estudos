@@ -3,18 +3,17 @@
 #include "GLFW/glfw3.h"
 #include "FreeImage/FreeImage.h"
 
-
 EDLogger::EDLogger(void)
 {
-	ltime=time(NULL);
-	Tm=localtime(&ltime);
+	ltime = time(NULL);
+	Tm = localtime(&ltime);
 }
 
 EDLogger::EDLogger(char* filename)
 {
 	printf("Log: %s\n", filename);
-	ltime=time(NULL);
-	Tm=localtime(&ltime);
+	ltime = time(NULL);
+	Tm = localtime(&ltime);
 	writer = new EDFileWriter(filename);
 }
 
@@ -51,31 +50,31 @@ EDPrinter::~EDPrinter(void)
 void EDPrinter::printScreen(GLConfig* config, char* printName)
 {
 	int size = config->height *config->width * 3;
-	if(size == 0)
+	if (size == 0)
 	{
 		return;
 	}
-	GLubyte *pixels = new GLubyte [size];
+	GLubyte *pixels = new GLubyte[size];
 	glPixelStorei(GL_PACK_ALIGNMENT, 1);
 	glReadPixels(0, 0, config->width, config->height, GL_RGB, GL_UNSIGNED_BYTE, pixels);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	unsigned char temp;
 
-    int i = 0;
-    while (i < size)
-    {
-        temp = pixels[i];       //grab blue
-        pixels[i] = pixels[i+2];//assign red to blue
-        pixels[i+2] = temp;     //assign blue to red
-        i += 3;     //skip to next blue byte
-    }
+	int i = 0;
+	while (i < size)
+	{
+		temp = pixels[i];       //grab blue
+		pixels[i] = pixels[i + 2];//assign red to blue
+		pixels[i + 2] = temp;     //assign blue to red
+		i += 3;     //skip to next blue byte
+	}
 
 	FIBITMAP* image = FreeImage_ConvertFromRawBits(pixels, config->width, config->height, 3 * config->width, 24, 0x0000FF, 0xFF0000, 0x00FF00, false);
 	FreeImage_Save(FIF_BMP, image, printName, 0);
 	FreeImage_Unload(image);
 
-	delete [] pixels;
+	delete[] pixels;
 }
 
 //void EDPrinter::printScreen(EDConfiguration config)

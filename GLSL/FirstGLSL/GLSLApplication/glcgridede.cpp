@@ -44,7 +44,7 @@ void GLCGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig*
 	}
 
 	glm::vec3* vertices = new glm::vec3[vertexCount];
-	glm::vec3* normals  = new glm::vec3[vertexCount];
+	glm::vec3* normals = new glm::vec3[vertexCount];
 
 	int index = 0;
 	int nodeVerticesCount = 0;

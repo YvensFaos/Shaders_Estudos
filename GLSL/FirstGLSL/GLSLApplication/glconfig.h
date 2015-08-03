@@ -59,10 +59,16 @@ public:
 
 	//Lista de objetos dinâmicos
 	std::vector<GLDynamicObject> dynamics;
+
+	//Lista de indexes que devem ser gravados (imagens para análise)
+	std::vector<int> recordingIndexes;
 public:
 	GLConfig(void);
 	~GLConfig(void);
 
 	GLPlayer* getGLPlayer(void);
 	GLPlayer* getGLPlayer(PLAYER_MODE mode);
+
+	void addIndexes(int value);
+	void addIndexes(int start, int finish);
 };

@@ -22,13 +22,13 @@ GLMeshHandler::GLMeshHandler(char* file)
 {
 	printf("Loading: %s\n", file);
 
-	Assimp::Importer importer; 
-	const aiScene* scene = importer.ReadFile(file, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices  | aiProcess_SortByPType); 
+	Assimp::Importer importer;
+	const aiScene* scene = importer.ReadFile(file, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_SortByPType);
 
 	max = glm::vec3(MIN_FLOAT, MIN_FLOAT, MIN_FLOAT);
 	min = glm::vec3(MAX_FLOAT, MAX_FLOAT, MAX_FLOAT);
 
-	for(int i = 0; i < scene->mNumMeshes; i++)
+	for (int i = 0; i < scene->mNumMeshes; i++)
 	{
 		meshes.push_back(GLMesh3D(i, gl_index++, scene));
 
@@ -36,33 +36,32 @@ GLMeshHandler::GLMeshHandler(char* file)
 
 		//Pegar os maiores e menores
 #pragma region buscar valores max e min
-		if(meshp->max.x > max.x)
+		if (meshp->max.x > max.x)
 		{
 			max.x = meshp->max.x;
 		}
-		if(meshp->max.y > max.y)
+		if (meshp->max.y > max.y)
 		{
 			max.y = meshp->max.y;
 		}
-		if(meshp->max.z > max.z)
+		if (meshp->max.z > max.z)
 		{
 			max.z = meshp->max.z;
 		}
 
-		if(meshp->min.x < min.x)
+		if (meshp->min.x < min.x)
 		{
 			min.x = meshp->min.x;
 		}
-		if(meshp->min.y < min.y)
+		if (meshp->min.y < min.y)
 		{
 			min.y = meshp->min.y;
 		}
-		if(meshp->min.z < min.z)
+		if (meshp->min.z < min.z)
 		{
 			min.z = meshp->min.z;
 		}
 #pragma endregion
-
 	}
 
 	this->numMeshes = scene->mNumMeshes;
@@ -80,10 +79,10 @@ GLMeshHandler::GLMeshHandler(char* model3d, char* path)
 
 	printf("Loading: %s\n", sFilePath);
 
-	Assimp::Importer importer; 
-	const aiScene* scene = importer.ReadFile(sFilePath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices  | aiProcess_SortByPType); 
+	Assimp::Importer importer;
+	const aiScene* scene = importer.ReadFile(sFilePath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_SortByPType);
 
-	for(unsigned int i = 0; i < scene->mNumMeshes; i++)
+	for (unsigned int i = 0; i < scene->mNumMeshes; i++)
 	{
 		meshes.push_back(GLMesh3D(i, gl_index++, scene));
 	}
@@ -94,7 +93,7 @@ GLMeshHandler::GLMeshHandler(char* model3d, char* path)
 int GLMeshHandler::render(void)
 {
 	int verticesCount = 0;
-	for(int i = 0; i < numMeshes; i++)
+	for (int i = 0; i < numMeshes; i++)
 	{
 		verticesCount += meshes.at(i).render();
 	}
@@ -138,7 +137,7 @@ GLMesh3D::GLMesh3D(std::vector<glm::vec3>* vertexes, std::vector<glm::vec3>* nor
 	this->vertexes = new glm::vec3[vertexes->size()];
 	this->normals = new glm::vec3[normals->size()];
 
-	for(int i = 0; i < verticesCount; i++)
+	for (int i = 0; i < verticesCount; i++)
 	{
 		this->vertexes[i] = vertexes->at(i);
 		this->normals[i] = normals->at(i);
@@ -156,23 +155,23 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 	verticesCount = mesh->mNumFaces * 3;
 
 	vertexes = new glm::vec3[verticesCount];
-	normals =  new glm::vec3[verticesCount];
-	uvs =      new glm::vec2[verticesCount];
+	normals = new glm::vec3[verticesCount];
+	uvs = new glm::vec2[verticesCount];
 
 	max = glm::vec3(MIN_FLOAT, MIN_FLOAT, MIN_FLOAT);
 	min = glm::vec3(MAX_FLOAT, MAX_FLOAT, MAX_FLOAT);
 
 	int k = 0;
-	for(int i = 0; i < verticesCount /3; i++)
+	for (int i = 0; i < verticesCount / 3; i++)
 	{
 		aiFace* face = &mesh->mFaces[i];
 		/*if(hasNormals)
 		{
-			aiVector3D* norm = &mesh->mNormals[i];
-			normals[i] = glm::vec3(norm->x, norm->y, norm->z);
+		aiVector3D* norm = &mesh->mNormals[i];
+		normals[i] = glm::vec3(norm->x, norm->y, norm->z);
 		}*/
 
-		for(int j = 0; j < face->mNumIndices; j++)
+		for (int j = 0; j < face->mNumIndices; j++)
 		{
 			aiVector3D* vec = &mesh->mVertices[face->mIndices[j]];
 			aiVector3D* uv = &mesh->mTextureCoords[0][face->mIndices[j]];
@@ -181,28 +180,28 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 
 			//Pegar os maiores e menores
 #pragma region buscar valores max e min
-			if(vec->x > max.x)
+			if (vec->x > max.x)
 			{
 				max.x = vec->x;
 			}
-			if(vec->y > max.y)
+			if (vec->y > max.y)
 			{
 				max.y = vec->y;
 			}
-			if(vec->z > max.z)
+			if (vec->z > max.z)
 			{
 				max.z = vec->z;
 			}
 
-			if(vec->x < min.x)
+			if (vec->x < min.x)
 			{
 				min.x = vec->x;
 			}
-			if(vec->y < min.y)
+			if (vec->y < min.y)
 			{
 				min.y = vec->y;
 			}
-			if(vec->z < min.z)
+			if (vec->z < min.z)
 			{
 				min.z = vec->z;
 			}
@@ -218,29 +217,29 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 		}
 	}
 
-	center = glm::vec3(min.x + (max.x - min.x)/2.0f, min.y + (max.y - min.y)/2.0f, min.z + (max.z - min.z)/2.0f);
+	center = glm::vec3(min.x + (max.x - min.x) / 2.0f, min.y + (max.y - min.y) / 2.0f, min.z + (max.z - min.z) / 2.0f);
 
 	int walls = 0;
 	//hasNormals = false;
 	//if(!hasNormals)
 	//{
-		//Calculate
+	//Calculate
 	int j = 0;
-	for(int i = 0; i < verticesCount; i += 3)
+	for (int i = 0; i < verticesCount; i += 3)
 	{
 		glm::vec3 a = glm::vec3(vertexes[i]);
 		a -= vertexes[i + 1];
 		glm::vec3 b = glm::vec3(vertexes[i + 2]);
 		b -= vertexes[i + 1];
 
-		glm::vec3 normal = glm::normalize(glm::cross(b,a));
+		glm::vec3 normal = glm::normalize(glm::cross(b, a));
 
-		if(normal.y == 0)
+		if (normal.y == 0)
 		{
 			walls++;
 		}
 
-		normals[j]     = normal;
+		normals[j] = normal;
 		normals[j + 1] = normal;
 		normals[j + 2] = normal;
 
@@ -260,7 +259,7 @@ int GLMesh3D::render(void)
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
 
-	if(hasNormals)
+	if (hasNormals)
 	{
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(OpenGLWrapper::normalLoc, 3, GL_FLOAT, GL_FALSE, 0, normals);
@@ -275,7 +274,7 @@ void GLMesh3D::prerender(void)
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertexes);
 
-	if(hasNormals)
+	if (hasNormals)
 	{
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(OpenGLWrapper::normalLoc, 3, GL_FLOAT, GL_FALSE, 0, normals);

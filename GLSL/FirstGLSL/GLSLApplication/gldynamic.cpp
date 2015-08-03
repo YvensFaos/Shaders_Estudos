@@ -12,7 +12,7 @@ GLDynamicObject::GLDynamicObject(void)
 	dynamicName = "";
 	visible = false;
 	index = -1;
-	translate = glm::vec3(0,0,0);
+	translate = glm::vec3(0, 0, 0);
 }
 
 GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, int index, glm::vec3 translate, glm::vec3 scale)
@@ -20,7 +20,7 @@ GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, 
 	this->pathName = pathName;
 	visible = false;
 
-	if(GLBufferHandler::checkForPathObject(pathName))
+	if (GLBufferHandler::checkForPathObject(pathName))
 	{
 		pathReference = GLBufferHandler::pathObjectBuffer[pathName];
 	}
@@ -36,7 +36,7 @@ GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, 
 
 	this->dynamicName = dynamicName;
 
-	if(GLBufferHandler::checkForMeshHandler(dynamicName))
+	if (GLBufferHandler::checkForMeshHandler(dynamicName))
 	{
 		meshHandler = GLBufferHandler::meshHandlerBuffer[dynamicName];
 	}
@@ -60,11 +60,10 @@ GLDynamicObject::GLDynamicObject(std::string pathName, std::string dynamicName, 
 GLDynamicObject::~GLDynamicObject(void)
 { }
 
-
 void GLDynamicObject::update(void)
 {
 	index++;
-	if(index >= pathReference->size)
+	if (index >= pathReference->size)
 	{
 		index = 0;
 	}
@@ -72,7 +71,7 @@ void GLDynamicObject::update(void)
 
 void GLDynamicObject::draw(void)
 {
-	if(visible)
+	if (visible)
 	{
 		GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 		GLint sca = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
@@ -89,7 +88,7 @@ void GLDynamicObject::draw(void)
 
 void GLDynamicObject::draw(glm::vec3 pos)
 {
-	if(visible)
+	if (visible)
 	{
 		GLint poss = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 		GLint sca = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
@@ -113,7 +112,7 @@ void GLDynamicObject::getBounds(glm::vec3 bounds[2])
 void GLDynamicObject::drawBox(void)
 {
 	GLint loc = 0;
-	if(visible)
+	if (visible)
 	{
 		loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
 		glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
@@ -131,15 +130,15 @@ void GLDynamicObject::drawBox(void)
 //GLDynamic
 
 std::vector<GLDynamicObject>* GLDynamic::generateDynamics(std::string modelPath,
-														  std::string model, 
-														  std::string pathPath, 
-														  std::string path, int quantity, glm::vec3 translate, glm::vec3 scale)
+	std::string model,
+	std::string pathPath,
+	std::string path, int quantity, glm::vec3 translate, glm::vec3 scale)
 {
 	std::vector<GLDynamicObject>* list = new std::vector<GLDynamicObject>();
 	std::string ppath = pathPath + path;
 	std::string mmodel = modelPath + model;
 
-	for(int i = 0; i < quantity; i++)
+	for (int i = 0; i < quantity; i++)
 	{
 		list->push_back(GLDynamicObject(ppath, mmodel, 100 + i * 10, translate, scale));
 	}

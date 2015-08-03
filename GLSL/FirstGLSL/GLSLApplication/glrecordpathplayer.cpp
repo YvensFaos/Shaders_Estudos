@@ -44,13 +44,13 @@ void GLRecordPathPlayer::initializeGLPlayer(GLConfig config)
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 
-	deltaTime = 1.0f/60.0f;
+	deltaTime = 1.0f / 60.0f;
 	lastTime = 0;
 
 	char* path = config.objectPath;
 
 	//Checando se o nome foi setado corretamente
-	if(config.objectName && config.objectName[0] != '\0')
+	if (config.objectName && config.objectName[0] != '\0')
 	{
 		this->scenario = new GLScenario(config.objectName, &config);
 	}
@@ -86,28 +86,28 @@ void GLRecordPathPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
 
-	bool pressingMouse = glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
+	bool pressingMouse = glfwGetMouseButton(OpenGLWrapper::window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
-	if(pressingMouse)
+	if (pressingMouse)
 	{
-		updateMousePos();		
+		updateMousePos();
 	}
 
 	camera->calculateMatrix(&config, xpos, ypos, deltaTime);
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 
-	if(recording && pressingMouse)
+	if (recording && pressingMouse)
 	{
 		cameraHandler->addStepRecording(camera);
 	}
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
-    glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
+	glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
 
 	GLint model = glGetUniformLocation(OpenGLWrapper::programObject, "mvp");
 	glUniformMatrix4fv(model, 1, GL_FALSE, glm::value_ptr(MVP));
-	
+
 	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
 	glUniform4f(loc, 0.75f, 0.64f, 0.04f, 1.0f);
 
@@ -126,9 +126,9 @@ void GLRecordPathPlayer::step(void)
 
 	meshHandler->render();
 
-	if(config.enableDynamics)
+	if (config.enableDynamics)
 	{
-		for(int i  = 0; i < config.dynamics.size(); i++)
+		for (int i = 0; i < config.dynamics.size(); i++)
 		{
 			GLDynamicObject* obj = &config.dynamics.at(i);
 
@@ -146,10 +146,10 @@ void GLRecordPathPlayer::step(void)
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.015 : deltaTime;
 
-	sprintf(title, "%s%s - fps[%.2f][%d]", modeTitle, config.title, (float) (1 / deltaTime), cameraHandler->getIndex());
+	sprintf(title, "%s%s - fps[%.2f][%d]", modeTitle, config.title, (float)(1 / deltaTime), cameraHandler->getIndex());
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 
-	if(cameraHandler->finished && !cameraHandler->repeated)
+	if (cameraHandler->finished && !cameraHandler->repeated)
 	{
 		isRunning = false;
 	}
@@ -162,7 +162,7 @@ bool GLRecordPathPlayer::running(void)
 
 void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	if(action == GLFW_PRESS || action == GLFW_REPEAT)
+	if (action == GLFW_PRESS || action == GLFW_REPEAT)
 	{
 		if (key == GLFW_KEY_ESCAPE)
 		{
@@ -174,14 +174,14 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 
 		if (key == GLFW_KEY_Z){
 			camera->position += camera->up * 1.f * camera->speed;
-			if(recording)
+			if (recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 		if (key == GLFW_KEY_X){
 			camera->position -= camera->up * 1.f * camera->speed;
-			if(recording)
+			if (recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
@@ -189,73 +189,73 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		if (key == GLFW_KEY_W){
 			camera->position += camera->direction * 1.f * camera->speed;
 
-			if(action == GLFW_REPEAT)
+			if (action == GLFW_REPEAT)
 			{
-				if(camera->speed < maxCameraSpeed)
+				if (camera->speed < maxCameraSpeed)
 				{
 					camera->speed += 0.01f;
 				}
 			}
 
-			if(recording)
+			if (recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 		if (key == GLFW_KEY_S){
 			camera->position -= camera->direction * 1.f * camera->speed;
-			if(recording)
+			if (recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 		if (key == GLFW_KEY_A){
 			camera->position -= camera->right * 1.f * camera->speed;
-			if(recording)
+			if (recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 		if (key == GLFW_KEY_D){
 			camera->position += camera->right * 1.f * camera->speed;
-			if(recording)
+			if (recording)
 			{
 				cameraHandler->addStepRecording(camera);
 			}
 		}
 
 		//Controle de Zoom
-		if(key == GLFW_KEY_1)
+		if (key == GLFW_KEY_1)
 		{
 			//Zoom IN
-			camera->zoom(-1*ZOOM_VALUE);
+			camera->zoom(-1 * ZOOM_VALUE);
 		}
-		if(key == GLFW_KEY_2)
+		if (key == GLFW_KEY_2)
 		{
 			//Zoom OUT
-			camera->zoom(+1*ZOOM_VALUE);
+			camera->zoom(+1 * ZOOM_VALUE);
 		}
 
 		//Controle de Velocidade da Câmera
-		if(key == GLFW_KEY_6)
+		if (key == GLFW_KEY_6)
 		{
 			//Zoom IN
 			camera->speed += 0.01f;
 			printf("Speed: %f\n", camera->speed);
 		}
-		if(key == GLFW_KEY_7)
+		if (key == GLFW_KEY_7)
 		{
 			//Zoom OUT
 			camera->speed -= 0.01f;
 			printf("Speed: %f\n", camera->speed);
 		}
 
-		if(key == GLFW_KEY_T)
+		if (key == GLFW_KEY_T)
 		{
 			//Liga e desliga a gravação
 			record();
 
-			if(recording)
+			if (recording)
 			{
 				//Grava passo inicial
 				cameraHandler->stardRecording(camera);
@@ -267,12 +267,12 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		}
 
 		//Depuração
-		if(key == GLFW_KEY_4)
+		if (key == GLFW_KEY_4)
 		{
 			//TODO print da câmera e do actualstep aqui!
 			camera->print();
 		}
-		if(key == GLFW_KEY_5)
+		if (key == GLFW_KEY_5)
 		{
 			//PrintScreen
 			EDPrinter printer = EDPrinter();
@@ -282,7 +282,7 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 		}
 	}
 
-	if(action == GLFW_RELEASE)
+	if (action == GLFW_RELEASE)
 	{
 		if (key == GLFW_KEY_W){
 			camera->speed = 0.00f;
@@ -293,7 +293,7 @@ void GLRecordPathPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int
 void GLRecordPathPlayer::record()
 {
 	recording = !recording;
-	if(recording)
+	if (recording)
 	{
 		OpenGLWrapper::ACTUAL_CLEAR_COLOR = glm::vec4(VEC4_PRINT(OpenGLWrapper::RECORDING_CLEAR_COLOR));
 	}
@@ -309,15 +309,15 @@ bool GLRecordPathPlayer::isRecording()
 }
 
 void GLRecordPathPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
-{ 
-	if(action == GLFW_PRESS)
+{
+	if (action == GLFW_PRESS)
 	{
 		if (button == GLFW_MOUSE_BUTTON_LEFT)
 		{
 			updateMouse = true;
 		}
 	}
-	if(action == GLFW_RELEASE)
+	if (action == GLFW_RELEASE)
 	{
 		if (button == GLFW_MOUSE_BUTTON_LEFT)
 		{
@@ -335,17 +335,17 @@ void GLRecordPathPlayer::lights(void)
 {
 	GLfloat matAmbient[] = { 0.6f, 0.6f, 0.6f, 1.0f };
 	GLfloat matDiffuse[] = { 0.8f, 0.4f, 0.4f, 1.0f };
-	GLfloat lightAmbient[] = {1.f, 1.f, 1.f, 1.f} ;
-	GLfloat lightDiffuse[] = {1.f, 1.f, 1.f, 1.f} ;
+	GLfloat lightAmbient[] = { 1.f, 1.f, 1.f, 1.f };
+	GLfloat lightDiffuse[] = { 1.f, 1.f, 1.f, 1.f };
 
 	GLfloat lightPos1[] = { 20.0, 20.0, 20.0, 1.0 };
 	GLfloat lightPos2[] = { -20.0, 20.0, 20.0, 1.0 };
 	GLfloat lightPos3[] = { 20.0, 20.0, -20.0, 1.0 };
 	GLfloat lightPos4[] = { -20.0, 20.0, -20.0, 1.0 };
-	GLfloat spotDir1[] =  { -0.5f, -0.5f, -0.5f };
-	GLfloat spotDir2[] =  { 0.5f, -0.5f, -0.5f };
-	GLfloat spotDir3[] =  { -0.5f, -0.5f, 0.5f };
-	GLfloat spotDir4[] =  { 0.5f, -0.5f, 0.5f };
+	GLfloat spotDir1[] = { -0.5f, -0.5f, -0.5f };
+	GLfloat spotDir2[] = { 0.5f, -0.5f, -0.5f };
+	GLfloat spotDir3[] = { -0.5f, -0.5f, 0.5f };
+	GLfloat spotDir4[] = { 0.5f, -0.5f, 0.5f };
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
@@ -372,7 +372,7 @@ void GLRecordPathPlayer::lights(void)
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);
 	glLightfv(GL_LIGHT1, GL_AMBIENT, lightAmbient);
 	glLightfv(GL_LIGHT1, GL_POSITION, lightPos4);
-	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, spotDir4);	
+	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, spotDir4);
 	glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 40.0);
 	glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 30.0);
 

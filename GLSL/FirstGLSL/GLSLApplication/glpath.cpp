@@ -19,7 +19,6 @@ GLPath::GLPath(char* pathfilePath, char* pathfileName)
 	readPathFile(pathfile);
 }
 
-
 GLPath::~GLPath(void)
 { }
 
@@ -30,7 +29,7 @@ void GLPath::readPathFile(char* pathfile)
 
 	steps = new std::vector<GLCameraStep>();
 
-	for(int i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		float posx = reader.readLnFloat();
 		float posy = reader.readLnFloat();
@@ -46,7 +45,7 @@ void GLPath::readPathFile(char* pathfile)
 
 		float fov = reader.readLnFloat();
 
-		steps->push_back(GLCameraStep(glm::vec3(posx,posy,posz), glm::vec3(upx,upy,upz), glm::vec3(lookx,looky,lookz), fov));
+		steps->push_back(GLCameraStep(glm::vec3(posx, posy, posz), glm::vec3(upx, upy, upz), glm::vec3(lookx, looky, lookz), fov));
 	}
 
 	reader.close();

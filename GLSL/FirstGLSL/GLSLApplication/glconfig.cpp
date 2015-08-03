@@ -8,13 +8,16 @@
 #include "glrecordpathplayer.h"
 #include "gledemakerplayer.h"
 #include "glbirdseyeplayer.h"
+#include "glsequentialrecorderplayer.h"
+
+#include <algorithm>
 
 #pragma endregion
 
 GLConfig::GLConfig()
 {
 	height = 640;
-	width  = 480;
+	width = 480;
 
 	mode = FREE_MODE;
 	type = NONE;
@@ -23,7 +26,7 @@ GLConfig::GLConfig()
 
 	scenarioNumber = -1;
 	pathIdentifier = 0;
-	logIdentifier  = 0;
+	logIdentifier = 0;
 	edeDepth = 0;
 
 	repeatable = false;
@@ -39,14 +42,15 @@ GLConfig::~GLConfig()
 
 GLPlayer* GLConfig::getGLPlayer(void)
 {
-	switch(mode)
+	switch (mode)
 	{
-		case FREE_MODE:        return new GLFreePlayer(*this);
-		case WALKTHROUGH_MODE: return new GLWalkthroughPlayer(*this);
-		case RECORD_PATH:	   return new GLRecordPathPlayer(*this);
-		case EDE_MAKER:        return new GLEDEMakerPlayer(*this);
-		case BIRDS_EYE:		   return new GLBirdsEyePlayer(*this);
-		default:               return new GLPlayer(*this);
+	case FREE_MODE:				return new GLFreePlayer(*this);
+	case WALKTHROUGH_MODE:		return new GLWalkthroughPlayer(*this);
+	case RECORD_PATH:			return new GLRecordPathPlayer(*this);
+	case EDE_MAKER:				return new GLEDEMakerPlayer(*this);
+	case BIRDS_EYE:				return new GLBirdsEyePlayer(*this);
+	case SEQUENTIAL_RECORDER:	return new GLSequentialRecorderPlayer(*this);
+	default:					return new GLPlayer(*this);
 	}
 }
 
@@ -56,3 +60,35 @@ GLPlayer* GLConfig::getGLPlayer(PLAYER_MODE mode)
 	return getGLPlayer();
 }
 
+//Adiciona um index ao vetor de indexes a serem gravados
+void GLConfig::addIndexes(int value)
+{
+	addIndexes(value, value);
+}
+
+//Adiciona um range de indexes ao vetor de indexes a serem gravados
+void GLConfig::addIndexes(int start, int finish)
+{
+	if (start == finish)
+	{
+		//Mesmo valor
+		recordingIndexes.push_back(start);
+	}
+	else
+	{
+		if (start > finish)
+		{
+			addIndexes(finish, start);
+		}
+		else
+		{
+			for (int i = start; i <= finish; i++)
+			{
+				recordingIndexes.push_back(i);
+			}
+		}
+	}
+
+	//Ordena
+	std::sort(recordingIndexes.begin() , recordingIndexes.begin() + recordingIndexes.size());
+}

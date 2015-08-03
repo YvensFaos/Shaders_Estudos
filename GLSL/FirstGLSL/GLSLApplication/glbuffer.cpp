@@ -62,4 +62,3 @@ void GLBufferHandler::clearBuffers(void)
 	meshBuffer.clear();
 	pathBuffer.clear();
 }
-

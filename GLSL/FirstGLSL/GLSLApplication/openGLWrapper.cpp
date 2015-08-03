@@ -23,43 +23,43 @@ float OpenGLWrapper::ratio;
 
 void OpenGLWrapper::initialize(bool antialiasing, int multisampling)
 {
-    glfwSetErrorCallback(OpenGLWrapper::error_callback);  
-    if (!glfwInit())  
-    {  
-        return;  
-    }  
-  
-	if(antialiasing)
+	glfwSetErrorCallback(OpenGLWrapper::error_callback);
+	if (!glfwInit())
+	{
+		return;
+	}
+
+	if (antialiasing)
 	{
 		glfwWindowHint(GLFW_SAMPLES, multisampling);
 	}
-  
+
 	int width = player->config.width;
 	int height = player->config.height;
 	char* title = player->config.title;
 
-    window = glfwCreateWindow(width, height, title, NULL, NULL);  
-  
-    if (!window)  
-    {  
-        fprintf( stderr, "Failed to open GLFW window.\n" );  
-        glfwTerminate();  
-        return;
-    }  
-  
-    glfwMakeContextCurrent(window);  
-    glfwSetKeyCallback(window, OpenGLWrapper::key_callback);  
+	window = glfwCreateWindow(width, height, title, NULL, NULL);
+
+	if (!window)
+	{
+		fprintf(stderr, "Failed to open GLFW window.\n");
+		glfwTerminate();
+		return;
+	}
+
+	glfwMakeContextCurrent(window);
+	glfwSetKeyCallback(window, OpenGLWrapper::key_callback);
 	glfwSetMouseButtonCallback(window, OpenGLWrapper::mouse_callback);
 
-    GLenum err = glewInit();
+	GLenum err = glewInit();
 
-    if (err != GLEW_OK)   
-    {  
-        fprintf(stderr, "Error: %s\n", glewGetErrorString(err));  
-        return;  
-    }  
-  
-	glClearColor(VEC4_PRINT(ACTUAL_CLEAR_COLOR));  
+	if (err != GLEW_OK)
+	{
+		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+		return;
+	}
+
+	glClearColor(VEC4_PRINT(ACTUAL_CLEAR_COLOR));
 
 	glfwSetErrorCallback(OpenGLWrapper::error_callback);
 	glfwInit();
@@ -106,12 +106,12 @@ void OpenGLWrapper::initialize(bool antialiasing, int multisampling)
 	glLinkProgram(OpenGLWrapper::programObject);
 	glGetProgramiv(OpenGLWrapper::programObject, GL_LINK_STATUS, &linked);
 
-	if(!linked)
+	if (!linked)
 	{
 		GLint infolen = 0;
 		glGetProgramiv(OpenGLWrapper::programObject, GL_INFO_LOG_LENGTH, &infolen);
 
-		if(infolen > 1)
+		if (infolen > 1)
 		{
 			char* infolog = new char[infolen];
 			glGetProgramInfoLog(OpenGLWrapper::programObject, infolen, NULL, infolog);
@@ -126,12 +126,12 @@ void OpenGLWrapper::initialize(bool antialiasing, int multisampling)
 	glLinkProgram(OpenGLWrapper::dynamicObject);
 	glGetProgramiv(OpenGLWrapper::dynamicObject, GL_LINK_STATUS, &linked);
 
-	if(!linked)
+	if (!linked)
 	{
 		GLint infolen = 0;
 		glGetProgramiv(OpenGLWrapper::dynamicObject, GL_INFO_LOG_LENGTH, &infolen);
 
-		if(infolen > 1)
+		if (infolen > 1)
 		{
 			char* infolog = new char[infolen];
 			glGetProgramInfoLog(OpenGLWrapper::dynamicObject, infolen, NULL, infolog);
@@ -158,7 +158,7 @@ GLuint OpenGLWrapper::loadShader(const char *shaderSrc, GLenum type)
 	GLint compiled;
 
 	shader = glCreateShader(type);
-	if(shader == 0)
+	if (shader == 0)
 	{
 		return 0;
 	}
@@ -166,12 +166,12 @@ GLuint OpenGLWrapper::loadShader(const char *shaderSrc, GLenum type)
 
 	glCompileShader(shader);
 	glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-	
-	if(!compiled)
+
+	if (!compiled)
 	{
 		GLint infoLen = 0;
 		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-		if(infoLen > 0)
+		if (infoLen > 0)
 		{
 			char* infolog = new char[infoLen];
 			glGetShaderInfoLog(shader, infoLen, NULL, infolog);
@@ -188,8 +188,8 @@ GLuint OpenGLWrapper::loadShader(const char *shaderSrc, GLenum type)
 }
 
 void OpenGLWrapper::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{ 
-	player->keyBoard(window, key, scancode, action, mods); 
+{
+	player->keyBoard(window, key, scancode, action, mods);
 }
 
 void OpenGLWrapper::mouse_callback(GLFWwindow* window, int button, int action, int mods)
@@ -203,23 +203,23 @@ void OpenGLWrapper::error_callback(int error, const char* description)
 void OpenGLWrapper::glLoop()
 {
 	while (!glfwWindowShouldClose(window) && player->running())
-    {
+	{
 		int width = player->config.width;
 		int height = player->config.height;
 
 		glViewport(0, 0, width, height);
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glMatrixMode(GL_PROJECTION);
+		glMatrixMode(GL_PROJECTION);
 
-        glLoadIdentity();
+		glLoadIdentity();
 
 		player->step();
 
 		glFlush();
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+	}
 
 	glfwDestroyWindow(window);
 }

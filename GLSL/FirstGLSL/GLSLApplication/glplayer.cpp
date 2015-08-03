@@ -36,17 +36,17 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 	angle = 0.0f;
 	isRunning = true;
 	updateMouse = false;
-	
+
 	xpos = config.width / 2.0f;
 	ypos = config.height / 2.0f;
 
-	deltaTime = 1.0f/60.0f;
+	deltaTime = 1.0f / 60.0f;
 	lastTime = 0;
 
 	camera = new GLCamera();
 	char* path = config.objectPath;
 
-	if(GLBufferHandler::checkForMeshHandler(config.objectName))
+	if (GLBufferHandler::checkForMeshHandler(config.objectName))
 	{
 		meshHandler = GLBufferHandler::meshHandlerBuffer[config.objectName];
 	}
@@ -62,8 +62,8 @@ void GLPlayer::initializeGLPlayer(GLConfig config)
 void GLPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
-	
-	if(glfwGetMouseButton(OpenGLWrapper::window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+
+	if (glfwGetMouseButton(OpenGLWrapper::window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 	{
 		updateMousePos();
 	}
@@ -73,11 +73,11 @@ void GLPlayer::step(void)
 	ypos = config.height / 2.0f;
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
-    glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
+	glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
 
 	GLint model = glGetUniformLocation(OpenGLWrapper::programObject, "mvp");
 	glUniformMatrix4fv(model, 1, GL_FALSE, glm::value_ptr(MVP));
-	
+
 	GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
 	glUniform4f(loc, 0.75f, 0.64f, 0.04f, 1.0f);
 
@@ -101,7 +101,7 @@ void GLPlayer::step(void)
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s - fps[%.2f]", config.title, (float) (1 / deltaTime));
+	sprintf(title, "%s - fps[%.2f]", config.title, (float)(1 / deltaTime));
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 }
 
@@ -112,7 +112,7 @@ bool GLPlayer::running(void)
 
 void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	if(action == GLFW_PRESS || action == GLFW_REPEAT)
+	if (action == GLFW_PRESS || action == GLFW_REPEAT)
 	{
 		if (key == GLFW_KEY_ESCAPE)
 		{
@@ -120,7 +120,7 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 
-		if(config.mode == FREE_MODE)
+		if (config.mode == FREE_MODE)
 		{
 			if (key == GLFW_KEY_Z){
 				camera->position += camera->up * deltaTime * camera->speed;
@@ -144,17 +144,17 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 
 		//Depuração
 
-		if(key == GLFW_KEY_1)
+		if (key == GLFW_KEY_1)
 		{
 			//Zoom IN
 			camera->zoom(-0.005f);
 		}
-		if(key == GLFW_KEY_2)
+		if (key == GLFW_KEY_2)
 		{
 			//Zoom OUT
 			camera->zoom(+0.005f);
 		}
-		if(key == GLFW_KEY_5)
+		if (key == GLFW_KEY_5)
 		{
 			//PrintScreen
 
@@ -168,7 +168,7 @@ void GLPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, i
 
 void GLPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
 {
-	if(action == GLFW_PRESS)
+	if (action == GLFW_PRESS)
 	{
 		if (button == GLFW_MOUSE_BUTTON_LEFT)
 		{
@@ -179,7 +179,7 @@ void GLPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
 			glfwSetCursorPos(OpenGLWrapper::window, config.width / 2.0f, config.height / 2.0f);
 		}
 	}
-	if(action == GLFW_RELEASE)
+	if (action == GLFW_RELEASE)
 	{
 		if (button == GLFW_MOUSE_BUTTON_LEFT)
 		{
@@ -198,17 +198,17 @@ void GLPlayer::lights(void)
 {
 	GLfloat matAmbient[] = { 0.6f, 0.6f, 0.6f, 1.0f };
 	GLfloat matDiffuse[] = { 0.8f, 0.4f, 0.4f, 1.0f };
-	GLfloat lightAmbient[] = {1.f, 1.f, 1.f, 1.f} ;
-	GLfloat lightDiffuse[] = {1.f, 1.f, 1.f, 1.f} ;
+	GLfloat lightAmbient[] = { 1.f, 1.f, 1.f, 1.f };
+	GLfloat lightDiffuse[] = { 1.f, 1.f, 1.f, 1.f };
 
 	GLfloat lightPos1[] = { 20.0, 20.0, 20.0, 1.0 };
 	GLfloat lightPos2[] = { -20.0, 20.0, 20.0, 1.0 };
 	GLfloat lightPos3[] = { 20.0, 20.0, -20.0, 1.0 };
 	GLfloat lightPos4[] = { -20.0, 20.0, -20.0, 1.0 };
-	GLfloat spotDir1[] =  { -0.5f, -0.5f, -0.5f };
-	GLfloat spotDir2[] =  { 0.5f, -0.5f, -0.5f };
-	GLfloat spotDir3[] =  { -0.5f, -0.5f, 0.5f };
-	GLfloat spotDir4[] =  { 0.5f, -0.5f, 0.5f };
+	GLfloat spotDir1[] = { -0.5f, -0.5f, -0.5f };
+	GLfloat spotDir2[] = { 0.5f, -0.5f, -0.5f };
+	GLfloat spotDir3[] = { -0.5f, -0.5f, 0.5f };
+	GLfloat spotDir4[] = { 0.5f, -0.5f, 0.5f };
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
@@ -235,7 +235,7 @@ void GLPlayer::lights(void)
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);
 	glLightfv(GL_LIGHT1, GL_AMBIENT, lightAmbient);
 	glLightfv(GL_LIGHT1, GL_POSITION, lightPos4);
-	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, spotDir4);	
+	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, spotDir4);
 	glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 40.0);
 	glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 30.0);
 

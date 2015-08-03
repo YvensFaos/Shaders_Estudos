@@ -1,4 +1,4 @@
-#include "glbirdseyeplayer.h"
+#include "glsequentialrecorderplayer.h"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -14,85 +14,86 @@
 
 #include "openGLWrapper.h"
 #include "edlogger.h"
+#include "glbuffer.h"
 
 #include <stdio.h>
 #include <string>
 
-//#define DRAW_BBOX
-
-GLBirdsEyePlayer::GLBirdsEyePlayer(void)
+GLSequentialRecorderPlayer::GLSequentialRecorderPlayer(void)
 { }
 
-GLBirdsEyePlayer::~GLBirdsEyePlayer(void)
+GLSequentialRecorderPlayer::~GLSequentialRecorderPlayer(void)
 { }
 
-GLBirdsEyePlayer::GLBirdsEyePlayer(GLConfig config)
+GLSequentialRecorderPlayer::GLSequentialRecorderPlayer(GLConfig config)
 {
 	initializeGLPlayer(config);
 }
 
-void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
+void GLSequentialRecorderPlayer::initializeGLPlayer(GLConfig config)
 {
 	this->config = config;
 	this->printCounter = 0;
 
+	angle = 0.0f;
 	isRunning = true;
 	updateMouse = false;
-
-	xpos = this->config.width / 2.0f;
-	ypos = this->config.height / 2.0f;
-
 	paused = false;
+
 	logged = false;
+
+	printIndex = 0;
 
 	deltaTime = 1.0f / 60.0f;
 	lastTime = 0;
 
-	char* path = this->config.objectPath;
+	recorder = EDPrinter();
+
+	char* path = config.objectPath;
 
 	//Checando se o nome foi setado corretamente
-	if (this->config.objectName && this->config.objectName[0] != '\0')
+	if (config.objectName && config.objectName[0] != '\0')
 	{
-		this->scenario = new GLScenario(this->config.objectName, &config);
+		this->scenario = new GLScenario(config.objectName, &config);
 	}
 	else
 	{
 		//Se não tiver o nome, busca pelo identificador
-		this->scenario = new GLScenario(this->config.scenarioNumber, &config);
+		this->scenario = new GLScenario(config.scenarioNumber, &config);
 	}
 
-	actualStep = GLScenario::defaultBirdPosition(scenario->identifier);
-
 	camera = new GLCamera(&config);
-	camera->fov = 45.0f;
-	camera->near = 0.1f;
-	camera->far = 2000;
-	camera->setValues(actualStep);
-	camera->calculateMatrix(actualStep, &config, 0);
-	camera->speed = 0.13f;
-	camera->mouseSpeed = 0.0025f;
-
 	cameraHandler = &scenario->cameraHandler;
-	walkStep = cameraHandler->actualStep();
-
+	camera->calculateMatrix(cameraHandler->actualStep(), &config, 0);
 	meshHandler = scenario->meshHandler;
 
 	char logName[512];
-	if (this->config.type != NONE)
+	if (config.type != NONE)
 	{
-		ede = GLBasicEDE::instantiate(&this->config);
-		ede->testDynamics = this->config.edeTestDynamics;
+		ede = GLBasicEDE::instantiate(&config);
+		ede->testDynamics = config.edeTestDynamics;
 
 		std::string edeName = ede->getName();
 
 		char edeLogName[512];
-		sprintf(edeLogName, "%s%s-%s-making[%d]%s", this->config.logPath, scenario->name, edeName.c_str(), this->config.edeDepth, LOG_EXTENSION);
+		sprintf(edeLogName, "%s%s-%s-making[%d]%s", config.logPath, scenario->name, edeName.c_str(), config.edeDepth, LOG_EXTENSION);
 		EDLogger edeLogger(edeLogName);
+		ede->setLogger(&edeLogger);
 
 		double firstTime = glfwGetTime();
-		printf("Carregar a EDE\n");
-		ede->setLogger(&edeLogger);
-		ede->calculateEDE(meshHandler, &config);
+
+		if (GLBufferHandler::checkForEDE(edeName))
+		{
+			printf("Carregar a EDE do Buffer\n");
+			ede = GLBufferHandler::edeBuffer[edeName];
+		}
+		else
+		{
+			printf("Carregar a EDE\n");
+			ede->calculateEDE(meshHandler, &config);
+			GLBufferHandler::addToEDEBuffer(edeName, ede);
+		}
+
 		double lastTime = glfwGetTime();
 		lastTime = float(lastTime - firstTime);
 
@@ -101,34 +102,38 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 
 		edeLogger.closeLog();
 
-		sprintf(logName, "%s%s[%d]-%s[%s=%d][%s]%s", this->config.logPath, scenario->name, this->config.logIdentifier, this->config.logExtraMsg, edeName.c_str(), this->config.edeDepth, this->config.pathfileName, LOG_EXTENSION);
+		sprintf(logName, "%s%s[%d]-%s[%s=%d][%s]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, edeName.c_str(), config.edeDepth, config.pathfileName, LOG_EXTENSION);
 	}
 	else
 	{
-		sprintf(logName, "%s%s[%d]-%s[%s]%s", this->config.logPath, scenario->name, this->config.logIdentifier, this->config.logExtraMsg, this->config.pathfileName, LOG_EXTENSION);
+		sprintf(logName, "%s%s[%d]-%s[%s]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, config.pathfileName, LOG_EXTENSION);
 	}
 
 	logger = new EDLogger(logName);
 
 	title = new char[256];
 	modeTitle = new char[256];
-	sprintf(modeTitle, "Birds Eye [%s] - Scenario:%s - ", this->config.title, scenario->name);
+	sprintf(modeTitle, "[%s] - Recorder Scenario:%s - ", config.title, scenario->name);
 }
 
-void GLBirdsEyePlayer::step(void)
+void GLSequentialRecorderPlayer::step(void)
 {
 	double firstTime = glfwGetTime();
 
-	bool pressingMouse = glfwGetMouseButton(OpenGLWrapper::window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
-
-	if (pressingMouse)
+	GLCameraStep* step;
+	if (isPaused())
 	{
-		updateMousePos();
+		step = cameraHandler->actualStep();
 	}
+	else
+	{
+		step = cameraHandler->nextStep();
+	}
+	
+	bool recordStep = (cameraHandler->getIndex() == config.recordingIndexes.at(printIndex));
 
-	camera->calculateMatrix(&config, xpos, ypos, deltaTime);
-	xpos = config.width / 2.0f;
-	ypos = config.height / 2.0f;
+	step->fov = camera->fov;
+	camera->calculateMatrix(step, &config, deltaTime);
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
 	glm::mat4 MVP = camera->projectionMatrix * camera->viewMatrix * ModelMatrix;
@@ -140,7 +145,7 @@ void GLBirdsEyePlayer::step(void)
 	glUniform4f(loc, 0.75f, 0.64f, 0.04f, 1.0f);
 
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
-	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
+	glUniform3f(pos, step->direction.x, step->direction.y, step->direction.z);
 
 	pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
@@ -149,16 +154,14 @@ void GLBirdsEyePlayer::step(void)
 	glLoadIdentity();
 	glViewport(0, 0, config.width, config.height);
 	glClear(GL_COLOR_BUFFER_BIT);
-	glClearColor(VEC4_PRINT(OpenGLWrapper::ACTUAL_CLEAR_COLOR));
 	glUseProgram(OpenGLWrapper::programObject);
 
 	int verticesCount = 0;
 	memset(info, 0, sizeof(float)*INFO_SIZE);
 
-	walkStep->fov = config.fov;
-	frustum = GLFrustum(config.near, config.far, config.aspect, walkStep);
 	if (config.type != NONE)
 	{
+		frustum = GLFrustum(config.aspect, camera);
 		ede->renderEDE(&frustum, meshHandler, &config, info);
 	}
 	else
@@ -171,10 +174,7 @@ void GLBirdsEyePlayer::step(void)
 	if (config.enableDynamics)
 	{
 		glm::vec3* bounds = new glm::vec3[2];
-		loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
-		glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
-
-		for (unsigned int i = 0; i < config.dynamics.size(); i++)
+		for (int i = 0; i < config.dynamics.size(); i++)
 		{
 			GLDynamicObject* obj = &config.dynamics.at(i);
 
@@ -193,64 +193,50 @@ void GLBirdsEyePlayer::step(void)
 				}
 			}
 
-#ifndef DRAW_BBOX
+			loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+			glUniform4f(loc, 0.008f, 0.24f, 0.74f, 1.0f);
+
 			obj->draw();
-#else
-			obj->drawBox();
-#endif
-			obj->update();
+			if (!isPaused())
+			{
+				obj->update();
+			}
 		}
 
 		delete bounds;
-
-		GLDynamicObject* obj = &config.dynamics.at(0);
-
-		loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
-		glUniform4f(loc, 0.78f, 0.004f, 0.1025f, 1.0f);
-
-		obj->visible = true;
-		obj->draw(walkStep->position);
 	}
 
-	//Draw Frustum
-	frustum.draw();
+	int drawCalls = (int)info[3] + visibleBunnies;
 
 	double lastTime = glfwGetTime();
 	deltaTime = float(lastTime - firstTime);
 	deltaTime = (deltaTime == 0) ? 0.0015 : deltaTime;
 
-	sprintf(title, "%s - fps[%.2f][v = %d][%d]", modeTitle, (float)(1 / deltaTime), visibleBunnies, cameraHandler->getIndex());
+	sprintf(title, "%s - fps[%.2f][v = %d][%d][Calls = %d]", modeTitle, (float)(1 / deltaTime), visibleBunnies, cameraHandler->getIndex(), drawCalls);
 	glfwSetWindowTitle(OpenGLWrapper::window, title);
 
 	if (config.logResults && !logged)
 	{
+		std::string sdeltaTime = std::to_string(deltaTime);
+		std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
+
+		std::string sfps = std::to_string((float)(1 / deltaTime));
+		std::replace(sfps.begin(), sfps.end(), '.', ',');
 		if (config.type != NONE)
 		{
 			delete logLine;
 			logLine = new char[64];
-			std::string sdeltaTime = std::to_string(deltaTime);
-			std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
-			sprintf(logLine, "%s;%d;%d;%d;%d", sdeltaTime.c_str(), (int)info[0], (int)info[1], (int)info[2], (int)info[3]);
+
+			sprintf(logLine, "%s;%s;%d;%d;%d;%d", sdeltaTime.c_str(), sfps.c_str(), (int)info[0], (int)info[1], (int)info[2], (int)info[3]);
 			logger->logLine(logLine);
 		}
 		else
 		{
 			delete logLine;
 			logLine = new char[64];
-			std::string sdeltaTime = std::to_string(deltaTime);
-			std::replace(sdeltaTime.begin(), sdeltaTime.end(), '.', ',');
-			sprintf(logLine, "%s;%d", sdeltaTime.c_str(), verticesCount);
+			sprintf(logLine, "%s;%s;%d", sdeltaTime.c_str(), sfps.c_str(), verticesCount);
 			logger->logLine(logLine);
 		}
-	}
-
-	if (isPaused())
-	{
-		walkStep = cameraHandler->actualStep();
-	}
-	else
-	{
-		walkStep = cameraHandler->nextStep();
 	}
 
 	if (cameraHandler->finished && !cameraHandler->repeated)
@@ -265,132 +251,71 @@ void GLBirdsEyePlayer::step(void)
 			isRunning = false;
 		}
 	}
+
+	if (recordStep)
+	{
+		char filename[256];
+		sprintf(filename, "%sSS(%s)-%s-[%d].bmp", config.objectPath, config.objectName, ede->getName().c_str(), cameraHandler->getIndex());
+		printIndex++;
+		recorder.printScreen(&config, filename);
+
+		if (printIndex >= config.recordingIndexes.size())
+		{
+			//Vai para o zero porque o index de teste será sempre maior do que zero a partir desse ponto
+			printIndex = 0;
+		}
+	}
 }
 
-bool GLBirdsEyePlayer::running(void)
+bool GLSequentialRecorderPlayer::running(void)
 {
 	return isRunning;
 }
 
-void GLBirdsEyePlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
+void GLSequentialRecorderPlayer::keyBoard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if (action == GLFW_PRESS || action == GLFW_REPEAT)
 	{
 		if (key == GLFW_KEY_ESCAPE)
 		{
-			if (config.logResults)
-			{
-				logger->closeLog();
-				logged = true;
-			}
 			isRunning = false;
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
 
-		//Controle da Câmera
+		//Depuração
 
-		if (key == GLFW_KEY_Z){
-			camera->position += camera->up * 1.f * camera->speed;
-		}
-		if (key == GLFW_KEY_X){
-			camera->position -= camera->up * 1.f * camera->speed;
-		}
-		if (key == GLFW_KEY_W){
-			camera->position += camera->direction * 1.f * camera->speed;
-		}
-		if (key == GLFW_KEY_S){
-			camera->position -= camera->direction * 1.f * camera->speed;
-		}
-		if (key == GLFW_KEY_A){
-			camera->position -= camera->right * 1.f * camera->speed;
-		}
-		if (key == GLFW_KEY_D){
-			camera->position += camera->right * 1.f * camera->speed;
-		}
-
-		//Controle de Zoom
-		if (key == GLFW_KEY_1)
+		if (key == GLFW_KEY_SPACE || key == GLFW_KEY_1)
 		{
-			//Zoom IN
-			camera->zoom(-0.005f);
-		}
-		if (key == GLFW_KEY_2)
-		{
-			//Zoom OUT
-			camera->zoom(+0.005f);
-		}
-
-		//Pausa a simulação
-		if (key == GLFW_KEY_3)
-		{
+			//Pausa o Walkthrough
+			printf("PAUSE!\n");
 			pause();
 		}
 
-		//Controle de Velocidade da Câmera
-		if (key == GLFW_KEY_6)
-		{
-			//Zoom IN
-			camera->speed += 0.01f;
-			printf("Speed: %f\n", camera->speed);
-		}
-		if (key == GLFW_KEY_7)
-		{
-			//Zoom OUT
-			camera->speed -= 0.01f;
-			printf("Speed: %f\n", camera->speed);
-		}
-
-		//Depuração
-		if (key == GLFW_KEY_4)
-		{
-			//TODO print da câmera e do actualstep aqui!
-			camera->print();
-		}
 		if (key == GLFW_KEY_5)
 		{
 			//PrintScreen
 			EDPrinter printer = EDPrinter();
 			char filename[256];
-			sprintf(filename, "%sRecordPrint-%s[%d]-x.bmp", config.objectPath, config.objectName, printCounter++);
+			sprintf(filename, "%s-Sequential-%s[%d]-x.bmp", config.objectPath, config.objectName, printCounter++);
 			printer.printScreen(&config, filename);
 		}
 	}
 }
 
-void GLBirdsEyePlayer::pause()
+void GLSequentialRecorderPlayer::pause()
 {
 	paused = !paused;
 }
 
-bool GLBirdsEyePlayer::isPaused()
+bool GLSequentialRecorderPlayer::isPaused()
 {
 	return paused;
 }
 
-void GLBirdsEyePlayer::mouse(GLFWwindow* window, int button, int action, int mods)
-{
-	if (action == GLFW_PRESS)
-	{
-		if (button == GLFW_MOUSE_BUTTON_LEFT)
-		{
-			updateMouse = true;
-		}
-	}
-	if (action == GLFW_RELEASE)
-	{
-		if (button == GLFW_MOUSE_BUTTON_LEFT)
-		{
-			updateMouse = false;
-		}
-	}
-}
+void GLSequentialRecorderPlayer::mouse(GLFWwindow* window, int button, int action, int mods)
+{ }
 
-void GLBirdsEyePlayer::updateMousePos()
-{
-	glfwGetCursorPos(OpenGLWrapper::window, &xpos, &ypos);
-}
-
-void GLBirdsEyePlayer::lights(void)
+void GLSequentialRecorderPlayer::lights(void)
 {
 	GLfloat matAmbient[] = { 0.6f, 0.6f, 0.6f, 1.0f };
 	GLfloat matDiffuse[] = { 0.8f, 0.4f, 0.4f, 1.0f };

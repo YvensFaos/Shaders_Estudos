@@ -8,7 +8,7 @@ class GLBaseGridEDE : public GLBasicEDE
 private:
 	GLBaseGrid grid;
 	int edeDepth;
-	
+
 public:
 	GLBaseGridEDE(void);
 	~GLBaseGridEDE(void);

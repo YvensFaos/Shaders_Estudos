@@ -8,8 +8,8 @@
 
 #include "glscenariomacros.h"
 
-#include <stdio.h>  
-#include <stdlib.h>  
+#include <stdio.h>
+#include <stdlib.h>
 
 //#define mia
 #define desktop
@@ -22,8 +22,8 @@
 
 GLPlayer* player;
 
-int main()  
-{  
+int main()
+{
 	GLConfig config;
 
 	glm::vec3 dynamicScale = glm::vec3(1.0f, 1.0f, 1.0f);
@@ -34,10 +34,10 @@ int main()
 
 	int antialiasing = 0;
 
-	config.width  = 800;
+	config.width = 800;
 	config.height = 600;
-	config.aspect = (float) config.width/config.height;
-	config.title  = "Teste";
+	config.aspect = (float)config.width / config.height;
+	config.title = "Teste";
 	config.fov = 45.0f;
 	config.far = 500.0f;
 	config.near = 0.1f;
@@ -54,11 +54,11 @@ int main()
 	modelPathLocation =   "X:/Yvens Rebouças/GIT/Shaders_Estudos/Paths/";
 #endif
 #ifdef desktop
-	config.objectPath =   "F:/Repositorios/Shaders_Estudos/Models/";
+	config.objectPath = "F:/Repositorios/Shaders_Estudos/Models/";
 	config.pathfilePath = "F:/Repositorios/Shaders_Estudos/Paths/";
-	config.logPath =      "F:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
-	modelPath =           "F:/Repositorios/Shaders_Estudos/Models/";
-	modelPathLocation =   "F:/Repositorios/Shaders_Estudos/Paths/";
+	config.logPath = "F:/Repositorios/Shaders_Estudos/Logs/Log Desktop/";
+	modelPath = "F:/Repositorios/Shaders_Estudos/Models/";
+	modelPathLocation = "F:/Repositorios/Shaders_Estudos/Paths/";
 #endif
 #ifdef notebook
 	config.objectPath =   "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Models/";
@@ -68,11 +68,11 @@ int main()
 	modelPathLocation =   "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Paths/";
 #endif
 #pragma endregion
-	
+
 	//Macro do cenário:
-	//COALTOWN;
+	COALTOWN;
 	//GOLDRUSH;
-	SAW;
+	//SAW;
 	//RAVINE;
 	//CITYCYCLES;
 
@@ -100,7 +100,7 @@ int main()
 	{
 		config.logIdentifier = i + 1;
 		config.type = OCTREE;
-		
+
 		TEST_BODY(WALKTHROUGH_MODE, "octree", antialiasing);
 	}
 	for (int i = 0; i < numberTests; i++)
@@ -114,7 +114,7 @@ int main()
 	{
 		config.logIdentifier = i + 1;
 		config.type = NONE;
-		
+
 		TEST_BODY(WALKTHROUGH_MODE, "none", antialiasing);
 	}
 #endif
@@ -123,16 +123,16 @@ int main()
 #ifdef batch
 	char batchPath[128];
 
-	#ifdef mia
-		//TODO ajustar
-		sprintf(batchPath, "F:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
-	#endif
-	#ifdef desktop
-		sprintf(batchPath, "F:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
-	#endif
-	#ifdef notebook
-		sprintf(batchPath, "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Batch/Batch Notebook/");
-	#endif
+#ifdef mia
+	//TODO ajustar
+	sprintf(batchPath, "F:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
+#endif
+#ifdef desktop
+	sprintf(batchPath, "F:/Repositorios/Shaders_Estudos/Batch/Batch Desktop/");
+#endif
+#ifdef notebook
+	sprintf(batchPath, "C:/Users/Yvens/Documents/GitHub/Shaders_Estudos/Batch/Batch Notebook/");
+#endif
 
 	std::vector<char*> batchFiles;
 	batchFiles.push_back("octrees-nos");
@@ -196,21 +196,21 @@ int main()
 	config.logIdentifier = 0;
 	config.edeDepth = 6;
 	config.type = NONE;
-		
+
 	TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	//TEST_BODY(RECORD_PATH, "teste", 0);
 	//TEST_BODY(BIRDS_EYE, "teste", 0);
 	/*for (int i = 0; i < 1; i++)
 	{
-		config.logIdentifier = i + 1;
-		TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
+	config.logIdentifier = i + 1;
+	TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 	}*/
 
 	//TEST_BODY(WALKTHROUGH_MODE, "teste", 0);
 #endif
 
 #ifdef cleanBuild
-	config.repeatable = true;
+	config.repeatable = false;
 	config.logResults = false;
 
 	config.pathIdentifier = 1;
@@ -220,13 +220,15 @@ int main()
 	config.edeDepth = 6;
 	config.type = BASEGRID;
 
+	config.addIndexes(546, 674);
+
 	config.coloredNodes = true;
 	config.enableDynamics = false;
 	config.edeTestDynamics = false;
 	config.frustumTestDynamics = true;
 	config.title = "Clean Build";
 
-	PLAYER_MODE mode = BIRDS_EYE;
+	PLAYER_MODE mode = SEQUENTIAL_RECORDER;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);
@@ -234,4 +236,4 @@ int main()
 #endif
 
 	GLBufferHandler::clearBuffers();
-}  
+}

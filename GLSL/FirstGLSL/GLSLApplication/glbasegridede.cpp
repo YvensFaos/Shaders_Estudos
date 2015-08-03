@@ -11,12 +11,12 @@ GLBaseGridEDE::GLBaseGridEDE(void)
 GLBaseGridEDE::~GLBaseGridEDE(void)
 { }
 
-void GLBaseGridEDE::loadEDE(GLConfig* config) 
+void GLBaseGridEDE::loadEDE(GLConfig* config)
 {
 	//Para carregar uma octree a partir de um arquivo
 }
 
-void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config, float* info) 
+void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config, float* info)
 {
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
@@ -28,11 +28,10 @@ void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConf
 	std::vector<GLBaseGridNode*> visibleNodes;
 	GLBaseGridNode* node;
 
-	for(int i = 0; i < nodesCount; i++)
+	for (int i = 0; i < nodesCount; i++)
 	{
 		info[0] += 1;
 		node = &grid.nodes[i];
-
 
 		if (node->numIndicesTotal > 0 && frustum->intercepts(&node->min, &node->max))
 		{
@@ -49,10 +48,10 @@ void GLBaseGridEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConf
 	}
 }
 
-void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 
+void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 {
 	this->edeDepth = config->edeDepth;
-	
+
 	char logLine[128];
 	sprintf(logLine, "Iniciado a grid tamanho %f.", powf(BASE_NODE_COUNT, config->edeDepth));
 	logger->logLineTimestamp(logLine);
@@ -64,18 +63,18 @@ void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 	bufferizeEDE(config);
 }
 
-void GLBaseGridEDE::exportEDE(GLConfig* config) 
+void GLBaseGridEDE::exportEDE(GLConfig* config)
 {
 	//Para salvar a octree em um arquivo
 }
 
-void GLBaseGridEDE::calculateMemory(void) 
+void GLBaseGridEDE::calculateMemory(void)
 {
-	if(memoryUsed != 0)
+	if (memoryUsed != 0)
 	{
 		return;
 	}
-	if(grid.memoryUsed == 0)
+	if (grid.memoryUsed == 0)
 	{
 		memoryUsed = grid.getMemory();
 	}

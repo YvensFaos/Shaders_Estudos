@@ -12,7 +12,7 @@ private:
 	int printCounter;
 	char* modeTitle;
 	char* logLine;
-	
+
 	bool paused;
 	bool logged;
 

@@ -11,12 +11,12 @@ GLROctreeEDE::GLROctreeEDE(void)
 GLROctreeEDE::~GLROctreeEDE(void)
 { }
 
-void GLROctreeEDE::loadEDE(GLConfig* config) 
+void GLROctreeEDE::loadEDE(GLConfig* config)
 {
 	//Para carregar uma octree a partir de um arquivo
 }
 
-void GLROctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config, float* info) 
+void GLROctreeEDE::renderEDE(GLFrustum* frustum, GLMeshHandler* handler, GLConfig* config, float* info)
 {
 	//[0]~ Qtde. Nós testados
 	//[1]~ Qtde. Nós Visíveis
@@ -42,17 +42,17 @@ VISIBILITY_STATUS GLROctreeEDE::checkVisibility(GLFrustum* frustum, GLOctreeNode
 	info[0] += 1;
 	node->visible = INVISIBLE;
 
-	if(node->mesh.verticesCount != 0 && frustum->intercepts(&node->min, &node->max))
+	if (node->mesh.verticesCount != 0 && frustum->intercepts(&node->min, &node->max))
 	{
 		info[1] += 1;
 		node->visible = VISIBLE;
-		if(node->hasNodes)
+		if (node->hasNodes)
 		{
 			int visible = 0;
 			int invisible = 0;
 			int size = node->nodes.size();
 
-			for(int i = 0; i < size; i++)
+			for (int i = 0; i < size; i++)
 			{
 				VISIBILITY_STATUS status = checkVisibility(frustum, &node->nodes.at(i), info);
 
@@ -68,12 +68,12 @@ VISIBILITY_STATUS GLROctreeEDE::checkVisibility(GLFrustum* frustum, GLOctreeNode
 					break;
 				}
 			}
-			
-			if(visible == size)
+
+			if (visible == size)
 			{
 				node->visible = VISIBLE;
 			}
-			else if(invisible == size)
+			else if (invisible == size)
 			{
 				node->visible = INVISIBLE;
 			}
@@ -89,49 +89,49 @@ VISIBILITY_STATUS GLROctreeEDE::checkVisibility(GLFrustum* frustum, GLOctreeNode
 
 void GLROctreeEDE::recursiveDraw(GLConfig* config, GLOctreeNode* node, float* info)
 {
-	switch(node->visible)
+	switch (node->visible)
 	{
 	case VISIBLE:
+	{
+		if (config->coloredNodes)
 		{
-			if(config->coloredNodes)
-			{
-				GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
-				glUniform4f(loc, node->nodeColor.r, node->nodeColor.g, node->nodeColor.b, 1.0f);
-			}
+			GLint loc = glGetUniformLocation(OpenGLWrapper::programObject, "baseColor");
+			glUniform4f(loc, node->nodeColor.r, node->nodeColor.g, node->nodeColor.b, 1.0f);
+		}
 
-			node->mesh.prerender();
-			node->mesh.render();
-			info[2] += node->mesh.verticesCount;
-			info[3] += 1;
+		node->mesh.prerender();
+		node->mesh.render();
+		info[2] += node->mesh.verticesCount;
+		info[3] += 1;
 
-			if(config->enableDynamics && testDynamics)
+		if (config->enableDynamics && testDynamics)
+		{
+			for (int i = 0; i < config->dynamics.size(); i++)
 			{
-				for(int i  = 0; i < config->dynamics.size(); i++)
+				GLDynamicObject* obj = &config->dynamics.at(i);
+				if (!obj->visible)
 				{
-					GLDynamicObject* obj = &config->dynamics.at(i);
-					if(!obj->visible)
+					if (GLAABB::intercepts(obj->meshHandler->max, obj->meshHandler->min, node->max, node->min))
 					{
-						if(GLAABB::intercepts(obj->meshHandler->max, obj->meshHandler->min, node->max, node->min))
-						{
-							obj->visible = true;
-						}
+						obj->visible = true;
 					}
 				}
 			}
 		}
+	}
 		break;
 	case PARTIALLY_VISIBLE:
+	{
+		for (int i = 0; i < node->nodes.size(); i++)
 		{
-			for(int i = 0; i < node->nodes.size(); i++)
-			{
-				recursiveDraw(config, &node->nodes.at(i), info);
-			}
+			recursiveDraw(config, &node->nodes.at(i), info);
 		}
+	}
 		break;
 	}
 }
 
-void GLROctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config) 
+void GLROctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 {
 	this->edeDepth = config->edeDepth;
 
@@ -146,18 +146,18 @@ void GLROctreeEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 	bufferizeEDE(config);
 }
 
-void GLROctreeEDE::exportEDE(GLConfig* config) 
+void GLROctreeEDE::exportEDE(GLConfig* config)
 {
 	//Para salvar a octree em um arquivo
 }
 
-void GLROctreeEDE::calculateMemory(void) 
+void GLROctreeEDE::calculateMemory(void)
 {
-	if(memoryUsed != 0)
+	if (memoryUsed != 0)
 	{
 		return;
 	}
-	if(octree.memoryUsed == 0)
+	if (octree.memoryUsed == 0)
 	{
 		memoryUsed = octree.getMemory();
 	}

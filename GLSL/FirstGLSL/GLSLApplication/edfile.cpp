@@ -60,7 +60,7 @@ int EDFileReader::readLn()
 	while (true)
 	{
 		char ch;
-		READ_CHAR_FROM_BUFFER:
+	READ_CHAR_FROM_BUFFER:
 		if (bufPos < bufLen)
 		{
 			ch = buffer[bufPos++];
