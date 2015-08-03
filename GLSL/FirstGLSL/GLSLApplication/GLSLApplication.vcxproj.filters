@@ -31,6 +31,9 @@
     <Filter Include="Helpers\Math">
       <UniqueIdentifier>{32c1c103-0f15-464f-8382-30a591a54be8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Players\Recorders">
+      <UniqueIdentifier>{41a0b93b-26d2-4eec-bb80-69da7e233e1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="openGLWrapper.cpp">
@@ -67,9 +70,6 @@
       <Filter>Players</Filter>
     </ClCompile>
     <ClCompile Include="glwalkthroughplayer.cpp">
-      <Filter>Players</Filter>
-    </ClCompile>
-    <ClCompile Include="glrecordpathplayer.cpp">
       <Filter>Players</Filter>
     </ClCompile>
     <ClCompile Include="glbasicede.cpp">
@@ -126,8 +126,11 @@
     <ClCompile Include="glcgridede.cpp">
       <Filter>EDE</Filter>
     </ClCompile>
+    <ClCompile Include="glrecordpathplayer.cpp">
+      <Filter>Players\Recorders</Filter>
+    </ClCompile>
     <ClCompile Include="glsequentialrecorderplayer.cpp">
-      <Filter>Players</Filter>
+      <Filter>Players\Recorders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,9 +171,6 @@
       <Filter>Players</Filter>
     </ClInclude>
     <ClInclude Include="glwalkthroughplayer.h">
-      <Filter>Players</Filter>
-    </ClInclude>
-    <ClInclude Include="glrecordpathplayer.h">
       <Filter>Players</Filter>
     </ClInclude>
     <ClInclude Include="glbasicede.h">
@@ -231,7 +231,10 @@
       <Filter>EDE</Filter>
     </ClInclude>
     <ClInclude Include="glsequentialrecorderplayer.h">
-      <Filter>Players</Filter>
+      <Filter>Players\Recorders</Filter>
+    </ClInclude>
+    <ClInclude Include="glrecordpathplayer.h">
+      <Filter>Players\Recorders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

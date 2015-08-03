@@ -220,7 +220,7 @@ int main()
 	config.edeDepth = 6;
 	config.type = BASEGRID;
 
-	config.addIndexes(546, 674);
+	config.addIndexes(546);
 
 	config.coloredNodes = true;
 	config.enableDynamics = false;

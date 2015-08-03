@@ -90,5 +90,5 @@ void GLConfig::addIndexes(int start, int finish)
 	}
 
 	//Ordena
-	std::sort(recordingIndexes.begin() , recordingIndexes.begin() + recordingIndexes.size());
+	std::sort(recordingIndexes.begin(), recordingIndexes.begin() + recordingIndexes.size());
 }
