@@ -1,0 +1,1 @@
+{ 4: 8} - 16:21:58: Tempo de processamento: 0.000094
