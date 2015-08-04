@@ -70,8 +70,8 @@ int main()
 #pragma endregion
 
 	//Macro do cenário:
-	COALTOWN;
-	//GOLDRUSH;
+	//COALTOWN;
+	GOLDRUSH;
 	//SAW;
 	//RAVINE;
 	//CITYCYCLES;
@@ -220,7 +220,7 @@ int main()
 	config.edeDepth = 6;
 	config.type = BASEGRID;
 
-	config.addIndexes(546);
+	config.addIndexes(1390);
 
 	config.coloredNodes = true;
 	config.enableDynamics = false;
