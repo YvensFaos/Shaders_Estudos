@@ -11,14 +11,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#define mia
-#define desktop
+#define mia
+//#define desktop
 //#define notebook
 
-//#define individual
+#define individual
 //#define batch
 //#define recordPath
-#define cleanBuild
+//#define cleanBuild
 
 GLPlayer* player;
 
@@ -81,7 +81,7 @@ int main()
 	config.logResults = true;
 	config.pathIdentifier = 1;
 
-	int numberTests = 2;
+	int numberTests = 0;
 	config.edeDepth = 3;
 	config.logExtraMsg = "mia-release";
 	for (int i = 0; i < numberTests; i++)
@@ -103,6 +103,7 @@ int main()
 
 		TEST_BODY(WALKTHROUGH_MODE, "octree", antialiasing);
 	}
+	numberTests = 2;
 	for (int i = 0; i < numberTests; i++)
 	{
 		config.logIdentifier = i + 1;
@@ -110,6 +111,7 @@ int main()
 		config.edeDepth = 6; //64 nós
 		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
 	}
+	numberTests = 0;
 	for (int i = 0; i < numberTests; i++)
 	{
 		config.logIdentifier = i + 1;
@@ -228,7 +230,7 @@ int main()
 	config.frustumTestDynamics = true;
 	config.title = "Clean Build";
 
-	PLAYER_MODE mode = SEQUENTIAL_FLYING_RECORDER;
+	PLAYER_MODE mode = SEQUENTIAL_RECORDER;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);

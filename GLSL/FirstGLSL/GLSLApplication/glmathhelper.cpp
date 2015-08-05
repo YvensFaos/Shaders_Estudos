@@ -8,6 +8,8 @@
 
 #define DRAW_F_BBOX
 
+float GLFrustum::aabbFactor = 0.15f;
+
 //GLPlane
 
 GLPlane::GLPlane(void)
@@ -392,12 +394,12 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 	farPoint += *apex;
 	//New
 	glm::vec3 cfarPoint = glm::vec3(direction->x, direction->y, direction->z);
-	cfarPoint *= farp * 0.1f; //10% do frustum
+	cfarPoint *= farp * aabbFactor;
 	cfarPoint += *apex;
 
 	float nearValue = nearp*fovx;
 	float farValue = farp*fovx;
-	float cfarValue = farp*fovx* 0.1f;
+	float cfarValue = farp*fovx * aabbFactor;
 
 	glm::vec3 nearRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
 	nearRightPoint *= nearValue;
@@ -415,7 +417,7 @@ GLFrustum::GLFrustum(float nearp, float farp, float aspect, GLCameraStep* camera
 
 	nearValue = nearp*fovy;
 	farValue = farp*fovy;
-	cfarValue = farp*fovy * 0.1f;
+	cfarValue = farp*fovy * aabbFactor;
 
 	glm::vec3 nearTopPoint = glm::vec3(up->x, up->y, up->z);
 	nearTopPoint *= nearValue;
@@ -523,12 +525,12 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 	farPoint += *apex;
 	//New
 	glm::vec3 cfarPoint = glm::vec3(direction->x, direction->y, direction->z);
-	cfarPoint *= camera->far * 0.1f; //10% do frustum
+	cfarPoint *= camera->far * aabbFactor;
 	cfarPoint += *apex;
 
 	float nearValue = camera->near*fovx;
 	float farValue = camera->far*fovx;
-	float cfarValue = camera->far*fovx* 0.1f;
+	float cfarValue = camera->far*fovx * aabbFactor;
 
 	glm::vec3 nearRightPoint = glm::vec3(auxAxis.x, auxAxis.y, auxAxis.z);
 	nearRightPoint *= nearValue;
@@ -546,7 +548,7 @@ GLFrustum::GLFrustum(float aspect, GLCamera* camera)
 
 	nearValue = camera->near*fovy;
 	farValue = camera->far*fovy;
-	cfarValue = camera->far*fovy * 0.1f;
+	cfarValue = camera->far*fovy * aabbFactor;
 
 	glm::vec3 nearTopPoint = glm::vec3(up->x, up->y, up->z);
 	nearTopPoint *= nearValue;

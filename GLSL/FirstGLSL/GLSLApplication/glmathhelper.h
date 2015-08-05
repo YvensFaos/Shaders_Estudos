@@ -120,6 +120,9 @@ public:
 
 	glm::vec3 min;
 	glm::vec3 max;
+
+public:
+	static float aabbFactor;
 public:
 	GLFrustum(void) {};
 	GLFrustum::GLFrustum(float aspect, GLCamera* camera);
