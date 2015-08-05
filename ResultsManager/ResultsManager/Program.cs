@@ -69,6 +69,13 @@ namespace ResultsManager
                             condensity++;
                             if (condensity == condensate)
                             {
+                                foreach (float condensatedToken in condensatedTokens)
+                                {
+                                    workSheet.Cells[row, column++] = condensatedToken / condensate;
+                                }
+                                row++;
+                                condensity = 1;
+                                condensatedTokens = null;
                             }
                         }
                         else
