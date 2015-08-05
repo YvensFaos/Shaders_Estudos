@@ -6,19 +6,20 @@
 #include "glbatch.h"
 #include "glbuffer.h"
 
+#include "glmathhelper.h"
 #include "glscenariomacros.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
-#define mia
-//#define desktop
+//#define mia
+#define desktop
 //#define notebook
 
-#define individual
+//#define individual
 //#define batch
 //#define recordPath
-//#define cleanBuild
+#define cleanBuild
 
 GLPlayer* player;
 
@@ -81,7 +82,7 @@ int main()
 	config.logResults = true;
 	config.pathIdentifier = 1;
 
-	int numberTests = 0;
+	int numberTests = 2;
 	config.edeDepth = 3;
 	config.logExtraMsg = "mia-release";
 	for (int i = 0; i < numberTests; i++)
@@ -103,7 +104,6 @@ int main()
 
 		TEST_BODY(WALKTHROUGH_MODE, "octree", antialiasing);
 	}
-	numberTests = 2;
 	for (int i = 0; i < numberTests; i++)
 	{
 		config.logIdentifier = i + 1;
@@ -111,7 +111,6 @@ int main()
 		config.edeDepth = 6; //64 nós
 		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
 	}
-	numberTests = 0;
 	for (int i = 0; i < numberTests; i++)
 	{
 		config.logIdentifier = i + 1;
@@ -219,7 +218,7 @@ int main()
 	config.pathExtraMsg = "[dyn]";
 	config.logExtraMsg = "clean";
 	config.logIdentifier = 0;
-	config.edeDepth = 6;
+	config.edeDepth = 8;
 	config.type = BASEGRID;
 
 	config.addIndexes(4700, 4900);
@@ -230,7 +229,9 @@ int main()
 	config.frustumTestDynamics = true;
 	config.title = "Clean Build";
 
-	PLAYER_MODE mode = SEQUENTIAL_RECORDER;
+	GLFrustum::aabbFactor = 0.2f;
+
+	PLAYER_MODE mode = EDE_MAKER;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);
