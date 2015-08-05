@@ -1,11 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Forms;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -14,7 +9,7 @@ namespace ResultsManager
     public class Program
     {
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -30,7 +25,7 @@ namespace ResultsManager
             int column = 1;
             int baseColumn = 1;
 
-            int condensate = 10;
+            int condensate = 0;
             float[] condensatedTokens = null;
 
             int condensity = 1;
@@ -69,13 +64,18 @@ namespace ResultsManager
                         {
                             condensatedTokens[i] += float.Parse(tokens[i]);
                         }
-
-                        condensity++;
-                        if(condensity == condensate)
+                        if (condensate != 0)
+                        {
+                            condensity++;
+                            if (condensity == condensate)
+                            {
+                            }
+                        }
+                        else
                         {
                             foreach (float condensatedToken in condensatedTokens)
                             {
-                                workSheet.Cells[row, column++] = condensatedToken / condensate;
+                                workSheet.Cells[row, column++] = condensatedToken;
                             }
                             row++;
                             condensity = 1;

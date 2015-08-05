@@ -132,6 +132,9 @@
     <ClCompile Include="glsequentialrecorderplayer.cpp">
       <Filter>Players\Recorders</Filter>
     </ClCompile>
+    <ClCompile Include="glsequentialflyingrecorderplayer.cpp">
+      <Filter>Players\Recorders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="openGLWrapper.h">
@@ -234,6 +237,9 @@
       <Filter>Players\Recorders</Filter>
     </ClInclude>
     <ClInclude Include="glrecordpathplayer.h">
+      <Filter>Players\Recorders</Filter>
+    </ClInclude>
+    <ClInclude Include="glsequentialflyingrecorder.h">
       <Filter>Players\Recorders</Filter>
     </ClInclude>
   </ItemGroup>

@@ -220,7 +220,7 @@ int main()
 	config.edeDepth = 6;
 	config.type = BASEGRID;
 
-	config.addIndexes(1390);
+	config.addIndexes(1390, 1590);
 
 	config.coloredNodes = true;
 	config.enableDynamics = false;
@@ -228,7 +228,7 @@ int main()
 	config.frustumTestDynamics = true;
 	config.title = "Clean Build";
 
-	PLAYER_MODE mode = SEQUENTIAL_RECORDER;
+	PLAYER_MODE mode = SEQUENTIAL_FLYING_RECORDER;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);

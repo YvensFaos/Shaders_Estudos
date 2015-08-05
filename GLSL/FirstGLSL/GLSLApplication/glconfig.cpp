@@ -9,6 +9,7 @@
 #include "gledemakerplayer.h"
 #include "glbirdseyeplayer.h"
 #include "glsequentialrecorderplayer.h"
+#include "glsequentialflyingrecorder.h"
 
 #include <algorithm>
 
@@ -44,13 +45,14 @@ GLPlayer* GLConfig::getGLPlayer(void)
 {
 	switch (mode)
 	{
-	case FREE_MODE:				return new GLFreePlayer(*this);
-	case WALKTHROUGH_MODE:		return new GLWalkthroughPlayer(*this);
-	case RECORD_PATH:			return new GLRecordPathPlayer(*this);
-	case EDE_MAKER:				return new GLEDEMakerPlayer(*this);
-	case BIRDS_EYE:				return new GLBirdsEyePlayer(*this);
-	case SEQUENTIAL_RECORDER:	return new GLSequentialRecorderPlayer(*this);
-	default:					return new GLPlayer(*this);
+	case FREE_MODE:						return new GLFreePlayer(*this);
+	case WALKTHROUGH_MODE:				return new GLWalkthroughPlayer(*this);
+	case RECORD_PATH:					return new GLRecordPathPlayer(*this);
+	case EDE_MAKER:						return new GLEDEMakerPlayer(*this);
+	case BIRDS_EYE:						return new GLBirdsEyePlayer(*this);
+	case SEQUENTIAL_RECORDER:			return new GLSequentialRecorderPlayer(*this);
+	case SEQUENTIAL_FLYING_RECORDER:	return new GLSequentialFlyingRecorderPlayer(*this);
+	default:							return new GLPlayer(*this);
 	}
 }
 

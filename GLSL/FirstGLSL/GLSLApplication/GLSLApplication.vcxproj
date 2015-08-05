@@ -106,6 +106,7 @@
     <ClCompile Include="glroctree.cpp" />
     <ClCompile Include="glroctreeede.cpp" />
     <ClCompile Include="glscenario.cpp" />
+    <ClCompile Include="glsequentialflyingrecorderplayer.cpp" />
     <ClCompile Include="glsequentialrecorderplayer.cpp" />
     <ClCompile Include="glshaderloader.cpp" />
     <ClCompile Include="glsoctree.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="glroctreeede.h" />
     <ClInclude Include="glscenario.h" />
     <ClInclude Include="glscenariomacros.h" />
+    <ClInclude Include="glsequentialflyingrecorder.h" />
     <ClInclude Include="glsequentialrecorderplayer.h" />
     <ClInclude Include="glshaderloader.h" />
     <ClInclude Include="glsoctree.h" />

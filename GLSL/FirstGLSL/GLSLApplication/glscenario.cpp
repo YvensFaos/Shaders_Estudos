@@ -50,6 +50,7 @@ void GLScenario::initialize(GLConfig* config)
 	{
 	case WALKTHROUGH_MODE:
 	case SEQUENTIAL_RECORDER:
+	case SEQUENTIAL_FLYING_RECORDER:
 	case BIRDS_EYE:
 		//Aqui o path é lido para ser executado
 		cameraHandler = GLCameraHandler(config->pathfilePath, config->pathfileName, config->repeatable);
@@ -83,17 +84,12 @@ int  GLScenario::getIdentifierByName(char* name)
 	}
 	if (name[0] == 'g')
 	{
-		if (name[3] == 'r')
+		if (name[2] == 'r')
 		{
 			//Gorge
 			return 15;
 		}
-		if (name[3] == 'r')
-		{
-			//Gorge
-			return 15;
-		}
-		if (name[4] == 'd')
+		if (name[3] == 'd')
 		{
 			//GoldRush
 			return 18;
@@ -201,7 +197,7 @@ GLCameraStep* GLScenario::defaultBirdPosition(int identifier)
 		return new GLCameraStep(glm::vec3(-67.65f, 188.47f, 135.96f), glm::vec3(0.54f, 0.66f, -0.53f), glm::vec3(0.47f, -0.75f, -0.46f), 45.0);
 		break;
 	case 18:
-		return new GLCameraStep(glm::vec3(-42.0f, 9.0f, -82.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 45.0);
+		return new GLCameraStep(glm::vec3(241.63f, 469.46f, 155.28f), glm::vec3(-0.73f, 0.65f, -0.23f), glm::vec3(-0.62f, -0.76f, -0.2f), 45.0);
 		break;
 	default:
 		return new GLCameraStep(glm::vec3(155.62f, 363.80f, 128.16f), glm::vec3(-0.76f, 0.56f, -0.33f), glm::vec3(-0.51f, -0.83f, -0.22f), 45.0);
