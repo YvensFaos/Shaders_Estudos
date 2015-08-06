@@ -71,8 +71,8 @@ int main()
 #pragma endregion
 
 	//Macro do cenário:
-	COALTOWN;
-	//GOLDRUSH;
+	//COALTOWN;
+	GOLDRUSH;
 	//SAW;
 	//RAVINE;
 	//CITYCYCLES;
