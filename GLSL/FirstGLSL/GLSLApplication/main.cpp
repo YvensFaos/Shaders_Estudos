@@ -12,14 +12,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#define mia
-#define desktop
+#define mia
+//#define desktop
 //#define notebook
 
-//#define individual
+#define individual
 //#define batch
 //#define recordPath
-#define cleanBuild
+//#define cleanBuild
 
 GLPlayer* player;
 
@@ -104,11 +104,45 @@ int main()
 
 		TEST_BODY(WALKTHROUGH_MODE, "octree", antialiasing);
 	}
+	config.edeDepth = 4;
+	for (int i = 0; i < numberTests; i++)
+	{
+		config.logIdentifier = i + 1;
+		config.type = ROCTREE;
+		TEST_BODY(WALKTHROUGH_MODE, "roctree", antialiasing);
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		config.logIdentifier = i + 1;
+		config.type = SOCTREE;
+		TEST_BODY(WALKTHROUGH_MODE, "soctree", antialiasing);
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		config.logIdentifier = i + 1;
+		config.type = OCTREE;
+
+		TEST_BODY(WALKTHROUGH_MODE, "octree", antialiasing);
+	}
 	for (int i = 0; i < numberTests; i++)
 	{
 		config.logIdentifier = i + 1;
 		config.type = BASEGRID;
 		config.edeDepth = 6; //64 nós
+		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		config.logIdentifier = i + 1;
+		config.type = BASEGRID;
+		config.edeDepth = 8; //256 nós
+		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		config.logIdentifier = i + 1;
+		config.type = BASEGRID;
+		config.edeDepth = 10; //1024 nós
 		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
 	}
 	for (int i = 0; i < numberTests; i++)

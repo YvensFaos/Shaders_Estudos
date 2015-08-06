@@ -1,1 +1,1 @@
-{ 2: 8} - 20:23:30: Tempo de processamento: 0.000051
+{ 6: 8} - 13:14: 2: Tempo de processamento: 0.000174
