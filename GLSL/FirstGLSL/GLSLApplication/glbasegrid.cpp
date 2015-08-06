@@ -111,6 +111,9 @@ int GLBaseGridNode::getMemory(void)
 GLBaseGrid::GLBaseGrid(void)
 {
 	memoryUsed = 0;
+
+	cellArea = 0.0f;
+	cellVolume = 0.0f;
 }
 
 GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, int depth, EDLogger* logger)
@@ -189,6 +192,14 @@ GLBaseGrid::GLBaseGrid(GLMeshHandler* handler, int depth, EDLogger* logger)
 	sprintf(logLine, "Step X: %4.2f", stepX);
 	logger->logLineTimestamp(logLine);
 	sprintf(logLine, "Step Z: %4.2f", stepZ);
+	logger->logLineTimestamp(logLine);
+
+	cellArea   = (stepMax.x - stepMin.x) * (stepMax.z - stepMin.z);
+	cellVolume = (stepMax.x - stepMin.x) * (stepMax.y - stepMin.y) * (stepMax.z - stepMin.z);
+
+	sprintf(logLine, "Área: %4.2f", cellArea);
+	logger->logLineTimestamp(logLine);
+	sprintf(logLine, "Volume: %4.2f", cellVolume);
 	logger->logLineTimestamp(logLine);
 
 	nodes = new GLBaseGridNode[nodesCount];

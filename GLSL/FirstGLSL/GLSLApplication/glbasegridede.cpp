@@ -60,6 +60,19 @@ void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 	sprintf(logLine, "Memória usada: %d.", grid.getMemory());
 	logger->logLineTimestamp(logLine);
 
+	if (config->calculateFrustumAABB)
+	{
+		float tanfovx = tan(((config->fov / 2)*config->aspect) * PI180);
+		float sqrt = tanfovx * grid.cellArea;
+		sqrt = sqrtf(sqrt);
+		sqrt += config->near;
+
+		GLFrustum::aabbFactor = sqrt / config->far;
+
+		sprintf(logLine, "Fator utilizado: %4.2f.", GLFrustum::aabbFactor);
+		logger->logLineTimestamp(logLine);
+	}
+
 	bufferizeEDE(config);
 }
 

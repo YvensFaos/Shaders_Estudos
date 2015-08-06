@@ -245,7 +245,7 @@ int main()
 #endif
 
 #ifdef cleanBuild
-	config.repeatable = false;
+	config.repeatable = true;
 	config.logResults = false;
 
 	config.pathIdentifier = 1;
@@ -261,11 +261,12 @@ int main()
 	config.enableDynamics = false;
 	config.edeTestDynamics = false;
 	config.frustumTestDynamics = true;
+	config.calculateFrustumAABB = true;
 	config.title = "Clean Build";
 
-	GLFrustum::aabbFactor = 0.15f;
+	//GLFrustum::aabbFactor = 0.15f;
 
-	PLAYER_MODE mode = SEQUENTIAL_FLYING_RECORDER;
+	PLAYER_MODE mode = BIRDS_EYE;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);

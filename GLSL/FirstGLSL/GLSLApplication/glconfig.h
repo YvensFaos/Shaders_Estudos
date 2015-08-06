@@ -56,6 +56,8 @@ public:
 	bool edeTestDynamics;
 	//Habilita o teste de dinâmicos no frustum
 	bool frustumTestDynamics;
+	//Habilita o cálculo da aabb do frustum de acordo com as configurações da EDE usada
+	bool calculateFrustumAABB;
 
 	//Lista de objetos dinâmicos
 	std::vector<GLDynamicObject> dynamics;

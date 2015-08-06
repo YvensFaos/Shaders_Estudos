@@ -36,6 +36,7 @@ GLConfig::GLConfig()
 	enableDynamics = false;
 	edeTestDynamics = false;
 	frustumTestDynamics = true;
+	calculateFrustumAABB = false;
 }
 
 GLConfig::~GLConfig()

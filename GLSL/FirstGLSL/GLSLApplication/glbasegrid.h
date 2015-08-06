@@ -41,6 +41,8 @@ public:
 
 	int nodesCount;
 
+	float cellArea;
+	float cellVolume;
 public:
 	GLBaseGrid(void);
 	GLBaseGrid(GLMeshHandler* handler, int depth, EDLogger* logger);
