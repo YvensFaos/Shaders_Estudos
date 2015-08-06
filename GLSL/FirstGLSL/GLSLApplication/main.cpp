@@ -111,6 +111,20 @@ int main()
 		config.edeDepth = 6; //64 nós
 		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
 	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		config.logIdentifier = i + 1;
+		config.type = BASEGRID;
+		config.edeDepth = 8; //64 nós
+		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
+	}
+	for (int i = 0; i < numberTests; i++)
+	{
+		config.logIdentifier = i + 1;
+		config.type = BASEGRID;
+		config.edeDepth = 10; //64 nós
+		TEST_BODY(WALKTHROUGH_MODE, "basegrid", antialiasing);
+	}
 	numberTests = 0;
 	for (int i = 0; i < numberTests; i++)
 	{
