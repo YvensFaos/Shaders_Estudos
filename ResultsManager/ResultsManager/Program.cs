@@ -25,7 +25,7 @@ namespace ResultsManager
             int column = 1;
             int baseColumn = 1;
 
-            int condensate = 10;
+            int condensate = 0;
             float[] condensatedTokens = null;
 
             int condensity = 1;

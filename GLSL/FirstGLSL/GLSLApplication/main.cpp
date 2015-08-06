@@ -12,14 +12,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define mia
-//#define desktop
+//#define mia
+#define desktop
 //#define notebook
 
-#define individual
+//#define individual
 //#define batch
 //#define recordPath
-//#define cleanBuild
+#define cleanBuild
 
 GLPlayer* player;
 
@@ -71,8 +71,8 @@ int main()
 #pragma endregion
 
 	//Macro do cenário:
-	//COALTOWN;
-	GOLDRUSH;
+	COALTOWN;
+	//GOLDRUSH;
 	//SAW;
 	//RAVINE;
 	//CITYCYCLES;
@@ -255,7 +255,7 @@ int main()
 	config.edeDepth = 8;
 	config.type = BASEGRID;
 
-	config.addIndexes(4700, 4900);
+	config.addIndexes(2131, 2557);
 
 	config.coloredNodes = true;
 	config.enableDynamics = false;
@@ -263,9 +263,9 @@ int main()
 	config.frustumTestDynamics = true;
 	config.title = "Clean Build";
 
-	GLFrustum::aabbFactor = 0.2f;
+	GLFrustum::aabbFactor = 0.15f;
 
-	PLAYER_MODE mode = EDE_MAKER;
+	PLAYER_MODE mode = SEQUENTIAL_FLYING_RECORDER;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);
