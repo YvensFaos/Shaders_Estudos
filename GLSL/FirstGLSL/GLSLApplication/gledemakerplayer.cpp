@@ -35,8 +35,6 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 	this->config = config;
 	this->printCounter = 0;
 
-	aspect = 60.0f;
-
 	angle = 0.0f;
 	isRunning = true;
 	updateMouse = false;
@@ -72,7 +70,7 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 	std::string edeName = ede->getName();
 
 	char logName[512];
-	sprintf(logName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName, "-x", LOG_EXTENSION);
+	sprintf(logName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName.c_str(), "-x", LOG_EXTENSION);
 	logger = new EDLogger(logName);
 
 	double firstTime = glfwGetTime();
@@ -89,7 +87,7 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 
 	title = new char[256];
 	modeTitle = new char[256];
-	sprintf(modeTitle, "Walkthrough - Scenario:%s - ", scenario->name);
+	sprintf(modeTitle, "Making OF - Scenario:%s - ", scenario->name);
 }
 
 void GLEDEMakerPlayer::step(void)
@@ -116,6 +114,9 @@ void GLEDEMakerPlayer::step(void)
 
 	GLint pos = glGetUniformLocation(OpenGLWrapper::programObject, "vDir");
 	glUniform3f(pos, camera->direction.x, camera->direction.y, camera->direction.z);
+
+	pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
+	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
 
 	frustum = GLFrustum(config.aspect, camera);
 
