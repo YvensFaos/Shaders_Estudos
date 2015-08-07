@@ -245,28 +245,28 @@ int main()
 #endif
 
 #ifdef cleanBuild
-	config.repeatable = true;
+	config.repeatable = false;
 	config.logResults = false;
 
 	config.pathIdentifier = 1;
 	config.pathExtraMsg = "[dyn]";
 	config.logExtraMsg = "clean";
 	config.logIdentifier = 0;
-	config.edeDepth = 8;
-	config.type = BASEGRID;
+	config.edeDepth = 3;
+	config.type = ROCTREE;
 
-	config.addIndexes(2131, 2557);
+	config.addIndexes(6391, 6791);
 
 	config.coloredNodes = true;
 	config.enableDynamics = false;
 	config.edeTestDynamics = false;
 	config.frustumTestDynamics = true;
-	config.calculateFrustumAABB = true;
+	config.calculateFrustumAABB = false;
 	config.title = "Clean Build";
 
-	//GLFrustum::aabbFactor = 0.15f;
+	GLFrustum::aabbFactor = 0.15f;
 
-	PLAYER_MODE mode = BIRDS_EYE;
+	PLAYER_MODE mode = SEQUENTIAL_FLYING_RECORDER;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);
