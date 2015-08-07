@@ -121,7 +121,7 @@ void GLSequentialRecorderPlayer::step(void)
 	{
 		step = cameraHandler->nextStep();
 	}
-	
+
 	bool recordStep = (cameraHandler->getIndex() == config.recordingIndexes.at(printIndex));
 
 	step->fov = camera->fov;
@@ -247,7 +247,7 @@ void GLSequentialRecorderPlayer::step(void)
 	if (recordStep)
 	{
 		char filename[256];
-		sprintf(filename, "%sSS(%s)-%s-[%d].bmp", config.objectPath, config.objectName, ede->getName().c_str(), cameraHandler->getIndex());
+		sprintf(filename, "%sSS(%s)-%s:%d-[%d].bmp", config.objectPath, config.objectName, ede->getName().c_str(), config.edeDepth, cameraHandler->getIndex());
 		printIndex++;
 		recorder.printScreen(&config, filename);
 

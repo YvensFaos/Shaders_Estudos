@@ -91,7 +91,7 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 
 	title = new char[256];
 	modeTitle = new char[256];
-	sprintf(modeTitle, "Making OF - Scenario:%s - ", scenario->name);
+	sprintf(modeTitle, "Making Of - Scenario:%s - ", scenario->name);
 }
 
 void GLEDEMakerPlayer::step(void)

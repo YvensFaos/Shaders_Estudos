@@ -252,7 +252,7 @@ int main()
 	config.pathExtraMsg = "[dyn]";
 	config.logExtraMsg = "clean";
 	config.logIdentifier = 0;
-	config.edeDepth = 8;
+	config.edeDepth = 6;
 	config.type = BASEGRID;
 
 	config.addIndexes(6391, 6791);
@@ -266,7 +266,7 @@ int main()
 
 	GLFrustum::aabbFactor = 0.15f;
 
-	PLAYER_MODE mode = WALKTHROUGH_MODE;
+	PLAYER_MODE mode = SEQUENTIAL_FLYING_RECORDER;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);

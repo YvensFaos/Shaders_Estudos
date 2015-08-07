@@ -278,7 +278,7 @@ void GLSequentialFlyingRecorderPlayer::step(void)
 	if (recordStep)
 	{
 		char filename[256];
-		sprintf(filename, "%sSF(%s)-%s-[%d].bmp", config.objectPath, config.objectName, ede->getName().c_str(), cameraHandler->getIndex());
+		sprintf(filename, "%sSF(%s)-%s:%d-[%d].bmp", config.objectPath, config.objectName, ede->getName().c_str(), config.edeDepth, cameraHandler->getIndex());
 		printIndex++;
 		recorder.printScreen(&config, filename);
 
