@@ -25,66 +25,33 @@ int GLBasicEDE::getMemory(void)
 	return memoryUsed;
 }
 
-GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
+GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config, bool* loaded)
 {
 	std::string identifier = "";
 	identifier += config->objectName;
 	identifier += ":";
 	identifier += std::to_string(config->edeDepth);
+	identifier += GLBasicEDE::getEDEName(config);
+
+	if (GLBufferHandler::checkForEDE(identifier))
+	{
+		*loaded = true;
+		return GLBufferHandler::edeBuffer[identifier];
+	}
 
 	switch (config->type)
 	{
 	case NONE: return nullptr;
 	case OCTREE:
-		identifier = identifier + OCTREE_NAME;
-		if (GLBufferHandler::checkForEDE(identifier))
-		{
-			return GLBufferHandler::edeBuffer[identifier];
-		}
-		else
-		{
-			return new GLOctreeEDE();
-		}
+		return new GLOctreeEDE();
 	case SOCTREE:
-		identifier = identifier + SOCTREE_NAME;
-		if (GLBufferHandler::checkForEDE(identifier))
-		{
-			return GLBufferHandler::edeBuffer[identifier];
-		}
-		else
-		{
 			return new GLSOctreeEDE();
-		}
 	case ROCTREE:
-		identifier = identifier + ROCTREE_NAME;
-		if (GLBufferHandler::checkForEDE(identifier))
-		{
-			return GLBufferHandler::edeBuffer[identifier];
-		}
-		else
-		{
 			return new GLROctreeEDE();
-		}
 	case BASEGRID:
-		identifier = identifier + BASEGRID_NAME;
-		if (GLBufferHandler::checkForEDE(identifier))
-		{
-			return GLBufferHandler::edeBuffer[identifier];
-		}
-		else
-		{
 			return new GLBaseGridEDE();
-		}
 	case CGRID:
-		identifier = identifier + CGRID_NAME;
-		if (GLBufferHandler::checkForEDE(identifier))
-		{
-			return GLBufferHandler::edeBuffer[identifier];
-		}
-		else
-		{
 			return new GLCGridEDE();
-		}
 	default: return nullptr;
 	}
 }
@@ -92,6 +59,25 @@ GLBasicEDE* GLBasicEDE::instantiate(GLConfig* config)
 void GLBasicEDE::setLogger(EDLogger* logger)
 {
 	this->logger = logger;
+}
+
+std::string GLBasicEDE::getEDEName(GLConfig* config)
+{
+	switch (config->type)
+	{
+	case NONE: return nullptr;
+	case OCTREE:
+		return OCTREE_NAME;
+	case SOCTREE:
+		return SOCTREE_NAME;
+	case ROCTREE:
+		return ROCTREE_NAME;
+	case BASEGRID:
+		return BASEGRID_NAME;
+	case CGRID:
+		return CGRID_NAME;
+	default: return nullptr;
+	}
 }
 
 void GLBasicEDE::bufferizeEDE(GLConfig* config)

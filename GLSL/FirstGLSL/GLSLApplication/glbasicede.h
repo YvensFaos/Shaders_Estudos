@@ -48,5 +48,6 @@ private:
 
 public:
 	//Instancia a EDE correspondente ao tipo especificado nas configurações
-	static GLBasicEDE* instantiate(GLConfig* config);
+	static GLBasicEDE* instantiate(GLConfig* config, bool* loaded);
+	static std::string getEDEName(GLConfig* config);
 };

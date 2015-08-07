@@ -246,7 +246,7 @@ int main()
 
 #ifdef cleanBuild
 	config.repeatable = false;
-	config.logResults = false;
+	config.logResults = true;
 
 	config.pathIdentifier = 1;
 	config.pathExtraMsg = "[dyn]";
@@ -266,7 +266,7 @@ int main()
 
 	GLFrustum::aabbFactor = 0.15f;
 
-	PLAYER_MODE mode = SEQUENTIAL_RECORDER;
+	PLAYER_MODE mode = WALKTHROUGH_MODE;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);

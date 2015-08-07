@@ -65,25 +65,29 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 	camera->speed = scenario->defaultCameraSpeed();
 
 	meshHandler = scenario->meshHandler;
-	ede = GLBasicEDE::instantiate(&config);
+	bool loaded = false;
 
+	ede = GLBasicEDE::instantiate(&config, &loaded);
 	std::string edeName = ede->getName();
 
-	char logName[512];
-	sprintf(logName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName.c_str(), "-x", LOG_EXTENSION);
-	logger = new EDLogger(logName);
+	if (!loaded)
+	{
+		char logName[512];
+		sprintf(logName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName.c_str(), "-x", LOG_EXTENSION);
+		logger = new EDLogger(logName);
 
-	double firstTime = glfwGetTime();
-	printf("Carregar a EDE\n");
-	ede->setLogger(logger);
-	ede->calculateEDE(meshHandler, &config);
-	double lastTime = glfwGetTime();
-	lastTime = float(lastTime - firstTime);
+		double firstTime = glfwGetTime();
+		printf("Carregar a EDE\n");
+		ede->setLogger(logger);
+		ede->calculateEDE(meshHandler, &config);
+		double lastTime = glfwGetTime();
+		lastTime = float(lastTime - firstTime);
 
-	sprintf(logName, "Tempo de processamento: %f", lastTime);
-	logger->logLineTimestamp(logName);
+		sprintf(logName, "Tempo de processamento: %f", lastTime);
+		logger->logLineTimestamp(logName);
 
-	logger->closeLog();
+		logger->closeLog();
+	}
 
 	title = new char[256];
 	modeTitle = new char[256];

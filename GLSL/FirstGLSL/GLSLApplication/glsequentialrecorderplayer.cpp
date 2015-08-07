@@ -70,37 +70,29 @@ void GLSequentialRecorderPlayer::initializeGLPlayer(GLConfig config)
 	char logName[512];
 	if (config.type != NONE)
 	{
-		ede = GLBasicEDE::instantiate(&config);
-		ede->testDynamics = config.edeTestDynamics;
+		bool loaded = false;
 
+		ede = GLBasicEDE::instantiate(&config, &loaded);
 		std::string edeName = ede->getName();
 
-		char edeLogName[512];
-		sprintf(edeLogName, "%s%s-%s-making[%d]%s", config.logPath, scenario->name, edeName.c_str(), config.edeDepth, LOG_EXTENSION);
-		EDLogger edeLogger(edeLogName);
-		ede->setLogger(&edeLogger);
-
-		double firstTime = glfwGetTime();
-
-		if (GLBufferHandler::checkForEDE(edeName))
+		if (!loaded)
 		{
-			printf("Carregar a EDE do Buffer\n");
-			ede = GLBufferHandler::edeBuffer[edeName];
-		}
-		else
-		{
+			char logName[512];
+			sprintf(logName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName.c_str(), "-x", LOG_EXTENSION);
+			logger = new EDLogger(logName);
+
+			double firstTime = glfwGetTime();
 			printf("Carregar a EDE\n");
+			ede->setLogger(logger);
 			ede->calculateEDE(meshHandler, &config);
-			GLBufferHandler::addToEDEBuffer(edeName, ede);
+			double lastTime = glfwGetTime();
+			lastTime = float(lastTime - firstTime);
+
+			sprintf(logName, "Tempo de processamento: %f", lastTime);
+			logger->logLineTimestamp(logName);
+
+			logger->closeLog();
 		}
-
-		double lastTime = glfwGetTime();
-		lastTime = float(lastTime - firstTime);
-
-		sprintf(edeLogName, "Tempo de processamento: %f", lastTime);
-		edeLogger.logLineTimestamp(edeLogName);
-
-		edeLogger.closeLog();
 
 		sprintf(logName, "%s%s[%d]-%s[%s=%d][%s]%s", config.logPath, scenario->name, config.logIdentifier, config.logExtraMsg, edeName.c_str(), config.edeDepth, config.pathfileName, LOG_EXTENSION);
 	}

@@ -80,26 +80,29 @@ void GLBirdsEyePlayer::initializeGLPlayer(GLConfig config)
 	char logName[512];
 	if (this->config.type != NONE)
 	{
-		ede = GLBasicEDE::instantiate(&this->config);
-		ede->testDynamics = this->config.edeTestDynamics;
+		bool loaded = false;
 
+		ede = GLBasicEDE::instantiate(&config, &loaded);
 		std::string edeName = ede->getName();
 
-		char edeLogName[512];
-		sprintf(edeLogName, "%s%s-%s-making[%d]%s", this->config.logPath, scenario->name, edeName.c_str(), this->config.edeDepth, LOG_EXTENSION);
-		EDLogger edeLogger(edeLogName);
+		if (!loaded)
+		{
+			char logName[512];
+			sprintf(logName, "%s%s-%s-making[%s]%s", config.logPath, scenario->name, edeName.c_str(), "-x", LOG_EXTENSION);
+			logger = new EDLogger(logName);
 
-		double firstTime = glfwGetTime();
-		printf("Carregar a EDE\n");
-		ede->setLogger(&edeLogger);
-		ede->calculateEDE(meshHandler, &config);
-		double lastTime = glfwGetTime();
-		lastTime = float(lastTime - firstTime);
+			double firstTime = glfwGetTime();
+			printf("Carregar a EDE\n");
+			ede->setLogger(logger);
+			ede->calculateEDE(meshHandler, &config);
+			double lastTime = glfwGetTime();
+			lastTime = float(lastTime - firstTime);
 
-		sprintf(edeLogName, "Tempo de processamento: %f", lastTime);
-		edeLogger.logLineTimestamp(edeLogName);
+			sprintf(logName, "Tempo de processamento: %f", lastTime);
+			logger->logLineTimestamp(logName);
 
-		edeLogger.closeLog();
+			logger->closeLog();
+		}
 
 		sprintf(logName, "%s%s[%d]-%s[%s=%d][%s]%s", this->config.logPath, scenario->name, this->config.logIdentifier, this->config.logExtraMsg, edeName.c_str(), this->config.edeDepth, this->config.pathfileName, LOG_EXTENSION);
 	}

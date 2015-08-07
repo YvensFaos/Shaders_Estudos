@@ -57,6 +57,8 @@ void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 	logger->logLineTimestamp(logLine);
 	grid = GLBaseGrid(handler, config->edeDepth, logger);
 	logger->logLineTimestamp("Concluindo a grid!");
+	sprintf(logLine, "Qtde. Células: %d.", grid.nodesCount);
+	logger->logLineTimestamp(logLine);
 	sprintf(logLine, "Memória usada: %d.", grid.getMemory());
 	logger->logLineTimestamp(logLine);
 
