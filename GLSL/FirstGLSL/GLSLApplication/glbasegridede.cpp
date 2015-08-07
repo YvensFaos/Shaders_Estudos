@@ -67,7 +67,11 @@ void GLBaseGridEDE::calculateEDE(GLMeshHandler* handler, GLConfig* config)
 		float tanfovx = tan(((config->fov / 2)*config->aspect) * PI180);
 		float sqrt = tanfovx * grid.cellArea;
 		sqrt = sqrtf(sqrt);
+		//sqrt /= 2;
 		sqrt += config->near;
+		
+		//aqui vem a heurística
+		sqrt *= 1.1;
 
 		GLFrustum::aabbFactor = sqrt / config->far;
 
