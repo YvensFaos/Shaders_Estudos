@@ -65,7 +65,7 @@ std::string GLBasicEDE::getEDEName(GLConfig* config)
 {
 	switch (config->type)
 	{
-	case NONE: return nullptr;
+	case NONE: NONE_NAME;
 	case OCTREE:
 		return OCTREE_NAME;
 	case SOCTREE:

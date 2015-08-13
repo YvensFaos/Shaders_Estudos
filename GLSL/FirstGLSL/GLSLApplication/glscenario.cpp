@@ -67,6 +67,11 @@ void GLScenario::initialize(GLConfig* config)
 #pragma region buscar identificadores
 int  GLScenario::getIdentifierByName(char* name)
 {
+	if (name[0] == 'o')
+	{
+		//oc_scenario
+		return 1;
+	}
 	if (name[0] == 's')
 	{
 		//Saw
@@ -123,6 +128,7 @@ void GLScenario::getNameByIdentifier(int identifier, char* dest)
 {
 	switch (identifier)
 	{
+	case 1:  dest = "oc_scenario"; break;
 	case 10: dest = "saw"; break;
 	case 11: dest = "citycycles"; break;
 	case 13: dest = "ravine"; break;
@@ -140,6 +146,9 @@ GLCameraStep* GLScenario::defaultStartPosition(int identifier)
 {
 	switch (identifier)
 	{
+	case 1:
+		return new GLCameraStep(glm::vec3(0, 0.0f, -10.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 45.0);
+		break;
 	case 10:
 		return new GLCameraStep(glm::vec3(287.0f, 11.0f, 17.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 45.0);
 		break;
@@ -175,6 +184,9 @@ GLCameraStep* GLScenario::defaultBirdPosition(int identifier)
 	switch (identifier)
 	{
 		//TODO fazer para os demais
+	case 1:
+		return new GLCameraStep(glm::vec3(0, 0.0f, -10.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 45.0);
+		break;
 	case 10:
 		return new GLCameraStep(glm::vec3(672.62f, 708.03f, 136.21f), glm::vec3(-0.75f, 0.65f, -0.09f), glm::vec3(-0.65f, -0.76f, -0.07f), 45.0);
 		break;
@@ -210,6 +222,7 @@ float GLScenario::defaultCameraSpeed()
 	//Por enquanto, tá default 0.75 para qualquer cenário
 	switch (identifier)
 	{
+	case 1:  return 0.5f;
 	case 10: return 0.75f;
 	case 11: return 0.02f;
 	case 13: return 0.50f;

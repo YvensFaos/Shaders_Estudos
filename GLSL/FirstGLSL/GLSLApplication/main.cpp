@@ -71,9 +71,10 @@ int main()
 #pragma endregion
 
 	//Macro do cenário:
-	COALTOWN;
+	//COALTOWN;
+	//OC_TEST;
 	//GOLDRUSH;
-	//SAW;
+	SAW;
 	//RAVINE;
 	//CITYCYCLES;
 
@@ -266,7 +267,7 @@ int main()
 
 	GLFrustum::aabbFactor = 0.15f;
 
-	PLAYER_MODE mode = BIRDS_EYE;
+	PLAYER_MODE mode = RECORD_PATH;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);

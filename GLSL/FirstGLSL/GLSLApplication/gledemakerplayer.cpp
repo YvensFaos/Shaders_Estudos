@@ -68,7 +68,7 @@ void GLEDEMakerPlayer::initializeGLPlayer(GLConfig config)
 	bool loaded = false;
 
 	ede = GLBasicEDE::instantiate(&config, &loaded);
-	std::string edeName = ede->getName();
+	std::string edeName = GLBasicEDE::getEDEName(&config);
 
 	if (!loaded)
 	{

@@ -7,6 +7,7 @@ class GLConfig;
 class GLMeshHandler;
 class EDLogger;
 
+#define NONE_NAME "None\0"
 #define OCTREE_NAME  "Octree\0"
 #define SOCTREE_NAME "Smart Octree\0"
 #define ROCTREE_NAME "Replicated Octree\0"

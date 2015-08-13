@@ -52,6 +52,11 @@
 				 totalDynamics.insert(totalDynamics.end(), pointerDynamics->begin(), pointerDynamics->end()); \
 				 config.dynamics = totalDynamics;
 
+#define OC_TEST config.objectName = "oc_scenario.obj"; \
+				config.scenarioNumber = 1; \
+				config.pathfileName = "oc_scenario-[walk]-[1]"; \
+				int qttDynamics = 0;
+
 #define GOLDRUSH config.objectName = "goldrush.obj"; \
 				 config.scenarioNumber = 18; \
 				 config.pathfileName = "goldrush-[walk]-[1]"; \
