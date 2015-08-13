@@ -72,9 +72,9 @@ int main()
 
 	//Macro do cenário:
 	//COALTOWN;
-	//OC_TEST;
+	OC_TEST;
 	//GOLDRUSH;
-	SAW;
+	//SAW;
 	//RAVINE;
 	//CITYCYCLES;
 
@@ -253,8 +253,8 @@ int main()
 	config.pathExtraMsg = "[dyn]";
 	config.logExtraMsg = "clean";
 	config.logIdentifier = 0;
-	config.edeDepth = 6;
-	config.type = BASEGRID;
+	config.edeDepth = 3;
+	config.type = NONE;
 
 	config.addIndexes(6391, 6791);
 
@@ -262,12 +262,12 @@ int main()
 	config.enableDynamics = false;
 	config.edeTestDynamics = false;
 	config.frustumTestDynamics = true;
-	config.calculateFrustumAABB = true;
+	config.calculateFrustumAABB = false;
 	config.title = "Clean Build";
 
 	GLFrustum::aabbFactor = 0.15f;
 
-	PLAYER_MODE mode = RECORD_PATH;
+	PLAYER_MODE mode = BIRDS_EYE;
 	player = config.getGLPlayer(mode);
 	OpenGLWrapper::player = player;
 	OpenGLWrapper::initialize(true, antialiasing);

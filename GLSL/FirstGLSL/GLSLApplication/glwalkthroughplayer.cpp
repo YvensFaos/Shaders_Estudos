@@ -152,6 +152,9 @@ void GLWalkthroughPlayer::step(void)
 	}
 	else
 	{
+		GLint sca = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
+		glUniform4f(sca, 1.0f, 1.0f, 1.0f, 1.0f);
+
 		verticesCount = meshHandler->render();
 	}
 

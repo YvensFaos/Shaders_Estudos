@@ -21,6 +21,7 @@ public:
 public:
 	GLCameraStep(void);
 	GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 direction, float fov);
+	GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 direction, glm::vec3 right, float fov);
 	GLCameraStep(GLCamera* camera);
 	~GLCameraStep(void);
 
@@ -29,7 +30,7 @@ public:
 
 	void print(void);
 private:
-	void initialize(glm::vec3 position, glm::vec3 up, glm::vec3 direction, float fov);
+	void initialize(glm::vec3 position, glm::vec3 up, glm::vec3 direction, glm::vec3 right, float fov);
 };
 
 class GLCameraHandler

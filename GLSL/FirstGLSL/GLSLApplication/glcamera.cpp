@@ -15,29 +15,34 @@
 
 GLCameraStep::GLCameraStep(void)
 {
-	initialize(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 45.0f);
+	initialize(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 45.0f);
 }
 
 GLCameraStep::GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 direction, float fov)
 {
-	initialize(position, up, direction, fov);
+	glm::vec3 right = glm::cross(up, direction);
+	initialize(position, up, direction, right, fov);
+}
+
+GLCameraStep::GLCameraStep(glm::vec3 position, glm::vec3 up, glm::vec3 direction, glm::vec3 right, float fov)
+{
+	initialize(position, up, direction, right, fov);
 }
 
 GLCameraStep::GLCameraStep(GLCamera* camera)
 {
-	initialize(camera->position, camera->up, camera->direction, camera->fov);
+	initialize(camera->position, camera->up, camera->direction, camera->right, camera->fov);
 }
 
 GLCameraStep::~GLCameraStep(void)
 { }
 
-void GLCameraStep::initialize(glm::vec3 position, glm::vec3 up, glm::vec3 direction, float fov)
+void GLCameraStep::initialize(glm::vec3 position, glm::vec3 up, glm::vec3 direction, glm::vec3 right, float fov)
 {
 	this->position = position;
 	this->up = up;
 	this->direction = direction;
-
-	right = glm::cross(up, direction);
+	this->right = right;
 
 	this->fov = fov;
 }

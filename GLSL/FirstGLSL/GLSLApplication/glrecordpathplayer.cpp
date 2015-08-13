@@ -117,6 +117,9 @@ void GLRecordPathPlayer::step(void)
 	pos = glGetUniformLocation(OpenGLWrapper::programObject, "pos");
 	glUniform4f(pos, 0.0f, 0.0f, 0.0f, 0.0f);
 
+	pos = glGetUniformLocation(OpenGLWrapper::programObject, "sca");
+	glUniform4f(pos, 1.0f, 1.0f, 1.0f, 1.0f);
+
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glViewport(0, 0, config.width, config.height);
