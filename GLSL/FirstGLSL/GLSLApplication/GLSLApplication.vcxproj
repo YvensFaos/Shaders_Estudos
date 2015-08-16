@@ -117,6 +117,7 @@
     <ClCompile Include="triangle_cube.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="glocclussion.h" />
     <ClInclude Include="edfile.h" />
     <ClInclude Include="edlogger.h" />
     <ClInclude Include="glbasegrid.h" />

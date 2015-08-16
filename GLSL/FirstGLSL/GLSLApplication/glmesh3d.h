@@ -36,6 +36,8 @@ public:
 	glm::vec3* vertexes;
 	glm::vec3* normals;
 	glm::vec2* uvs;
+
+	std::vector<glm::vec3> walls;
 public:
 	GLMesh3D(void);
 	GLMesh3D(int index, int glindex, const aiScene* scene);

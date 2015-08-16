@@ -220,10 +220,6 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 	center = glm::vec3(min.x + (max.x - min.x) / 2.0f, min.y + (max.y - min.y) / 2.0f, min.z + (max.z - min.z) / 2.0f);
 
 	int walls = 0;
-	//hasNormals = false;
-	//if(!hasNormals)
-	//{
-	//Calculate
 	int j = 0;
 	for (int i = 0; i < verticesCount; i += 3)
 	{
@@ -237,6 +233,8 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 		if (normal.y == 0)
 		{
 			walls++;
+
+
 		}
 
 		normals[j] = normal;
@@ -248,7 +246,6 @@ GLMesh3D::GLMesh3D(int index, int glindex, const aiScene* scene)
 
 	hasNormals = true;
 	printf("Walls count: %d\n", walls);
-	//}
 }
 
 GLMesh3D::~GLMesh3D(void)

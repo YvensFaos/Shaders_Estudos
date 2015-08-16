@@ -2,6 +2,7 @@
 
 #include "glenums.h"
 #include "gldynamic.h"
+#include "glocclussion.h"
 
 class GLPlayer;
 
@@ -19,6 +20,7 @@ public:
 
 	PLAYER_MODE mode;
 	EDE_TYPE type;
+	OCCLUSION_TYPE occlusion;
 
 	char* title;
 
@@ -58,6 +60,9 @@ public:
 	bool frustumTestDynamics;
 	//Habilita o cálculo da aabb do frustum de acordo com as configurações da EDE usada
 	bool calculateFrustumAABB;
+	//Habilita os testes de occlusion culling na estrutura
+	bool occlusionCulling;
+
 
 	//Lista de objetos dinâmicos
 	std::vector<GLDynamicObject> dynamics;

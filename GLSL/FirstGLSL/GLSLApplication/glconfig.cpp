@@ -22,6 +22,7 @@ GLConfig::GLConfig()
 
 	mode = FREE_MODE;
 	type = NONE;
+	occlusion = BASE_OCCLUDER;
 
 	title = "Blank Title";
 
@@ -37,6 +38,7 @@ GLConfig::GLConfig()
 	edeTestDynamics = false;
 	frustumTestDynamics = true;
 	calculateFrustumAABB = false;
+	occlusionCulling = false;
 }
 
 GLConfig::~GLConfig()

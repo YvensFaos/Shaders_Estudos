@@ -34,6 +34,9 @@
     <Filter Include="Players\Recorders">
       <UniqueIdentifier>{41a0b93b-26d2-4eec-bb80-69da7e233e1a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Visibility">
+      <UniqueIdentifier>{d317c4cb-be91-4881-8519-507a3cb66a9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="openGLWrapper.cpp">
@@ -241,6 +244,9 @@
     </ClInclude>
     <ClInclude Include="glsequentialflyingrecorder.h">
       <Filter>Players\Recorders</Filter>
+    </ClInclude>
+    <ClInclude Include="glocclussion.h">
+      <Filter>Visibility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

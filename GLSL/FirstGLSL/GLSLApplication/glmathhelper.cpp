@@ -10,6 +10,28 @@
 
 float GLFrustum::aabbFactor = 0.15f;
 
+//GLTriangles
+GLTriangle::GLTriangle()
+{
+	initialize(VEC_ZERO, VEC_ZERO, VEC_ZERO, VEC_ZERO);
+}
+
+GLTriangle::GLTriangle(glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 normal)
+{
+	initialize(a, b, c, normal);
+}
+
+GLTriangle::~GLTriangle()
+{ }
+
+void GLTriangle::initialize(glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 normal)
+{
+	this->a = a;
+	this->b = b;
+	this->c = c;
+	this->normal = normal;
+}
+
 //GLPlane
 
 GLPlane::GLPlane(void)

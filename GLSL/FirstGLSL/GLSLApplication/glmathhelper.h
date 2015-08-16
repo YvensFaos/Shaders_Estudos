@@ -6,6 +6,8 @@
 class GLCamera;
 class GLCameraStep;
 
+#define VEC_ZERO glm::vec3(0.0f, 0.0f, 0.0f)
+
 #define VEC3_PRINT(v) v.x,v.y,v.z
 #define VEC3P_PRINT(v) v->x,v->y,v->z
 #define VEC4_PRINT(v) v.x,v.y,v.z,v.w
@@ -44,6 +46,23 @@ class GLCameraStep;
 #define PLANE_RIGHT 3
 #define PLANE_BOTTOM 4
 #define PLANE_FAR 5
+
+class GLTriangle
+{
+	glm::vec3 a;
+	glm::vec3 b;
+	glm::vec3 c;
+
+	glm::vec3 normal;
+
+public:
+	GLTriangle();
+	GLTriangle(glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 normal);
+	~GLTriangle();
+
+private:
+	void initialize(glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 normal);
+};
 
 //Peguei em http://voxelengine.googlecode.com/svn/trunk/Plane.cpp
 class GLPlane
